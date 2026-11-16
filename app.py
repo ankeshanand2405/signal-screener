@@ -2,11 +2,17 @@ from flask import Flask, render_template, jsonify
 import yfinance as yf
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, date, timedelta
 import requests
 from io import StringIO
 import time
 import threading
+
+try:
+    from jugaad_data.nse import stock_df as jugaad_stock_df
+    JUGAAD_AVAILABLE = True
+except ImportError:
+    JUGAAD_AVAILABLE = False
 
 app = Flask(__name__)
 
@@ -99,6 +105,53 @@ def get_nse_stocks():
     except Exception:
         return FALLBACK_SYMBOLS
 
+# ─── Jugaad-data fallback for missing yfinance data ───────────────────────────
+
+def fill_missing_from_jugaad(df_sym, sym):
+    """When yfinance has NaN OHLC for the latest row, fetch from jugaad-data."""
+    if not JUGAAD_AVAILABLE or df_sym.empty:
+        return df_sym
+
+    # Flatten MultiIndex before checking columns
+    if isinstance(df_sym.columns, pd.MultiIndex):
+        df_sym.columns = df_sym.columns.get_level_values(0)
+
+    last_row = df_sym.iloc[-1]
+    if pd.notna(last_row.get("Close")):
+        return df_sym  # yfinance data is fine
+
+    try:
+        clean_sym = sym.replace(".NS", "")
+        to_dt = date.today()
+        from_dt = to_dt - timedelta(days=10)
+
+        jd = jugaad_stock_df(clean_sym, from_date=from_dt, to_date=to_dt, series="EQ")
+        if jd.empty:
+            return df_sym
+
+        # Jugaad DATE has 18:30 UTC offset — shift forward to get actual trading date
+        jd["DATE"] = pd.to_datetime(jd["DATE"]).dt.tz_localize(None)
+        jd["DATE"] = jd["DATE"] + pd.Timedelta(hours=6)  # 18:30 + 6h = next day
+        jd["DATE"] = jd["DATE"].dt.normalize()
+        jd = jd.rename(columns={"OPEN": "Open", "HIGH": "High", "LOW": "Low",
+                                 "CLOSE": "Close", "VOLUME": "Volume"})
+        jd = jd[["DATE", "Open", "High", "Low", "Close", "Volume"]].copy()
+        jd = jd.set_index("DATE").sort_index()
+
+        # Drop NaN rows from yfinance, then append fresh jugaad rows
+        df_clean = df_sym.dropna(subset=["Close"])
+        df_clean.index = df_clean.index.normalize()
+        new_dates = jd.index.difference(df_clean.index)
+        if len(new_dates) > 0:
+            new_rows = jd.loc[new_dates]
+            df_clean = pd.concat([df_clean, new_rows]).sort_index()
+            # Fill any missing columns in the new rows with NaN (they'll be computed later)
+            df_clean = df_clean.fillna({col: np.nan for col in df_clean.columns if col not in new_rows.columns})
+
+        return df_clean
+    except Exception:
+        return df_sym
+
 # ─── Screeners ────────────────────────────────────────────────────────────────
 
 def screener_1(sym, daily, weekly, mcap):
@@ -187,6 +240,8 @@ def run_scan():
                 # Strip timezone if present so resample and index behave consistently
                 if df_sym.index.tz is not None:
                     df_sym.index = df_sym.index.tz_localize(None)
+                # Fill missing latest-day data from jugaad-data before dropping NaN
+                df_sym = fill_missing_from_jugaad(df_sym, sym)
                 df_sym = df_sym.dropna(subset=["Close"])
                 try:
                     mcap = (yf.Ticker(sym).fast_info.market_cap or 0) / 1e9
