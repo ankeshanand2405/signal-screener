@@ -157,7 +157,7 @@ def run_scan():
     global progress_data
     progress_data = {"status": "running", "done": 0, "total": 0, "message": "Fetching stock universe..."}
 
-    stocks = get_nse_stocks()[:1500]
+    stocks = get_nse_stocks()[:800]
     progress_data["total"] = len(stocks)
     results = {"s1":[], "s2":[], "s3":[], "s4":[],
                "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p")}
