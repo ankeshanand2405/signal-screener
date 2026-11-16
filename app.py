@@ -27,6 +27,8 @@ def rsi(series, n=14):
 
 def compute_indicators(df_daily):
     df = df_daily.copy()
+    # if isinstance(df.columns, pd.MultiIndex):
+    #     df.columns = df.columns.get_level_values(0)
     c = df["Close"]
     h = df["High"]
     v = df["Volume"]
@@ -38,8 +40,8 @@ def compute_indicators(df_daily):
     df["EMA20"]     = ema(c, 20)
     df["RSI14"]     = rsi(c, 14)
     df["52W_High"]  = h.rolling(252).max()
-    df["Avg_Vol20"] = v.rolling(20).mean()
-    df["Rel_Vol"]   = v / df["Avg_Vol20"]
+    df["Avg_Vol10"] = v.rolling(10).mean()
+    df["Rel_Vol"]   = v / df["Avg_Vol10"]
     df["Vol_Chg"]   = v.pct_change() * 100
     df["Chg_Open"]  = ((c - df["Open"]) / df["Open"]) * 100
 
@@ -155,7 +157,7 @@ def run_scan():
     global progress_data
     progress_data = {"status": "running", "done": 0, "total": 0, "message": "Fetching stock universe..."}
 
-    stocks = get_nse_stocks()[:500]
+    stocks = get_nse_stocks()[:1500]
     progress_data["total"] = len(stocks)
     results = {"s1":[], "s2":[], "s3":[], "s4":[],
                "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p")}
