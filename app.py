@@ -27,8 +27,8 @@ def rsi(series, n=14):
 
 def compute_indicators(df_daily):
     df = df_daily.copy()
-    # if isinstance(df.columns, pd.MultiIndex):
-    #     df.columns = df.columns.get_level_values(0)
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
     c = df["Close"]
     h = df["High"]
     v = df["Volume"]
@@ -105,48 +105,54 @@ def screener_1(sym, daily, weekly, mcap):
     if mcap < 25: return None
     try:
         d = daily.iloc[-1]
+        date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         if (d["Close"] > d["SMA10"] and d["Close"] > d["SMA20"] and
             d["Close"] > d["SMA50"] and d["Chg_Open"] > 0 and
             d["Rel_Vol"] > 1 and d["RSI14"] > 55):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi": round(d["RSI14"],1), "rel_vol": round(d["Rel_Vol"],2),
-                    "chg_open": round(d["Chg_Open"],2), "mkt_cap": round(mcap,1)}
+                    "chg_open": round(d["Chg_Open"],2), "mkt_cap": round(mcap,1),
+                    "date": date_str}
     except: pass
 
 def screener_2(sym, daily, weekly, mcap):
     if mcap < 25: return None
     try:
         d = daily.iloc[-1]; w = weekly.iloc[-1]
+        date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         if (d["Close"] > w["SMA10_W"] and d["Close"] > w["SMA20_W"] and
             d["Close"] > w["SMA50_W"] and w["Chg_Open_W"] > 0 and w["RSI14_W"] > 55):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(w["Chg_Open_W"],2),
-                    "mkt_cap": round(mcap,1)}
+                    "mkt_cap": round(mcap,1), "date": date_str}
     except: pass
 
 def screener_3(sym, daily, weekly, mcap):
     if mcap < 20: return None
     try:
         d = daily.iloc[-1]
+        date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
         if (d["Close"] > d["EMA20"] and d["Chg_Open"] > 2 and d["Vol_Chg"] > 0 and
             d["EMA10"] > d["EMA20"] and d["RSI14"] > 55 and near_52w):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi": round(d["RSI14"],1), "chg_open": round(d["Chg_Open"],2),
                     "vol_chg": round(d["Vol_Chg"],1), "high_52w": round(d["52W_High"],2),
-                    "mkt_cap": round(mcap,1)}
+                    "mkt_cap": round(mcap,1), "date": date_str}
     except: pass
 
 def screener_4(sym, daily, weekly, mcap):
     if mcap < 20: return None
     try:
         d = daily.iloc[-1]; w = weekly.iloc[-1]
+        date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
         if (d["Close"] > w["EMA10_W"] and w["EMA10_W"] > w["EMA20_W"] and
             w["RSI14_W"] > 50 and w["Chg_Open_W"] > 2 and near_52w):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(w["Chg_Open_W"],2),
-                    "high_52w": round(d["52W_High"],2), "mkt_cap": round(mcap,1)}
+                    "high_52w": round(d["52W_High"],2), "mkt_cap": round(mcap,1),
+                    "date": date_str}
     except: pass
 
 # ─── Scan ────────────────────────────────────────────────────────────────────
@@ -157,7 +163,7 @@ def run_scan():
     global progress_data
     progress_data = {"status": "running", "done": 0, "total": 0, "message": "Fetching stock universe..."}
 
-    stocks = get_nse_stocks()[:800]
+    stocks = get_nse_stocks()[:1000]
     progress_data["total"] = len(stocks)
     results = {"s1":[], "s2":[], "s3":[], "s4":[],
                "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p")}
@@ -178,7 +184,9 @@ def run_scan():
             try:
                 df_sym = raw[sym].copy() if len(batch) > 1 else raw.copy()
                 if df_sym.empty or len(df_sym) < 60: continue
-                df_sym.index = pd.to_datetime(df_sym.index)
+                # Strip timezone if present so resample and index behave consistently
+                if df_sym.index.tz is not None:
+                    df_sym.index = df_sym.index.tz_localize(None)
                 df_sym = df_sym.dropna(subset=["Close"])
                 try:
                     mcap = (yf.Ticker(sym).fast_info.market_cap or 0) / 1e9

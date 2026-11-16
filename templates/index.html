@@ -532,6 +532,7 @@ function renderAllResults(data) {
   // S1
   renderTable('s1', data.s1, [
     { label: 'Symbol',       render: r => symCell(r.symbol) },
+    { label: 'Date',         render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
     { label: 'RSI 14',       render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
     { label: 'Rel Vol',      render: r => chip(r.rel_vol + 'x', 'blue') },
@@ -542,6 +543,7 @@ function renderAllResults(data) {
   // S2
   renderTable('s2', data.s2, [
     { label: 'Symbol',         render: r => symCell(r.symbol) },
+    { label: 'Date',           render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
     { label: 'Weekly RSI 14',  render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
     { label: 'Weekly Chg',     render: r => chip((r.chg_open_w > 0 ? '+' : '') + r.chg_open_w + '%', r.chg_open_w > 0 ? 'green' : 'red') },
@@ -551,6 +553,7 @@ function renderAllResults(data) {
   // S3
   renderTable('s3', data.s3, [
     { label: 'Symbol',        render: r => symCell(r.symbol) },
+    { label: 'Date',          render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',     render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
     { label: 'RSI 14',        render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
     { label: 'Chg from Open', render: r => chip('+' + r.chg_open + '%', 'green') },
@@ -562,6 +565,7 @@ function renderAllResults(data) {
   // S4
   renderTable('s4', data.s4, [
     { label: 'Symbol',        render: r => symCell(r.symbol) },
+    { label: 'Date',          render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',     render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
     { label: 'Weekly RSI 14', render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
     { label: 'Weekly Chg',    render: r => chip('+' + r.chg_open_w + '%', 'green') },
