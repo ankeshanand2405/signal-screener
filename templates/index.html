@@ -6,6 +6,7 @@
 <title>PINAKA — High-Conviction NSE Technical Screener</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 <style>
   :root, [data-theme="dark"] {
     --bg:            #080c15;
@@ -718,7 +719,49 @@
   .sym-cell-wrap {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+  }
+
+  .sym-btn-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+  }
+
+  .sym-btn-open:hover {
+    color: #60a5fa;
+    background: rgba(59, 130, 246, 0.14);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+    text-decoration: underline;
+  }
+
+  .sym-ext-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sub);
+    opacity: 0.5;
+    padding: 3px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .sym-ext-link:hover {
+    color: var(--accent);
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.06);
+    transform: translate(1px, -1px);
   }
 
   .sym-link {
@@ -734,6 +777,209 @@
   }
 
   .sym-link:hover { color: var(--accent-dim); text-decoration: underline; }
+
+  /* ─── In-App TradingView Chart Modal ─────────────────────────────────────── */
+  .chart-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 7, 14, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .chart-modal-overlay.active {
+    display: flex;
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.985); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .chart-modal-dialog {
+    width: 95vw;
+    max-width: 1380px;
+    height: 89vh;
+    max-height: 880px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 30px 70px -15px rgba(0,0,0,0.9), 0 0 45px rgba(59, 130, 246, 0.16);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chart-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    background: var(--surface-card);
+    border-bottom: 1px solid var(--border);
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .modal-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .modal-ticker {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+
+  .modal-exchange {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .modal-sector {
+    font-size: 12px;
+    color: var(--sub);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .modal-actions-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .modal-tf-group {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .modal-tf-btn {
+    background: transparent;
+    border: none;
+    color: var(--sub);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .modal-tf-btn:hover {
+    color: var(--text);
+  }
+
+  .modal-tf-btn.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  }
+
+  .modal-nav-group {
+    display: flex;
+    gap: 4px;
+  }
+
+  .modal-icon-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 31px;
+    height: 31px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .modal-icon-btn:hover {
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent);
+  }
+
+  .modal-ext-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--sub);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 11px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .modal-ext-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  .modal-close-btn {
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: var(--red);
+    font-size: 15px;
+    font-weight: 700;
+    width: 31px;
+    height: 31px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .modal-close-btn:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  }
+
+  .chart-modal-body {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #080c15;
+  }
+
+  .tv-chart-container {
+    width: 100%;
+    height: 100%;
+  }
 
   .btn-copy {
     background: transparent;
@@ -1215,6 +1461,10 @@ function setTheme(theme) {
   localStorage.setItem('pinaka_theme', theme);
   const icon = document.getElementById('themeIcon');
   if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  const overlay = document.getElementById('chart-modal-overlay');
+  if (overlay && overlay.classList.contains('active') && currentModalSymbol) {
+    renderTradingViewWidget(currentModalSymbol, currentChartInterval);
+  }
 }
 
 initTheme();
@@ -1263,8 +1513,10 @@ function symCell(symbol) {
   }
 
   return `<div class="sym-cell-wrap">
-    <a class="sym-link" href="${tvLink(symbol)}" target="_blank" rel="noopener" title="Open ${symbol} chart on TradingView">
+    <button class="sym-btn-open" onclick="openChartModal('${symbol}')" title="View interactive chart inside PINAKA">
       ${symbol}
+    </button>
+    <a class="sym-ext-link" href="${tvLink(symbol)}" target="_blank" rel="noopener" title="Open ${symbol} chart in new tab">
       <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
         <path d="M2 2h8v8M10 2 2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
@@ -1763,7 +2015,202 @@ function exportCSV(screenerId = 'all') {
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 }
+
+// ─── In-App TradingView Chart Modal Controller ──────────────────────────────
+let currentModalSymbol = null;
+let currentChartInterval = 'D';
+
+function findStockSector(symbol) {
+  if (!currentResults) return '';
+  for (const key of ['s1', 's2', 's3', 's4']) {
+    const list = currentResults[key] || [];
+    const item = list.find(r => r.symbol === symbol);
+    if (item && item.sector) return item.sector;
+  }
+  return '';
+}
+
+function getActiveStockSymbols() {
+  const buttons = document.querySelectorAll('.panel.active .sym-btn-open');
+  if (buttons.length > 0) {
+    return Array.from(buttons).map(b => b.textContent.trim());
+  }
+  return [];
+}
+
+function openChartModal(symbol) {
+  currentModalSymbol = symbol;
+  const overlay = document.getElementById('chart-modal-overlay');
+  if (!overlay) return;
+
+  const tickerEl = document.getElementById('modal-ticker');
+  if (tickerEl) tickerEl.textContent = symbol;
+
+  const secEl = document.getElementById('modal-sector');
+  const sector = findStockSector(symbol);
+  if (secEl) {
+    if (sector) {
+      secEl.textContent = sector;
+      secEl.style.display = 'inline-block';
+    } else {
+      secEl.style.display = 'none';
+    }
+  }
+
+  const extLink = document.getElementById('modal-external-link');
+  if (extLink) {
+    extLink.href = tvLink(symbol);
+  }
+
+  // Sync active timeframe button
+  document.querySelectorAll('.modal-tf-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-tf') === currentChartInterval);
+  });
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  renderTradingViewWidget(symbol, currentChartInterval);
+}
+
+function closeChartModal() {
+  const overlay = document.getElementById('chart-modal-overlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+  }
+  document.body.style.overflow = '';
+  const container = document.getElementById('tv_chart_container');
+  if (container) {
+    container.innerHTML = '';
+  }
+}
+
+function handleModalOverlayClick(e) {
+  if (e.target.id === 'chart-modal-overlay') {
+    closeChartModal();
+  }
+}
+
+function setChartInterval(interval, btn) {
+  currentChartInterval = interval;
+  document.querySelectorAll('.modal-tf-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (currentModalSymbol) {
+    renderTradingViewWidget(currentModalSymbol, currentChartInterval);
+  }
+}
+
+function prevModalStock() {
+  const symbols = getActiveStockSymbols();
+  if (!symbols.length || !currentModalSymbol) return;
+  const idx = symbols.indexOf(currentModalSymbol);
+  if (idx > 0) {
+    openChartModal(symbols[idx - 1]);
+  } else if (idx === 0) {
+    openChartModal(symbols[symbols.length - 1]);
+  }
+}
+
+function nextModalStock() {
+  const symbols = getActiveStockSymbols();
+  if (!symbols.length || !currentModalSymbol) return;
+  const idx = symbols.indexOf(currentModalSymbol);
+  if (idx >= 0 && idx < symbols.length - 1) {
+    openChartModal(symbols[idx + 1]);
+  } else if (idx === symbols.length - 1) {
+    openChartModal(symbols[0]);
+  }
+}
+
+function renderTradingViewWidget(symbol, interval) {
+  const container = document.getElementById('tv_chart_container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+
+  if (typeof TradingView !== 'undefined' && TradingView.widget) {
+    try {
+      new TradingView.widget({
+        autosize: true,
+        symbol: `NSE:${symbol}`,
+        interval: interval,
+        timezone: "Asia/Kolkata",
+        theme: theme,
+        style: "1",
+        locale: "in",
+        toolbar_bg: theme === 'light' ? "#ffffff" : "#080c15",
+        enable_publishing: false,
+        allow_symbol_change: true,
+        container_id: "tv_chart_container",
+        studies: [
+          "MASimple@tv-basicstudies",
+          "RSI@tv-basicstudies"
+        ],
+        hide_side_toolbar: false
+      });
+      return;
+    } catch (err) {
+      console.warn("TradingView widget initialization warning:", err);
+    }
+  }
+
+  // High-reliability embed fallback
+  const iframe = document.createElement('iframe');
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  iframe.src = `https://s3.tradingview.com/widgetembed/?symbol=NSE%3A${encodeURIComponent(symbol)}&interval=${interval}&theme=${theme}&style=1&locale=en`;
+  container.appendChild(iframe);
+}
+
+// Global keyboard navigation for modal (Esc, Left Arrow, Right Arrow)
+document.addEventListener('keydown', (e) => {
+  const overlay = document.getElementById('chart-modal-overlay');
+  if (!overlay || !overlay.classList.contains('active')) return;
+
+  if (e.key === 'Escape') {
+    closeChartModal();
+  } else if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    prevModalStock();
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    nextModalStock();
+  }
+});
 </script>
+
+<!-- TradingView In-App Chart Modal -->
+<div id="chart-modal-overlay" class="chart-modal-overlay" onclick="handleModalOverlayClick(event)">
+  <div class="chart-modal-dialog" onclick="event.stopPropagation()">
+    <div class="chart-modal-header">
+      <div class="modal-title-wrap">
+        <span class="modal-ticker" id="modal-ticker">NSE STOCK</span>
+        <span class="modal-exchange">NSE</span>
+        <span class="modal-sector" id="modal-sector"></span>
+      </div>
+      <div class="modal-actions-wrap">
+        <div class="modal-tf-group">
+          <button class="modal-tf-btn active" data-tf="D" onclick="setChartInterval('D', this)" title="Daily timeframe">Daily</button>
+          <button class="modal-tf-btn" data-tf="W" onclick="setChartInterval('W', this)" title="Weekly timeframe">Weekly</button>
+          <button class="modal-tf-btn" data-tf="M" onclick="setChartInterval('M', this)" title="Monthly timeframe">Monthly</button>
+        </div>
+        <div class="modal-nav-group">
+          <button class="modal-icon-btn" onclick="prevModalStock()" title="Previous Stock (Left Arrow ◀)">◀</button>
+          <button class="modal-icon-btn" onclick="nextModalStock()" title="Next Stock (Right Arrow ▶)">▶</button>
+        </div>
+        <a id="modal-external-link" href="#" target="_blank" rel="noopener" class="modal-ext-btn" title="Open full chart in external TradingView tab">
+          Open TV ↗
+        </a>
+        <button class="modal-close-btn" onclick="closeChartModal()" title="Close (Esc)">✕</button>
+      </div>
+    </div>
+    <div class="chart-modal-body">
+      <div id="tv_chart_container" class="tv-chart-container"></div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
