@@ -1,4 +1,4 @@
-# Signal — NSE Stock Screener
+# PINAKA — NSE Stock Screener
 
 4 technical screeners for NSE-listed stocks. Run after market close (3:30 PM IST). Click any result to open it on TradingView.
 

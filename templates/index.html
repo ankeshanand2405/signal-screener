@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal — NSE Stock Screener</title>
+<title>PINAKA — NSE Stock Screener</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -526,7 +526,7 @@
 <header>
   <div class="logo">
     <div class="logo-dot"></div>
-    Signal
+    PINAKA
   </div>
   <div class="header-right">
     <div class="header-meta">NSE · EOD Technical Screener</div>
@@ -693,7 +693,7 @@ let scanStartTime = null;
 // ─── Theme Management (Light / Dark) ─────────────────────────────────────────
 
 function initTheme() {
-  const saved = localStorage.getItem('signal_theme') || 'dark';
+  const saved = localStorage.getItem('pinaka_theme') || localStorage.getItem('signal_theme') || 'dark';
   setTheme(saved);
 }
 
@@ -705,7 +705,7 @@ function toggleTheme() {
 
 function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('signal_theme', theme);
+  localStorage.setItem('pinaka_theme', theme);
   const icon = document.getElementById('themeIcon');
   if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
@@ -964,8 +964,8 @@ function exportCSV(screenerId = 'all') {
 
   const dateStr = formatDateForFile();
   const filename = screenerId === 'all'
-    ? `Signal_All_4_Screeners_${dateStr}.csv`
-    : `Signal_${targetScreeners[0].name.replace(/\s+/g, '_')}_${dateStr}.csv`;
+    ? `PINAKA_All_4_Screeners_${dateStr}.csv`
+    : `PINAKA_${targetScreeners[0].name.replace(/\s+/g, '_')}_${dateStr}.csv`;
 
   let csv = 'Screener,Timeframe,Symbol,Date,Price (INR),RSI 14,Price Change (%),Volume Metric,52W High (INR),Market Cap (B INR),TradingView Link\n';
 
