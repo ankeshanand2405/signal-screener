@@ -61,7 +61,7 @@ def get_cached_mcap(sym, close_price=None):
 # ─── Indicators (pure pandas/numpy — no pandas-ta) ────────────────────────────
 
 def sma(series, n):
-    return series.rolling(window=n).mean()
+    return series.rolling(window=n, min_periods=1).mean()
 
 def ema(series, n):
     return series.ewm(span=n, adjust=False).mean()
@@ -73,7 +73,7 @@ def rsi(series, n=14):
     avg_gain = gain.ewm(alpha=1.0/n, adjust=False).mean()
     avg_loss = loss.ewm(alpha=1.0/n, adjust=False).mean()
     rs = avg_gain / avg_loss.replace(0, np.nan)
-    return 100.0 - (100.0 / (1.0 + rs))
+    return (100.0 - (100.0 / (1.0 + rs))).fillna(100.0)
 
 def compute_indicators(df_daily):
     df = df_daily.copy()
@@ -89,8 +89,8 @@ def compute_indicators(df_daily):
     df["EMA10"]     = ema(c, 10)
     df["EMA20"]     = ema(c, 20)
     df["RSI14"]     = rsi(c, 14)
-    df["52W_High"]  = h.rolling(252).max()
-    df["Avg_Vol10"] = v.rolling(10).mean()
+    df["52W_High"]  = h.rolling(252, min_periods=1).max()
+    df["Avg_Vol10"] = v.rolling(10, min_periods=1).mean()
     df["Rel_Vol"]   = v / df["Avg_Vol10"]
     df["Vol_Chg"]   = v.pct_change() * 100
     df["Chg_Open"]  = ((c - df["Open"]) / df["Open"]) * 100
@@ -191,7 +191,7 @@ def get_latest_bhavcopy():
             for row in reader:
                 sym = row.get("TckrSymb") or row.get("SYMBOL") or ""
                 srs = row.get("SctySrs") or row.get("SERIES") or ""
-                if srs.strip() == "EQ" and sym:
+                if srs.strip() in ["EQ", "BE", "SM", "BZ"] and sym:
                     try:
                         data[sym.strip()] = {
                             "Open": float(row.get("OpnPric") or row.get("OPEN")),
@@ -264,9 +264,10 @@ def screener_2(sym, daily, weekly, mcap):
     try:
         d = daily.iloc[-1]; w = weekly.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
-        # TradingView Breakout Weekly: Price > SMA 10/20/50 weekly, RSI 14 weekly > 55, Market Cap >= 25B
+        # TradingView Breakout Weekly: Price > SMA 10/20/50 weekly, RSI 14 weekly > 55, Market Cap >= 25B, Positive Weekly Change
+        weekly_up = (w.get("Chg_Pct_W", 0) > 0) or (w.get("Chg_Open_W", 0) > 0)
         if (d["Close"] > w["SMA10_W"] and d["Close"] > w["SMA20_W"] and
-            d["Close"] > w["SMA50_W"] and w["RSI14_W"] > 55):
+            d["Close"] > w["SMA50_W"] and w["RSI14_W"] > 55 and weekly_up):
             weekly_chg = w["Chg_Pct_W"] if pd.notna(w.get("Chg_Pct_W")) else w["Chg_Open_W"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(weekly_chg,2),
