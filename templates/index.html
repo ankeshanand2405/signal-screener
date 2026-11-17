@@ -6,7 +6,8 @@
 <title>PINAKA — High-Conviction NSE Technical Screener</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script src="/static/js/lightweight-charts.js"></script>
+<script>if (typeof LightweightCharts === 'undefined') { document.write('<script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"><\/script>'); }</script>
 <style>
   :root, [data-theme="dark"] {
     --bg:            #080c15;
@@ -831,6 +832,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
   }
 
   .modal-ticker {
@@ -860,6 +862,48 @@
     border-radius: 4px;
     border: 1px solid var(--border);
   }
+
+  .modal-price-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 4px;
+  }
+
+  .modal-price {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .modal-chg {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--green-soft);
+    color: var(--green);
+  }
+
+  .modal-legend-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-family: var(--mono);
+    flex-wrap: wrap;
+  }
+
+  .legend-item b {
+    font-weight: 700;
+  }
+
+  .legend-sma10 { color: #f59e0b; }
+  .legend-sma20 { color: #3b82f6; }
+  .legend-sma50 { color: #a855f7; }
+  .legend-rsi { color: #38bdf8; }
 
   .modal-actions-wrap {
     display: flex;
@@ -973,12 +1017,70 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background: #080c15;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .tv-chart-container {
+  .tv-chart-main {
     width: 100%;
-    height: 100%;
+    height: 72%;
+    position: relative;
+  }
+
+  .tv-chart-rsi {
+    width: 100%;
+    height: 28%;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  .chart-loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 12, 21, 0.88);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--sub);
+    font-size: 13px;
+    font-family: var(--mono);
+  }
+
+  .chart-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(59, 130, 246, 0.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .chart-ohlc-tooltip {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    z-index: 5;
+    pointer-events: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    background: rgba(14, 20, 36, 0.9);
+    padding: 5px 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: none;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   }
 
   .btn-copy {
@@ -1462,8 +1564,8 @@ function setTheme(theme) {
   const icon = document.getElementById('themeIcon');
   if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
   const overlay = document.getElementById('chart-modal-overlay');
-  if (overlay && overlay.classList.contains('active') && currentModalSymbol) {
-    renderTradingViewWidget(currentModalSymbol, currentChartInterval);
+  if (overlay && overlay.classList.contains('active') && currentChartData) {
+    drawLightweightChart(currentChartData);
   }
 }
 
@@ -2016,9 +2118,18 @@ function exportCSV(screenerId = 'all') {
   URL.revokeObjectURL(url);
 }
 
-// ─── In-App TradingView Chart Modal Controller ──────────────────────────────
+// ─── In-App TradingView Lightweight Charts Controller ─────────────────────────
 let currentModalSymbol = null;
 let currentChartInterval = 'D';
+let currentChartData = null;
+let mainChart = null;
+let rsiChart = null;
+let candleSeries = null;
+let volumeSeries = null;
+let sma10Series = null;
+let sma20Series = null;
+let sma50Series = null;
+let rsiSeries = null;
 
 function findStockSector(symbol) {
   if (!currentResults) return '';
@@ -2062,7 +2173,7 @@ function openChartModal(symbol) {
     extLink.href = tvLink(symbol);
   }
 
-  // Sync active timeframe button
+  // Sync active timeframe buttons
   document.querySelectorAll('.modal-tf-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-tf') === currentChartInterval);
   });
@@ -2070,7 +2181,7 @@ function openChartModal(symbol) {
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 
-  renderTradingViewWidget(symbol, currentChartInterval);
+  renderStockChart(symbol, currentChartInterval);
 }
 
 function closeChartModal() {
@@ -2079,10 +2190,7 @@ function closeChartModal() {
     overlay.classList.remove('active');
   }
   document.body.style.overflow = '';
-  const container = document.getElementById('tv_chart_container');
-  if (container) {
-    container.innerHTML = '';
-  }
+  destroyCharts();
 }
 
 function handleModalOverlayClick(e) {
@@ -2096,7 +2204,7 @@ function setChartInterval(interval, btn) {
   document.querySelectorAll('.modal-tf-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   if (currentModalSymbol) {
-    renderTradingViewWidget(currentModalSymbol, currentChartInterval);
+    renderStockChart(currentModalSymbol, currentChartInterval);
   }
 }
 
@@ -2122,47 +2230,267 @@ function nextModalStock() {
   }
 }
 
-function renderTradingViewWidget(symbol, interval) {
-  const container = document.getElementById('tv_chart_container');
-  if (!container) return;
-  container.innerHTML = '';
+function destroyCharts() {
+  if (mainChart) {
+    try { mainChart.remove(); } catch(e){}
+    mainChart = null;
+  }
+  if (rsiChart) {
+    try { rsiChart.remove(); } catch(e){}
+    rsiChart = null;
+  }
+  candleSeries = null;
+  volumeSeries = null;
+  sma10Series = null;
+  sma20Series = null;
+  sma50Series = null;
+  rsiSeries = null;
+}
 
-  const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+function renderStockChart(symbol, timeframe) {
+  const loader = document.getElementById('chart-loading-overlay');
+  if (loader) loader.style.display = 'flex';
 
-  if (typeof TradingView !== 'undefined' && TradingView.widget) {
-    try {
-      new TradingView.widget({
-        autosize: true,
-        symbol: `NSE:${symbol}`,
-        interval: interval,
-        timezone: "Asia/Kolkata",
-        theme: theme,
-        style: "1",
-        locale: "in",
-        toolbar_bg: theme === 'light' ? "#ffffff" : "#080c15",
-        enable_publishing: false,
-        allow_symbol_change: true,
-        container_id: "tv_chart_container",
-        studies: [
-          "MASimple@tv-basicstudies",
-          "RSI@tv-basicstudies"
-        ],
-        hide_side_toolbar: false
-      });
-      return;
-    } catch (err) {
-      console.warn("TradingView widget initialization warning:", err);
-    }
+  fetch(`/api/chart/${encodeURIComponent(symbol)}?tf=${timeframe}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Could not load market data");
+      return res.json();
+    })
+    .then(data => {
+      if (loader) loader.style.display = 'none';
+      if (!data || !data.candles || data.candles.length === 0) {
+        alert(`No candlestick data available for ${symbol}`);
+        return;
+      }
+      currentChartData = data;
+      drawLightweightChart(data);
+    })
+    .catch(err => {
+      if (loader) loader.style.display = 'none';
+      console.error("Error loading chart:", err);
+      const mainEl = document.getElementById('tv_chart_main');
+      if (mainEl) {
+        mainEl.innerHTML = `<div style="display:flex; height:100%; align-items:center; justify-content:center; color:var(--red); font-family:var(--mono); text-align:center; padding:20px;">
+          ⚠️ Failed to fetch market data for ${symbol}. Please check connection or try another stock.
+        </div>`;
+      }
+    });
+}
+
+function drawLightweightChart(data) {
+  destroyCharts();
+
+  const mainContainer = document.getElementById('tv_chart_main');
+  const rsiContainer = document.getElementById('tv_chart_rsi');
+  if (!mainContainer || !rsiContainer) return;
+  mainContainer.innerHTML = '';
+  rsiContainer.innerHTML = '';
+
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const bgColor = isLight ? '#ffffff' : '#080c15';
+  const textColor = isLight ? '#64748b' : '#94a3b8';
+  const gridColor = isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)';
+  const borderColor = isLight ? '#e2e8f0' : '#1e293b';
+
+  // Update header stats
+  const priceEl = document.getElementById('modal-price');
+  const chgEl = document.getElementById('modal-chg');
+  if (priceEl && data.last_price) priceEl.textContent = `₹${data.last_price.toLocaleString('en-IN')}`;
+  if (chgEl && data.chg_pct !== undefined) {
+    const isUp = data.chg_pct >= 0;
+    chgEl.textContent = `${isUp ? '+' : ''}${data.chg_pct.toFixed(2)}%`;
+    chgEl.style.color = isUp ? 'var(--green)' : 'var(--red)';
+    chgEl.style.background = isUp ? 'var(--green-soft)' : 'var(--red-soft)';
   }
 
-  // High-reliability embed fallback
-  const iframe = document.createElement('iframe');
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.src = `https://s3.tradingview.com/widgetembed/?symbol=NSE%3A${encodeURIComponent(symbol)}&interval=${interval}&theme=${theme}&style=1&locale=en`;
-  container.appendChild(iframe);
+  // Update legend
+  const leg10 = document.getElementById('leg-sma10');
+  const leg20 = document.getElementById('leg-sma20');
+  const leg50 = document.getElementById('leg-sma50');
+  const legRsi = document.getElementById('leg-rsi');
+
+  const lastS10 = data.sma10 && data.sma10.length ? data.sma10[data.sma10.length - 1].value : null;
+  const lastS20 = data.sma20 && data.sma20.length ? data.sma20[data.sma20.length - 1].value : null;
+  const lastS50 = data.sma50 && data.sma50.length ? data.sma50[data.sma50.length - 1].value : null;
+  const lastRsi = data.last_rsi !== undefined ? data.last_rsi : (data.rsi && data.rsi.length ? data.rsi[data.rsi.length - 1].value : null);
+
+  if (leg10) leg10.textContent = lastS10 ? `₹${lastS10.toLocaleString('en-IN')}` : '—';
+  if (leg20) leg20.textContent = lastS20 ? `₹${lastS20.toLocaleString('en-IN')}` : '—';
+  if (leg50) leg50.textContent = lastS50 ? `₹${lastS50.toLocaleString('en-IN')}` : '—';
+  if (legRsi) legRsi.textContent = lastRsi ? `${lastRsi.toFixed(1)}` : '—';
+
+  // Create Main Chart
+  mainChart = LightweightCharts.createChart(mainContainer, {
+    autoSize: true,
+    layout: {
+      background: { type: 'solid', color: bgColor },
+      textColor: textColor,
+      fontFamily: "'JetBrains Mono', monospace",
+      fontSize: 11,
+    },
+    grid: {
+      vertLines: { color: gridColor },
+      horzLines: { color: gridColor },
+    },
+    crosshair: {
+      mode: LightweightCharts.CrosshairMode.Normal,
+    },
+    rightPriceScale: {
+      borderColor: borderColor,
+      scaleMargins: { top: 0.08, bottom: 0.22 },
+    },
+    timeScale: {
+      borderColor: borderColor,
+      timeVisible: true,
+      secondsVisible: false,
+    },
+  });
+
+  // Candlesticks
+  candleSeries = mainChart.addCandlestickSeries({
+    upColor: '#10b981',
+    downColor: '#ef4444',
+    borderVisible: false,
+    wickUpColor: '#10b981',
+    wickDownColor: '#ef4444',
+  });
+  candleSeries.setData(data.candles);
+
+  // Volume Histogram
+  volumeSeries = mainChart.addHistogramSeries({
+    priceFormat: { type: 'volume' },
+    priceScaleId: '',
+  });
+  volumeSeries.priceScale().applyOptions({
+    scaleMargins: { top: 0.82, bottom: 0 },
+  });
+  volumeSeries.setData(data.volumes);
+
+  // SMAs
+  if (data.sma10 && data.sma10.length) {
+    sma10Series = mainChart.addLineSeries({ color: '#f59e0b', lineWidth: 1.5, title: 'SMA 10' });
+    sma10Series.setData(data.sma10);
+  }
+  if (data.sma20 && data.sma20.length) {
+    sma20Series = mainChart.addLineSeries({ color: '#3b82f6', lineWidth: 1.5, title: 'SMA 20' });
+    sma20Series.setData(data.sma20);
+  }
+  if (data.sma50 && data.sma50.length) {
+    sma50Series = mainChart.addLineSeries({ color: '#a855f7', lineWidth: 1.5, title: 'SMA 50' });
+    sma50Series.setData(data.sma50);
+  }
+
+  // Create RSI Subchart
+  rsiChart = LightweightCharts.createChart(rsiContainer, {
+    autoSize: true,
+    layout: {
+      background: { type: 'solid', color: bgColor },
+      textColor: textColor,
+      fontFamily: "'JetBrains Mono', monospace",
+      fontSize: 10,
+    },
+    grid: {
+      vertLines: { color: gridColor },
+      horzLines: { color: gridColor },
+    },
+    crosshair: {
+      mode: LightweightCharts.CrosshairMode.Normal,
+    },
+    rightPriceScale: {
+      borderColor: borderColor,
+      scaleMargins: { top: 0.1, bottom: 0.1 },
+    },
+    timeScale: {
+      visible: false,
+    },
+  });
+
+  rsiSeries = rsiChart.addLineSeries({
+    color: '#38bdf8',
+    lineWidth: 1.5,
+    title: 'RSI 14',
+  });
+  if (data.rsi && data.rsi.length) {
+    rsiSeries.setData(data.rsi);
+  }
+
+  // Reference lines for RSI
+  rsiSeries.createPriceLine({
+    price: 70,
+    color: 'rgba(239, 68, 68, 0.7)',
+    lineWidth: 1,
+    lineStyle: LightweightCharts.LineStyle.Dashed,
+    axisLabelVisible: true,
+    title: '70 Overbought',
+  });
+  rsiSeries.createPriceLine({
+    price: 65,
+    color: 'rgba(16, 185, 129, 0.4)',
+    lineWidth: 1,
+    lineStyle: LightweightCharts.LineStyle.Dotted,
+    axisLabelVisible: false,
+  });
+  rsiSeries.createPriceLine({
+    price: 55,
+    color: 'rgba(16, 185, 129, 0.4)',
+    lineWidth: 1,
+    lineStyle: LightweightCharts.LineStyle.Dotted,
+    axisLabelVisible: false,
+  });
+  rsiSeries.createPriceLine({
+    price: 50,
+    color: 'rgba(148, 163, 184, 0.4)',
+    lineWidth: 1,
+    lineStyle: LightweightCharts.LineStyle.Dashed,
+    axisLabelVisible: true,
+    title: '50 Mid',
+  });
+  rsiSeries.createPriceLine({
+    price: 30,
+    color: 'rgba(16, 185, 129, 0.7)',
+    lineWidth: 1,
+    lineStyle: LightweightCharts.LineStyle.Dashed,
+    axisLabelVisible: true,
+    title: '30 Oversold',
+  });
+
+  // Synchronize time scales between main chart & RSI
+  mainChart.timeScale().subscribeVisibleLogicalRangeChange(range => {
+    if (range && rsiChart) rsiChart.timeScale().setVisibleLogicalRange(range);
+  });
+  rsiChart.timeScale().subscribeVisibleLogicalRangeChange(range => {
+    if (range && mainChart) mainChart.timeScale().setVisibleLogicalRange(range);
+  });
+
+  // Hover Tooltip
+  const tooltip = document.getElementById('chart-ohlc-tooltip');
+  mainChart.subscribeCrosshairMove(param => {
+    if (!tooltip) return;
+    if (!param.time || !param.seriesData.get(candleSeries)) {
+      tooltip.style.display = 'none';
+      return;
+    }
+    const c = param.seriesData.get(candleSeries);
+    const v = param.seriesData.get(volumeSeries);
+    const volStr = v && v.value ? (v.value >= 1e7 ? `${(v.value/1e7).toFixed(2)} Cr` : (v.value >= 1e5 ? `${(v.value/1e5).toFixed(2)} L` : `${v.value.toLocaleString('en-IN')}`)) : '—';
+    const isUp = c.close >= c.open;
+    const chg = (((c.close - c.open) / c.open) * 100).toFixed(2);
+    tooltip.innerHTML = `<b>${param.time}</b> &nbsp;|&nbsp; O: ₹${c.open.toFixed(2)} &nbsp; H: ₹${c.high.toFixed(2)} &nbsp; L: ₹${c.low.toFixed(2)} &nbsp; C: ₹${c.close.toFixed(2)} &nbsp; <span style="color:${isUp ? 'var(--green)' : 'var(--red)'}">(${isUp ? '+' : ''}${chg}%)</span> &nbsp;|&nbsp; Vol: ${volStr}`;
+    tooltip.style.display = 'block';
+  });
+
+  // Fit content
+  mainChart.timeScale().fitContent();
 }
+
+window.addEventListener('resize', () => {
+  if (mainChart) {
+    try { mainChart.applyOptions({ autoSize: true }); } catch(e){}
+  }
+  if (rsiChart) {
+    try { rsiChart.applyOptions({ autoSize: true }); } catch(e){}
+  }
+});
 
 // Global keyboard navigation for modal (Esc, Left Arrow, Right Arrow)
 document.addEventListener('keydown', (e) => {
@@ -2181,7 +2509,7 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 
-<!-- TradingView In-App Chart Modal -->
+<!-- In-App TradingView Lightweight Candlestick Chart Modal -->
 <div id="chart-modal-overlay" class="chart-modal-overlay" onclick="handleModalOverlayClick(event)">
   <div class="chart-modal-dialog" onclick="event.stopPropagation()">
     <div class="chart-modal-header">
@@ -2189,25 +2517,41 @@ document.addEventListener('keydown', (e) => {
         <span class="modal-ticker" id="modal-ticker">NSE STOCK</span>
         <span class="modal-exchange">NSE</span>
         <span class="modal-sector" id="modal-sector"></span>
+        <div class="modal-price-wrap" id="modal-price-wrap">
+          <span class="modal-price" id="modal-price">₹0.00</span>
+          <span class="modal-chg" id="modal-chg">+0.00%</span>
+        </div>
+      </div>
+      <div class="modal-legend-wrap" id="modal-legend-wrap">
+        <span class="legend-item legend-sma10">● SMA 10: <b id="leg-sma10">—</b></span>
+        <span class="legend-item legend-sma20">● SMA 20: <b id="leg-sma20">—</b></span>
+        <span class="legend-item legend-sma50">● SMA 50: <b id="leg-sma50">—</b></span>
+        <span class="legend-item legend-rsi">● RSI 14: <b id="leg-rsi">—</b></span>
       </div>
       <div class="modal-actions-wrap">
         <div class="modal-tf-group">
-          <button class="modal-tf-btn active" data-tf="D" onclick="setChartInterval('D', this)" title="Daily timeframe">Daily</button>
-          <button class="modal-tf-btn" data-tf="W" onclick="setChartInterval('W', this)" title="Weekly timeframe">Weekly</button>
-          <button class="modal-tf-btn" data-tf="M" onclick="setChartInterval('M', this)" title="Monthly timeframe">Monthly</button>
+          <button class="modal-tf-btn active" data-tf="D" onclick="setChartInterval('D', this)" title="Daily Candles & Indicators">Daily</button>
+          <button class="modal-tf-btn" data-tf="W" onclick="setChartInterval('W', this)" title="Weekly Candles & Indicators">Weekly</button>
+          <button class="modal-tf-btn" data-tf="M" onclick="setChartInterval('M', this)" title="Monthly Candles & Indicators">Monthly</button>
         </div>
         <div class="modal-nav-group">
           <button class="modal-icon-btn" onclick="prevModalStock()" title="Previous Stock (Left Arrow ◀)">◀</button>
           <button class="modal-icon-btn" onclick="nextModalStock()" title="Next Stock (Right Arrow ▶)">▶</button>
         </div>
-        <a id="modal-external-link" href="#" target="_blank" rel="noopener" class="modal-ext-btn" title="Open full chart in external TradingView tab">
+        <a id="modal-external-link" href="#" target="_blank" rel="noopener" class="modal-ext-btn" title="Open full chart on official TradingView website">
           Open TV ↗
         </a>
         <button class="modal-close-btn" onclick="closeChartModal()" title="Close (Esc)">✕</button>
       </div>
     </div>
     <div class="chart-modal-body">
-      <div id="tv_chart_container" class="tv-chart-container"></div>
+      <div id="chart-loading-overlay" class="chart-loading-overlay">
+        <div class="chart-spinner"></div>
+        <span id="chart-loading-msg">Loading Candlestick Data...</span>
+      </div>
+      <div id="chart-ohlc-tooltip" class="chart-ohlc-tooltip"></div>
+      <div id="tv_chart_main" class="tv-chart-main"></div>
+      <div id="tv_chart_rsi" class="tv-chart-rsi"></div>
     </div>
   </div>
 </div>

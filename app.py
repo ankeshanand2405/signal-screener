@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import yfinance as yf
 import pandas as pd
 import numpy as np
@@ -17,6 +17,10 @@ except ImportError:
     JUGAAD_AVAILABLE = False
 
 app = Flask(__name__)
+
+# In-memory fast cache for interactive candlestick charts & raw stock data
+RAW_STOCK_DATA = {}
+CHART_DATA_CACHE = {}
 
 # ─── Load Cached Market Cap & Shares ──────────────────────────────────────────
 MCAP_CACHE = {}
@@ -356,6 +360,7 @@ def run_scan():
                 # Fill missing latest-day data from pre-downloaded Bhavcopy (0ms)
                 df_sym = fill_missing_from_bhavcopy(df_sym, sym, bhav_dict)
                 df_sym = df_sym.dropna(subset=["Close"])
+                RAW_STOCK_DATA[sym.replace(".NS", "")] = df_sym
                 latest_close = df_sym["Close"].iloc[-1]
                 mcap = get_cached_mcap(sym, latest_close)
                 daily, weekly = compute_indicators(df_sym)
@@ -394,6 +399,114 @@ def start_scan():
 @app.route("/progress")
 def progress():
     return jsonify(progress_data)
+
+def get_stock_chart_payload(clean_sym, timeframe="D"):
+    clean_sym = clean_sym.replace(".NS", "").strip().upper()
+    timeframe = timeframe.upper()
+    cache_key = f"{clean_sym}_{timeframe}"
+    if cache_key in CHART_DATA_CACHE:
+        return CHART_DATA_CACHE[cache_key]
+
+    df_sym = RAW_STOCK_DATA.get(clean_sym)
+    if df_sym is None or df_sym.empty:
+        yf_sym = f"{clean_sym}.NS"
+        raw = yf.download(yf_sym, period="2y", interval="1d", auto_adjust=True, progress=False)
+        if raw.empty:
+            return None
+        if isinstance(raw.columns, pd.MultiIndex):
+            raw.columns = raw.columns.get_level_values(0)
+        if raw.index.tz is not None:
+            raw.index = raw.index.tz_localize(None)
+        bhav = get_latest_bhavcopy()
+        df_sym = fill_missing_from_bhavcopy(raw, yf_sym, bhav).dropna(subset=["Close"])
+        if df_sym.empty:
+            return None
+        RAW_STOCK_DATA[clean_sym] = df_sym
+
+    daily, weekly = compute_indicators(df_sym)
+
+    if timeframe == "W":
+        target_df = weekly
+        s10_col, s20_col, s50_col, rsi_col = "SMA10_W", "SMA20_W", "SMA50_W", "RSI14_W"
+    elif timeframe == "M":
+        target_df = df_sym[["Open","High","Low","Close","Volume"]].resample("ME").agg(
+            {"Open":"first","High":"max","Low":"min","Close":"last","Volume":"sum"}
+        ).dropna()
+        target_df["SMA10"] = target_df["Close"].rolling(10, min_periods=1).mean()
+        target_df["SMA20"] = target_df["Close"].rolling(20, min_periods=1).mean()
+        target_df["SMA50"] = target_df["Close"].rolling(50, min_periods=1).mean()
+        delta = target_df["Close"].diff()
+        gain = delta.clip(lower=0).ewm(alpha=1/14, adjust=False).mean()
+        loss = (-delta.clip(upper=0)).ewm(alpha=1/14, adjust=False).mean()
+        target_df["RSI14"] = (100 - (100 / (1 + gain / loss.replace(0, float("nan"))))).fillna(100.0)
+        s10_col, s20_col, s50_col, rsi_col = "SMA10", "SMA20", "SMA50", "RSI14"
+    else:
+        target_df = daily
+        s10_col, s20_col, s50_col, rsi_col = "SMA10", "SMA20", "SMA50", "RSI14"
+
+    candles = []
+    volumes = []
+    s10, s20, s50, rsi_data = [], [], [], []
+    for dt, r in target_df.iterrows():
+        t = dt.strftime("%Y-%m-%d")
+        c = round(float(r["Close"]), 2)
+        o = round(float(r["Open"]), 2)
+        candles.append({
+            "time": t,
+            "open": o,
+            "high": round(float(r["High"]), 2),
+            "low": round(float(r["Low"]), 2),
+            "close": c
+        })
+        is_up = c >= o
+        volumes.append({
+            "time": t,
+            "value": float(r["Volume"]),
+            "color": "rgba(16, 185, 129, 0.45)" if is_up else "rgba(239, 68, 68, 0.45)"
+        })
+        if pd.notna(r.get(s10_col)):
+            s10.append({"time": t, "value": round(float(r[s10_col]), 2)})
+        if pd.notna(r.get(s20_col)):
+            s20.append({"time": t, "value": round(float(r[s20_col]), 2)})
+        if pd.notna(r.get(s50_col)):
+            s50.append({"time": t, "value": round(float(r[s50_col]), 2)})
+        if pd.notna(r.get(rsi_col)):
+            rsi_data.append({"time": t, "value": round(float(r[rsi_col]), 2)})
+
+    last_candle = candles[-1] if candles else {}
+    last_close = last_candle.get("close", 0)
+    prev_close = candles[-2]["close"] if len(candles) > 1 else last_close
+    chg_pct = round(((last_close - prev_close) / prev_close) * 100, 2) if prev_close else 0.0
+
+    payload = {
+        "symbol": clean_sym,
+        "sector": get_sector(clean_sym),
+        "timeframe": timeframe,
+        "last_price": last_close,
+        "chg_pct": chg_pct,
+        "last_rsi": rsi_data[-1]["value"] if rsi_data else None,
+        "candles": candles,
+        "volumes": volumes,
+        "sma10": s10,
+        "sma20": s20,
+        "sma50": s50,
+        "rsi": rsi_data
+    }
+    CHART_DATA_CACHE[cache_key] = payload
+    return payload
+
+@app.route("/api/chart/<symbol>")
+def chart_data(symbol):
+    tf = request.args.get("tf", "D").upper()
+    if tf not in ["D", "W", "M"]:
+        tf = "D"
+    try:
+        data = get_stock_chart_payload(symbol, tf)
+        if not data:
+            return jsonify({"error": f"No market data available for {symbol}"}), 404
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=5000)
