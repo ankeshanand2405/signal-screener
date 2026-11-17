@@ -78,6 +78,7 @@ def compute_indicators(df_daily):
     df["Rel_Vol"]   = v / df["Avg_Vol10"]
     df["Vol_Chg"]   = v.pct_change() * 100
     df["Chg_Open"]  = ((c - df["Open"]) / df["Open"]) * 100
+    df["Chg_Pct"]   = c.pct_change() * 100
 
     # Weekly
     weekly = df[["Open","High","Low","Close","Volume"]].resample("W").agg(
@@ -91,6 +92,7 @@ def compute_indicators(df_daily):
     weekly["EMA20_W"]  = ema(wc, 20)
     weekly["RSI14_W"]  = rsi(wc, 14)
     weekly["Chg_Open_W"] = ((wc - weekly["Open"]) / weekly["Open"]) * 100
+    weekly["Chg_Pct_W"]  = wc.pct_change() * 100
 
     return df, weekly
 
@@ -228,12 +230,16 @@ def screener_1(sym, daily, weekly, mcap):
     try:
         d = daily.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
+        # TradingView Breakout Daily: Price > SMA 10/20/50, RSI 14 > 55, RelVol >= 1.0 (with 0.98 tolerance), positive daily action
+        price_up = (d.get("Chg_Pct", 0) > 0) or (d.get("Chg_Open", 0) > 0)
+        rel_vol = d.get("Rel_Vol", 0)
         if (d["Close"] > d["SMA10"] and d["Close"] > d["SMA20"] and
-            d["Close"] > d["SMA50"] and d["Chg_Open"] > 0 and
-            d["Rel_Vol"] > 1 and d["RSI14"] > 55):
+            d["Close"] > d["SMA50"] and price_up and
+            rel_vol >= 0.98 and d["RSI14"] > 55):
+            chg_val = d["Chg_Pct"] if pd.notna(d.get("Chg_Pct")) else d["Chg_Open"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
-                    "rsi": round(d["RSI14"],1), "rel_vol": round(d["Rel_Vol"],2),
-                    "chg_open": round(d["Chg_Open"],2), "mkt_cap": round(mcap,1),
+                    "rsi": round(d["RSI14"],1), "rel_vol": round(rel_vol,2),
+                    "chg_open": round(chg_val,2), "mkt_cap": round(mcap,1),
                     "date": date_str}
     except: pass
 
@@ -242,10 +248,12 @@ def screener_2(sym, daily, weekly, mcap):
     try:
         d = daily.iloc[-1]; w = weekly.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
+        # TradingView Breakout Weekly: Price > SMA 10/20/50 weekly, RSI 14 weekly > 55, Market Cap >= 25B
         if (d["Close"] > w["SMA10_W"] and d["Close"] > w["SMA20_W"] and
-            d["Close"] > w["SMA50_W"] and w["Chg_Open_W"] > 0 and w["RSI14_W"] > 55):
+            d["Close"] > w["SMA50_W"] and w["RSI14_W"] > 55):
+            weekly_chg = w["Chg_Pct_W"] if pd.notna(w.get("Chg_Pct_W")) else w["Chg_Open_W"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
-                    "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(w["Chg_Open_W"],2),
+                    "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(weekly_chg,2),
                     "mkt_cap": round(mcap,1), "date": date_str}
     except: pass
 
@@ -255,10 +263,13 @@ def screener_3(sym, daily, weekly, mcap):
         d = daily.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
-        if (d["Close"] > d["EMA20"] and d["Chg_Open"] > 2 and d["Vol_Chg"] > 0 and
+        # TradingView Trading Scanner: Day change > 2% (vs open or prev close), Vol_Chg > 0, EMA10 > EMA20, Close > EMA20, RSI > 55, Near 52W High
+        price_surge = (d.get("Chg_Pct", 0) > 2.0) or (d.get("Chg_Open", 0) > 2.0)
+        if (d["Close"] > d["EMA20"] and price_surge and d["Vol_Chg"] > 0 and
             d["EMA10"] > d["EMA20"] and d["RSI14"] > 55 and near_52w):
+            chg_val = d["Chg_Pct"] if pd.notna(d.get("Chg_Pct")) else d["Chg_Open"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
-                    "rsi": round(d["RSI14"],1), "chg_open": round(d["Chg_Open"],2),
+                    "rsi": round(d["RSI14"],1), "chg_open": round(chg_val,2),
                     "vol_chg": round(d["Vol_Chg"],1), "high_52w": round(d["52W_High"],2),
                     "mkt_cap": round(mcap,1), "date": date_str}
     except: pass
@@ -269,10 +280,13 @@ def screener_4(sym, daily, weekly, mcap):
         d = daily.iloc[-1]; w = weekly.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
         near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
+        # TradingView MT Investing: Weekly surge > 2%, EMA10_W > EMA20_W, Close > EMA10_W, RSI14_W > 50, Near 52W High
+        weekly_surge = (w.get("Chg_Pct_W", 0) > 2.0) or (w.get("Chg_Open_W", 0) > 2.0)
         if (d["Close"] > w["EMA10_W"] and w["EMA10_W"] > w["EMA20_W"] and
-            w["RSI14_W"] > 50 and w["Chg_Open_W"] > 2 and near_52w):
+            w["RSI14_W"] > 50 and weekly_surge and near_52w):
+            weekly_chg = w["Chg_Pct_W"] if pd.notna(w.get("Chg_Pct_W")) else w["Chg_Open_W"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
-                    "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(w["Chg_Open_W"],2),
+                    "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(weekly_chg,2),
                     "high_52w": round(d["52W_High"],2), "mkt_cap": round(mcap,1),
                     "date": date_str}
     except: pass
