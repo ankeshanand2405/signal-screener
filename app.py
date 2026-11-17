@@ -68,10 +68,12 @@ def ema(series, n):
 
 def rsi(series, n=14):
     delta = series.diff()
-    gain = delta.clip(lower=0).rolling(window=n).mean()
-    loss = (-delta.clip(upper=0)).rolling(window=n).mean()
-    rs = gain / loss.replace(0, np.nan)
-    return 100 - (100 / (1 + rs))
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1.0/n, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1.0/n, adjust=False).mean()
+    rs = avg_gain / avg_loss.replace(0, np.nan)
+    return 100.0 - (100.0 / (1.0 + rs))
 
 def compute_indicators(df_daily):
     df = df_daily.copy()
@@ -276,7 +278,7 @@ def screener_3(sym, daily, weekly, mcap):
     try:
         d = daily.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
-        near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
+        near_52w = (d["52W_High"] >= d["Close"]) and (d["Close"] >= d["52W_High"] * 0.80)
         # TradingView Trading Scanner: Day change > 2% (vs open or prev close), Vol_Chg > 0, EMA10 > EMA20, Close > EMA20, RSI > 55, Near 52W High
         price_surge = (d.get("Chg_Pct", 0) > 2.0) or (d.get("Chg_Open", 0) > 2.0)
         if (d["Close"] > d["EMA20"] and price_surge and d["Vol_Chg"] > 0 and
@@ -293,7 +295,7 @@ def screener_4(sym, daily, weekly, mcap):
     try:
         d = daily.iloc[-1]; w = weekly.iloc[-1]
         date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
-        near_52w = d["52W_High"] >= d["Close"] and d["52W_High"] <= d["Close"] * 1.20
+        near_52w = (d["52W_High"] >= d["Close"]) and (d["Close"] >= d["52W_High"] * 0.80)
         # TradingView MT Investing: Weekly surge > 2%, EMA10_W > EMA20_W, Close > EMA10_W, RSI14_W > 50, Near 52W High
         weekly_surge = (w.get("Chg_Pct_W", 0) > 2.0) or (w.get("Chg_Open_W", 0) > 2.0)
         if (d["Close"] > w["EMA10_W"] and w["EMA10_W"] > w["EMA20_W"] and
