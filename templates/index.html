@@ -3,40 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PINAKA — NSE Stock Screener</title>
+<title>PINAKA — High-Conviction NSE Technical Screener</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root, [data-theme="dark"] {
-    --bg:        #0a0e1a;
-    --surface:   #111827;
-    --border:    #1f2937;
-    --muted:     #374151;
-    --text:      #f1f5f9;
-    --sub:       #94a3b8;
-    --accent:    #3b82f6;
-    --accent-dim:#1d4ed8;
-    --green:     #22c55e;
-    --green-dim: #15803d;
-    --amber:     #f59e0b;
-    --red:       #ef4444;
-    --mono:      'JetBrains Mono', monospace;
-    --sans:      'Inter', sans-serif;
+    --bg:            #080c15;
+    --surface:       #0e1424;
+    --surface-card:  rgba(17, 24, 39, 0.75);
+    --border:        #1e293b;
+    --border-light:  rgba(255, 255, 255, 0.08);
+    --border-focus:  #3b82f6;
+    --muted:         #334155;
+    --text:          #f8fafc;
+    --sub:           #94a3b8;
+    --accent:        #3b82f6;
+    --accent-glow:   rgba(59, 130, 246, 0.25);
+    --accent-dim:    #1d4ed8;
+    --green:         #10b981;
+    --green-soft:    rgba(16, 185, 129, 0.14);
+    --green-border:  rgba(16, 185, 129, 0.35);
+    --amber:         #f59e0b;
+    --amber-soft:    rgba(245, 158, 11, 0.14);
+    --amber-border:  rgba(245, 158, 11, 0.35);
+    --red:           #ef4444;
+    --red-soft:      rgba(239, 68, 68, 0.14);
+    --red-border:    rgba(239, 68, 68, 0.35);
+    --gold:          #eab308;
+    --gold-soft:     rgba(234, 179, 8, 0.15);
+    --gold-border:   rgba(234, 179, 8, 0.4);
+    --mono:          'JetBrains Mono', monospace;
+    --sans:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   [data-theme="light"] {
-    --bg:        #f8fafc;
-    --surface:   #ffffff;
-    --border:    #e2e8f0;
-    --muted:     #cbd5e1;
-    --text:      #0f172a;
-    --sub:       #64748b;
-    --accent:    #2563eb;
-    --accent-dim:#1d4ed8;
-    --green:     #16a34a;
-    --green-dim: #15803d;
-    --amber:     #d97706;
-    --red:       #dc2626;
+    --bg:            #f8fafc;
+    --surface:       #ffffff;
+    --surface-card:  rgba(255, 255, 255, 0.9);
+    --border:        #e2e8f0;
+    --border-light:  rgba(0, 0, 0, 0.06);
+    --border-focus:  #2563eb;
+    --muted:         #cbd5e1;
+    --text:          #0f172a;
+    --sub:           #64748b;
+    --accent:        #2563eb;
+    --accent-glow:   rgba(37, 99, 235, 0.2);
+    --accent-dim:    #1d4ed8;
+    --green:         #059669;
+    --green-soft:    rgba(5, 150, 105, 0.12);
+    --green-border:  rgba(5, 150, 105, 0.3);
+    --amber:         #d97706;
+    --amber-soft:    rgba(217, 119, 6, 0.12);
+    --amber-border:  rgba(217, 119, 6, 0.3);
+    --red:           #dc2626;
+    --red-soft:      rgba(220, 38, 38, 0.12);
+    --red-border:    rgba(220, 38, 38, 0.3);
+    --gold:          #ca8a04;
+    --gold-soft:     rgba(202, 138, 4, 0.12);
+    --gold-border:   rgba(202, 138, 4, 0.3);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,41 +69,83 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13.5px;
+    line-height: 1.55;
     min-height: 100vh;
     transition: background 0.2s ease, color 0.2s ease;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ── Ambient Radial Glow (Terminal Aesthetic) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 400px;
+    background: radial-gradient(ellipse 65% 50% at 50% 0%, var(--accent-glow), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   /* ── Header ── */
   header {
     border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    height: 56px;
+    padding: 0 28px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
-    background: var(--bg);
+    background: rgba(8, 12, 21, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 100;
     transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  [data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: -0.3px;
+    gap: 9px;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    color: var(--text);
   }
 
   .logo-dot {
-    width: 8px; height: 8px;
+    width: 9px;
+    height: 9px;
     background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .logo-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(59, 130, 246, 0.14);
+    color: var(--accent);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.3px;
   }
 
   .header-right {
@@ -88,92 +154,147 @@
     gap: 16px;
   }
 
-  .header-meta {
-    font-size: 12px;
-    color: var(--sub);
+  /* Live Market Status Badge */
+  .market-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 11px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
   }
 
   .theme-toggle {
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--text);
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    transition: all 0.15s ease;
     user-select: none;
   }
 
   .theme-toggle:hover {
     background: var(--border);
-    transform: scale(1.05);
+    transform: translateY(-1px);
   }
 
   /* ── Layout ── */
-  main { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
+  main {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+    position: relative;
+    z-index: 1;
+  }
 
-  /* ── Hero ── */
+  /* ── Hero Section ── */
   .hero {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     flex-wrap: wrap;
   }
 
   .hero-left h1 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 1.25;
     margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .hero-left p {
     color: var(--sub);
     font-size: 14px;
-    max-width: 480px;
+    max-width: 620px;
+    line-height: 1.6;
   }
 
-  /* ── Scan Button ── */
+  .hero-tag {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--green);
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* Scan Button */
   .btn-scan {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
     color: #fff;
     border: none;
-    padding: 12px 28px;
+    padding: 12px 26px;
     border-radius: 8px;
     font-family: var(--sans);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: background 0.15s, transform 0.1s;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
     white-space: nowrap;
   }
 
-  .btn-scan:hover { background: var(--accent-dim); }
-  .btn-scan:active { transform: scale(0.98); }
-  .btn-scan:disabled { background: var(--muted); cursor: not-allowed; transform: none; }
+  .btn-scan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+  }
 
-  .btn-icon { font-size: 16px; }
+  .btn-scan:active { transform: translateY(0); }
+  .btn-scan:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
 
-  /* ── Progress ── */
+  /* ── Progress Box ── */
   #progress-wrap {
     display: none;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 24px;
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
   }
 
   .progress-top {
@@ -183,22 +304,32 @@
     margin-bottom: 12px;
   }
 
-  .progress-label { font-size: 13px; color: var(--sub); }
-  .progress-pct { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .progress-label { font-size: 13px; font-weight: 500; color: var(--sub); }
+  .progress-meta { display: flex; align-items: center; gap: 10px; }
+  .progress-timer {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid var(--amber-border);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .progress-pct { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--accent); }
 
   .progress-bar-bg {
-    height: 4px;
+    height: 5px;
     background: var(--border);
-    border-radius: 2px;
+    border-radius: 3px;
     overflow: hidden;
   }
 
   .progress-bar-fill {
     height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--green) 100%);
+    border-radius: 3px;
     width: 0%;
-    transition: width 0.4s ease;
+    transition: width 0.3s ease;
   }
 
   .progress-msg {
@@ -208,42 +339,245 @@
     font-family: var(--mono);
   }
 
-  /* ── Timestamp ── */
+  /* ── Meta Bar (Timestamp + Pipeline Info) ── */
+  .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
   #scan-timestamp {
     font-size: 12px;
     color: var(--sub);
     font-family: var(--mono);
-    margin-bottom: 28px;
     display: none;
   }
 
-  /* ── Screener Tabs ── */
+  .runtime-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--green);
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .source-badge {
+    font-size: 11px;
+    color: var(--sub);
+    font-family: var(--mono);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    user-select: none;
+  }
+
+  .source-dot { color: var(--green); font-size: 8px; }
+
+  /* ── Glassmorphic Stat Cards ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 16px 18px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-focus);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .stat-card.active-card {
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.08);
+  }
+
+  .stat-card-hc {
+    border-left: 3px solid var(--gold);
+  }
+
+  .stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sub);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-icon { font-size: 16px; }
+
+  .stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: var(--mono);
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-sub {
+    font-size: 11px;
+    color: var(--sub);
+    margin-top: 6px;
+  }
+
+  /* ── Interactive Sector Momentum Bar ── */
+  #sector-momentum-wrap {
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: none;
+  }
+
+  .sector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--sub);
+    font-weight: 500;
+  }
+
+  .sector-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .sector-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    max-height: 115px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .sector-pill {
+    font-size: 11.5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    color: var(--sub);
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .sector-pill:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.08);
+  }
+
+  .sector-pill.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .sector-count {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .sector-pill.active .sector-count {
+    background: rgba(0, 0, 0, 0.25);
+    color: #fff;
+  }
+
+  /* ── Segmented Tab Switcher ── */
   .tabs {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     overflow-x: auto;
     scrollbar-width: none;
+    padding-bottom: 4px;
   }
 
   .tab {
     padding: 10px 18px;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 500;
     color: var(--sub);
     cursor: pointer;
+    border-radius: 8px 8px 0 0;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
-    transition: color 0.15s, border-color 0.15s;
+    transition: all 0.15s ease;
     user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .tab:hover { color: var(--text); }
+  .tab:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+  }
 
   .tab.active {
     color: var(--text);
     border-bottom-color: var(--accent);
+    font-weight: 600;
+    background: rgba(59, 130, 246, 0.06);
+  }
+
+  .tab-hc {
+    color: var(--gold);
+  }
+
+  .tab-hc.active {
+    border-bottom-color: var(--gold);
+    background: var(--gold-soft);
   }
 
   .tab-badge {
@@ -252,9 +586,9 @@
     color: var(--sub);
     font-size: 11px;
     font-family: var(--mono);
-    padding: 1px 6px;
+    padding: 1px 7px;
     border-radius: 10px;
-    margin-left: 6px;
+    font-weight: 600;
   }
 
   .tab.active .tab-badge {
@@ -262,17 +596,21 @@
     color: #fff;
   }
 
-  /* ── Screener Panels ── */
+  .tab-hc.active .tab-badge {
+    background: var(--gold);
+    color: #000;
+  }
+
+  /* ── Screener Panels & Toolbars ── */
   .panel { display: none; }
   .panel.active { display: block; }
 
-  /* ── Filter Pills & Toolbar ── */
   .panel-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     flex-wrap: wrap;
   }
 
@@ -292,11 +630,17 @@
     color: var(--sub);
   }
 
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   .btn-export {
     background: var(--surface);
     color: var(--text);
     border: 1px solid var(--border);
-    padding: 6px 14px;
+    padding: 7px 14px;
     border-radius: 6px;
     font-family: var(--sans);
     font-size: 12px;
@@ -312,74 +656,14 @@
   .btn-export:hover {
     background: var(--border);
     border-color: var(--accent);
-    color: #fff;
   }
 
-  .progress-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .progress-timer {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--amber);
-    background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.25);
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
-
-  .runtime-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--green);
-    background: rgba(34, 197, 94, 0.12);
-    border: 1px solid rgba(34, 197, 94, 0.25);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-  }
-
-  .meta-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
-  .source-badge {
-    font-size: 11px;
-    color: var(--sub);
-    font-family: var(--mono);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 6px;
-    cursor: default;
-    user-select: none;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-
-  .source-dot {
-    color: var(--green);
-    font-size: 8px;
-  }
-
-  /* ── Table ── */
+  /* ── Table Styling ── */
   .table-wrap {
     overflow-x: auto;
     border: 1px solid var(--border);
     border-radius: 10px;
+    background: var(--surface);
   }
 
   table {
@@ -389,147 +673,284 @@
   }
 
   thead tr {
+    background: rgba(255, 255, 255, 0.02);
     border-bottom: 1px solid var(--border);
   }
 
   th {
-    padding: 12px 16px;
+    padding: 12px 14px;
     text-align: left;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 11px;
     color: var(--sub);
     letter-spacing: 0.5px;
     text-transform: uppercase;
     white-space: nowrap;
-    position: relative;
   }
 
   th.sortable {
     cursor: pointer;
     user-select: none;
-    transition: color 0.15s, background 0.15s;
+    transition: color 0.15s;
   }
 
-  th.sortable:hover {
-    color: var(--text);
-  }
+  th.sortable:hover { color: var(--text); }
+  th.sorted-active { color: var(--accent); }
 
-  th.sorted-active {
-    color: var(--accent);
-  }
-
-  .sort-icon {
-    display: inline-block;
-    margin-left: 4px;
-    font-size: 10px;
-    opacity: 0.4;
-  }
-
-  th.sortable:hover .sort-icon, th.sorted-active .sort-icon {
-    opacity: 1;
-  }
+  .sort-icon { display: inline-block; margin-left: 4px; font-size: 10px; opacity: 0.4; }
+  th.sortable:hover .sort-icon, th.sorted-active .sort-icon { opacity: 1; }
 
   tbody tr {
     border-bottom: 1px solid var(--border);
-    transition: background 0.1s;
+    transition: background 0.1s ease;
   }
 
   tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--surface); }
+  tbody tr:hover { background: rgba(59, 130, 246, 0.04); }
 
   td {
-    padding: 13px 16px;
+    padding: 11px 14px;
     white-space: nowrap;
+    vertical-align: middle;
   }
 
-  /* ── Symbol link ── */
+  /* Symbol cell & 1-click copy */
+  .sym-cell-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .sym-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-family: var(--mono);
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 600;
+    font-size: 13.5px;
     color: var(--accent);
     text-decoration: none;
     transition: color 0.15s;
   }
 
-  .sym-link:hover { color: var(--accent-dim); }
+  .sym-link:hover { color: var(--accent-dim); text-decoration: underline; }
 
-  .sym-link svg {
-    opacity: 0.5;
-    transition: opacity 0.15s;
+  .btn-copy {
+    background: transparent;
+    border: none;
+    color: var(--sub);
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0.6;
+    transition: opacity 0.15s, transform 0.1s, color 0.15s;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
   }
 
-  .sym-link:hover svg { opacity: 1; }
+  .btn-copy:hover {
+    opacity: 1;
+    color: var(--text);
+    transform: scale(1.1);
+  }
 
-  /* ── Value chips ── */
-  .chip {
+  /* Confluence mini-tag in individual tables */
+  .mini-conf-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .conf-4 {
+    background: var(--gold-soft);
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+  }
+
+  .conf-3 {
+    background: var(--amber-soft);
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+  }
+
+  .conf-2 {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  /* Sector tag in tables */
+  .sector-tag {
+    font-size: 11px;
+    color: var(--sub);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-light);
+    padding: 2px 7px;
+    border-radius: 4px;
     display: inline-block;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Price cell */
+  .price-val { font-family: var(--mono); font-weight: 500; font-size: 13px; }
+
+  /* RSI 14 Sweet Spot (55-65) - Explicit User Requirement */
+  .chip-rsi-zone {
+    background: var(--green-soft);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    font-weight: 600;
+    font-family: var(--mono);
     padding: 2px 8px;
     border-radius: 4px;
+    font-size: 12px;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.15);
+  }
+
+  .chip-rsi-neutral {
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--sub);
     font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
     font-size: 12px;
   }
 
-  .chip-green { background: rgba(34,197,94,0.12); color: var(--green); }
-  .chip-blue  { background: rgba(59,130,246,0.12); color: var(--accent); }
-  .chip-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
-  .chip-red   { background: rgba(239,68,68,0.12); color: var(--red); }
+  /* Price Change Directional Pills */
+  .chg-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
 
-  .price-val { font-family: var(--mono); font-size: 13px; }
+  .chg-pos {
+    background: var(--green-soft);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+  }
 
-  /* ── Empty state ── */
+  .chg-neg {
+    background: var(--red-soft);
+    color: var(--red);
+    border: 1px solid var(--red-border);
+  }
+
+  /* Relative Volume Micro-Bar */
+  .rel-vol-cell {
+    position: relative;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 75px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+  }
+
+  .rel-vol-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 3px;
+    z-index: 1;
+  }
+
+  .rel-vol-val {
+    position: relative;
+    z-index: 2;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* Confluence Screener Pills in High Conviction Table */
+  .conf-screeners-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .conf-screener-chip {
+    font-size: 10px;
+    font-family: var(--mono);
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--sub);
+  }
+
+  /* Empty state */
   .empty-state {
     text-align: center;
     padding: 60px 24px;
     color: var(--sub);
   }
-
   .empty-icon { font-size: 32px; margin-bottom: 12px; }
   .empty-state h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; color: var(--text); }
   .empty-state p { font-size: 13px; }
 
-  /* ── Stats bar ── */
-  .stats-bar {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
+  /* Toast Notification */
+  #toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
     background: var(--surface);
+    color: var(--text);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 14px 20px;
-    min-width: 120px;
+    padding: 10px 18px;
+    font-size: 12.5px;
+    font-family: var(--mono);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
   }
 
-  .stat-label { font-size: 11px; color: var(--sub); margin-bottom: 4px; }
-  .stat-value { font-size: 22px; font-weight: 600; font-family: var(--mono); color: var(--text); }
-
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    main { padding: 20px 16px; }
+  /* Responsive */
+  @media (max-width: 768px) {
+    main { padding: 20px 14px; }
+    header { padding: 0 16px; }
     .hero { flex-direction: column; align-items: flex-start; }
     .hero-left h1 { font-size: 22px; }
     .btn-scan { width: 100%; justify-content: center; }
-    .stats-bar { gap: 12px; }
-    .stat-item { min-width: calc(50% - 6px); flex: 1; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-dot"></div>
-    PINAKA
+  <div class="logo-wrap">
+    <div class="logo">
+      <div class="logo-dot"></div>
+      PINAKA
+    </div>
+    <span class="logo-badge">GOLDEN MODEL · TV ALIGNED</span>
   </div>
   <div class="header-right">
-    <div class="header-meta">NSE · EOD Technical Screener</div>
+    <div class="market-status-badge" title="Data pipeline connected to NSE master universe & official Bhavcopy EOD">
+      <span class="pulse-dot"></span>
+      <span>NSE EOD ACTIVE</span>
+    </div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch Light/Dark Mode">
       <span id="themeIcon">☀️</span>
     </button>
@@ -538,11 +959,14 @@
 
 <main>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <div class="hero">
     <div class="hero-left">
-      <h1>NSE Stock Screener</h1>
-      <p>Runs 4 technical screeners across NSE-listed stocks after market close. Click any symbol to open it on TradingView.</p>
+      <h1>
+        NSE High-Conviction Screener
+        <span class="hero-tag">4 CORE STRATEGIES</span>
+      </h1>
+      <p>Institutional-grade technical scanning across 1,600+ NSE stocks. Stocks hitting multiple strategies trigger the High Conviction radar.</p>
     </div>
     <button class="btn-scan" id="scanBtn" onclick="startScan()">
       <span class="btn-icon">⚡</span>
@@ -550,10 +974,10 @@
     </button>
   </div>
 
-  <!-- Progress -->
+  <!-- Live Progress Box -->
   <div id="progress-wrap">
     <div class="progress-top">
-      <span class="progress-label" id="progress-label">Scanning...</span>
+      <span class="progress-label" id="progress-label">Scanning market...</span>
       <div class="progress-meta">
         <span class="progress-timer" id="progress-timer">⏱️ 0.0s</span>
         <span class="progress-pct" id="progress-pct">0%</span>
@@ -562,138 +986,221 @@
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="progress-bar"></div>
     </div>
-    <div class="progress-msg" id="progress-msg">Initialising...</div>
+    <div class="progress-msg" id="progress-msg">Initialising pipeline...</div>
   </div>
 
-  <!-- Timestamp & Data Source Meta -->
+  <!-- Meta Row (Last Scan Timestamp & Data Pipeline Source) -->
   <div class="meta-row">
     <div id="scan-timestamp"></div>
-    <div class="source-badge" title="Data pipeline: 2-year EOD price history from Yahoo Finance; real-time Market Cap & Share count from NSE Master Cache; missing latest candles patched via official NSE Bhavcopy.">
-      <span class="source-dot">●</span> yfinance EOD &nbsp;·&nbsp; NSE MCap Cache
+    <div class="source-badge" title="2-year EOD data from Yahoo Finance; Live market caps from NSE Master Cache; Final candles patched with official NSE Bhavcopy.">
+      <span class="source-dot">●</span> 2y EOD Depth &nbsp;·&nbsp; NSE MCap Master Cache &nbsp;·&nbsp; 100% NSE Liquid Universe
     </div>
   </div>
 
-  <!-- Stats bar -->
+  <!-- Summary Statistics Bar -->
   <div class="stats-bar" id="stats-bar" style="display:none">
-    <div class="stat-item">
-      <div class="stat-label">Breakout Daily</div>
-      <div class="stat-value" id="stat-s1">—</div>
+    <div class="stat-card stat-card-hc" onclick="selectTab('high-conviction')">
+      <div class="stat-header">
+        <span class="stat-label">High Conviction</span>
+        <span class="stat-icon">🔥</span>
+      </div>
+      <div class="stat-value" id="stat-hc" style="color:var(--gold);">0</div>
+      <div class="stat-sub">Multi-screener confluence</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-label">Breakout Weekly</div>
-      <div class="stat-value" id="stat-s2">—</div>
+    <div class="stat-card" onclick="selectTab('s1')">
+      <div class="stat-header">
+        <span class="stat-label">Breakout Daily</span>
+        <span class="stat-icon">⚡</span>
+      </div>
+      <div class="stat-value" id="stat-s1">0</div>
+      <div class="stat-sub">Price > SMA 10/20/50, RelVol &ge; 1</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-label">Trading Scanner</div>
-      <div class="stat-value" id="stat-s3">—</div>
+    <div class="stat-card" onclick="selectTab('s2')">
+      <div class="stat-header">
+        <span class="stat-label">Breakout Weekly</span>
+        <span class="stat-icon">📈</span>
+      </div>
+      <div class="stat-value" id="stat-s2">0</div>
+      <div class="stat-sub">Weekly Price > SMA, RSI &gt; 55</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-label">MT Investing</div>
-      <div class="stat-value" id="stat-s4">—</div>
+    <div class="stat-card" onclick="selectTab('s3')">
+      <div class="stat-header">
+        <span class="stat-label">Trading Scanner</span>
+        <span class="stat-icon">🎯</span>
+      </div>
+      <div class="stat-value" id="stat-s3">0</div>
+      <div class="stat-sub">Day surge &gt; 2%, Vol up, 52W High</div>
+    </div>
+    <div class="stat-card" onclick="selectTab('s4')">
+      <div class="stat-header">
+        <span class="stat-label">MT Investing</span>
+        <span class="stat-icon">🏦</span>
+      </div>
+      <div class="stat-value" id="stat-s4">0</div>
+      <div class="stat-sub">Weekly surge &gt; 2%, EMA trend</div>
     </div>
   </div>
 
-  <!-- Tabs -->
+  <!-- Interactive Sector Momentum Bar -->
+  <div id="sector-momentum-wrap">
+    <div class="sector-header">
+      <span class="sector-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        Sector Momentum Distribution
+      </span>
+      <span id="sector-filter-status">Click any sector to filter table</span>
+    </div>
+    <div class="sector-pills" id="sector-pills-container">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <!-- Segmented Tab Switcher -->
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('s1', this)">
+    <div class="tab tab-hc active" id="tab-btn-hc" onclick="selectTab('high-conviction')">
+      🔥 High Conviction <span class="tab-badge" id="badge-hc">0</span>
+    </div>
+    <div class="tab" id="tab-btn-s1" onclick="selectTab('s1')">
       Breakout Daily <span class="tab-badge" id="badge-s1">0</span>
     </div>
-    <div class="tab" onclick="switchTab('s2', this)">
+    <div class="tab" id="tab-btn-s2" onclick="selectTab('s2')">
       Breakout Weekly <span class="tab-badge" id="badge-s2">0</span>
     </div>
-    <div class="tab" onclick="switchTab('s3', this)">
+    <div class="tab" id="tab-btn-s3" onclick="selectTab('s3')">
       Trading Scanner <span class="tab-badge" id="badge-s3">0</span>
     </div>
-    <div class="tab" onclick="switchTab('s4', this)">
+    <div class="tab" id="tab-btn-s4" onclick="selectTab('s4')">
       MT Investing <span class="tab-badge" id="badge-s4">0</span>
     </div>
   </div>
 
-  <!-- Panels -->
-  <div class="panel active" id="panel-s1">
+  <!-- High Conviction Panel -->
+  <div class="panel active" id="panel-high-conviction">
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill" style="border-color:var(--gold-border); color:var(--gold);">⚡ Multi-Screener Confluence &ge; 2 Hits</span>
+        <span class="pill">Sorted by Match Count (4/4 &rarr; 3/4 &rarr; 2/4)</span>
+        <span class="pill">All 4 Technical Models Cross-Referenced</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportCSV('all')" title="Export results from all 4 screeners into one consolidated CSV with Sector and Confluence data">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Consolidated CSV (All)
+        </button>
+      </div>
+    </div>
+    <div id="table-high-conviction">
+      <div class="empty-state">
+        <div class="empty-icon">🔥</div>
+        <h3>No High-Conviction scan yet</h3>
+        <p>Hit "Run Screeners" to detect stocks passing multiple technical models simultaneously.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screener 1: Breakout Daily -->
+  <div class="panel" id="panel-s1">
     <div class="panel-toolbar">
       <div class="filter-pills">
         <span class="pill">Price > SMA 10/20/50</span>
-        <span class="pill">Mkt Cap > ₹25B</span>
-        <span class="pill">Chg from open > 0%</span>
-        <span class="pill">Rel Vol > 1</span>
-        <span class="pill">RSI 14 > 55</span>
+        <span class="pill">Mkt Cap &ge; ₹25B</span>
+        <span class="pill">Chg &gt; 0%</span>
+        <span class="pill">Rel Vol &ge; 1.0 (0.98 tol)</span>
+        <span class="pill">RSI 14 &gt; 55</span>
         <span class="pill">Timeframe: Daily</span>
       </div>
-      <button class="btn-export" id="btn-export-s1" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV (All Screeners)
-      </button>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportCSV('s1')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Breakout Daily
+        </button>
+      </div>
     </div>
-    <div id="table-s1"><div class="empty-state"><div class="empty-icon">📊</div><h3>No scan run yet</h3><p>Hit Run Screeners to find breakout setups.</p></div></div>
+    <div id="table-s1"><div class="empty-state"><div class="empty-icon">⚡</div><h3>No scan run yet</h3><p>Hit Run Screeners to find daily breakout setups.</p></div></div>
   </div>
 
+  <!-- Screener 2: Breakout Weekly -->
   <div class="panel" id="panel-s2">
     <div class="panel-toolbar">
       <div class="filter-pills">
         <span class="pill">Price > SMA 10/20/50 (Weekly)</span>
-        <span class="pill">Mkt Cap > ₹25B</span>
-        <span class="pill">Weekly Chg from open > 0%</span>
-        <span class="pill">Weekly RSI 14 > 55</span>
+        <span class="pill">Mkt Cap &ge; ₹25B</span>
+        <span class="pill">Weekly RSI 14 &gt; 55</span>
         <span class="pill">Timeframe: Weekly</span>
       </div>
-      <button class="btn-export" id="btn-export-s2" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV (All Screeners)
-      </button>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportCSV('s2')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Breakout Weekly
+        </button>
+      </div>
     </div>
-    <div id="table-s2"><div class="empty-state"><div class="empty-icon">📈</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term breakouts.</p></div></div>
+    <div id="table-s2"><div class="empty-state"><div class="empty-icon">📈</div><h3>No scan run yet</h3><p>Hit Run Screeners to find weekly breakouts.</p></div></div>
   </div>
 
+  <!-- Screener 3: Trading Scanner -->
   <div class="panel" id="panel-s3">
     <div class="panel-toolbar">
       <div class="filter-pills">
         <span class="pill">Price > EMA 20</span>
         <span class="pill">EMA 10 > EMA 20</span>
-        <span class="pill">Mkt Cap > ₹20B</span>
-        <span class="pill">Chg from open > 2%</span>
-        <span class="pill">Vol Chg > 0%</span>
-        <span class="pill">RSI 14 > 55</span>
-        <span class="pill">52W High 0–20% above price</span>
+        <span class="pill">Mkt Cap &ge; ₹20B</span>
+        <span class="pill">Chg &gt; 2%</span>
+        <span class="pill">Vol Chg &gt; 0%</span>
+        <span class="pill">RSI 14 &gt; 55</span>
+        <span class="pill">52W High within 20%</span>
       </div>
-      <button class="btn-export" id="btn-export-s3" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV (All Screeners)
-      </button>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportCSV('s3')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Trading Scanner
+        </button>
+      </div>
     </div>
-    <div id="table-s3"><div class="empty-state"><div class="empty-icon">🎯</div><h3>No scan run yet</h3><p>Hit Run Screeners to find high-momentum setups.</p></div></div>
+    <div id="table-s3"><div class="empty-state"><div class="empty-icon">🎯</div><h3>No scan run yet</h3><p>Hit Run Screeners to find momentum trading setups.</p></div></div>
   </div>
 
+  <!-- Screener 4: MT Investing -->
   <div class="panel" id="panel-s4">
     <div class="panel-toolbar">
       <div class="filter-pills">
         <span class="pill">Price > EMA 10 (Weekly)</span>
         <span class="pill">EMA 10W > EMA 20W</span>
-        <span class="pill">Mkt Cap > ₹20B</span>
-        <span class="pill">Weekly RSI 14 > 50</span>
-        <span class="pill">Weekly Chg from open > 2%</span>
-        <span class="pill">52W High 0–20% above price</span>
+        <span class="pill">Mkt Cap &ge; ₹20B</span>
+        <span class="pill">Weekly RSI 14 &gt; 50</span>
+        <span class="pill">Weekly Chg &gt; 2%</span>
+        <span class="pill">52W High within 20%</span>
       </div>
-      <button class="btn-export" id="btn-export-s4" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV (All Screeners)
-      </button>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportCSV('s4')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export MT Investing
+        </button>
+      </div>
     </div>
-    <div id="table-s4"><div class="empty-state"><div class="empty-icon">🏦</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term investing setups.</p></div></div>
+    <div id="table-s4"><div class="empty-state"><div class="empty-icon">🏦</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term trend setups.</p></div></div>
   </div>
 
 </main>
 
+<!-- Transient Toast Notification -->
+<div id="toast">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-text">Copied to clipboard</span>
+</div>
+
 <script>
 let currentResults = null;
+let currentConfluence = {};
+let activeTabId = 'high-conviction';
+let activeSectorFilter = null;
 let pollTimer = null;
 let timerTicker = null;
 let scanStartTime = null;
 
-// ─── Theme Management (Light / Dark) ─────────────────────────────────────────
-
+// ─── Theme Management ──────────────────────────────────────────────────────────
 function initTheme() {
-  const saved = localStorage.getItem('pinaka_theme') || localStorage.getItem('signal_theme') || 'dark';
+  const saved = localStorage.getItem('pinaka_theme') || 'dark';
   setTheme(saved);
 }
 
@@ -712,105 +1219,282 @@ function setTheme(theme) {
 
 initTheme();
 
-// ─── Table Columns & Sorting State ───────────────────────────────────────────
+// ─── Toast Feedback ────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const text = document.getElementById('toast-text');
+  text.textContent = msg;
+  toast.style.display = 'inline-flex';
+  setTimeout(() => { toast.style.display = 'none'; }, 2000);
+}
 
+function copySymbol(sym, btn) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(sym).then(() => {
+      showToast(`Copied ${sym} to clipboard`);
+    }).catch(() => fallbackCopy(sym));
+  } else {
+    fallbackCopy(sym);
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  document.body.removeChild(ta);
+  showToast(`Copied ${text}`);
+}
+
+// ─── Table Helpers ─────────────────────────────────────────────────────────────
 function tvLink(symbol) {
-  return `https://www.tradingview.com/chart/?symbol=NSE%3A${symbol}`;
+  return `https://in.tradingview.com/chart/?symbol=NSE%3A${encodeURIComponent(symbol)}`;
 }
 
 function symCell(symbol) {
-  return `<a class="sym-link" href="${tvLink(symbol)}" target="_blank" rel="noopener">
-    ${symbol}
-    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 2h8v8M10 2 2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-  </a>`;
+  const conf = currentConfluence[symbol];
+  let badgeHtml = '';
+  if (conf && conf.count >= 2) {
+    const cls = conf.count === 4 ? 'conf-4' : (conf.count === 3 ? 'conf-3' : 'conf-2');
+    const icon = conf.count === 4 ? '⚡' : (conf.count === 3 ? '🔥' : '✨');
+    badgeHtml = `<span class="mini-conf-tag ${cls}" title="Matched ${conf.count}/4 screeners: ${conf.names.join(', ')}" onclick="selectTab('high-conviction')">${icon} ${conf.count}/4</span>`;
+  }
+
+  return `<div class="sym-cell-wrap">
+    <a class="sym-link" href="${tvLink(symbol)}" target="_blank" rel="noopener" title="Open ${symbol} chart on TradingView">
+      ${symbol}
+      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+        <path d="M2 2h8v8M10 2 2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <button class="btn-copy" onclick="copySymbol('${symbol}', this)" title="Copy ticker ${symbol}">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+    ${badgeHtml}
+  </div>`;
 }
 
-function chip(val, type) {
-  return `<span class="chip chip-${type}">${val}</span>`;
+function sectorCell(sector) {
+  const sec = sector || 'Diversified & Conglomerates';
+  return `<span class="sector-tag" title="${sec}">${sec}</span>`;
 }
 
+/* User requirement: Clean styling ONLY for RSI 55-65 sweet spot */
+function rsiCell(val) {
+  if (val === undefined || val === null || isNaN(val)) return '—';
+  const num = parseFloat(val);
+  if (num >= 55.0 && num <= 65.0) {
+    return `<span class="chip-rsi-zone" title="Ideal Momentum Breakout Zone (55–65)">${num.toFixed(1)}</span>`;
+  }
+  return `<span class="chip-rsi-neutral">${num.toFixed(1)}</span>`;
+}
+
+/* Price change directional pills */
+function chgCell(val) {
+  if (val === undefined || val === null || isNaN(val)) return '—';
+  const num = parseFloat(val);
+  const isPos = num >= 0;
+  const arrow = isPos ? '▲' : '▼';
+  const sign = isPos ? '+' : '';
+  const cls = isPos ? 'chg-pos' : 'chg-neg';
+  return `<span class="chg-pill ${cls}">${arrow} ${sign}${num.toFixed(2)}%</span>`;
+}
+
+/* Visual relative volume micro-bar */
+function relVolCell(val) {
+  if (val === undefined || val === null || isNaN(val)) return '—';
+  const num = parseFloat(val);
+  const pct = Math.min(Math.round((num / 3.0) * 100), 100);
+  return `<div class="rel-vol-cell" title="Relative Volume: ${num}x">
+    <div class="rel-vol-fill" style="width: ${pct}%;"></div>
+    <span class="rel-vol-val">${num.toFixed(2)}x</span>
+  </div>`;
+}
+
+// ─── Column Definitions & Sorting ──────────────────────────────────────────────
 const COLUMNS_DEF = {
+  'high-conviction': [
+    { label: 'Symbol',          key: 'symbol',     render: r => symCell(r.symbol) },
+    { label: 'Confluence Hits', key: 'conf_count', render: r => {
+      const cls = r.conf_count === 4 ? 'conf-4' : (r.conf_count === 3 ? 'conf-3' : 'conf-2');
+      const icon = r.conf_count === 4 ? '⚡' : (r.conf_count === 3 ? '🔥' : '✨');
+      return `<div style="display:flex; flex-direction:column; gap:4px;">
+        <span class="mini-conf-tag ${cls}" style="font-size:11px; padding:2px 8px; width:fit-content;">${icon} ${r.conf_count}/4 Hits</span>
+        <div class="conf-screeners-wrap">${r.conf_names.map(n => `<span class="conf-screener-chip">${n}</span>`).join('')}</div>
+      </div>`;
+    }},
+    { label: 'Sector',          key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Price (₹)',       key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'RSI 14',          key: 'rsi',        render: r => rsiCell(r.rsi) },
+    { label: 'Price Change',    key: 'chg',        render: r => chgCell(r.chg) },
+    { label: 'Mkt Cap (₹B)',    key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+  ],
   s1: [
     { label: 'Symbol',        key: 'symbol',   render: r => symCell(r.symbol) },
-    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Sector',        key: 'sector',   render: r => sectorCell(r.sector) },
+    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',     key: 'price',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'RSI 14',        key: 'rsi',      render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
-    { label: 'Rel Vol',       key: 'rel_vol',  render: r => chip(r.rel_vol + 'x', 'blue') },
-    { label: 'Chg from Open', key: 'chg_open', render: r => chip((r.chg_open > 0 ? '+' : '') + r.chg_open + '%', r.chg_open > 0 ? 'green' : 'red') },
-    { label: 'Mkt Cap (B)',   key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
+    { label: 'RSI 14',        key: 'rsi',      render: r => rsiCell(r.rsi) },
+    { label: 'Rel Vol',       key: 'rel_vol',  render: r => relVolCell(r.rel_vol) },
+    { label: 'Price Chg',     key: 'chg_open', render: r => chgCell(r.chg_open) },
+    { label: 'Mkt Cap (₹B)',  key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
   ],
   s2: [
     { label: 'Symbol',         key: 'symbol',     render: r => symCell(r.symbol) },
-    { label: 'Date',           key: 'date',       render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Sector',         key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Date',           key: 'date',       render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',      key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'Weekly RSI 14',  key: 'rsi_w',      render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
-    { label: 'Weekly Chg',     key: 'chg_open_w', render: r => chip((r.chg_open_w > 0 ? '+' : '') + r.chg_open_w + '%', r.chg_open_w > 0 ? 'green' : 'red') },
-    { label: 'Mkt Cap (B)',    key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+    { label: 'Weekly RSI 14',  key: 'rsi_w',      render: r => rsiCell(r.rsi_w) },
+    { label: 'Weekly Chg',     key: 'chg_open_w', render: r => chgCell(r.chg_open_w) },
+    { label: 'Mkt Cap (₹B)',   key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
   ],
   s3: [
     { label: 'Symbol',        key: 'symbol',   render: r => symCell(r.symbol) },
-    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Sector',        key: 'sector',   render: r => sectorCell(r.sector) },
+    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',     key: 'price',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'RSI 14',        key: 'rsi',      render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
-    { label: 'Chg from Open', key: 'chg_open', render: r => chip('+' + r.chg_open + '%', 'green') },
-    { label: 'Vol Chg',       key: 'vol_chg',  render: r => chip((r.vol_chg > 0 ? '+' : '') + r.vol_chg + '%', r.vol_chg > 0 ? 'green' : 'red') },
+    { label: 'RSI 14',        key: 'rsi',      render: r => rsiCell(r.rsi) },
+    { label: 'Day Chg',       key: 'chg_open', render: r => chgCell(r.chg_open) },
+    { label: 'Vol Chg',       key: 'vol_chg',  render: r => chgCell(r.vol_chg) },
     { label: '52W High',      key: 'high_52w', render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
-    { label: 'Mkt Cap (B)',   key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
+    { label: 'Mkt Cap (₹B)',  key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
   ],
   s4: [
     { label: 'Symbol',        key: 'symbol',     render: r => symCell(r.symbol) },
-    { label: 'Date',          key: 'date',       render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Sector',        key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Date',          key: 'date',       render: r => `<span class="header-meta">${r.date || '—'}</span>` },
     { label: 'Price (₹)',     key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'Weekly RSI 14', key: 'rsi_w',      render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
-    { label: 'Weekly Chg',    key: 'chg_open_w', render: r => chip('+' + r.chg_open_w + '%', 'green') },
+    { label: 'Weekly RSI 14', key: 'rsi_w',      render: r => rsiCell(r.rsi_w) },
+    { label: 'Weekly Chg',    key: 'chg_open_w', render: r => chgCell(r.chg_open_w) },
     { label: '52W High',      key: 'high_52w',   render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
-    { label: 'Mkt Cap (B)',   key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+    { label: 'Mkt Cap (₹B)',  key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
   ]
 };
 
 const sortState = {
+  'high-conviction': { key: 'conf_count', dir: 'desc' },
   s1: { key: 'mkt_cap', dir: 'desc' },
   s2: { key: 'mkt_cap', dir: 'desc' },
   s3: { key: 'mkt_cap', dir: 'desc' },
   s4: { key: 'mkt_cap', dir: 'desc' }
 };
 
-function handleSort(id, colKey) {
-  const sort = sortState[id];
+function handleSort(panelId, colKey) {
+  const sort = sortState[panelId];
   if (sort.key === colKey) {
     sort.dir = sort.dir === 'asc' ? 'desc' : 'asc';
   } else {
     sort.key = colKey;
-    sort.dir = (colKey === 'symbol' || colKey === 'date') ? 'asc' : 'desc';
+    sort.dir = (colKey === 'symbol' || colKey === 'sector' || colKey === 'date') ? 'asc' : 'desc';
   }
-  if (currentResults && currentResults[id]) {
-    renderTable(id, currentResults[id], COLUMNS_DEF[id], false);
-  }
+
+  const rows = getPanelRows(panelId);
+  renderTable(panelId, rows, COLUMNS_DEF[panelId], false);
 }
 
-function renderTable(id, rows, columns, isScanning) {
-  const el = document.getElementById(`table-${id}`);
-  if (!rows || rows.length === 0) {
+function getPanelRows(panelId) {
+  if (!currentResults) return [];
+  if (panelId === 'high-conviction') {
+    return computeHighConvictionList();
+  }
+  return currentResults[panelId] || [];
+}
+
+// ─── Confluence Engine ─────────────────────────────────────────────────────────
+function computeConfluence() {
+  currentConfluence = {};
+  if (!currentResults) return;
+
+  const names = {
+    s1: 'Breakout Daily',
+    s2: 'Breakout Weekly',
+    s3: 'Trading Scanner',
+    s4: 'MT Investing'
+  };
+
+  ['s1', 's2', 's3', 's4'].forEach(id => {
+    const list = currentResults[id] || [];
+    list.forEach(item => {
+      const sym = item.symbol;
+      if (!currentConfluence[sym]) {
+        currentConfluence[sym] = {
+          symbol: sym,
+          count: 0,
+          ids: [],
+          names: [],
+          sector: item.sector || 'Diversified & Conglomerates',
+          price: item.price,
+          mkt_cap: item.mkt_cap,
+          rsi: item.rsi !== undefined ? item.rsi : (item.rsi_w !== undefined ? item.rsi_w : null),
+          chg: item.chg_open !== undefined ? item.chg_open : (item.chg_open_w !== undefined ? item.chg_open_w : null)
+        };
+      }
+      currentConfluence[sym].count += 1;
+      currentConfluence[sym].ids.push(id);
+      currentConfluence[sym].names.push(names[id]);
+      if (item.sector) currentConfluence[sym].sector = item.sector;
+    });
+  });
+}
+
+function computeHighConvictionList() {
+  const list = [];
+  for (const sym in currentConfluence) {
+    const item = currentConfluence[sym];
+    if (item.count >= 2) {
+      list.push({
+        symbol: item.symbol,
+        conf_count: item.count,
+        conf_names: item.names,
+        sector: item.sector,
+        price: item.price,
+        rsi: item.rsi,
+        chg: item.chg,
+        mkt_cap: item.mkt_cap
+      });
+    }
+  }
+  return list;
+}
+
+// ─── Table Rendering ───────────────────────────────────────────────────────────
+function renderTable(panelId, rows, columns, isScanning) {
+  const el = document.getElementById(`table-${panelId}`);
+  if (!el) return;
+
+  // Filter by active sector if set
+  let displayRows = rows || [];
+  if (activeSectorFilter && activeSectorFilter !== 'ALL') {
+    displayRows = displayRows.filter(r => (r.sector || 'Diversified & Conglomerates') === activeSectorFilter);
+  }
+
+  if (displayRows.length === 0) {
     if (isScanning) {
       el.innerHTML = `<div class="empty-state">
         <div class="empty-icon">⏳</div>
-        <h3>Scanning in progress...</h3>
-        <p>Checking stocks in real-time. Matches will appear here as they are found.</p>
+        <h3>Live Market Scan in Progress...</h3>
+        <p>Evaluating 1,600+ NSE stocks against models. Setups stream in live.</p>
       </div>`;
     } else {
+      const msg = activeSectorFilter && activeSectorFilter !== 'ALL'
+        ? `No stocks in "${activeSectorFilter}" matched this screener.`
+        : (panelId === 'high-conviction' ? 'No stocks currently match 2 or more screeners simultaneously.' : 'No stocks matched this screener today.');
       el.innerHTML = `<div class="empty-state">
         <div class="empty-icon">🔍</div>
-        <h3>No stocks matched</h3>
-        <p>No stocks passed all filters today. Try again after the next session.</p>
+        <h3>No setups found</h3>
+        <p>${msg}</p>
       </div>`;
     }
     return;
   }
 
-  const sort = sortState[id];
-  const sortedRows = [...rows].sort((a, b) => {
+  const sort = sortState[panelId];
+  const sortedRows = [...displayRows].sort((a, b) => {
     let valA = a[sort.key];
     let valB = b[sort.key];
     if (valA === undefined || valA === null) return 1;
@@ -826,7 +1510,7 @@ function renderTable(id, rows, columns, isScanning) {
       const isSorted = sort.key === c.key;
       const sortClass = isSorted ? 'sortable sorted-active' : 'sortable';
       const sortIndicator = isSorted ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ' <span class="sort-icon">⇅</span>';
-      return `<th class="${sortClass}" onclick="handleSort('${id}', '${c.key}')" title="Sort by ${c.label}">${c.label}${sortIndicator}</th>`;
+      return `<th class="${sortClass}" onclick="handleSort('${panelId}', '${c.key}')" title="Sort by ${c.label}">${c.label}${sortIndicator}</th>`;
     }).join('')}</tr></thead>
     <tbody>`;
 
@@ -837,35 +1521,128 @@ function renderTable(id, rows, columns, isScanning) {
   el.innerHTML = html;
 }
 
+// ─── Sector Momentum Bar ───────────────────────────────────────────────────────
+function updateSectorBar() {
+  const wrap = document.getElementById('sector-momentum-wrap');
+  const container = document.getElementById('sector-pills-container');
+  if (!currentResults) {
+    wrap.style.display = 'none';
+    return;
+  }
+
+  const rows = getPanelRows(activeTabId);
+  if (!rows || rows.length === 0) {
+    wrap.style.display = 'none';
+    return;
+  }
+
+  wrap.style.display = 'block';
+
+  // Count sectors for active panel
+  const counts = {};
+  rows.forEach(r => {
+    const sec = r.sector || 'Diversified & Conglomerates';
+    counts[sec] = (counts[sec] || 0) + 1;
+  });
+
+  const total = rows.length;
+  const sortedSectors = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+  let html = `<div class="sector-pill ${(!activeSectorFilter || activeSectorFilter === 'ALL') ? 'active' : ''}" onclick="filterSector('ALL')">
+    All Sectors <span class="sector-count">${total}</span>
+  </div>`;
+
+  sortedSectors.forEach(([sec, cnt]) => {
+    const pct = Math.round((cnt / total) * 100);
+    const isActive = activeSectorFilter === sec ? 'active' : '';
+    html += `<div class="sector-pill ${isActive}" onclick="filterSector('${sec}')" title="${sec} (${cnt} stocks, ${pct}%)">
+      ${sec} <span class="sector-count">${cnt} · ${pct}%</span>
+    </div>`;
+  });
+
+  container.innerHTML = html;
+
+  const statusEl = document.getElementById('sector-filter-status');
+  if (activeSectorFilter && activeSectorFilter !== 'ALL') {
+    statusEl.innerHTML = `Filtering: <strong>${activeSectorFilter}</strong> (<a href="javascript:void(0)" onclick="filterSector('ALL')" style="color:var(--accent);">Reset</a>)`;
+  } else {
+    statusEl.textContent = 'Click any sector to filter table';
+  }
+}
+
+function filterSector(sec) {
+  activeSectorFilter = (sec === 'ALL' || activeSectorFilter === sec) ? null : sec;
+  updateSectorBar();
+  const rows = getPanelRows(activeTabId);
+  renderTable(activeTabId, rows, COLUMNS_DEF[activeTabId], false);
+}
+
+// ─── Render All Results ────────────────────────────────────────────────────────
 function renderAllResults(data, isScanning = false) {
   if (!data) return;
   currentResults = data;
 
+  computeConfluence();
+  const hcList = computeHighConvictionList();
+
+  // Badges & stat cards
+  document.getElementById('badge-hc').textContent = hcList.length;
+  document.getElementById('stat-hc').textContent = hcList.length;
+
   ['s1', 's2', 's3', 's4'].forEach(id => {
-    renderTable(id, data[id] || [], COLUMNS_DEF[id], isScanning);
     const count = (data[id] || []).length;
     document.getElementById(`badge-${id}`).textContent = count;
     document.getElementById(`stat-${id}`).textContent = count;
   });
 
-  document.getElementById('stats-bar').style.display = 'flex';
+  document.getElementById('stats-bar').style.display = 'grid';
+
+  // Render High Conviction and all screeners
+  renderTable('high-conviction', hcList, COLUMNS_DEF['high-conviction'], isScanning);
+  ['s1', 's2', 's3', 's4'].forEach(id => {
+    renderTable(id, data[id] || [], COLUMNS_DEF[id], isScanning);
+  });
+
+  updateSectorBar();
+
   if (data.timestamp) {
     document.getElementById('scan-timestamp').style.display = 'block';
-    const runtimeHtml = data.elapsed_seconds ? `<span class="runtime-pill">⚡ Completed in ${data.elapsed_seconds}s</span>` : '';
-    document.getElementById('scan-timestamp').innerHTML = `Last scan: ${data.timestamp} ${runtimeHtml}`;
+    const runtimeHtml = data.elapsed_seconds ? `<span class="runtime-pill">⚡ Scan completed in ${data.elapsed_seconds}s</span>` : '';
+    document.getElementById('scan-timestamp').innerHTML = `Last completed scan: ${data.timestamp} ${runtimeHtml}`;
   }
 }
 
+// ─── Tab Switching ─────────────────────────────────────────────────────────────
+function selectTab(panelId) {
+  activeTabId = panelId;
+  activeSectorFilter = null; // Reset sector filter on tab switch
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-card'));
+
+  const btn = document.getElementById(`tab-btn-${panelId === 'high-conviction' ? 'hc' : panelId}`);
+  if (btn) btn.classList.add('active');
+
+  const panel = document.getElementById(`panel-${panelId}`);
+  if (panel) panel.classList.add('active');
+
+  updateSectorBar();
+  const rows = getPanelRows(panelId);
+  renderTable(panelId, rows, COLUMNS_DEF[panelId], false);
+}
+
+// ─── Scan Execution & Polling ──────────────────────────────────────────────────
 function startScan() {
   fetch('/start-scan', { method: 'POST' })
     .then(r => r.json())
     .then(data => {
       if (data.error) { alert(data.error); return; }
-      document.getElementById('scanBtn').disabled = true;
-      document.getElementById('scanBtn').innerHTML = '<span class="btn-icon">⏳</span> Scanning...';
+      const scanBtn = document.getElementById('scanBtn');
+      scanBtn.disabled = true;
+      scanBtn.innerHTML = '<span class="btn-icon">⏳</span> Scanning NSE...';
       document.getElementById('progress-wrap').style.display = 'block';
 
-      // Start live stopwatch
       scanStartTime = Date.now();
       if (timerTicker) clearInterval(timerTicker);
       timerTicker = setInterval(() => {
@@ -888,21 +1665,20 @@ function pollProgress() {
         document.getElementById('progress-pct').textContent = pct + '%';
         document.getElementById('progress-msg').textContent = data.message || '';
         document.getElementById('progress-label').textContent =
-          data.total > 0 ? `${data.done} / ${data.total} stocks` : 'Starting...';
+          data.total > 0 ? `${data.done} / ${data.total} NSE Stocks` : 'Scanning...';
 
-        // 1. Live stream matches as they are filtered during runtime:
         if (data.results) {
           renderAllResults(data.results, data.status === 'running');
         }
 
-        // When scan completes:
         if (data.status === 'done') {
           clearInterval(pollTimer);
           if (timerTicker) clearInterval(timerTicker);
 
           document.getElementById('progress-wrap').style.display = 'none';
-          document.getElementById('scanBtn').disabled = false;
-          document.getElementById('scanBtn').innerHTML = '<span class="btn-icon">⚡</span> Run Again';
+          const scanBtn = document.getElementById('scanBtn');
+          scanBtn.disabled = false;
+          scanBtn.innerHTML = '<span class="btn-icon">⚡</span> Run Again';
 
           const finalSec = data.elapsed || ((Date.now() - scanStartTime) / 1000).toFixed(1);
           const timeMsg = `Last scan: ${data.results ? data.results.timestamp : 'Just now'} <span class="runtime-pill">⚡ Completed in ${finalSec}s</span>`;
@@ -917,15 +1693,7 @@ function pollProgress() {
   }, 1000);
 }
 
-function switchTab(id, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById(`panel-${id}`).classList.add('active');
-}
-
-// ─── CSV Export Functionality ────────────────────────────────────────────────
-
+// ─── Consolidated CSV Export ───────────────────────────────────────────────────
 function formatDateForFile() {
   const d = new Date();
   const yyyy = d.getFullYear();
@@ -936,7 +1704,7 @@ function formatDateForFile() {
 
 function exportCSV(screenerId = 'all') {
   if (!currentResults) {
-    alert("No scan results available to export yet. Please wait for matches or run a scan first.");
+    alert("No scan results available to export yet. Please run a scan first.");
     return;
   }
 
@@ -947,9 +1715,8 @@ function exportCSV(screenerId = 'all') {
     { id: 's4', name: 'MT Investing', timeframe: 'Weekly' }
   ];
 
-  // If exporting all, check if there are any matches across any screener
-  const targetScreeners = screenerId === 'all' 
-    ? screeners 
+  const targetScreeners = screenerId === 'all'
+    ? screeners
     : screeners.filter(s => s.id === screenerId);
 
   let totalMatches = 0;
@@ -958,27 +1725,31 @@ function exportCSV(screenerId = 'all') {
   });
 
   if (totalMatches === 0) {
-    alert("No matched stocks found across the screeners to export.");
+    alert("No matched stocks found to export.");
     return;
   }
 
   const dateStr = formatDateForFile();
   const filename = screenerId === 'all'
-    ? `PINAKA_All_4_Screeners_${dateStr}.csv`
+    ? `PINAKA_Consolidated_All_4_Screeners_${dateStr}.csv`
     : `PINAKA_${targetScreeners[0].name.replace(/\s+/g, '_')}_${dateStr}.csv`;
 
-  let csv = 'Screener,Timeframe,Symbol,Date,Price (INR),RSI 14,Price Change (%),Volume Metric,52W High (INR),Market Cap (B INR),TradingView Link\n';
+  let csv = 'Screener,Confluence Hits,Matching Screeners,Timeframe,Symbol,Sector,Date,Price (INR),RSI 14,Price Change (%),Volume Metric,52W High (INR),Market Cap (B INR),TradingView Link\n';
 
   targetScreeners.forEach(s => {
     const rows = currentResults[s.id] || [];
     rows.forEach(r => {
+      const conf = currentConfluence[r.symbol];
+      const confCount = conf ? `${conf.count}/4` : '1/4';
+      const confNames = conf ? conf.names.join(' | ') : s.name;
+      const sector = r.sector || 'Diversified & Conglomerates';
       const rsi = r.rsi !== undefined ? r.rsi : (r.rsi_w !== undefined ? r.rsi_w : '');
       const chg = r.chg_open !== undefined ? `${r.chg_open > 0 ? '+' : ''}${r.chg_open}%` : (r.chg_open_w !== undefined ? `Weekly: ${r.chg_open_w > 0 ? '+' : ''}${r.chg_open_w}%` : '');
       const vol = r.rel_vol !== undefined ? `${r.rel_vol}x (Rel Vol)` : (r.vol_chg !== undefined ? `${r.vol_chg > 0 ? '+' : ''}${r.vol_chg}% (Vol Chg)` : '—');
       const high52 = r.high_52w !== undefined ? r.high_52w : '—';
       const tvLink = `https://in.tradingview.com/chart/?symbol=NSE:${r.symbol}`;
 
-      csv += `"${s.name}","${s.timeframe}","${r.symbol}","${r.date || ''}",${r.price},${rsi},"${chg}","${vol}",${high52},${r.mkt_cap},"${tvLink}"\n`;
+      csv += `"${s.name}","${confCount}","${confNames}","${s.timeframe}","${r.symbol}","${sector}","${r.date || ''}",${r.price},${rsi},"${chg}","${vol}",${high52},${r.mkt_cap},"${tvLink}"\n`;
     });
   });
 

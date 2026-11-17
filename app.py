@@ -29,6 +29,20 @@ if os.path.exists(CACHE_FILE):
     except Exception as e:
         print(f"Warning: Failed to load {CACHE_FILE}: {e}")
 
+# ─── Load Cached Sectors ───────────────────────────────────────────────────────
+SECTORS_CACHE = {}
+SECTORS_FILE = os.path.join(os.path.dirname(__file__), "sectors.json")
+if os.path.exists(SECTORS_FILE):
+    try:
+        with open(SECTORS_FILE, "r", encoding="utf-8") as f:
+            SECTORS_CACHE = json.load(f)
+    except Exception as e:
+        print(f"Warning: Failed to load {SECTORS_FILE}: {e}")
+
+def get_sector(sym):
+    clean_sym = sym.replace(".NS", "")
+    return SECTORS_CACHE.get(clean_sym, "Diversified & Conglomerates")
+
 def get_cached_mcap(sym, close_price=None):
     """
     Returns market cap in ₹ Billions.
@@ -240,7 +254,7 @@ def screener_1(sym, daily, weekly, mcap):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi": round(d["RSI14"],1), "rel_vol": round(rel_vol,2),
                     "chg_open": round(chg_val,2), "mkt_cap": round(mcap,1),
-                    "date": date_str}
+                    "sector": get_sector(sym), "date": date_str}
     except: pass
 
 def screener_2(sym, daily, weekly, mcap):
@@ -254,7 +268,7 @@ def screener_2(sym, daily, weekly, mcap):
             weekly_chg = w["Chg_Pct_W"] if pd.notna(w.get("Chg_Pct_W")) else w["Chg_Open_W"]
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(weekly_chg,2),
-                    "mkt_cap": round(mcap,1), "date": date_str}
+                    "mkt_cap": round(mcap,1), "sector": get_sector(sym), "date": date_str}
     except: pass
 
 def screener_3(sym, daily, weekly, mcap):
@@ -271,7 +285,7 @@ def screener_3(sym, daily, weekly, mcap):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi": round(d["RSI14"],1), "chg_open": round(chg_val,2),
                     "vol_chg": round(d["Vol_Chg"],1), "high_52w": round(d["52W_High"],2),
-                    "mkt_cap": round(mcap,1), "date": date_str}
+                    "mkt_cap": round(mcap,1), "sector": get_sector(sym), "date": date_str}
     except: pass
 
 def screener_4(sym, daily, weekly, mcap):
@@ -288,7 +302,7 @@ def screener_4(sym, daily, weekly, mcap):
             return {"symbol": sym.replace(".NS",""), "price": round(d["Close"],2),
                     "rsi_w": round(w["RSI14_W"],1), "chg_open_w": round(weekly_chg,2),
                     "high_52w": round(d["52W_High"],2), "mkt_cap": round(mcap,1),
-                    "date": date_str}
+                    "sector": get_sector(sym), "date": date_str}
     except: pass
 
 # ─── Scan ────────────────────────────────────────────────────────────────────

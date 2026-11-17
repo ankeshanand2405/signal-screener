@@ -8181,6 +8181,26 @@
       "shares": null,
       "mcap_b": 0.0,
       "price": 9064.0
+    },
+    "TATAMOTORS": {
+      "shares": 3678000000,
+      "mcap_b": 3050.0,
+      "price": 830.0
+    },
+    "ZOMATO": {
+      "shares": 8830000000,
+      "mcap_b": 2250.0,
+      "price": 255.0
+    },
+    "ICICIPRULI": {
+      "shares": 1440000000,
+      "mcap_b": 950.0,
+      "price": 660.0
+    },
+    "LTIM": {
+      "shares": 296000000,
+      "mcap_b": 1680.0,
+      "price": 5680.0
     }
   }
 }
