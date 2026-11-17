@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
+  :root, [data-theme="dark"] {
     --bg:        #0a0e1a;
     --surface:   #111827;
     --border:    #1f2937;
@@ -24,6 +24,21 @@
     --sans:      'Inter', sans-serif;
   }
 
+  [data-theme="light"] {
+    --bg:        #f8fafc;
+    --surface:   #ffffff;
+    --border:    #e2e8f0;
+    --muted:     #cbd5e1;
+    --text:      #0f172a;
+    --sub:       #64748b;
+    --accent:    #2563eb;
+    --accent-dim:#1d4ed8;
+    --green:     #16a34a;
+    --green-dim: #15803d;
+    --amber:     #d97706;
+    --red:       #dc2626;
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
@@ -33,6 +48,7 @@
     font-size: 14px;
     line-height: 1.6;
     min-height: 100vh;
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
   /* ── Header ── */
@@ -47,6 +63,7 @@
     top: 0;
     background: var(--bg);
     z-index: 100;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
 
   .logo {
@@ -65,10 +82,37 @@
     box-shadow: 0 0 8px var(--accent);
   }
 
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
   .header-meta {
     font-size: 12px;
     color: var(--sub);
     font-family: var(--mono);
+  }
+
+  .theme-toggle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    user-select: none;
+  }
+
+  .theme-toggle:hover {
+    background: var(--border);
+    transform: scale(1.05);
   }
 
   /* ── Layout ── */
@@ -301,6 +345,36 @@
     font-size: 11px;
   }
 
+  .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .source-badge {
+    font-size: 11px;
+    color: var(--sub);
+    font-family: var(--mono);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 6px;
+    cursor: default;
+    user-select: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .source-dot {
+    color: var(--green);
+    font-size: 8px;
+  }
+
   /* ── Table ── */
   .table-wrap {
     overflow-x: auto;
@@ -327,6 +401,32 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     white-space: nowrap;
+    position: relative;
+  }
+
+  th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  th.sortable:hover {
+    color: var(--text);
+  }
+
+  th.sorted-active {
+    color: var(--accent);
+  }
+
+  .sort-icon {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 10px;
+    opacity: 0.4;
+  }
+
+  th.sortable:hover .sort-icon, th.sorted-active .sort-icon {
+    opacity: 1;
   }
 
   tbody tr {
@@ -355,7 +455,7 @@
     transition: color 0.15s;
   }
 
-  .sym-link:hover { color: #93c5fd; }
+  .sym-link:hover { color: var(--accent-dim); }
 
   .sym-link svg {
     opacity: 0.5;
@@ -374,7 +474,7 @@
   }
 
   .chip-green { background: rgba(34,197,94,0.12); color: var(--green); }
-  .chip-blue  { background: rgba(59,130,246,0.12); color: #93c5fd; }
+  .chip-blue  { background: rgba(59,130,246,0.12); color: var(--accent); }
   .chip-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
   .chip-red   { background: rgba(239,68,68,0.12); color: var(--red); }
 
@@ -428,7 +528,12 @@
     <div class="logo-dot"></div>
     Signal
   </div>
-  <div class="header-meta">NSE · EOD Technical Screener</div>
+  <div class="header-right">
+    <div class="header-meta">NSE · EOD Technical Screener</div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch Light/Dark Mode">
+      <span id="themeIcon">☀️</span>
+    </button>
+  </div>
 </header>
 
 <main>
@@ -460,8 +565,13 @@
     <div class="progress-msg" id="progress-msg">Initialising...</div>
   </div>
 
-  <!-- Timestamp -->
-  <div id="scan-timestamp"></div>
+  <!-- Timestamp & Data Source Meta -->
+  <div class="meta-row">
+    <div id="scan-timestamp"></div>
+    <div class="source-badge" title="Data pipeline: 2-year EOD price history from Yahoo Finance; real-time Market Cap & Share count from NSE Master Cache; missing latest candles patched via official NSE Bhavcopy.">
+      <span class="source-dot">●</span> yfinance EOD &nbsp;·&nbsp; NSE MCap Cache
+    </div>
+  </div>
 
   <!-- Stats bar -->
   <div class="stats-bar" id="stats-bar" style="display:none">
@@ -510,9 +620,9 @@
         <span class="pill">RSI 14 > 55</span>
         <span class="pill">Timeframe: Daily</span>
       </div>
-      <button class="btn-export" id="btn-export-s1" onclick="exportCSV('s1')">
+      <button class="btn-export" id="btn-export-s1" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV
+        Download CSV (All Screeners)
       </button>
     </div>
     <div id="table-s1"><div class="empty-state"><div class="empty-icon">📊</div><h3>No scan run yet</h3><p>Hit Run Screeners to find breakout setups.</p></div></div>
@@ -527,9 +637,9 @@
         <span class="pill">Weekly RSI 14 > 55</span>
         <span class="pill">Timeframe: Weekly</span>
       </div>
-      <button class="btn-export" id="btn-export-s2" onclick="exportCSV('s2')">
+      <button class="btn-export" id="btn-export-s2" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV
+        Download CSV (All Screeners)
       </button>
     </div>
     <div id="table-s2"><div class="empty-state"><div class="empty-icon">📈</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term breakouts.</p></div></div>
@@ -546,9 +656,9 @@
         <span class="pill">RSI 14 > 55</span>
         <span class="pill">52W High 0–20% above price</span>
       </div>
-      <button class="btn-export" id="btn-export-s3" onclick="exportCSV('s3')">
+      <button class="btn-export" id="btn-export-s3" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV
+        Download CSV (All Screeners)
       </button>
     </div>
     <div id="table-s3"><div class="empty-state"><div class="empty-icon">🎯</div><h3>No scan run yet</h3><p>Hit Run Screeners to find high-momentum setups.</p></div></div>
@@ -564,9 +674,9 @@
         <span class="pill">Weekly Chg from open > 2%</span>
         <span class="pill">52W High 0–20% above price</span>
       </div>
-      <button class="btn-export" id="btn-export-s4" onclick="exportCSV('s4')">
+      <button class="btn-export" id="btn-export-s4" onclick="exportCSV('all')" title="Export results from all 4 screeners into one CSV">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CSV
+        Download CSV (All Screeners)
       </button>
     </div>
     <div id="table-s4"><div class="empty-state"><div class="empty-icon">🏦</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term investing setups.</p></div></div>
@@ -579,6 +689,30 @@ let currentResults = null;
 let pollTimer = null;
 let timerTicker = null;
 let scanStartTime = null;
+
+// ─── Theme Management (Light / Dark) ─────────────────────────────────────────
+
+function initTheme() {
+  const saved = localStorage.getItem('signal_theme') || 'dark';
+  setTheme(saved);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('signal_theme', theme);
+  const icon = document.getElementById('themeIcon');
+  if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+initTheme();
+
+// ─── Table Columns & Sorting State ───────────────────────────────────────────
 
 function tvLink(symbol) {
   return `https://www.tradingview.com/chart/?symbol=NSE%3A${symbol}`;
@@ -595,6 +729,65 @@ function symCell(symbol) {
 
 function chip(val, type) {
   return `<span class="chip chip-${type}">${val}</span>`;
+}
+
+const COLUMNS_DEF = {
+  s1: [
+    { label: 'Symbol',        key: 'symbol',   render: r => symCell(r.symbol) },
+    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Price (₹)',     key: 'price',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'RSI 14',        key: 'rsi',      render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
+    { label: 'Rel Vol',       key: 'rel_vol',  render: r => chip(r.rel_vol + 'x', 'blue') },
+    { label: 'Chg from Open', key: 'chg_open', render: r => chip((r.chg_open > 0 ? '+' : '') + r.chg_open + '%', r.chg_open > 0 ? 'green' : 'red') },
+    { label: 'Mkt Cap (B)',   key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
+  ],
+  s2: [
+    { label: 'Symbol',         key: 'symbol',     render: r => symCell(r.symbol) },
+    { label: 'Date',           key: 'date',       render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Price (₹)',      key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'Weekly RSI 14',  key: 'rsi_w',      render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
+    { label: 'Weekly Chg',     key: 'chg_open_w', render: r => chip((r.chg_open_w > 0 ? '+' : '') + r.chg_open_w + '%', r.chg_open_w > 0 ? 'green' : 'red') },
+    { label: 'Mkt Cap (B)',    key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+  ],
+  s3: [
+    { label: 'Symbol',        key: 'symbol',   render: r => symCell(r.symbol) },
+    { label: 'Date',          key: 'date',     render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Price (₹)',     key: 'price',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'RSI 14',        key: 'rsi',      render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
+    { label: 'Chg from Open', key: 'chg_open', render: r => chip('+' + r.chg_open + '%', 'green') },
+    { label: 'Vol Chg',       key: 'vol_chg',  render: r => chip((r.vol_chg > 0 ? '+' : '') + r.vol_chg + '%', r.vol_chg > 0 ? 'green' : 'red') },
+    { label: '52W High',      key: 'high_52w', render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
+    { label: 'Mkt Cap (B)',   key: 'mkt_cap',  render: r => `₹${r.mkt_cap}B` },
+  ],
+  s4: [
+    { label: 'Symbol',        key: 'symbol',     render: r => symCell(r.symbol) },
+    { label: 'Date',          key: 'date',       render: r => `<span class="header-meta" title="EOD Candle Date">${r.date || '—'}</span>` },
+    { label: 'Price (₹)',     key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'Weekly RSI 14', key: 'rsi_w',      render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
+    { label: 'Weekly Chg',    key: 'chg_open_w', render: r => chip('+' + r.chg_open_w + '%', 'green') },
+    { label: '52W High',      key: 'high_52w',   render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
+    { label: 'Mkt Cap (B)',   key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+  ]
+};
+
+const sortState = {
+  s1: { key: 'mkt_cap', dir: 'desc' },
+  s2: { key: 'mkt_cap', dir: 'desc' },
+  s3: { key: 'mkt_cap', dir: 'desc' },
+  s4: { key: 'mkt_cap', dir: 'desc' }
+};
+
+function handleSort(id, colKey) {
+  const sort = sortState[id];
+  if (sort.key === colKey) {
+    sort.dir = sort.dir === 'asc' ? 'desc' : 'asc';
+  } else {
+    sort.key = colKey;
+    sort.dir = (colKey === 'symbol' || colKey === 'date') ? 'asc' : 'desc';
+  }
+  if (currentResults && currentResults[id]) {
+    renderTable(id, currentResults[id], COLUMNS_DEF[id], false);
+  }
 }
 
 function renderTable(id, rows, columns, isScanning) {
@@ -616,11 +809,28 @@ function renderTable(id, rows, columns, isScanning) {
     return;
   }
 
+  const sort = sortState[id];
+  const sortedRows = [...rows].sort((a, b) => {
+    let valA = a[sort.key];
+    let valB = b[sort.key];
+    if (valA === undefined || valA === null) return 1;
+    if (valB === undefined || valB === null) return -1;
+    if (typeof valA === 'string') {
+      return sort.dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+    }
+    return sort.dir === 'asc' ? (valA - valB) : (valB - valA);
+  });
+
   let html = `<div class="table-wrap"><table>
-    <thead><tr>${columns.map(c => `<th>${c.label}</th>`).join('')}</tr></thead>
+    <thead><tr>${columns.map(c => {
+      const isSorted = sort.key === c.key;
+      const sortClass = isSorted ? 'sortable sorted-active' : 'sortable';
+      const sortIndicator = isSorted ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ' <span class="sort-icon">⇅</span>';
+      return `<th class="${sortClass}" onclick="handleSort('${id}', '${c.key}')" title="Sort by ${c.label}">${c.label}${sortIndicator}</th>`;
+    }).join('')}</tr></thead>
     <tbody>`;
 
-  for (const r of rows) {
+  for (const r of sortedRows) {
     html += `<tr>${columns.map(c => `<td>${c.render(r)}</td>`).join('')}</tr>`;
   }
   html += `</tbody></table></div>`;
@@ -631,52 +841,8 @@ function renderAllResults(data, isScanning = false) {
   if (!data) return;
   currentResults = data;
 
-  // S1
-  renderTable('s1', data.s1, [
-    { label: 'Symbol',       render: r => symCell(r.symbol) },
-    { label: 'Date',         render: r => `<span class="header-meta">${r.date || '—'}</span>` },
-    { label: 'Price (₹)',    render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'RSI 14',       render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
-    { label: 'Rel Vol',      render: r => chip(r.rel_vol + 'x', 'blue') },
-    { label: 'Chg from Open',render: r => chip((r.chg_open > 0 ? '+' : '') + r.chg_open + '%', r.chg_open > 0 ? 'green' : 'red') },
-    { label: 'Mkt Cap (B)',  render: r => `₹${r.mkt_cap}B` },
-  ], isScanning);
-
-  // S2
-  renderTable('s2', data.s2, [
-    { label: 'Symbol',         render: r => symCell(r.symbol) },
-    { label: 'Date',           render: r => `<span class="header-meta">${r.date || '—'}</span>` },
-    { label: 'Price (₹)',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'Weekly RSI 14',  render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
-    { label: 'Weekly Chg',     render: r => chip((r.chg_open_w > 0 ? '+' : '') + r.chg_open_w + '%', r.chg_open_w > 0 ? 'green' : 'red') },
-    { label: 'Mkt Cap (B)',    render: r => `₹${r.mkt_cap}B` },
-  ], isScanning);
-
-  // S3
-  renderTable('s3', data.s3, [
-    { label: 'Symbol',        render: r => symCell(r.symbol) },
-    { label: 'Date',          render: r => `<span class="header-meta">${r.date || '—'}</span>` },
-    { label: 'Price (₹)',     render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'RSI 14',        render: r => chip(r.rsi, r.rsi > 65 ? 'amber' : 'green') },
-    { label: 'Chg from Open', render: r => chip('+' + r.chg_open + '%', 'green') },
-    { label: 'Vol Chg',       render: r => chip((r.vol_chg > 0 ? '+' : '') + r.vol_chg + '%', r.vol_chg > 0 ? 'green' : 'red') },
-    { label: '52W High',      render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
-    { label: 'Mkt Cap (B)',   render: r => `₹${r.mkt_cap}B` },
-  ], isScanning);
-
-  // S4
-  renderTable('s4', data.s4, [
-    { label: 'Symbol',        render: r => symCell(r.symbol) },
-    { label: 'Date',          render: r => `<span class="header-meta">${r.date || '—'}</span>` },
-    { label: 'Price (₹)',     render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
-    { label: 'Weekly RSI 14', render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
-    { label: 'Weekly Chg',    render: r => chip('+' + r.chg_open_w + '%', 'green') },
-    { label: '52W High',      render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
-    { label: 'Mkt Cap (B)',   render: r => `₹${r.mkt_cap}B` },
-  ], isScanning);
-
-  // Badges + stats
-  ['s1','s2','s3','s4'].forEach(id => {
+  ['s1', 's2', 's3', 's4'].forEach(id => {
+    renderTable(id, data[id] || [], COLUMNS_DEF[id], isScanning);
     const count = (data[id] || []).length;
     document.getElementById(`badge-${id}`).textContent = count;
     document.getElementById(`stat-${id}`).textContent = count;
@@ -768,42 +934,53 @@ function formatDateForFile() {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-function exportCSV(screenerId) {
-  if (!currentResults || !currentResults[screenerId] || currentResults[screenerId].length === 0) {
-    alert("No matched stocks to export for this screener yet. Please wait for the scan to find matches.");
+function exportCSV(screenerId = 'all') {
+  if (!currentResults) {
+    alert("No scan results available to export yet. Please wait for matches or run a scan first.");
     return;
   }
 
-  const rows = currentResults[screenerId];
-  let csv = '';
-  let filename = '';
-  const dateStr = formatDateForFile();
+  const screeners = [
+    { id: 's1', name: 'Breakout Daily', timeframe: 'Daily' },
+    { id: 's2', name: 'Breakout Weekly', timeframe: 'Weekly' },
+    { id: 's3', name: 'Trading Scanner', timeframe: 'Daily' },
+    { id: 's4', name: 'MT Investing', timeframe: 'Weekly' }
+  ];
 
-  if (screenerId === 's1') {
-    filename = `Signal_Breakout_Daily_${dateStr}.csv`;
-    csv = 'Symbol,Date,Price (INR),RSI 14,Rel Vol,Change from Open (%),Market Cap (B INR)\n';
-    rows.forEach(r => {
-      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi},${r.rel_vol},${r.chg_open},${r.mkt_cap}\n`;
-    });
-  } else if (screenerId === 's2') {
-    filename = `Signal_Breakout_Weekly_${dateStr}.csv`;
-    csv = 'Symbol,Date,Price (INR),Weekly RSI 14,Weekly Change (%),Market Cap (B INR)\n';
-    rows.forEach(r => {
-      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi_w},${r.chg_open_w},${r.mkt_cap}\n`;
-    });
-  } else if (screenerId === 's3') {
-    filename = `Signal_Trading_Scanner_${dateStr}.csv`;
-    csv = 'Symbol,Date,Price (INR),RSI 14,Change from Open (%),Volume Change (%),52W High (INR),Market Cap (B INR)\n';
-    rows.forEach(r => {
-      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi},${r.chg_open},${r.vol_chg},${r.high_52w},${r.mkt_cap}\n`;
-    });
-  } else if (screenerId === 's4') {
-    filename = `Signal_MT_Investing_${dateStr}.csv`;
-    csv = 'Symbol,Date,Price (INR),Weekly RSI 14,Weekly Change (%),52W High (INR),Market Cap (B INR)\n';
-    rows.forEach(r => {
-      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi_w},${r.chg_open_w},${r.high_52w},${r.mkt_cap}\n`;
-    });
+  // If exporting all, check if there are any matches across any screener
+  const targetScreeners = screenerId === 'all' 
+    ? screeners 
+    : screeners.filter(s => s.id === screenerId);
+
+  let totalMatches = 0;
+  targetScreeners.forEach(s => {
+    totalMatches += (currentResults[s.id] || []).length;
+  });
+
+  if (totalMatches === 0) {
+    alert("No matched stocks found across the screeners to export.");
+    return;
   }
+
+  const dateStr = formatDateForFile();
+  const filename = screenerId === 'all'
+    ? `Signal_All_4_Screeners_${dateStr}.csv`
+    : `Signal_${targetScreeners[0].name.replace(/\s+/g, '_')}_${dateStr}.csv`;
+
+  let csv = 'Screener,Timeframe,Symbol,Date,Price (INR),RSI 14,Price Change (%),Volume Metric,52W High (INR),Market Cap (B INR),TradingView Link\n';
+
+  targetScreeners.forEach(s => {
+    const rows = currentResults[s.id] || [];
+    rows.forEach(r => {
+      const rsi = r.rsi !== undefined ? r.rsi : (r.rsi_w !== undefined ? r.rsi_w : '');
+      const chg = r.chg_open !== undefined ? `${r.chg_open > 0 ? '+' : ''}${r.chg_open}%` : (r.chg_open_w !== undefined ? `Weekly: ${r.chg_open_w > 0 ? '+' : ''}${r.chg_open_w}%` : '');
+      const vol = r.rel_vol !== undefined ? `${r.rel_vol}x (Rel Vol)` : (r.vol_chg !== undefined ? `${r.vol_chg > 0 ? '+' : ''}${r.vol_chg}% (Vol Chg)` : '—');
+      const high52 = r.high_52w !== undefined ? r.high_52w : '—';
+      const tvLink = `https://in.tradingview.com/chart/?symbol=NSE:${r.symbol}`;
+
+      csv += `"${s.name}","${s.timeframe}","${r.symbol}","${r.date || ''}",${r.price},${rsi},"${chg}","${vol}",${high52},${r.mkt_cap},"${tvLink}"\n`;
+    });
+  });
 
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
