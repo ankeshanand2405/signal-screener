@@ -222,12 +222,20 @@
   .panel { display: none; }
   .panel.active { display: block; }
 
-  /* ── Filter Pills ── */
+  /* ── Filter Pills & Toolbar ── */
+  .panel-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
   .filter-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 20px;
   }
 
   .pill {
@@ -238,6 +246,59 @@
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--sub);
+  }
+
+  .btn-export {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-export:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .progress-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .progress-timer {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .runtime-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--green);
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
   }
 
   /* ── Table ── */
@@ -388,7 +449,10 @@
   <div id="progress-wrap">
     <div class="progress-top">
       <span class="progress-label" id="progress-label">Scanning...</span>
-      <span class="progress-pct" id="progress-pct">0%</span>
+      <div class="progress-meta">
+        <span class="progress-timer" id="progress-timer">⏱️ 0.0s</span>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
     </div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="progress-bar"></div>
@@ -437,49 +501,73 @@
 
   <!-- Panels -->
   <div class="panel active" id="panel-s1">
-    <div class="filter-pills">
-      <span class="pill">Price > SMA 10/20/50</span>
-      <span class="pill">Mkt Cap > ₹25B</span>
-      <span class="pill">Chg from open > 0%</span>
-      <span class="pill">Rel Vol > 1</span>
-      <span class="pill">RSI 14 > 55</span>
-      <span class="pill">Timeframe: Daily</span>
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Price > SMA 10/20/50</span>
+        <span class="pill">Mkt Cap > ₹25B</span>
+        <span class="pill">Chg from open > 0%</span>
+        <span class="pill">Rel Vol > 1</span>
+        <span class="pill">RSI 14 > 55</span>
+        <span class="pill">Timeframe: Daily</span>
+      </div>
+      <button class="btn-export" id="btn-export-s1" onclick="exportCSV('s1')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CSV
+      </button>
     </div>
     <div id="table-s1"><div class="empty-state"><div class="empty-icon">📊</div><h3>No scan run yet</h3><p>Hit Run Screeners to find breakout setups.</p></div></div>
   </div>
 
   <div class="panel" id="panel-s2">
-    <div class="filter-pills">
-      <span class="pill">Price > SMA 10/20/50 (Weekly)</span>
-      <span class="pill">Mkt Cap > ₹25B</span>
-      <span class="pill">Weekly Chg from open > 0%</span>
-      <span class="pill">Weekly RSI 14 > 55</span>
-      <span class="pill">Timeframe: Weekly</span>
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Price > SMA 10/20/50 (Weekly)</span>
+        <span class="pill">Mkt Cap > ₹25B</span>
+        <span class="pill">Weekly Chg from open > 0%</span>
+        <span class="pill">Weekly RSI 14 > 55</span>
+        <span class="pill">Timeframe: Weekly</span>
+      </div>
+      <button class="btn-export" id="btn-export-s2" onclick="exportCSV('s2')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CSV
+      </button>
     </div>
     <div id="table-s2"><div class="empty-state"><div class="empty-icon">📈</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term breakouts.</p></div></div>
   </div>
 
   <div class="panel" id="panel-s3">
-    <div class="filter-pills">
-      <span class="pill">Price > EMA 20</span>
-      <span class="pill">EMA 10 > EMA 20</span>
-      <span class="pill">Mkt Cap > ₹20B</span>
-      <span class="pill">Chg from open > 2%</span>
-      <span class="pill">Vol Chg > 0%</span>
-      <span class="pill">RSI 14 > 55</span>
-      <span class="pill">52W High 0–20% above price</span>
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Price > EMA 20</span>
+        <span class="pill">EMA 10 > EMA 20</span>
+        <span class="pill">Mkt Cap > ₹20B</span>
+        <span class="pill">Chg from open > 2%</span>
+        <span class="pill">Vol Chg > 0%</span>
+        <span class="pill">RSI 14 > 55</span>
+        <span class="pill">52W High 0–20% above price</span>
+      </div>
+      <button class="btn-export" id="btn-export-s3" onclick="exportCSV('s3')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CSV
+      </button>
     </div>
     <div id="table-s3"><div class="empty-state"><div class="empty-icon">🎯</div><h3>No scan run yet</h3><p>Hit Run Screeners to find high-momentum setups.</p></div></div>
   </div>
 
   <div class="panel" id="panel-s4">
-    <div class="filter-pills">
-      <span class="pill">Price > EMA 10 (Weekly)</span>
-      <span class="pill">EMA 10W > EMA 20W</span>
-      <span class="pill">Mkt Cap > ₹20B</span>
-      <span class="pill">Weekly RSI 14 > 50</span>
-      <span class="pill">Weekly Chg from open > 2%</span>
-      <span class="pill">52W High 0–20% above price</span>
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Price > EMA 10 (Weekly)</span>
+        <span class="pill">EMA 10W > EMA 20W</span>
+        <span class="pill">Mkt Cap > ₹20B</span>
+        <span class="pill">Weekly RSI 14 > 50</span>
+        <span class="pill">Weekly Chg from open > 2%</span>
+        <span class="pill">52W High 0–20% above price</span>
+      </div>
+      <button class="btn-export" id="btn-export-s4" onclick="exportCSV('s4')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CSV
+      </button>
     </div>
     <div id="table-s4"><div class="empty-state"><div class="empty-icon">🏦</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term investing setups.</p></div></div>
   </div>
@@ -487,7 +575,10 @@
 </main>
 
 <script>
+let currentResults = null;
 let pollTimer = null;
+let timerTicker = null;
+let scanStartTime = null;
 
 function tvLink(symbol) {
   return `https://www.tradingview.com/chart/?symbol=NSE%3A${symbol}`;
@@ -506,14 +597,22 @@ function chip(val, type) {
   return `<span class="chip chip-${type}">${val}</span>`;
 }
 
-function renderTable(id, rows, columns) {
+function renderTable(id, rows, columns, isScanning) {
   const el = document.getElementById(`table-${id}`);
   if (!rows || rows.length === 0) {
-    el.innerHTML = `<div class="empty-state">
-      <div class="empty-icon">🔍</div>
-      <h3>No stocks matched</h3>
-      <p>No stocks passed all filters today. Try again after the next session.</p>
-    </div>`;
+    if (isScanning) {
+      el.innerHTML = `<div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>Scanning in progress...</h3>
+        <p>Checking stocks in real-time. Matches will appear here as they are found.</p>
+      </div>`;
+    } else {
+      el.innerHTML = `<div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3>No stocks matched</h3>
+        <p>No stocks passed all filters today. Try again after the next session.</p>
+      </div>`;
+    }
     return;
   }
 
@@ -528,7 +627,10 @@ function renderTable(id, rows, columns) {
   el.innerHTML = html;
 }
 
-function renderAllResults(data) {
+function renderAllResults(data, isScanning = false) {
+  if (!data) return;
+  currentResults = data;
+
   // S1
   renderTable('s1', data.s1, [
     { label: 'Symbol',       render: r => symCell(r.symbol) },
@@ -538,7 +640,7 @@ function renderAllResults(data) {
     { label: 'Rel Vol',      render: r => chip(r.rel_vol + 'x', 'blue') },
     { label: 'Chg from Open',render: r => chip((r.chg_open > 0 ? '+' : '') + r.chg_open + '%', r.chg_open > 0 ? 'green' : 'red') },
     { label: 'Mkt Cap (B)',  render: r => `₹${r.mkt_cap}B` },
-  ]);
+  ], isScanning);
 
   // S2
   renderTable('s2', data.s2, [
@@ -548,7 +650,7 @@ function renderAllResults(data) {
     { label: 'Weekly RSI 14',  render: r => chip(r.rsi_w, r.rsi_w > 65 ? 'amber' : 'green') },
     { label: 'Weekly Chg',     render: r => chip((r.chg_open_w > 0 ? '+' : '') + r.chg_open_w + '%', r.chg_open_w > 0 ? 'green' : 'red') },
     { label: 'Mkt Cap (B)',    render: r => `₹${r.mkt_cap}B` },
-  ]);
+  ], isScanning);
 
   // S3
   renderTable('s3', data.s3, [
@@ -560,7 +662,7 @@ function renderAllResults(data) {
     { label: 'Vol Chg',       render: r => chip((r.vol_chg > 0 ? '+' : '') + r.vol_chg + '%', r.vol_chg > 0 ? 'green' : 'red') },
     { label: '52W High',      render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
     { label: 'Mkt Cap (B)',   render: r => `₹${r.mkt_cap}B` },
-  ]);
+  ], isScanning);
 
   // S4
   renderTable('s4', data.s4, [
@@ -571,7 +673,7 @@ function renderAllResults(data) {
     { label: 'Weekly Chg',    render: r => chip('+' + r.chg_open_w + '%', 'green') },
     { label: '52W High',      render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
     { label: 'Mkt Cap (B)',   render: r => `₹${r.mkt_cap}B` },
-  ]);
+  ], isScanning);
 
   // Badges + stats
   ['s1','s2','s3','s4'].forEach(id => {
@@ -581,8 +683,11 @@ function renderAllResults(data) {
   });
 
   document.getElementById('stats-bar').style.display = 'flex';
-  document.getElementById('scan-timestamp').style.display = 'block';
-  document.getElementById('scan-timestamp').textContent = `Last scan: ${data.timestamp}`;
+  if (data.timestamp) {
+    document.getElementById('scan-timestamp').style.display = 'block';
+    const runtimeHtml = data.elapsed_seconds ? `<span class="runtime-pill">⚡ Completed in ${data.elapsed_seconds}s</span>` : '';
+    document.getElementById('scan-timestamp').innerHTML = `Last scan: ${data.timestamp} ${runtimeHtml}`;
+  }
 }
 
 function startScan() {
@@ -593,11 +698,21 @@ function startScan() {
       document.getElementById('scanBtn').disabled = true;
       document.getElementById('scanBtn').innerHTML = '<span class="btn-icon">⏳</span> Scanning...';
       document.getElementById('progress-wrap').style.display = 'block';
+
+      // Start live stopwatch
+      scanStartTime = Date.now();
+      if (timerTicker) clearInterval(timerTicker);
+      timerTicker = setInterval(() => {
+        const sec = ((Date.now() - scanStartTime) / 1000).toFixed(1);
+        document.getElementById('progress-timer').textContent = `⏱️ ${sec}s`;
+      }, 100);
+
       pollProgress();
     });
 }
 
 function pollProgress() {
+  if (pollTimer) clearInterval(pollTimer);
   pollTimer = setInterval(() => {
     fetch('/progress')
       .then(r => r.json())
@@ -609,15 +724,31 @@ function pollProgress() {
         document.getElementById('progress-label').textContent =
           data.total > 0 ? `${data.done} / ${data.total} stocks` : 'Starting...';
 
+        // 1. Live stream matches as they are filtered during runtime:
+        if (data.results) {
+          renderAllResults(data.results, data.status === 'running');
+        }
+
+        // When scan completes:
         if (data.status === 'done') {
           clearInterval(pollTimer);
+          if (timerTicker) clearInterval(timerTicker);
+
           document.getElementById('progress-wrap').style.display = 'none';
           document.getElementById('scanBtn').disabled = false;
           document.getElementById('scanBtn').innerHTML = '<span class="btn-icon">⚡</span> Run Again';
-          if (data.results) renderAllResults(data.results);
+
+          const finalSec = data.elapsed || ((Date.now() - scanStartTime) / 1000).toFixed(1);
+          const timeMsg = `Last scan: ${data.results ? data.results.timestamp : 'Just now'} <span class="runtime-pill">⚡ Completed in ${finalSec}s</span>`;
+          document.getElementById('scan-timestamp').innerHTML = timeMsg;
+          document.getElementById('scan-timestamp').style.display = 'block';
+
+          if (data.results) {
+            renderAllResults(data.results, false);
+          }
         }
       });
-  }, 1500);
+  }, 1000);
 }
 
 function switchTab(id, el) {
@@ -625,6 +756,64 @@ function switchTab(id, el) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   document.getElementById(`panel-${id}`).classList.add('active');
+}
+
+// ─── CSV Export Functionality ────────────────────────────────────────────────
+
+function formatDateForFile() {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function exportCSV(screenerId) {
+  if (!currentResults || !currentResults[screenerId] || currentResults[screenerId].length === 0) {
+    alert("No matched stocks to export for this screener yet. Please wait for the scan to find matches.");
+    return;
+  }
+
+  const rows = currentResults[screenerId];
+  let csv = '';
+  let filename = '';
+  const dateStr = formatDateForFile();
+
+  if (screenerId === 's1') {
+    filename = `Signal_Breakout_Daily_${dateStr}.csv`;
+    csv = 'Symbol,Date,Price (INR),RSI 14,Rel Vol,Change from Open (%),Market Cap (B INR)\n';
+    rows.forEach(r => {
+      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi},${r.rel_vol},${r.chg_open},${r.mkt_cap}\n`;
+    });
+  } else if (screenerId === 's2') {
+    filename = `Signal_Breakout_Weekly_${dateStr}.csv`;
+    csv = 'Symbol,Date,Price (INR),Weekly RSI 14,Weekly Change (%),Market Cap (B INR)\n';
+    rows.forEach(r => {
+      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi_w},${r.chg_open_w},${r.mkt_cap}\n`;
+    });
+  } else if (screenerId === 's3') {
+    filename = `Signal_Trading_Scanner_${dateStr}.csv`;
+    csv = 'Symbol,Date,Price (INR),RSI 14,Change from Open (%),Volume Change (%),52W High (INR),Market Cap (B INR)\n';
+    rows.forEach(r => {
+      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi},${r.chg_open},${r.vol_chg},${r.high_52w},${r.mkt_cap}\n`;
+    });
+  } else if (screenerId === 's4') {
+    filename = `Signal_MT_Investing_${dateStr}.csv`;
+    csv = 'Symbol,Date,Price (INR),Weekly RSI 14,Weekly Change (%),52W High (INR),Market Cap (B INR)\n';
+    rows.forEach(r => {
+      csv += `"${r.symbol}","${r.date || ''}",${r.price},${r.rsi_w},${r.chg_open_w},${r.high_52w},${r.mkt_cap}\n`;
+    });
+  }
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
 </script>
 

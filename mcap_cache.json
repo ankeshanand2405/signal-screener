@@ -1,0 +1,8001 @@
+{
+  "updated_at": "2026-11-17 20:11:55",
+  "total_stocks": 1599,
+  "stocks": {
+    "RELIANCE": {
+      "shares": 13532472635,
+      "mcap_b": 18498.89,
+      "price": 1367.0
+    },
+    "BHARTIARTL": {
+      "shares": 6239448282,
+      "mcap_b": 13341.81,
+      "price": 2138.3
+    },
+    "JPL": {
+      "shares": 9209030830,
+      "mcap_b": 12854.89,
+      "price": 1395.9
+    },
+    "HDFCBANK": {
+      "shares": 15432293490,
+      "mcap_b": 12576.55,
+      "price": 814.95
+    },
+    "ICICIBANK": {
+      "shares": 7180851934,
+      "mcap_b": 11480.03,
+      "price": 1598.7
+    },
+    "SBIN": {
+      "shares": 9230617586,
+      "mcap_b": 10233.06,
+      "price": 1108.6
+    },
+    "TCS": {
+      "shares": 3618087518,
+      "mcap_b": 8707.29,
+      "price": 2406.6
+    },
+    "BAJFINANCE": {
+      "shares": 6223903929,
+      "mcap_b": 6977.62,
+      "price": 1121.1
+    },
+    "LT": {
+      "shares": 1375887184,
+      "mcap_b": 5717.5,
+      "price": 4155.5
+    },
+    "LICI": {
+      "shares": 12649995402,
+      "mcap_b": 5030.9,
+      "price": 397.7
+    },
+    "KOTAKBANK": {
+      "shares": 9948348458,
+      "mcap_b": 4946.82,
+      "price": 497.25
+    },
+    "HINDUNILVR": {
+      "shares": 2349591262,
+      "mcap_b": 4722.44,
+      "price": 2009.9
+    },
+    "INFY": {
+      "shares": 4050376561,
+      "mcap_b": 4576.93,
+      "price": 1130.0
+    },
+    "SUNPHARMA": {
+      "shares": 2399334970,
+      "mcap_b": 4486.76,
+      "price": 1870.0
+    },
+    "ADANIPORTS": {
+      "shares": 2303959098,
+      "mcap_b": 4416.69,
+      "price": 1917.0
+    },
+    "TITAN": {
+      "shares": 887312335,
+      "mcap_b": 4354.93,
+      "price": 4908.0
+    },
+    "AXISBANK": {
+      "shares": 3114474852,
+      "mcap_b": 4263.72,
+      "price": 1369.0
+    },
+    "M&M": {
+      "shares": 1200762264,
+      "mcap_b": 4081.39,
+      "price": 3399.0
+    },
+    "ADANIPOWER": {
+      "shares": 19284694705,
+      "mcap_b": 4012.57,
+      "price": 208.07
+    },
+    "MARUTI": {
+      "shares": 314402574,
+      "mcap_b": 3969.33,
+      "price": 12625.0
+    },
+    "ADANIENT": {
+      "shares": 1353722600,
+      "mcap_b": 3716.1,
+      "price": 2745.1
+    },
+    "ITC": {
+      "shares": 12532697881,
+      "mcap_b": 3675.84,
+      "price": 293.3
+    },
+    "HCLTECH": {
+      "shares": 2706625485,
+      "mcap_b": 3669.37,
+      "price": 1355.7
+    },
+    "ULTRACEMCO": {
+      "shares": 294064622,
+      "mcap_b": 3614.05,
+      "price": 12290.0
+    },
+    "ETERNAL": {
+      "shares": 9212774343,
+      "mcap_b": 3455.25,
+      "price": 375.05
+    },
+    "JSWSTEEL": {
+      "shares": 2441881468,
+      "mcap_b": 3252.59,
+      "price": 1332.0
+    },
+    "HAL": {
+      "shares": 668775000,
+      "mcap_b": 3161.3,
+      "price": 4727.0
+    },
+    "NTPC": {
+      "shares": 9696666134,
+      "mcap_b": 3120.39,
+      "price": 321.8
+    },
+    "BAJAJFINSV": {
+      "shares": 1600244726,
+      "mcap_b": 2993.74,
+      "price": 1870.8
+    },
+    "DIVISLAB": {
+      "shares": 265468580,
+      "mcap_b": 2959.97,
+      "price": 11150.0
+    },
+    "BAJAJ-AUTO": {
+      "shares": 274803838,
+      "mcap_b": 2959.64,
+      "price": 10770.0
+    },
+    "BEL": {
+      "shares": 7309778829,
+      "mcap_b": 2920.62,
+      "price": 399.55
+    },
+    "ONGC": {
+      "shares": 12580279206,
+      "mcap_b": 2811.94,
+      "price": 223.52
+    },
+    "ASIANPAINT": {
+      "shares": 958464572,
+      "mcap_b": 2515.97,
+      "price": 2625.0
+    },
+    "NESTLEIND": {
+      "shares": 1928314320,
+      "mcap_b": 2495.82,
+      "price": 1294.3
+    },
+    "COALINDIA": {
+      "shares": 6162728327,
+      "mcap_b": 2413.02,
+      "price": 391.55
+    },
+    "POWERGRID": {
+      "shares": 9300603819,
+      "mcap_b": 2399.56,
+      "price": 258.0
+    },
+    "ADANIGREEN": {
+      "shares": 1647176155,
+      "mcap_b": 2355.3,
+      "price": 1429.9
+    },
+    "HINDZINC": {
+      "shares": 4225319000,
+      "mcap_b": 2323.93,
+      "price": 550.0
+    },
+    "SHRIRAMFIN": {
+      "shares": 2353142257,
+      "mcap_b": 2312.79,
+      "price": 982.85
+    },
+    "TATASTEEL": {
+      "shares": 12471843241,
+      "mcap_b": 2263.64,
+      "price": 181.5
+    },
+    "DMART": {
+      "shares": 652310727,
+      "mcap_b": 2263.52,
+      "price": 3470.0
+    },
+    "INDIGO": {
+      "shares": 386667597,
+      "mcap_b": 2169.59,
+      "price": 5611.0
+    },
+    "EICHERMOT": {
+      "shares": 274547616,
+      "mcap_b": 2149.16,
+      "price": 7828.0
+    },
+    "TVSMOTOR": {
+      "shares": 475226252,
+      "mcap_b": 2122.46,
+      "price": 4466.2
+    },
+    "GRASIM": {
+      "shares": 678289362,
+      "mcap_b": 2072.04,
+      "price": 3054.8
+    },
+    "HINDALCO": {
+      "shares": 2219837078,
+      "mcap_b": 2059.45,
+      "price": 927.75
+    },
+    "IOC": {
+      "shares": 14121238383,
+      "mcap_b": 2055.49,
+      "price": 145.56
+    },
+    "DLF": {
+      "shares": 2475311706,
+      "mcap_b": 1895.97,
+      "price": 765.95
+    },
+    "WIPRO": {
+      "shares": 9893847135,
+      "mcap_b": 1878.74,
+      "price": 189.89
+    },
+    "ADANIENSOL": {
+      "shares": 1222954468,
+      "mcap_b": 1826.73,
+      "price": 1493.7
+    },
+    "SBILIFE": {
+      "shares": 1003409233,
+      "mcap_b": 1821.19,
+      "price": 1815.0
+    },
+    "TORNTPHARM": {
+      "shares": 380367856,
+      "mcap_b": 1775.86,
+      "price": 4668.8
+    },
+    "MOTHERSON": {
+      "shares": 10630641191,
+      "mcap_b": 1747.57,
+      "price": 164.39
+    },
+    "TECHM": {
+      "shares": 980205040,
+      "mcap_b": 1727.12,
+      "price": 1762.0
+    },
+    "PNB": {
+      "shares": 11492943268,
+      "mcap_b": 1723.94,
+      "price": 150.0
+    },
+    "HYUNDAI": {
+      "shares": 812541100,
+      "mcap_b": 1723.64,
+      "price": 2121.3
+    },
+    "SOLARINDS": {
+      "shares": 90490055,
+      "mcap_b": 1697.96,
+      "price": 18764.0
+    },
+    "TRENT": {
+      "shares": 533232301,
+      "mcap_b": 1693.71,
+      "price": 3176.3
+    },
+    "TMCV": {
+      "shares": 3682831333,
+      "mcap_b": 1641.25,
+      "price": 445.65
+    },
+    "CHOLAFIN": {
+      "shares": 857722071,
+      "mcap_b": 1616.55,
+      "price": 1884.7
+    },
+    "UNIONBANK": {
+      "shares": 7633605607,
+      "mcap_b": 1587.03,
+      "price": 207.9
+    },
+    "BSE": {
+      "shares": 406129077,
+      "mcap_b": 1569.65,
+      "price": 3864.9
+    },
+    "JIOFIN": {
+      "shares": 6853141623,
+      "mcap_b": 1569.1,
+      "price": 228.96
+    },
+    "PIDILITIND": {
+      "shares": 1018540168,
+      "mcap_b": 1563.05,
+      "price": 1534.6
+    },
+    "VAML": {
+      "shares": 3904155728,
+      "mcap_b": 1549.95,
+      "price": 397.0
+    },
+    "BHEL": {
+      "shares": 3482063355,
+      "mcap_b": 1499.55,
+      "price": 430.65
+    },
+    "ICICIAMC": {
+      "shares": 494258520,
+      "mcap_b": 1483.17,
+      "price": 3000.8
+    },
+    "ABB": {
+      "shares": 211908375,
+      "mcap_b": 1467.04,
+      "price": 6923.0
+    },
+    "VBL": {
+      "shares": 3382494644,
+      "mcap_b": 1454.47,
+      "price": 430.0
+    },
+    "TATACAP": {
+      "shares": 4216692745,
+      "mcap_b": 1452.23,
+      "price": 344.4
+    },
+    "BOSCHLTD": {
+      "shares": 29496100,
+      "mcap_b": 1447.82,
+      "price": 49085.0
+    },
+    "BANKBARODA": {
+      "shares": 5171362179,
+      "mcap_b": 1421.56,
+      "price": 274.89
+    },
+    "GROWW": {
+      "shares": 6210962527,
+      "mcap_b": 1413.18,
+      "price": 227.53
+    },
+    "POWERINDIA": {
+      "shares": 44572363,
+      "mcap_b": 1356.56,
+      "price": 30435.0
+    },
+    "IDEA": {
+      "shares": 108343035001,
+      "mcap_b": 1332.62,
+      "price": 12.3
+    },
+    "BPCL": {
+      "shares": 4338505488,
+      "mcap_b": 1326.71,
+      "price": 305.8
+    },
+    "HDFCLIFE": {
+      "shares": 2171923170,
+      "mcap_b": 1292.4,
+      "price": 595.05
+    },
+    "INDHOTEL": {
+      "shares": 1423432227,
+      "mcap_b": 1283.3,
+      "price": 901.55
+    },
+    "LENSKART": {
+      "shares": 1732486671,
+      "mcap_b": 1280.39,
+      "price": 739.05
+    },
+    "SIEMENS": {
+      "shares": 356120505,
+      "mcap_b": 1268.47,
+      "price": 3561.9
+    },
+    "BAJAJHLDNG": {
+      "shares": 111293510,
+      "mcap_b": 1266.97,
+      "price": 11384.0
+    },
+    "LAURUSLABS": {
+      "shares": 540312218,
+      "mcap_b": 1263.25,
+      "price": 2338.0
+    },
+    "CGPOWER": {
+      "shares": 1575491009,
+      "mcap_b": 1261.97,
+      "price": 801.0
+    },
+    "INDIANB": {
+      "shares": 1346963981,
+      "mcap_b": 1260.76,
+      "price": 936.0
+    },
+    "APOLLOHOSP": {
+      "shares": 143784657,
+      "mcap_b": 1252.72,
+      "price": 8712.5
+    },
+    "GAIL": {
+      "shares": 6575079643,
+      "mcap_b": 1229.54,
+      "price": 187.0
+    },
+    "LTM": {
+      "shares": 296496945,
+      "mcap_b": 1220.97,
+      "price": 4118.0
+    },
+    "PAYTM": {
+      "shares": 640177299,
+      "mcap_b": 1218.51,
+      "price": 1903.4
+    },
+    "CANBK": {
+      "shares": 9070651260,
+      "mcap_b": 1215.47,
+      "price": 134.0
+    },
+    "LODHA": {
+      "shares": 999250853,
+      "mcap_b": 1202.2,
+      "price": 1203.1
+    },
+    "ZYDUSLIFE": {
+      "shares": 997503832,
+      "mcap_b": 1201.19,
+      "price": 1204.2
+    },
+    "MARICO": {
+      "shares": 1297992656,
+      "mcap_b": 1199.35,
+      "price": 924.0
+    },
+    "MEESHO": {
+      "shares": 4631008781,
+      "mcap_b": 1169.98,
+      "price": 252.64
+    },
+    "LGEINDIA": {
+      "shares": 678772392,
+      "mcap_b": 1168.37,
+      "price": 1721.3
+    },
+    "POLYCAB": {
+      "shares": 150696473,
+      "mcap_b": 1160.66,
+      "price": 7702.0
+    },
+    "HDFCAMC": {
+      "shares": 429091378,
+      "mcap_b": 1158.12,
+      "price": 2699.0
+    },
+    "JINDALSTEL": {
+      "shares": 1017972361,
+      "mcap_b": 1157.94,
+      "price": 1137.5
+    },
+    "DRREDDY": {
+      "shares": 833664120,
+      "mcap_b": 1157.13,
+      "price": 1388.0
+    },
+    "BRITANNIA": {
+      "shares": 240868296,
+      "mcap_b": 1132.08,
+      "price": 4700.0
+    },
+    "CUMMINSIND": {
+      "shares": 277200000,
+      "mcap_b": 1126.82,
+      "price": 4065.0
+    },
+    "ABCAPITAL": {
+      "shares": 2738154735,
+      "mcap_b": 1126.75,
+      "price": 411.5
+    },
+    "CIPLA": {
+      "shares": 807888068,
+      "mcap_b": 1121.35,
+      "price": 1388.0
+    },
+    "GMRAIRPORT": {
+      "shares": 10660975952,
+      "mcap_b": 1114.07,
+      "price": 104.5
+    },
+    "GVT&D": {
+      "shares": 256046535,
+      "mcap_b": 1106.12,
+      "price": 4320.0
+    },
+    "MUTHOOTFIN": {
+      "shares": 401468476,
+      "mcap_b": 1103.64,
+      "price": 2749.0
+    },
+    "TATACONSUM": {
+      "shares": 989711569,
+      "mcap_b": 1100.96,
+      "price": 1112.4
+    },
+    "TATAPOWER": {
+      "shares": 3195339547,
+      "mcap_b": 1100.79,
+      "price": 344.5
+    },
+    "PFC": {
+      "shares": 3300101760,
+      "mcap_b": 1082.43,
+      "price": 328.0
+    },
+    "IRFC": {
+      "shares": 13068506000,
+      "mcap_b": 1080.11,
+      "price": 82.65
+    },
+    "MANKIND": {
+      "shares": 413045090,
+      "mcap_b": 1078.05,
+      "price": 2610.0
+    },
+    "ENRIN": {
+      "shares": 356120505,
+      "mcap_b": 1076.02,
+      "price": 3021.5
+    },
+    "HEROMOTOCO": {
+      "shares": 200161822,
+      "mcap_b": 1066.66,
+      "price": 5329.0
+    },
+    "INDUSTOWER": {
+      "shares": 2637976089,
+      "mcap_b": 1035.67,
+      "price": 392.6
+    },
+    "AUROPHARMA": {
+      "shares": 575377895,
+      "mcap_b": 1032.29,
+      "price": 1794.1
+    },
+    "NYKAA": {
+      "shares": 2865347823,
+      "mcap_b": 1025.79,
+      "price": 358.0
+    },
+    "UNITDSPR": {
+      "shares": 710055403,
+      "mcap_b": 1025.32,
+      "price": 1444.0
+    },
+    "MAXHEALTH": {
+      "shares": 973327054,
+      "mcap_b": 1003.4,
+      "price": 1030.9
+    },
+    "VEDL": {
+      "shares": 3904801732,
+      "mcap_b": 995.84,
+      "price": 255.03
+    },
+    "LLOYDSME": {
+      "shares": 562768815,
+      "mcap_b": 983.72,
+      "price": 1748.0
+    },
+    "PERSISTENT": {
+      "shares": 164592807,
+      "mcap_b": 972.91,
+      "price": 5911.0
+    },
+    "AMBUJACEM": {
+      "shares": 2484817186,
+      "mcap_b": 969.58,
+      "price": 390.2
+    },
+    "TMPV": {
+      "shares": 3683044911,
+      "mcap_b": 954.65,
+      "price": 259.2
+    },
+    "JSWENERGY": {
+      "shares": 1833011884,
+      "mcap_b": 943.82,
+      "price": 514.9
+    },
+    "MCX": {
+      "shares": 254514090,
+      "mcap_b": 943.08,
+      "price": 3705.4
+    },
+    "ASHOKLEY": {
+      "shares": 5873854552,
+      "mcap_b": 942.75,
+      "price": 160.5
+    },
+    "GODREJCP": {
+      "shares": 1023462075,
+      "mcap_b": 915.49,
+      "price": 894.5
+    },
+    "COFORGE": {
+      "shares": 443062864,
+      "mcap_b": 904.29,
+      "price": 2041.0
+    },
+    "FEDERALBNK": {
+      "shares": 2470738250,
+      "mcap_b": 903.8,
+      "price": 365.8
+    },
+    "SHREECEM": {
+      "shares": 36080748,
+      "mcap_b": 898.41,
+      "price": 24900.0
+    },
+    "LUPIN": {
+      "shares": 457293005,
+      "mcap_b": 891.72,
+      "price": 1950.0
+    },
+    "IDBI": {
+      "shares": 10752402175,
+      "mcap_b": 852.45,
+      "price": 79.28
+    },
+    "OFSS": {
+      "shares": 87136622,
+      "mcap_b": 848.8,
+      "price": 9741.0
+    },
+    "ICICIGI": {
+      "shares": 499679782,
+      "mcap_b": 846.21,
+      "price": 1693.5
+    },
+    "BHARATFORG": {
+      "shares": 488670642,
+      "mcap_b": 837.92,
+      "price": 1714.7
+    },
+    "BHARTIHEXA": {
+      "shares": 500000000,
+      "mcap_b": 836.35,
+      "price": 1672.7
+    },
+    "HINDPETRO": {
+      "shares": 2127822517,
+      "mcap_b": 828.89,
+      "price": 389.55
+    },
+    "UNOMINDA": {
+      "shares": 577467206,
+      "mcap_b": 801.58,
+      "price": 1388.1
+    },
+    "DIXON": {
+      "shares": 61170586,
+      "mcap_b": 800.17,
+      "price": 13081.0
+    },
+    "PHOENIXLTD": {
+      "shares": 357692154,
+      "mcap_b": 797.3,
+      "price": 2229.0
+    },
+    "JSWINFRA": {
+      "shares": 2326114941,
+      "mcap_b": 788.79,
+      "price": 339.1
+    },
+    "RECLTD": {
+      "shares": 2633224000,
+      "mcap_b": 784.7,
+      "price": 298.0
+    },
+    "NAUKRI": {
+      "shares": 648006892,
+      "mcap_b": 761.41,
+      "price": 1175.0
+    },
+    "ATHERENERG": {
+      "shares": 396886441,
+      "mcap_b": 757.5,
+      "price": 1908.6
+    },
+    "NHPC": {
+      "shares": 10045034805,
+      "mcap_b": 751.37,
+      "price": 74.8
+    },
+    "MOTILALOFS": {
+      "shares": 602977213,
+      "mcap_b": 747.84,
+      "price": 1240.25
+    },
+    "MAZDOCK": {
+      "shares": 403380000,
+      "mcap_b": 745.04,
+      "price": 1847.0
+    },
+    "AUBANK": {
+      "shares": 749415850,
+      "mcap_b": 744.24,
+      "price": 993.1
+    },
+    "MAHABANK": {
+      "shares": 7691554950,
+      "mcap_b": 738.31,
+      "price": 95.99
+    },
+    "GLENMARK": {
+      "shares": 282224672,
+      "mcap_b": 738.24,
+      "price": 2615.8
+    },
+    "HAVELLS": {
+      "shares": 627561652,
+      "mcap_b": 737.38,
+      "price": 1175.0
+    },
+    "SRF": {
+      "shares": 296406025,
+      "mcap_b": 734.91,
+      "price": 2479.4
+    },
+    "PRESTIGE": {
+      "shares": 430730232,
+      "mcap_b": 728.58,
+      "price": 1691.5
+    },
+    "INDUSINDBK": {
+      "shares": 779144712,
+      "mcap_b": 725.38,
+      "price": 931.0
+    },
+    "BANKINDIA": {
+      "shares": 4552667866,
+      "mcap_b": 725.15,
+      "price": 159.28
+    },
+    "IDFCFIRSTB": {
+      "shares": 8628371289,
+      "mcap_b": 721.25,
+      "price": 83.59
+    },
+    "SAIL": {
+      "shares": 4130525289,
+      "mcap_b": 707.6,
+      "price": 171.31
+    },
+    "OIL": {
+      "shares": 1626607791,
+      "mcap_b": 705.13,
+      "price": 433.5
+    },
+    "KALYANKJIL": {
+      "shares": 1032750972,
+      "mcap_b": 705.11,
+      "price": 682.75
+    },
+    "LTF": {
+      "shares": 2506454696,
+      "mcap_b": 702.56,
+      "price": 280.3
+    },
+    "WAAREEENER": {
+      "shares": 287651335,
+      "mcap_b": 702.3,
+      "price": 2441.5
+    },
+    "NTPCGREEN": {
+      "shares": 8426329669,
+      "mcap_b": 699.3,
+      "price": 82.99
+    },
+    "NAM-INDIA": {
+      "shares": 640144695,
+      "mcap_b": 694.88,
+      "price": 1085.5
+    },
+    "BAJAJHFL": {
+      "shares": 8329000835,
+      "mcap_b": 690.39,
+      "price": 82.89
+    },
+    "DABUR": {
+      "shares": 1774065197,
+      "mcap_b": 681.77,
+      "price": 384.3
+    },
+    "OBEROIRLTY": {
+      "shares": 363602237,
+      "mcap_b": 661.65,
+      "price": 1819.7
+    },
+    "ICICILIFE": {
+      "shares": 1451230779,
+      "mcap_b": 657.7,
+      "price": 453.2
+    },
+    "ASTERDM": {
+      "shares": 870673545,
+      "mcap_b": 642.51,
+      "price": 737.95
+    },
+    "ATGL": {
+      "shares": 1099810083,
+      "mcap_b": 634.76,
+      "price": 577.15
+    },
+    "RADICO": {
+      "shares": 133989065,
+      "mcap_b": 624.78,
+      "price": 4662.9
+    },
+    "ALKEM": {
+      "shares": 119565000,
+      "mcap_b": 618.75,
+      "price": 5175.0
+    },
+    "TORNTPOWER": {
+      "shares": 503903543,
+      "mcap_b": 612.75,
+      "price": 1216.0
+    },
+    "IOB": {
+      "shares": 19256589795,
+      "mcap_b": 609.86,
+      "price": 31.67
+    },
+    "NMDC": {
+      "shares": 8791817550,
+      "mcap_b": 609.27,
+      "price": 69.3
+    },
+    "FORTIS": {
+      "shares": 754958148,
+      "mcap_b": 609.1,
+      "price": 806.8
+    },
+    "APLAPOLLO": {
+      "shares": 277658405,
+      "mcap_b": 607.66,
+      "price": 2188.5
+    },
+    "RBLBANK": {
+      "shares": 1552995353,
+      "mcap_b": 605.82,
+      "price": 390.1
+    },
+    "JSL": {
+      "shares": 823949824,
+      "mcap_b": 603.09,
+      "price": 731.95
+    },
+    "INDOMIM": {
+      "shares": 494480907,
+      "mcap_b": 602.03,
+      "price": 1217.5
+    },
+    "GICRE": {
+      "shares": 1754400000,
+      "mcap_b": 600.27,
+      "price": 342.15
+    },
+    "WELCORP": {
+      "shares": 263703928,
+      "mcap_b": 596.02,
+      "price": 2260.2
+    },
+    "APARINDS": {
+      "shares": 41872337,
+      "mcap_b": 593.37,
+      "price": 14171.0
+    },
+    "NATIONALUM": {
+      "shares": 1836631787,
+      "mcap_b": 589.38,
+      "price": 320.9
+    },
+    "BIOCON": {
+      "shares": 1637753969,
+      "mcap_b": 588.61,
+      "price": 359.4
+    },
+    "LINDEINDIA": {
+      "shares": 85284223,
+      "mcap_b": 587.27,
+      "price": 6886.0
+    },
+    "COROMANDEL": {
+      "shares": 294541099,
+      "mcap_b": 581.28,
+      "price": 1973.5
+    },
+    "SCHAEFFLER": {
+      "shares": 156303670,
+      "mcap_b": 571.12,
+      "price": 3653.9
+    },
+    "GODREJPROP": {
+      "shares": 301226497,
+      "mcap_b": 570.04,
+      "price": 1892.4
+    },
+    "SONACOMS": {
+      "shares": 625177395,
+      "mcap_b": 562.47,
+      "price": 899.7
+    },
+    "YESBANK": {
+      "shares": 31390750248,
+      "mcap_b": 560.32,
+      "price": 17.85
+    },
+    "BERGEPAINT": {
+      "shares": 1166002812,
+      "mcap_b": 558.4,
+      "price": 478.9
+    },
+    "ABBOTINDIA": {
+      "shares": 21249302,
+      "mcap_b": 548.55,
+      "price": 25815.0
+    },
+    "SBICARD": {
+      "shares": 951649343,
+      "mcap_b": 546.72,
+      "price": 574.5
+    },
+    "MRF": {
+      "shares": 4241143,
+      "mcap_b": 546.43,
+      "price": 128840.0
+    },
+    "GLAND": {
+      "shares": 165014593,
+      "mcap_b": 536.03,
+      "price": 3248.4
+    },
+    "FLUOROCHEM": {
+      "shares": 109850000,
+      "mcap_b": 522.01,
+      "price": 4752.0
+    },
+    "ANTHEM": {
+      "shares": 563528045,
+      "mcap_b": 520.84,
+      "price": 924.25
+    },
+    "360ONE": {
+      "shares": 428878523,
+      "mcap_b": 515.88,
+      "price": 1202.85
+    },
+    "TATACOMM": {
+      "shares": 285141602,
+      "mcap_b": 513.88,
+      "price": 1802.2
+    },
+    "SUZLON": {
+      "shares": 13746623362,
+      "mcap_b": 511.24,
+      "price": 37.19
+    },
+    "FACT": {
+      "shares": 647071974,
+      "mcap_b": 509.47,
+      "price": 787.35
+    },
+    "NAVINFLUOR": {
+      "shares": 51331614,
+      "mcap_b": 503.82,
+      "price": 9815.0
+    },
+    "PIRAMALFIN": {
+      "shares": 237128214,
+      "mcap_b": 498.11,
+      "price": 2100.6
+    },
+    "SWIGGY": {
+      "shares": 2622851359,
+      "mcap_b": 494.41,
+      "price": 188.5
+    },
+    "MFSL": {
+      "shares": 345114771,
+      "mcap_b": 493.86,
+      "price": 1431.0
+    },
+    "PETRONET": {
+      "shares": 1500000088,
+      "mcap_b": 492.15,
+      "price": 328.1
+    },
+    "CUPID": {
+      "shares": 1344660700,
+      "mcap_b": 491.94,
+      "price": 365.85
+    },
+    "CPPLUS": {
+      "shares": 122675042,
+      "mcap_b": 489.38,
+      "price": 3989.2
+    },
+    "POLICYBZR": {
+      "shares": 464524891,
+      "mcap_b": 488.73,
+      "price": 1052.1
+    },
+    "AIIL": {
+      "shares": 849225500,
+      "mcap_b": 482.78,
+      "price": 568.5
+    },
+    "SUNDARMFIN": {
+      "shares": 110217571,
+      "mcap_b": 480.33,
+      "price": 4358.0
+    },
+    "HDBFS": {
+      "shares": 828872353,
+      "mcap_b": 475.44,
+      "price": 573.6
+    },
+    "COLPAL": {
+      "shares": 271985634,
+      "mcap_b": 467.73,
+      "price": 1719.7
+    },
+    "MPHASIS": {
+      "shares": 191023508,
+      "mcap_b": 467.05,
+      "price": 2445.0
+    },
+    "UPL": {
+      "shares": 845284163,
+      "mcap_b": 466.34,
+      "price": 551.7
+    },
+    "IPCALAB": {
+      "shares": 253704218,
+      "mcap_b": 465.4,
+      "price": 1834.4
+    },
+    "GLAXO": {
+      "shares": 169406034,
+      "mcap_b": 455.3,
+      "price": 2687.6
+    },
+    "BALKRISIND": {
+      "shares": 193317190,
+      "mcap_b": 449.73,
+      "price": 2326.4
+    },
+    "LTTS": {
+      "shares": 106094768,
+      "mcap_b": 446.45,
+      "price": 4208.0
+    },
+    "EMCURE": {
+      "shares": 189710647,
+      "mcap_b": 443.81,
+      "price": 2339.4
+    },
+    "PATANJALI": {
+      "shares": 1088108595,
+      "mcap_b": 440.47,
+      "price": 404.8
+    },
+    "VMM": {
+      "shares": 4684808639,
+      "mcap_b": 435.64,
+      "price": 92.99
+    },
+    "POONAWALLA": {
+      "shares": 880632427,
+      "mcap_b": 432.08,
+      "price": 490.65
+    },
+    "TIINDIA": {
+      "shares": 193572320,
+      "mcap_b": 431.82,
+      "price": 2230.8
+    },
+    "AEGISLOG": {
+      "shares": 351000000,
+      "mcap_b": 425.27,
+      "price": 1211.6
+    },
+    "HINDCOPPER": {
+      "shares": 967024020,
+      "mcap_b": 417.71,
+      "price": 431.95
+    },
+    "KPRMILL": {
+      "shares": 342522549,
+      "mcap_b": 416.88,
+      "price": 1217.1
+    },
+    "AJANTPHARM": {
+      "shares": 124959024,
+      "mcap_b": 413.93,
+      "price": 3312.5
+    },
+    "SUPREMEIND": {
+      "shares": 127081790,
+      "mcap_b": 410.64,
+      "price": 3231.3
+    },
+    "RVNL": {
+      "shares": 2085020100,
+      "mcap_b": 407.62,
+      "price": 195.5
+    },
+    "M&MFIN": {
+      "shares": 1389624195,
+      "mcap_b": 404.73,
+      "price": 291.25
+    },
+    "JKCEMENT": {
+      "shares": 77268251,
+      "mcap_b": 404.69,
+      "price": 5237.5
+    },
+    "ANANDRATHI": {
+      "shares": 166041268,
+      "mcap_b": 394.4,
+      "price": 2375.3
+    },
+    "MEDANTA": {
+      "shares": 268877532,
+      "mcap_b": 388.31,
+      "price": 1444.2
+    },
+    "NH": {
+      "shares": 203099835,
+      "mcap_b": 387.43,
+      "price": 1907.6
+    },
+    "KARURVYSYA": {
+      "shares": 966667248,
+      "mcap_b": 380.38,
+      "price": 393.5
+    },
+    "VOLTAS": {
+      "shares": 330884740,
+      "mcap_b": 380.15,
+      "price": 1148.9
+    },
+    "PTCIL": {
+      "shares": 15847249,
+      "mcap_b": 379.54,
+      "price": 23950.0
+    },
+    "PWL": {
+      "shares": 2910143512,
+      "mcap_b": 378.52,
+      "price": 130.07
+    },
+    "BDL": {
+      "shares": 366562500,
+      "mcap_b": 376.5,
+      "price": 1027.1
+    },
+    "PREMIERENE": {
+      "shares": 451556522,
+      "mcap_b": 376.15,
+      "price": 833.0
+    },
+    "SAILIFE": {
+      "shares": 212472716,
+      "mcap_b": 372.15,
+      "price": 1751.5
+    },
+    "ITCHOTELS": {
+      "shares": 2083196414,
+      "mcap_b": 370.41,
+      "price": 177.81
+    },
+    "GODREJIND": {
+      "shares": 336851055,
+      "mcap_b": 369.0,
+      "price": 1095.45
+    },
+    "KEI": {
+      "shares": 95645595,
+      "mcap_b": 368.33,
+      "price": 3851.0
+    },
+    "SHYAMMETL": {
+      "shares": 278382372,
+      "mcap_b": 367.77,
+      "price": 1321.1
+    },
+    "IRCTC": {
+      "shares": 800000000,
+      "mcap_b": 359.48,
+      "price": 449.35
+    },
+    "ENDURANCE": {
+      "shares": 140662848,
+      "mcap_b": 352.52,
+      "price": 2506.1
+    },
+    "NUVAMA": {
+      "shares": 184549601,
+      "mcap_b": 348.49,
+      "price": 1888.3
+    },
+    "PAGEIND": {
+      "shares": 11153874,
+      "mcap_b": 346.94,
+      "price": 31105.0
+    },
+    "DELHIVERY": {
+      "shares": 749522485,
+      "mcap_b": 343.24,
+      "price": 457.95
+    },
+    "LICHSGFIN": {
+      "shares": 550063000,
+      "mcap_b": 342.41,
+      "price": 622.5
+    },
+    "CONCOR": {
+      "shares": 761617935,
+      "mcap_b": 336.56,
+      "price": 441.9
+    },
+    "ASTRAL": {
+      "shares": 268650163,
+      "mcap_b": 333.82,
+      "price": 1242.6
+    },
+    "LALPATHLAB": {
+      "shares": 167210720,
+      "mcap_b": 331.11,
+      "price": 1980.2
+    },
+    "BLUESTARCO": {
+      "shares": 205592636,
+      "mcap_b": 330.59,
+      "price": 1608.0
+    },
+    "IREDA": {
+      "shares": 2809231268,
+      "mcap_b": 329.8,
+      "price": 117.4
+    },
+    "WOCKPHARMA": {
+      "shares": 162512169,
+      "mcap_b": 326.47,
+      "price": 2008.9
+    },
+    "HUDCO": {
+      "shares": 2001900000,
+      "mcap_b": 326.45,
+      "price": 163.07
+    },
+    "NLCINDIA": {
+      "shares": 1386636609,
+      "mcap_b": 325.61,
+      "price": 234.82
+    },
+    "EXIDEIND": {
+      "shares": 850000000,
+      "mcap_b": 323.13,
+      "price": 380.15
+    },
+    "STARHEALTH": {
+      "shares": 588403502,
+      "mcap_b": 323.12,
+      "price": 549.15
+    },
+    "ACUTAAS": {
+      "shares": 81871122,
+      "mcap_b": 322.81,
+      "price": 3942.9
+    },
+    "KIMS": {
+      "shares": 420006484,
+      "mcap_b": 322.69,
+      "price": 768.3
+    },
+    "DHOOTTRANS": {
+      "shares": 204611057,
+      "mcap_b": 322.12,
+      "price": 1574.3
+    },
+    "ANGELONE": {
+      "shares": 915119718,
+      "mcap_b": 320.11,
+      "price": 349.8
+    },
+    "PPLPHARMA": {
+      "shares": 1326084535,
+      "mcap_b": 319.19,
+      "price": 240.7
+    },
+    "UBL": {
+      "shares": 264405149,
+      "mcap_b": 319.06,
+      "price": 1206.7
+    },
+    "3MINDIA": {
+      "shares": 11265070,
+      "mcap_b": 314.35,
+      "price": 27905.0
+    },
+    "CRISIL": {
+      "shares": 73130017,
+      "mcap_b": 312.49,
+      "price": 4273.1
+    },
+    "UCOBANK": {
+      "shares": 12539558979,
+      "mcap_b": 311.98,
+      "price": 24.88
+    },
+    "AEGISVOPAK": {
+      "shares": 1107991489,
+      "mcap_b": 309.64,
+      "price": 279.46
+    },
+    "THERMAX": {
+      "shares": 112648671,
+      "mcap_b": 308.41,
+      "price": 2737.8
+    },
+    "TATAINVEST": {
+      "shares": 505952960,
+      "mcap_b": 308.4,
+      "price": 609.55
+    },
+    "MRPL": {
+      "shares": 1752598777,
+      "mcap_b": 305.37,
+      "price": 174.24
+    },
+    "AIAENG": {
+      "shares": 93320370,
+      "mcap_b": 302.52,
+      "price": 3241.7
+    },
+    "COCHINSHIP": {
+      "shares": 263080780,
+      "mcap_b": 301.75,
+      "price": 1147.0
+    },
+    "CDSL": {
+      "shares": 209000000,
+      "mcap_b": 300.92,
+      "price": 1439.8
+    },
+    "HEXT": {
+      "shares": 608926377,
+      "mcap_b": 298.77,
+      "price": 490.65
+    },
+    "ASAHIINDIA": {
+      "shares": 254927192,
+      "mcap_b": 297.37,
+      "price": 1166.5
+    },
+    "PNBHOUSING": {
+      "shares": 260803913,
+      "mcap_b": 296.79,
+      "price": 1138.0
+    },
+    "CENTRALBK": {
+      "shares": 9051401274,
+      "mcap_b": 295.08,
+      "price": 32.6
+    },
+    "CRAFTSMAN": {
+      "shares": 26154433,
+      "mcap_b": 292.8,
+      "price": 11195.0
+    },
+    "SANSERA": {
+      "shares": 62417757,
+      "mcap_b": 288.03,
+      "price": 4614.6
+    },
+    "GABRIEL": {
+      "shares": 191634227,
+      "mcap_b": 287.24,
+      "price": 1498.9
+    },
+    "DALBHARAT": {
+      "shares": 187728794,
+      "mcap_b": 286.16,
+      "price": 1524.3
+    },
+    "ACMESOLAR": {
+      "shares": 705984700,
+      "mcap_b": 284.94,
+      "price": 403.6
+    },
+    "HSCL": {
+      "shares": 504574175,
+      "mcap_b": 283.19,
+      "price": 561.25
+    },
+    "BANDHANBNK": {
+      "shares": 1611154806,
+      "mcap_b": 281.34,
+      "price": 174.62
+    },
+    "JUBLFOOD": {
+      "shares": 657674557,
+      "mcap_b": 281.16,
+      "price": 427.5
+    },
+    "GODFRYPHLP": {
+      "shares": 155973885,
+      "mcap_b": 278.88,
+      "price": 1788.0
+    },
+    "RUBICON": {
+      "shares": 165539108,
+      "mcap_b": 278.75,
+      "price": 1683.9
+    },
+    "MANAPPURAM": {
+      "shares": 939336102,
+      "mcap_b": 278.61,
+      "price": 296.6
+    },
+    "SYRMA": {
+      "shares": 192624977,
+      "mcap_b": 276.2,
+      "price": 1433.9
+    },
+    "NEULANDLAB": {
+      "shares": 12829889,
+      "mcap_b": 275.14,
+      "price": 21445.0
+    },
+    "IKS": {
+      "shares": 167757449,
+      "mcap_b": 273.46,
+      "price": 1630.1
+    },
+    "IIFL": {
+      "shares": 427009413,
+      "mcap_b": 271.75,
+      "price": 636.4
+    },
+    "CHOLAHLDNG": {
+      "shares": 187777462,
+      "mcap_b": 270.1,
+      "price": 1438.4
+    },
+    "HONAUT": {
+      "shares": 8847359,
+      "mcap_b": 270.02,
+      "price": 30520.0
+    },
+    "REDINGTON": {
+      "shares": 781774431,
+      "mcap_b": 268.23,
+      "price": 343.1
+    },
+    "TATATECH": {
+      "shares": 406051830,
+      "mcap_b": 267.91,
+      "price": 659.8
+    },
+    "ABSLAMC": {
+      "shares": 289415641,
+      "mcap_b": 267.46,
+      "price": 924.15
+    },
+    "APOLLOTYRE": {
+      "shares": 632581334,
+      "mcap_b": 264.86,
+      "price": 418.7
+    },
+    "ESCORTS": {
+      "shares": 110041919,
+      "mcap_b": 264.27,
+      "price": 2401.5
+    },
+    "MSUMI": {
+      "shares": 6631661898,
+      "mcap_b": 262.95,
+      "price": 39.65
+    },
+    "FORCEMOT": {
+      "shares": 13176262,
+      "mcap_b": 262.8,
+      "price": 19945.0
+    },
+    "SUNTV": {
+      "shares": 394084620,
+      "mcap_b": 259.98,
+      "price": 659.7
+    },
+    "NIACL": {
+      "shares": 1648000000,
+      "mcap_b": 254.75,
+      "price": 154.58
+    },
+    "PIIND": {
+      "shares": 151706138,
+      "mcap_b": 253.65,
+      "price": 1672.0
+    },
+    "WELSPUNLIV": {
+      "shares": 941445014,
+      "mcap_b": 250.07,
+      "price": 265.62
+    },
+    "CEMPRO": {
+      "shares": 184422963,
+      "mcap_b": 249.4,
+      "price": 1352.3
+    },
+    "ZFCVINDIA": {
+      "shares": 113805504,
+      "mcap_b": 247.83,
+      "price": 2177.7
+    },
+    "ITI": {
+      "shares": 962851967,
+      "mcap_b": 242.33,
+      "price": 251.68
+    },
+    "GRSE": {
+      "shares": 114552000,
+      "mcap_b": 241.4,
+      "price": 2107.3
+    },
+    "NETWEB": {
+      "shares": 59447551,
+      "mcap_b": 240.96,
+      "price": 4053.4
+    },
+    "SCHNEIDER": {
+      "shares": 239104035,
+      "mcap_b": 240.92,
+      "price": 1007.6
+    },
+    "URBANCO": {
+      "shares": 1482792164,
+      "mcap_b": 239.66,
+      "price": 161.63
+    },
+    "KIRLOSENG": {
+      "shares": 145570083,
+      "mcap_b": 239.65,
+      "price": 1646.3
+    },
+    "TIMKEN": {
+      "shares": 75218734,
+      "mcap_b": 236.83,
+      "price": 3148.5
+    },
+    "JYOTICNC": {
+      "shares": 227423096,
+      "mcap_b": 236.8,
+      "price": 1041.25
+    },
+    "DATAPATTNS": {
+      "shares": 55983969,
+      "mcap_b": 236.02,
+      "price": 4215.9
+    },
+    "ACC": {
+      "shares": 187787263,
+      "mcap_b": 234.4,
+      "price": 1248.2
+    },
+    "CGCL": {
+      "shares": 962153962,
+      "mcap_b": 231.49,
+      "price": 240.6
+    },
+    "GILLETTE": {
+      "shares": 32585217,
+      "mcap_b": 231.31,
+      "price": 7098.5
+    },
+    "TATAELXSI": {
+      "shares": 62306417,
+      "mcap_b": 231.2,
+      "price": 3710.7
+    },
+    "HATSUN": {
+      "shares": 222748268,
+      "mcap_b": 231.08,
+      "price": 1037.4
+    },
+    "CUB": {
+      "shares": 990787237,
+      "mcap_b": 230.26,
+      "price": 232.4
+    },
+    "BELRISE": {
+      "shares": 967151919,
+      "mcap_b": 227.92,
+      "price": 235.66
+    },
+    "KPIL": {
+      "shares": 170772546,
+      "mcap_b": 227.52,
+      "price": 1332.3
+    },
+    "AFFLE": {
+      "shares": 143671600,
+      "mcap_b": 227.12,
+      "price": 1580.8
+    },
+    "GODIGIT": {
+      "shares": 925146582,
+      "mcap_b": 225.97,
+      "price": 244.25
+    },
+    "THELEELA": {
+      "shares": 333957878,
+      "mcap_b": 225.86,
+      "price": 676.3
+    },
+    "GRANULES": {
+      "shares": 272779827,
+      "mcap_b": 222.45,
+      "price": 815.5
+    },
+    "ABDL": {
+      "shares": 279710151,
+      "mcap_b": 221.43,
+      "price": 791.65
+    },
+    "AETHER": {
+      "shares": 132735824,
+      "mcap_b": 220.7,
+      "price": 1662.7
+    },
+    "SUNDRMFAST": {
+      "shares": 210128371,
+      "mcap_b": 220.42,
+      "price": 1049.0
+    },
+    "AMBER": {
+      "shares": 35267767,
+      "mcap_b": 220.26,
+      "price": 6245.5
+    },
+    "SJVN": {
+      "shares": 3929795175,
+      "mcap_b": 219.6,
+      "price": 55.88
+    },
+    "DIACABS": {
+      "shares": 598071060,
+      "mcap_b": 218.8,
+      "price": 365.85
+    },
+    "HBLENGINE": {
+      "shares": 277194946,
+      "mcap_b": 217.83,
+      "price": 785.85
+    },
+    "AWL": {
+      "shares": 1291817635,
+      "mcap_b": 217.57,
+      "price": 168.42
+    },
+    "PFOCUS": {
+      "shares": 778773880,
+      "mcap_b": 217.28,
+      "price": 279.0
+    },
+    "DEEPAKNTR": {
+      "shares": 136393041,
+      "mcap_b": 216.88,
+      "price": 1590.1
+    },
+    "IRB": {
+      "shares": 12078000000,
+      "mcap_b": 216.8,
+      "price": 17.95
+    },
+    "NBCC": {
+      "shares": 2700000000,
+      "mcap_b": 211.98,
+      "price": 78.51
+    },
+    "GUJENERGY": {
+      "shares": 938230849,
+      "mcap_b": 210.18,
+      "price": 224.02
+    },
+    "RRKABEL": {
+      "shares": 113105505,
+      "mcap_b": 210.15,
+      "price": 1858.0
+    },
+    "CHENNPETRO": {
+      "shares": 148911400,
+      "mcap_b": 210.02,
+      "price": 1410.4
+    },
+    "GESHIP": {
+      "shares": 134133923,
+      "mcap_b": 207.71,
+      "price": 1548.5
+    },
+    "IGL": {
+      "shares": 1400001600,
+      "mcap_b": 207.47,
+      "price": 148.19
+    },
+    "APLLTD": {
+      "shares": 196563124,
+      "mcap_b": 206.52,
+      "price": 1050.65
+    },
+    "SAGILITY": {
+      "shares": 4681328413,
+      "mcap_b": 205.46,
+      "price": 43.89
+    },
+    "GRINDWELL": {
+      "shares": 110720000,
+      "mcap_b": 203.5,
+      "price": 1838.0
+    },
+    "KIOCL": {
+      "shares": 607751097,
+      "mcap_b": 201.26,
+      "price": 331.15
+    },
+    "SHRIPISTON": {
+      "shares": 46386272,
+      "mcap_b": 200.49,
+      "price": 4322.1
+    },
+    "TDPOWERSYS": {
+      "shares": 321448795,
+      "mcap_b": 199.59,
+      "price": 620.9
+    },
+    "FSL": {
+      "shares": 691884622,
+      "mcap_b": 198.02,
+      "price": 286.2
+    },
+    "PINELABS": {
+      "shares": 1154748812,
+      "mcap_b": 197.97,
+      "price": 171.44
+    },
+    "IGIL": {
+      "shares": 432159696,
+      "mcap_b": 194.73,
+      "price": 450.6
+    },
+    "RAMCOCEM": {
+      "shares": 236292380,
+      "mcap_b": 194.54,
+      "price": 823.3
+    },
+    "EIHOTEL": {
+      "shares": 625364182,
+      "mcap_b": 194.14,
+      "price": 310.45
+    },
+    "CARBORUNIV": {
+      "shares": 190510134,
+      "mcap_b": 193.2,
+      "price": 1014.1
+    },
+    "KAYNES": {
+      "shares": 67222491,
+      "mcap_b": 192.12,
+      "price": 2858.0
+    },
+    "AADHARHFC": {
+      "shares": 438840539,
+      "mcap_b": 189.73,
+      "price": 432.35
+    },
+    "CASTROLIND": {
+      "shares": 989122384,
+      "mcap_b": 189.01,
+      "price": 191.09
+    },
+    "ERIS": {
+      "shares": 138738569,
+      "mcap_b": 188.86,
+      "price": 1361.3
+    },
+    "EMMVEE": {
+      "shares": 692345033,
+      "mcap_b": 188.76,
+      "price": 272.64
+    },
+    "FINCABLES": {
+      "shares": 152939345,
+      "mcap_b": 188.18,
+      "price": 1230.4
+    },
+    "LALITHAA": {
+      "shares": 559709811,
+      "mcap_b": 185.1,
+      "price": 330.7
+    },
+    "GRWRHITECH": {
+      "shares": 23232394,
+      "mcap_b": 185.09,
+      "price": 7967.0
+    },
+    "CAMS": {
+      "shares": 248515813,
+      "mcap_b": 184.9,
+      "price": 744.0
+    },
+    "LMW": {
+      "shares": 10683000,
+      "mcap_b": 184.42,
+      "price": 17263.0
+    },
+    "ELGIEQUIP": {
+      "shares": 315241478,
+      "mcap_b": 183.71,
+      "price": 582.75
+    },
+    "KAJARIACER": {
+      "shares": 157143050,
+      "mcap_b": 183.65,
+      "price": 1168.7
+    },
+    "BRIGADE": {
+      "shares": 326162379,
+      "mcap_b": 182.81,
+      "price": 560.5
+    },
+    "DEEPAKFERT": {
+      "shares": 126365329,
+      "mcap_b": 182.43,
+      "price": 1443.7
+    },
+    "ONESOURCE": {
+      "shares": 114674151,
+      "mcap_b": 181.28,
+      "price": 1580.8
+    },
+    "CHALET": {
+      "shares": 218994127,
+      "mcap_b": 179.95,
+      "price": 821.7
+    },
+    "SHILPAMED": {
+      "shares": 195581816,
+      "mcap_b": 179.41,
+      "price": 917.3
+    },
+    "INOXINDIA": {
+      "shares": 90966311,
+      "mcap_b": 179.15,
+      "price": 1969.4
+    },
+    "TENNIND": {
+      "shares": 403604309,
+      "mcap_b": 178.05,
+      "price": 441.15
+    },
+    "ALIVUS": {
+      "shares": 122967281,
+      "mcap_b": 178.03,
+      "price": 1447.8
+    },
+    "CREDITACC": {
+      "shares": 160278893,
+      "mcap_b": 177.91,
+      "price": 1110.0
+    },
+    "EMAMILTD": {
+      "shares": 429200000,
+      "mcap_b": 177.09,
+      "price": 412.6
+    },
+    "HAPPYFORGE": {
+      "shares": 94401146,
+      "mcap_b": 177.01,
+      "price": 1875.1
+    },
+    "ENGINERSIN": {
+      "shares": 562042373,
+      "mcap_b": 175.86,
+      "price": 312.9
+    },
+    "MTARTECH": {
+      "shares": 30759591,
+      "mcap_b": 175.62,
+      "price": 5709.5
+    },
+    "SYNGENE": {
+      "shares": 401913680,
+      "mcap_b": 174.57,
+      "price": 434.35
+    },
+    "PFIZER": {
+      "shares": 45747732,
+      "mcap_b": 174.48,
+      "price": 3814.0
+    },
+    "COHANCE": {
+      "shares": 382622930,
+      "mcap_b": 172.79,
+      "price": 451.6
+    },
+    "SHADOWFAX": {
+      "shares": 588753640,
+      "mcap_b": 172.53,
+      "price": 293.05
+    },
+    "NAZARA": {
+      "shares": 408577735,
+      "mcap_b": 172.42,
+      "price": 422.0
+    },
+    "BEML": {
+      "shares": 83289000,
+      "mcap_b": 171.78,
+      "price": 2062.5
+    },
+    "AGARWALEYE": {
+      "shares": 317099111,
+      "mcap_b": 171.22,
+      "price": 539.95
+    },
+    "SUMICHEM": {
+      "shares": 499145736,
+      "mcap_b": 170.91,
+      "price": 342.4
+    },
+    "CAPLIPOINT": {
+      "shares": 76011696,
+      "mcap_b": 170.81,
+      "price": 2247.1
+    },
+    "AARTIIND": {
+      "shares": 362741364,
+      "mcap_b": 170.78,
+      "price": 470.8
+    },
+    "JSWCEMENT": {
+      "shares": 1352668446,
+      "mcap_b": 170.36,
+      "price": 125.94
+    },
+    "APOLLO": {
+      "shares": 371599512,
+      "mcap_b": 170.32,
+      "price": 458.35
+    },
+    "TBOTEK": {
+      "shares": 107026852,
+      "mcap_b": 169.74,
+      "price": 1586.0
+    },
+    "HONASA": {
+      "shares": 326280200,
+      "mcap_b": 168.95,
+      "price": 517.8
+    },
+    "RATNAMANI": {
+      "shares": 70092000,
+      "mcap_b": 167.24,
+      "price": 2386.0
+    },
+    "POLYMED": {
+      "shares": 101361465,
+      "mcap_b": 167.21,
+      "price": 1649.6
+    },
+    "KFINTECH": {
+      "shares": 172909242,
+      "mcap_b": 166.86,
+      "price": 965.0
+    },
+    "ANANTRAJ": {
+      "shares": 359876930,
+      "mcap_b": 166.84,
+      "price": 463.6
+    },
+    "CESC": {
+      "shares": 1325570430,
+      "mcap_b": 166.77,
+      "price": 125.81
+    },
+    "MINDACORP": {
+      "shares": 235360911,
+      "mcap_b": 166.58,
+      "price": 707.75
+    },
+    "IFCI": {
+      "shares": 2694314331,
+      "mcap_b": 166.32,
+      "price": 61.73
+    },
+    "TATACHEM": {
+      "shares": 254756278,
+      "mcap_b": 165.45,
+      "price": 649.45
+    },
+    "JINDALSAW": {
+      "shares": 637869949,
+      "mcap_b": 165.07,
+      "price": 258.79
+    },
+    "LUMAXTECH": {
+      "shares": 68157705,
+      "mcap_b": 163.85,
+      "price": 2404.0
+    },
+    "KANSAINER": {
+      "shares": 808877551,
+      "mcap_b": 162.6,
+      "price": 201.02
+    },
+    "FINEORG": {
+      "shares": 30659976,
+      "mcap_b": 162.47,
+      "price": 5299.0
+    },
+    "SAMMAANCAP": {
+      "shares": 1235579810,
+      "mcap_b": 162.22,
+      "price": 131.29
+    },
+    "CHOICEIN": {
+      "shares": 222776500,
+      "mcap_b": 161.85,
+      "price": 726.5
+    },
+    "NATCOPHARM": {
+      "shares": 196167952,
+      "mcap_b": 161.43,
+      "price": 822.9
+    },
+    "PVRINOX": {
+      "shares": 96130997,
+      "mcap_b": 161.25,
+      "price": 1677.4
+    },
+    "OLAELEC": {
+      "shares": 4788953368,
+      "mcap_b": 159.18,
+      "price": 33.24
+    },
+    "SOUTHBANK": {
+      "shares": 2620256538,
+      "mcap_b": 159.05,
+      "price": 60.7
+    },
+    "SARDAEN": {
+      "shares": 352381270,
+      "mcap_b": 158.22,
+      "price": 449.0
+    },
+    "BBOX": {
+      "shares": 177599205,
+      "mcap_b": 158.04,
+      "price": 889.85
+    },
+    "ASTRAMICRO": {
+      "shares": 94945008,
+      "mcap_b": 157.65,
+      "price": 1660.4
+    },
+    "AEQUS": {
+      "shares": 654854135,
+      "mcap_b": 156.79,
+      "price": 239.43
+    },
+    "DEVYANI": {
+      "shares": 1232939791,
+      "mcap_b": 156.78,
+      "price": 127.16
+    },
+    "INDGN": {
+      "shares": 240824074,
+      "mcap_b": 156.23,
+      "price": 648.75
+    },
+    "NAVA": {
+      "shares": 283336147,
+      "mcap_b": 155.03,
+      "price": 547.15
+    },
+    "GRAPHITE": {
+      "shares": 195375594,
+      "mcap_b": 154.81,
+      "price": 792.35
+    },
+    "ZENTEC": {
+      "shares": 89944636,
+      "mcap_b": 154.67,
+      "price": 1719.6
+    },
+    "ASTRAZEN": {
+      "shares": 25000000,
+      "mcap_b": 154.2,
+      "price": 6168.0
+    },
+    "J&KBANK": {
+      "shares": 1101182463,
+      "mcap_b": 154.11,
+      "price": 139.95
+    },
+    "PGEL": {
+      "shares": 286757000,
+      "mcap_b": 152.84,
+      "price": 533.0
+    },
+    "AZAD": {
+      "shares": 64581743,
+      "mcap_b": 152.72,
+      "price": 2364.8
+    },
+    "VTL": {
+      "shares": 289475800,
+      "mcap_b": 152.66,
+      "price": 527.35
+    },
+    "BAYERCROP": {
+      "shares": 44942092,
+      "mcap_b": 151.46,
+      "price": 3370.1
+    },
+    "JUBLPHARMA": {
+      "shares": 158387168,
+      "mcap_b": 151.18,
+      "price": 954.5
+    },
+    "TRITURBINE": {
+      "shares": 317905947,
+      "mcap_b": 151.18,
+      "price": 475.55
+    },
+    "VIJAYA": {
+      "shares": 102997715,
+      "mcap_b": 151.14,
+      "price": 1467.4
+    },
+    "SKYGOLD": {
+      "shares": 154873884,
+      "mcap_b": 150.22,
+      "price": 969.95
+    },
+    "ANURAS": {
+      "shares": 113848310,
+      "mcap_b": 150.0,
+      "price": 1317.5
+    },
+    "INDIACEM": {
+      "shares": 464846384,
+      "mcap_b": 149.45,
+      "price": 321.5
+    },
+    "CHAMBLFERT": {
+      "shares": 400652297,
+      "mcap_b": 149.4,
+      "price": 372.9
+    },
+    "GMDCLTD": {
+      "shares": 318000000,
+      "mcap_b": 149.4,
+      "price": 469.8
+    },
+    "ATUL": {
+      "shares": 29381755,
+      "mcap_b": 149.33,
+      "price": 5082.5
+    },
+    "CLEANMAX": {
+      "shares": 117605536,
+      "mcap_b": 148.34,
+      "price": 1261.3
+    },
+    "SHREEJISPG": {
+      "shares": 162918254,
+      "mcap_b": 148.31,
+      "price": 910.35
+    },
+    "PCJEWELLER": {
+      "shares": 9807757077,
+      "mcap_b": 148.1,
+      "price": 15.1
+    },
+    "CENTURYPLY": {
+      "shares": 222172990,
+      "mcap_b": 148.07,
+      "price": 666.45
+    },
+    "BONFIG": {
+      "shares": 187995834,
+      "mcap_b": 147.45,
+      "price": 784.35
+    },
+    "PARADEEP": {
+      "shares": 1038520250,
+      "mcap_b": 146.87,
+      "price": 141.42
+    },
+    "ZYDUSWELL": {
+      "shares": 318160720,
+      "mcap_b": 146.47,
+      "price": 460.35
+    },
+    "LTFOODS": {
+      "shares": 347252944,
+      "mcap_b": 145.9,
+      "price": 420.15
+    },
+    "RKFORGE": {
+      "shares": 185570017,
+      "mcap_b": 145.15,
+      "price": 782.2
+    },
+    "KPITTECH": {
+      "shares": 272227219,
+      "mcap_b": 144.73,
+      "price": 531.65
+    },
+    "GPIL": {
+      "shares": 651010965,
+      "mcap_b": 143.76,
+      "price": 220.83
+    },
+    "CEATLTD": {
+      "shares": 40311863,
+      "mcap_b": 142.64,
+      "price": 3538.5
+    },
+    "ECLERX": {
+      "shares": 92025272,
+      "mcap_b": 142.28,
+      "price": 1546.1
+    },
+    "TMB": {
+      "shares": 158353818,
+      "mcap_b": 141.97,
+      "price": 896.55
+    },
+    "SHAILY": {
+      "shares": 45996548,
+      "mcap_b": 141.96,
+      "price": 3086.4
+    },
+    "ESDS": {
+      "shares": 117210969,
+      "mcap_b": 141.12,
+      "price": 1204.0
+    },
+    "CIEINDIA": {
+      "shares": 379362377,
+      "mcap_b": 140.4,
+      "price": 370.1
+    },
+    "NIVABUPA": {
+      "shares": 1850634153,
+      "mcap_b": 139.89,
+      "price": 75.59
+    },
+    "USHAMART": {
+      "shares": 304400510,
+      "mcap_b": 139.89,
+      "price": 459.55
+    },
+    "ABREL": {
+      "shares": 110937662,
+      "mcap_b": 139.87,
+      "price": 1260.8
+    },
+    "ACE": {
+      "shares": 118980921,
+      "mcap_b": 139.65,
+      "price": 1173.75
+    },
+    "KTKBANK": {
+      "shares": 378387004,
+      "mcap_b": 139.55,
+      "price": 368.8
+    },
+    "JNPR": {
+      "shares": 568998442,
+      "mcap_b": 139.43,
+      "price": 245.04
+    },
+    "ARVIND": {
+      "shares": 272040630,
+      "mcap_b": 139.12,
+      "price": 511.4
+    },
+    "BALRAMCHIN": {
+      "shares": 211641783,
+      "mcap_b": 138.97,
+      "price": 656.65
+    },
+    "MARKSANS": {
+      "shares": 453219996,
+      "mcap_b": 138.73,
+      "price": 306.1
+    },
+    "FRACTAL": {
+      "shares": 173619366,
+      "mcap_b": 138.59,
+      "price": 798.25
+    },
+    "VEDPOWER": {
+      "shares": 3904155728,
+      "mcap_b": 138.32,
+      "price": 35.43
+    },
+    "SOBHA": {
+      "shares": 106964262,
+      "mcap_b": 138.03,
+      "price": 1290.4
+    },
+    "SUDEEPPHRM": {
+      "shares": 112948625,
+      "mcap_b": 137.51,
+      "price": 1217.5
+    },
+    "DCMSHRIRAM": {
+      "shares": 154878314,
+      "mcap_b": 137.13,
+      "price": 885.4
+    },
+    "ARE&M": {
+      "shares": 183025364,
+      "mcap_b": 136.69,
+      "price": 746.85
+    },
+    "MAHSCOOTER": {
+      "shares": 11428568,
+      "mcap_b": 136.55,
+      "price": 11948.0
+    },
+    "HORIZONIND": {
+      "shares": 2882902834,
+      "mcap_b": 136.33,
+      "price": 47.29
+    },
+    "LLOYDSENGG": {
+      "shares": 1553039667,
+      "mcap_b": 136.06,
+      "price": 87.61
+    },
+    "SEDEMAC": {
+      "shares": 44219500,
+      "mcap_b": 135.97,
+      "price": 3074.8
+    },
+    "CROMPTON": {
+      "shares": 643914875,
+      "mcap_b": 134.55,
+      "price": 208.95
+    },
+    "PRIVISCL": {
+      "shares": 39062706,
+      "mcap_b": 134.01,
+      "price": 3430.7
+    },
+    "SPLPETRO": {
+      "shares": 188041342,
+      "mcap_b": 131.26,
+      "price": 698.05
+    },
+    "IIFLCAPS": {
+      "shares": 372675369,
+      "mcap_b": 130.9,
+      "price": 351.25
+    },
+    "TI": {
+      "shares": 247897900,
+      "mcap_b": 130.27,
+      "price": 525.5
+    },
+    "CCL": {
+      "shares": 133344224,
+      "mcap_b": 130.26,
+      "price": 976.9
+    },
+    "VGUARD": {
+      "shares": 436891055,
+      "mcap_b": 129.71,
+      "price": 296.9
+    },
+    "SAREGAMA": {
+      "shares": 191959490,
+      "mcap_b": 129.55,
+      "price": 674.9
+    },
+    "FIVESTAR": {
+      "shares": 295218208,
+      "mcap_b": 129.51,
+      "price": 438.7
+    },
+    "GALLANTT": {
+      "shares": 241280945,
+      "mcap_b": 128.84,
+      "price": 534.0
+    },
+    "RAINBOW": {
+      "shares": 101164061,
+      "mcap_b": 128.52,
+      "price": 1270.4
+    },
+    "SGMART": {
+      "shares": 126074400,
+      "mcap_b": 128.12,
+      "price": 1016.25
+    },
+    "CARTRADE": {
+      "shares": 48615885,
+      "mcap_b": 126.99,
+      "price": 2612.1
+    },
+    "EDELALTS": {
+      "shares": 64655246,
+      "mcap_b": 126.94,
+      "price": 1963.4
+    },
+    "THANGAMAYL": {
+      "shares": 31082021,
+      "mcap_b": 126.58,
+      "price": 4072.5
+    },
+    "JSWDULUX": {
+      "shares": 455403140,
+      "mcap_b": 126.56,
+      "price": 277.9
+    },
+    "PGIL": {
+      "shares": 92490384,
+      "mcap_b": 126.55,
+      "price": 1368.2
+    },
+    "ASKAUTOLTD": {
+      "shares": 197142600,
+      "mcap_b": 126.14,
+      "price": 639.85
+    },
+    "BASF": {
+      "shares": 43285640,
+      "mcap_b": 125.98,
+      "price": 2910.5
+    },
+    "KIRLOSBROS": {
+      "shares": 79408926,
+      "mcap_b": 125.03,
+      "price": 1574.5
+    },
+    "INGERRAND": {
+      "shares": 31568000,
+      "mcap_b": 124.41,
+      "price": 3941.1
+    },
+    "DOMS": {
+      "shares": 60688336,
+      "mcap_b": 124.03,
+      "price": 2043.8
+    },
+    "NUVOCO": {
+      "shares": 357156153,
+      "mcap_b": 123.42,
+      "price": 345.55
+    },
+    "EDELWEISS": {
+      "shares": 946541103,
+      "mcap_b": 123.18,
+      "price": 130.14
+    },
+    "CANHLIFE": {
+      "shares": 945890168,
+      "mcap_b": 122.95,
+      "price": 129.98
+    },
+    "BIKAJI": {
+      "shares": 250736400,
+      "mcap_b": 122.62,
+      "price": 489.05
+    },
+    "AVALON": {
+      "shares": 66898438,
+      "mcap_b": 122.13,
+      "price": 1825.6
+    },
+    "QPOWER": {
+      "shares": 77444100,
+      "mcap_b": 121.84,
+      "price": 1573.3
+    },
+    "SCI": {
+      "shares": 465799010,
+      "mcap_b": 121.38,
+      "price": 260.58
+    },
+    "AMAGI": {
+      "shares": 216338944,
+      "mcap_b": 120.85,
+      "price": 558.6
+    },
+    "TRIDENT": {
+      "shares": 5095584070,
+      "mcap_b": 119.95,
+      "price": 23.54
+    },
+    "ZENSARTECH": {
+      "shares": 227136897,
+      "mcap_b": 119.93,
+      "price": 528.0
+    },
+    "UJJIVANSFB": {
+      "shares": 1954173083,
+      "mcap_b": 119.6,
+      "price": 61.2
+    },
+    "TEGA": {
+      "shares": 75127698,
+      "mcap_b": 119.17,
+      "price": 1586.2
+    },
+    "JSWHL": {
+      "shares": 11099150,
+      "mcap_b": 119.08,
+      "price": 10729.0
+    },
+    "MANORAMA": {
+      "shares": 63122390,
+      "mcap_b": 118.54,
+      "price": 1877.9
+    },
+    "METROPOLIS": {
+      "shares": 207528996,
+      "mcap_b": 117.67,
+      "price": 567.0
+    },
+    "SIGNATURE": {
+      "shares": 140686026,
+      "mcap_b": 117.56,
+      "price": 835.6
+    },
+    "WABAG": {
+      "shares": 62536949,
+      "mcap_b": 117.53,
+      "price": 1879.4
+    },
+    "VOGL": {
+      "shares": 3904155728,
+      "mcap_b": 117.24,
+      "price": 30.03
+    },
+    "NSLNISP": {
+      "shares": 2930605850,
+      "mcap_b": 116.55,
+      "price": 39.77
+    },
+    "KSB": {
+      "shares": 174039220,
+      "mcap_b": 116.09,
+      "price": 667.05
+    },
+    "CONCORDBIO": {
+      "shares": 209232408,
+      "mcap_b": 116.08,
+      "price": 554.8
+    },
+    "JBMA": {
+      "shares": 236494264,
+      "mcap_b": 115.73,
+      "price": 489.35
+    },
+    "EIDPARRY": {
+      "shares": 177955692,
+      "mcap_b": 115.4,
+      "price": 648.5
+    },
+    "MANYAVAR": {
+      "shares": 242978548,
+      "mcap_b": 115.18,
+      "price": 474.05
+    },
+    "HOMEFIRST": {
+      "shares": 104573657,
+      "mcap_b": 113.82,
+      "price": 1088.4
+    },
+    "LOTUSDEV": {
+      "shares": 488723710,
+      "mcap_b": 113.65,
+      "price": 232.55
+    },
+    "CYIENT": {
+      "shares": 104254850,
+      "mcap_b": 113.23,
+      "price": 1086.1
+    },
+    "ATLANTAELE": {
+      "shares": 76896625,
+      "mcap_b": 112.7,
+      "price": 1465.6
+    },
+    "GODREJAGRO": {
+      "shares": 192411390,
+      "mcap_b": 111.44,
+      "price": 579.15
+    },
+    "TECHNOE": {
+      "shares": 116299574,
+      "mcap_b": 110.48,
+      "price": 950.0
+    },
+    "BLUESTONE": {
+      "shares": 152967253,
+      "mcap_b": 109.81,
+      "price": 717.85
+    },
+    "AKUMS": {
+      "shares": 153102058,
+      "mcap_b": 109.71,
+      "price": 716.6
+    },
+    "MGL": {
+      "shares": 98777779,
+      "mcap_b": 109.06,
+      "price": 1104.1
+    },
+    "ICIL": {
+      "shares": 198054340,
+      "mcap_b": 108.98,
+      "price": 550.25
+    },
+    "UTIAMC": {
+      "shares": 128540222,
+      "mcap_b": 108.96,
+      "price": 847.65
+    },
+    "GRAVITA": {
+      "shares": 72850664,
+      "mcap_b": 108.55,
+      "price": 1490.1
+    },
+    "JMFINANCIL": {
+      "shares": 957004936,
+      "mcap_b": 108.47,
+      "price": 113.34
+    },
+    "PCBL": {
+      "shares": 393462604,
+      "mcap_b": 108.01,
+      "price": 274.5
+    },
+    "YATHARTH": {
+      "shares": 96354357,
+      "mcap_b": 106.91,
+      "price": 1109.55
+    },
+    "BLUEDART": {
+      "shares": 23727934,
+      "mcap_b": 106.61,
+      "price": 4493.0
+    },
+    "TIPSMUSIC": {
+      "shares": 127159644,
+      "mcap_b": 105.94,
+      "price": 833.15
+    },
+    "JKTYRE": {
+      "shares": 288289511,
+      "mcap_b": 105.08,
+      "price": 364.5
+    },
+    "WHIRLPOOL": {
+      "shares": 126920341,
+      "mcap_b": 104.89,
+      "price": 826.45
+    },
+    "VIYASH": {
+      "shares": 441579708,
+      "mcap_b": 104.83,
+      "price": 237.4
+    },
+    "CANFINHOME": {
+      "shares": 133154591,
+      "mcap_b": 104.75,
+      "price": 786.65
+    },
+    "WESTLIFE": {
+      "shares": 155215762,
+      "mcap_b": 104.26,
+      "price": 671.7
+    },
+    "E2E": {
+      "shares": 205592690,
+      "mcap_b": 103.98,
+      "price": 505.75
+    },
+    "PARKHOSPS": {
+      "shares": 431930865,
+      "mcap_b": 103.67,
+      "price": 240.01
+    },
+    "INOXWIND": {
+      "shares": 1728237822,
+      "mcap_b": 103.18,
+      "price": 59.7
+    },
+    "PARAS": {
+      "shares": 80587330,
+      "mcap_b": 102.88,
+      "price": 1276.6
+    },
+    "IRCON": {
+      "shares": 940515740,
+      "mcap_b": 102.37,
+      "price": 108.84
+    },
+    "ELECON": {
+      "shares": 224399930,
+      "mcap_b": 101.86,
+      "price": 453.9
+    },
+    "IEX": {
+      "shares": 889727189,
+      "mcap_b": 101.78,
+      "price": 114.4
+    },
+    "LLOYDSENT": {
+      "shares": 1526691243,
+      "mcap_b": 100.44,
+      "price": 65.79
+    },
+    "BANCOINDIA": {
+      "shares": 143037300,
+      "mcap_b": 100.18,
+      "price": 700.4
+    },
+    "KWIL": {
+      "shares": 2349591263,
+      "mcap_b": 99.43,
+      "price": 42.32
+    },
+    "UTLSOLAR": {
+      "shares": 307313349,
+      "mcap_b": 99.43,
+      "price": 323.55
+    },
+    "AVANTIFEED": {
+      "shares": 136245630,
+      "mcap_b": 99.15,
+      "price": 727.7
+    },
+    "VISL": {
+      "shares": 3904155728,
+      "mcap_b": 99.09,
+      "price": 25.38
+    },
+    "JAINREC": {
+      "shares": 345085814,
+      "mcap_b": 98.99,
+      "price": 286.85
+    },
+    "TITAGARH": {
+      "shares": 134673768,
+      "mcap_b": 98.57,
+      "price": 731.9
+    },
+    "LEMONTREE": {
+      "shares": 791847623,
+      "mcap_b": 97.64,
+      "price": 123.31
+    },
+    "SBFC": {
+      "shares": 1111369888,
+      "mcap_b": 97.22,
+      "price": 87.48
+    },
+    "BLACKBUCK": {
+      "shares": 182240745,
+      "mcap_b": 97.15,
+      "price": 533.1
+    },
+    "WEWORK": {
+      "shares": 138988701,
+      "mcap_b": 96.6,
+      "price": 695.0
+    },
+    "VOLTAMP": {
+      "shares": 10117120,
+      "mcap_b": 95.85,
+      "price": 9474.0
+    },
+    "UNIMECH": {
+      "shares": 50901997,
+      "mcap_b": 95.5,
+      "price": 1876.1
+    },
+    "TIMETECHNO": {
+      "shares": 493635379,
+      "mcap_b": 95.14,
+      "price": 192.73
+    },
+    "WELENT": {
+      "shares": 135613810,
+      "mcap_b": 95.09,
+      "price": 701.2
+    },
+    "JLHL": {
+      "shares": 327830110,
+      "mcap_b": 94.99,
+      "price": 289.75
+    },
+    "ELANTAS": {
+      "shares": 7927682,
+      "mcap_b": 94.85,
+      "price": 11964.0
+    },
+    "KRBL": {
+      "shares": 228889892,
+      "mcap_b": 94.52,
+      "price": 412.95
+    },
+    "APTUS": {
+      "shares": 500830236,
+      "mcap_b": 94.45,
+      "price": 188.58
+    },
+    "JPPOWER": {
+      "shares": 6853458827,
+      "mcap_b": 93.89,
+      "price": 13.7
+    },
+    "TANLA": {
+      "shares": 132050724,
+      "mcap_b": 93.89,
+      "price": 711.0
+    },
+    "BLS": {
+      "shares": 411564253,
+      "mcap_b": 93.79,
+      "price": 227.89
+    },
+    "KMEW": {
+      "shares": 126821585,
+      "mcap_b": 93.61,
+      "price": 738.1
+    },
+    "ABLBL": {
+      "shares": 1214638186,
+      "mcap_b": 93.28,
+      "price": 76.8
+    },
+    "INDIAMART": {
+      "shares": 60138224,
+      "mcap_b": 93.02,
+      "price": 1546.7
+    },
+    "JUBLINGREA": {
+      "shares": 157758538,
+      "mcap_b": 92.83,
+      "price": 588.45
+    },
+    "RITES": {
+      "shares": 480603774,
+      "mcap_b": 92.58,
+      "price": 192.64
+    },
+    "AARTIPHARM": {
+      "shares": 90679813,
+      "mcap_b": 92.12,
+      "price": 1015.9
+    },
+    "TARIL": {
+      "shares": 300165834,
+      "mcap_b": 92.05,
+      "price": 306.65
+    },
+    "SUDARSCHEM": {
+      "shares": 79636207,
+      "mcap_b": 92.04,
+      "price": 1155.75
+    },
+    "FINPIPE": {
+      "shares": 618313905,
+      "mcap_b": 91.86,
+      "price": 148.56
+    },
+    "HEGAM": {
+      "shares": 329798912,
+      "mcap_b": 91.01,
+      "price": 275.97
+    },
+    "PGHL": {
+      "shares": 16599382,
+      "mcap_b": 90.71,
+      "price": 5464.5
+    },
+    "STAR": {
+      "shares": 92172715,
+      "mcap_b": 90.52,
+      "price": 982.1
+    },
+    "AAVAS": {
+      "shares": 79295867,
+      "mcap_b": 89.27,
+      "price": 1125.8
+    },
+    "DYNAMATECH": {
+      "shares": 6791443,
+      "mcap_b": 89.14,
+      "price": 13126.0
+    },
+    "BLUEJET": {
+      "shares": 173465425,
+      "mcap_b": 88.57,
+      "price": 510.6
+    },
+    "BBTC": {
+      "shares": 69771900,
+      "mcap_b": 87.67,
+      "price": 1256.5
+    },
+    "SANDUMA": {
+      "shares": 486104814,
+      "mcap_b": 87.55,
+      "price": 180.1
+    },
+    "FIRSTCRY": {
+      "shares": 485794213,
+      "mcap_b": 86.94,
+      "price": 178.97
+    },
+    "JWL": {
+      "shares": 427370389,
+      "mcap_b": 86.89,
+      "price": 203.32
+    },
+    "JAYNECOIND": {
+      "shares": 970998244,
+      "mcap_b": 86.87,
+      "price": 89.46
+    },
+    "PNGJL": {
+      "shares": 147202585,
+      "mcap_b": 86.39,
+      "price": 586.85
+    },
+    "HCG": {
+      "shares": 149302203,
+      "mcap_b": 85.94,
+      "price": 575.6
+    },
+    "KINGFA": {
+      "shares": 13551381,
+      "mcap_b": 85.77,
+      "price": 6329.5
+    },
+    "KEC": {
+      "shares": 266200000,
+      "mcap_b": 85.76,
+      "price": 322.15
+    },
+    "ENTERO": {
+      "shares": 43566227,
+      "mcap_b": 85.68,
+      "price": 1966.6
+    },
+    "KENNAMET": {
+      "shares": 21978240,
+      "mcap_b": 85.21,
+      "price": 3876.8
+    },
+    "BSOFT": {
+      "shares": 279667056,
+      "mcap_b": 85.1,
+      "price": 304.3
+    },
+    "MBAPL": {
+      "shares": 438134700,
+      "mcap_b": 84.86,
+      "price": 193.68
+    },
+    "KANOHAR": {
+      "shares": 79186835,
+      "mcap_b": 84.81,
+      "price": 1071.05
+    },
+    "NCC": {
+      "shares": 627846588,
+      "mcap_b": 84.19,
+      "price": 134.09
+    },
+    "GPPL": {
+      "shares": 483625818,
+      "mcap_b": 83.72,
+      "price": 173.11
+    },
+    "NEOGEN": {
+      "shares": 30042427,
+      "mcap_b": 83.48,
+      "price": 2778.6
+    },
+    "OLECTRA": {
+      "shares": 82080737,
+      "mcap_b": 82.54,
+      "price": 1005.55
+    },
+    "ALKYLAMINE": {
+      "shares": 51148224,
+      "mcap_b": 82.35,
+      "price": 1610.1
+    },
+    "CELLO": {
+      "shares": 225538273,
+      "mcap_b": 81.87,
+      "price": 363.0
+    },
+    "AFCONS": {
+      "shares": 367784631,
+      "mcap_b": 81.62,
+      "price": 221.91
+    },
+    "BATAINDIA": {
+      "shares": 128527540,
+      "mcap_b": 81.39,
+      "price": 633.25
+    },
+    "RATEGAIN": {
+      "shares": 118481956,
+      "mcap_b": 80.92,
+      "price": 682.95
+    },
+    "GALAXYSURF": {
+      "shares": 36574793,
+      "mcap_b": 80.84,
+      "price": 2210.2
+    },
+    "THYROCARE": {
+      "shares": 159359604,
+      "mcap_b": 80.79,
+      "price": 506.95
+    },
+    "KIRLPNU": {
+      "shares": 129969580,
+      "mcap_b": 80.41,
+      "price": 618.7
+    },
+    "MMTC": {
+      "shares": 1500000000,
+      "mcap_b": 80.22,
+      "price": 53.48
+    },
+    "ESABINDIA": {
+      "shares": 15393020,
+      "mcap_b": 79.53,
+      "price": 5166.5
+    },
+    "RAILTEL": {
+      "shares": 320938407,
+      "mcap_b": 79.18,
+      "price": 246.71
+    },
+    "AXISCADES": {
+      "shares": 42775239,
+      "mcap_b": 79.07,
+      "price": 1848.5
+    },
+    "IXIGO": {
+      "shares": 441258930,
+      "mcap_b": 77.49,
+      "price": 175.61
+    },
+    "SMLMAH": {
+      "shares": 14471646,
+      "mcap_b": 77.39,
+      "price": 5347.4
+    },
+    "EPL": {
+      "shares": 320856465,
+      "mcap_b": 76.72,
+      "price": 239.1
+    },
+    "GENUSPOWER": {
+      "shares": 276598765,
+      "mcap_b": 76.58,
+      "price": 276.85
+    },
+    "INTELLECT": {
+      "shares": 140635857,
+      "mcap_b": 76.29,
+      "price": 542.5
+    },
+    "CLEAN": {
+      "shares": 106284121,
+      "mcap_b": 76.09,
+      "price": 715.95
+    },
+    "POWERMECH": {
+      "shares": 31616292,
+      "mcap_b": 76.09,
+      "price": 2406.7
+    },
+    "TTKPRESTIG": {
+      "shares": 136967069,
+      "mcap_b": 76.02,
+      "price": 555.0
+    },
+    "SUVEN": {
+      "shares": 282562686,
+      "mcap_b": 75.91,
+      "price": 268.65
+    },
+    "GRINFRA": {
+      "shares": 96760529,
+      "mcap_b": 75.44,
+      "price": 779.65
+    },
+    "PRICOLLTD": {
+      "shares": 121881498,
+      "mcap_b": 75.4,
+      "price": 618.65
+    },
+    "RELIGARE": {
+      "shares": 344755742,
+      "mcap_b": 75.14,
+      "price": 217.94
+    },
+    "KRISHANA": {
+      "shares": 309138000,
+      "mcap_b": 75.1,
+      "price": 242.92
+    },
+    "WAAREERTL": {
+      "shares": 104379217,
+      "mcap_b": 74.95,
+      "price": 718.05
+    },
+    "EUREKAFORB": {
+      "shares": 193861816,
+      "mcap_b": 74.95,
+      "price": 386.6
+    },
+    "TIMEX": {
+      "shares": 100950000,
+      "mcap_b": 74.58,
+      "price": 738.75
+    },
+    "RPOWER": {
+      "shares": 4135770966,
+      "mcap_b": 74.2,
+      "price": 17.94
+    },
+    "MIDHANI": {
+      "shares": 187340000,
+      "mcap_b": 73.8,
+      "price": 393.95
+    },
+    "DCBBANK": {
+      "shares": 322270512,
+      "mcap_b": 73.52,
+      "price": 228.13
+    },
+    "MEDPLUS": {
+      "shares": 119806708,
+      "mcap_b": 72.94,
+      "price": 608.85
+    },
+    "ISGEC": {
+      "shares": 73529510,
+      "mcap_b": 72.81,
+      "price": 990.2
+    },
+    "TTML": {
+      "shares": 1954927727,
+      "mcap_b": 72.55,
+      "price": 37.11
+    },
+    "ETHOSLTD": {
+      "shares": 26757693,
+      "mcap_b": 72.46,
+      "price": 2708.0
+    },
+    "AVL": {
+      "shares": 129138050,
+      "mcap_b": 72.34,
+      "price": 560.2
+    },
+    "KSHINTL": {
+      "shares": 67790882,
+      "mcap_b": 72.33,
+      "price": 1066.9
+    },
+    "GMRP&UI": {
+      "shares": 781017529,
+      "mcap_b": 72.28,
+      "price": 92.55
+    },
+    "EMBDL": {
+      "shares": 1422552333,
+      "mcap_b": 72.19,
+      "price": 50.75
+    },
+    "SWANCORP": {
+      "shares": 313456886,
+      "mcap_b": 72.17,
+      "price": 230.23
+    },
+    "KOVAI": {
+      "shares": 10942262,
+      "mcap_b": 72.13,
+      "price": 6592.0
+    },
+    "PRECWIRE": {
+      "shares": 182807975,
+      "mcap_b": 72.03,
+      "price": 394.0
+    },
+    "TEJASNET": {
+      "shares": 177909524,
+      "mcap_b": 72.02,
+      "price": 404.8
+    },
+    "KAMAHOLD": {
+      "shares": 32090575,
+      "mcap_b": 71.88,
+      "price": 2239.9
+    },
+    "GARFIBRES": {
+      "shares": 97648345,
+      "mcap_b": 71.18,
+      "price": 728.9
+    },
+    "JYOTHYLAB": {
+      "shares": 367235520,
+      "mcap_b": 71.08,
+      "price": 193.55
+    },
+    "RHIM": {
+      "shares": 206501426,
+      "mcap_b": 70.93,
+      "price": 343.5
+    },
+    "RELAXO": {
+      "shares": 248938586,
+      "mcap_b": 70.86,
+      "price": 284.65
+    },
+    "SUNFLAG": {
+      "shares": 180219448,
+      "mcap_b": 70.7,
+      "price": 392.3
+    },
+    "PAISALO": {
+      "shares": 940061662,
+      "mcap_b": 70.63,
+      "price": 75.13
+    },
+    "KISSHT": {
+      "shares": 204676984,
+      "mcap_b": 70.61,
+      "price": 345.0
+    },
+    "BECTORFOOD": {
+      "shares": 306990595,
+      "mcap_b": 70.14,
+      "price": 228.48
+    },
+    "VESUVIUS": {
+      "shares": 202960800,
+      "mcap_b": 69.09,
+      "price": 340.4
+    },
+    "GNFC": {
+      "shares": 146940683,
+      "mcap_b": 68.86,
+      "price": 468.65
+    },
+    "SAFARI": {
+      "shares": 48998436,
+      "mcap_b": 68.72,
+      "price": 1402.4
+    },
+    "ZEEL": {
+      "shares": 960519420,
+      "mcap_b": 68.48,
+      "price": 71.29
+    },
+    "INDIASHLTR": {
+      "shares": 109236055,
+      "mcap_b": 68.38,
+      "price": 625.95
+    },
+    "SJS": {
+      "shares": 32256279,
+      "mcap_b": 67.82,
+      "price": 2102.6
+    },
+    "MAHSEAMLES": {
+      "shares": 133999252,
+      "mcap_b": 67.56,
+      "price": 504.15
+    },
+    "CYIENTDLM": {
+      "shares": 79383368,
+      "mcap_b": 67.44,
+      "price": 849.55
+    },
+    "MAHLIFE": {
+      "shares": 213617034,
+      "mcap_b": 67.44,
+      "price": 315.7
+    },
+    "CEIGALL": {
+      "shares": 174204861,
+      "mcap_b": 67.3,
+      "price": 386.3
+    },
+    "NEPHROPLUS": {
+      "shares": 100559014,
+      "mcap_b": 67.15,
+      "price": 667.75
+    },
+    "SAPPHIRE": {
+      "shares": 321757988,
+      "mcap_b": 67.11,
+      "price": 208.56
+    },
+    "EQUITASBNK": {
+      "shares": 1144134776,
+      "mcap_b": 66.54,
+      "price": 58.16
+    },
+    "GAEL": {
+      "shares": 458670660,
+      "mcap_b": 66.44,
+      "price": 144.85
+    },
+    "JKPAPER": {
+      "shares": 181318771,
+      "mcap_b": 66.08,
+      "price": 364.45
+    },
+    "AJAXENGG": {
+      "shares": 114411316,
+      "mcap_b": 66.04,
+      "price": 577.25
+    },
+    "SONATSOFTW": {
+      "shares": 276794469,
+      "mcap_b": 65.97,
+      "price": 238.35
+    },
+    "IBULLSLTD": {
+      "shares": 2276352216,
+      "mcap_b": 65.74,
+      "price": 28.88
+    },
+    "GOKULAGRO": {
+      "shares": 295086716,
+      "mcap_b": 65.48,
+      "price": 221.89
+    },
+    "RBA": {
+      "shares": 712227588,
+      "mcap_b": 65.48,
+      "price": 91.93
+    },
+    "HNDFDS": {
+      "shares": 121309002,
+      "mcap_b": 65.26,
+      "price": 537.95
+    },
+    "SFL": {
+      "shares": 109203314,
+      "mcap_b": 65.07,
+      "price": 595.9
+    },
+    "CORDELIA": {
+      "shares": 723945430,
+      "mcap_b": 64.63,
+      "price": 89.28
+    },
+    "CENTUM": {
+      "shares": 14762016,
+      "mcap_b": 64.62,
+      "price": 4377.2
+    },
+    "BALUFORGE": {
+      "shares": 121391900,
+      "mcap_b": 64.6,
+      "price": 532.15
+    },
+    "DBL": {
+      "shares": 162444833,
+      "mcap_b": 64.6,
+      "price": 397.65
+    },
+    "AEROFLEX": {
+      "shares": 132330768,
+      "mcap_b": 64.48,
+      "price": 487.3
+    },
+    "BENGALASM": {
+      "shares": 11403899,
+      "mcap_b": 64.36,
+      "price": 5644.0
+    },
+    "KIRLFER": {
+      "shares": 165214449,
+      "mcap_b": 64.21,
+      "price": 388.65
+    },
+    "JKLAKSHMI": {
+      "shares": 124144426,
+      "mcap_b": 64.05,
+      "price": 515.9
+    },
+    "SHARDACROP": {
+      "shares": 90220495,
+      "mcap_b": 63.98,
+      "price": 709.15
+    },
+    "CERA": {
+      "shares": 12894976,
+      "mcap_b": 63.5,
+      "price": 4924.5
+    },
+    "KPIGREEN": {
+      "shares": 197671968,
+      "mcap_b": 63.46,
+      "price": 321.05
+    },
+    "BIRLACORPN": {
+      "shares": 77005347,
+      "mcap_b": 62.95,
+      "price": 817.45
+    },
+    "VMART": {
+      "shares": 79584569,
+      "mcap_b": 62.92,
+      "price": 790.55
+    },
+    "SPARC": {
+      "shares": 324521588,
+      "mcap_b": 62.71,
+      "price": 193.24
+    },
+    "POWERICA": {
+      "shares": 126551877,
+      "mcap_b": 62.59,
+      "price": 494.6
+    },
+    "BALAMINES": {
+      "shares": 32401000,
+      "mcap_b": 62.55,
+      "price": 1930.5
+    },
+    "KRN": {
+      "shares": 65458486,
+      "mcap_b": 62.32,
+      "price": 952.0
+    },
+    "FDC": {
+      "shares": 162810084,
+      "mcap_b": 61.2,
+      "price": 375.9
+    },
+    "TVSSCS": {
+      "shares": 441987527,
+      "mcap_b": 60.56,
+      "price": 137.01
+    },
+    "NEWGEN": {
+      "shares": 141351724,
+      "mcap_b": 60.43,
+      "price": 427.55
+    },
+    "EBGNG": {
+      "shares": 114011517,
+      "mcap_b": 60.13,
+      "price": 527.4
+    },
+    "SKIPPER": {
+      "shares": 122130000,
+      "mcap_b": 60.13,
+      "price": 492.35
+    },
+    "CAMPUS": {
+      "shares": 305679721,
+      "mcap_b": 59.78,
+      "price": 195.57
+    },
+    "INNOVACAP": {
+      "shares": 57224929,
+      "mcap_b": 59.38,
+      "price": 1037.7
+    },
+    "TRANSRAILL": {
+      "shares": 134514825,
+      "mcap_b": 59.23,
+      "price": 440.35
+    },
+    "LEAPIND": {
+      "shares": 440536458,
+      "mcap_b": 59.15,
+      "price": 134.26
+    },
+    "RCF": {
+      "shares": 551688100,
+      "mcap_b": 59.04,
+      "price": 107.02
+    },
+    "DODLA": {
+      "shares": 60327809,
+      "mcap_b": 58.99,
+      "price": 977.8
+    },
+    "JAIBALAJI": {
+      "shares": 912251430,
+      "mcap_b": 58.68,
+      "price": 64.32
+    },
+    "FEDFINA": {
+      "shares": 375226672,
+      "mcap_b": 58.41,
+      "price": 155.66
+    },
+    "BORORENEW": {
+      "shares": 147183709,
+      "mcap_b": 57.91,
+      "price": 393.45
+    },
+    "PDSL": {
+      "shares": 141226701,
+      "mcap_b": 57.69,
+      "price": 408.5
+    },
+    "JUSTDIAL": {
+      "shares": 85049032,
+      "mcap_b": 57.39,
+      "price": 674.75
+    },
+    "JAMNAAUTO": {
+      "shares": 400073385,
+      "mcap_b": 57.34,
+      "price": 143.33
+    },
+    "ITDC": {
+      "shares": 85769400,
+      "mcap_b": 57.21,
+      "price": 667.0
+    },
+    "FIEMIND": {
+      "shares": 26319660,
+      "mcap_b": 57.01,
+      "price": 2166.1
+    },
+    "IMFA": {
+      "shares": 53954106,
+      "mcap_b": 56.89,
+      "price": 1054.4
+    },
+    "GREAVESCOT": {
+      "shares": 232951434,
+      "mcap_b": 56.72,
+      "price": 243.5
+    },
+    "HEROMOTORS": {
+      "shares": 460684975,
+      "mcap_b": 56.63,
+      "price": 122.93
+    },
+    "GSFC": {
+      "shares": 398477530,
+      "mcap_b": 56.29,
+      "price": 141.27
+    },
+    "GULFOILLUB": {
+      "shares": 49555526,
+      "mcap_b": 56.29,
+      "price": 1135.8
+    },
+    "CSBBANK": {
+      "shares": 169945353,
+      "mcap_b": 56.18,
+      "price": 330.6
+    },
+    "KDDL": {
+      "shares": 12299280,
+      "mcap_b": 56.09,
+      "price": 4560.4
+    },
+    "IOLCP": {
+      "shares": 293527510,
+      "mcap_b": 55.99,
+      "price": 190.74
+    },
+    "RAIN": {
+      "shares": 336345679,
+      "mcap_b": 55.7,
+      "price": 165.6
+    },
+    "GOODLUCK": {
+      "shares": 99715527,
+      "mcap_b": 55.57,
+      "price": 557.3
+    },
+    "GANESHHOU": {
+      "shares": 83387090,
+      "mcap_b": 55.52,
+      "price": 665.8
+    },
+    "FCL": {
+      "shares": 1164500900,
+      "mcap_b": 54.86,
+      "price": 47.11
+    },
+    "STYLAMIND": {
+      "shares": 16958736,
+      "mcap_b": 54.77,
+      "price": 3229.8
+    },
+    "ACI": {
+      "shares": 123464537,
+      "mcap_b": 54.26,
+      "price": 439.5
+    },
+    "BAJAJCON": {
+      "shares": 130618321,
+      "mcap_b": 54.15,
+      "price": 414.6
+    },
+    "PICCADIL": {
+      "shares": 98572144,
+      "mcap_b": 53.81,
+      "price": 545.85
+    },
+    "THOMASCOOK": {
+      "shares": 465981141,
+      "mcap_b": 53.6,
+      "price": 115.03
+    },
+    "SENCO": {
+      "shares": 163900959,
+      "mcap_b": 53.59,
+      "price": 326.95
+    },
+    "LUMAXIND": {
+      "shares": 9347732,
+      "mcap_b": 53.29,
+      "price": 5701.1
+    },
+    "GMMPFAUDLR": {
+      "shares": 44957224,
+      "mcap_b": 53.26,
+      "price": 1184.7
+    },
+    "LGBBROSLTD": {
+      "shares": 31896872,
+      "mcap_b": 52.98,
+      "price": 1661.1
+    },
+    "LCL": {
+      "shares": 105650000,
+      "mcap_b": 52.95,
+      "price": 501.2
+    },
+    "V2RETAIL": {
+      "shares": 364637550,
+      "mcap_b": 52.92,
+      "price": 145.14
+    },
+    "GREENLAM": {
+      "shares": 255147702,
+      "mcap_b": 52.6,
+      "price": 206.15
+    },
+    "EMIL": {
+      "shares": 384748762,
+      "mcap_b": 52.46,
+      "price": 136.36
+    },
+    "SENORES": {
+      "shares": 46053588,
+      "mcap_b": 52.44,
+      "price": 1138.7
+    },
+    "GOKEX": {
+      "shares": 73277628,
+      "mcap_b": 52.34,
+      "price": 714.3
+    },
+    "ELEVATE": {
+      "shares": 168531037,
+      "mcap_b": 52.21,
+      "price": 309.8
+    },
+    "HDFIRE": {
+      "shares": 175230000,
+      "mcap_b": 52.09,
+      "price": 297.25
+    },
+    "KALPATARU": {
+      "shares": 205926918,
+      "mcap_b": 50.99,
+      "price": 247.6
+    },
+    "VIKRAMSOLR": {
+      "shares": 362354381,
+      "mcap_b": 50.64,
+      "price": 139.76
+    },
+    "MSTCLTD": {
+      "shares": 70400000,
+      "mcap_b": 50.49,
+      "price": 717.15
+    },
+    "SUPRIYA": {
+      "shares": 80482800,
+      "mcap_b": 49.95,
+      "price": 620.65
+    },
+    "QUESS": {
+      "shares": 147597052,
+      "mcap_b": 49.76,
+      "price": 337.15
+    },
+    "INOXGREEN": {
+      "shares": 419602518,
+      "mcap_b": 48.9,
+      "price": 116.54
+    },
+    "FILATEX": {
+      "shares": 444058375,
+      "mcap_b": 48.17,
+      "price": 108.48
+    },
+    "PURVA": {
+      "shares": 237149686,
+      "mcap_b": 47.67,
+      "price": 201.03
+    },
+    "MAPMYINDIA": {
+      "shares": 54814209,
+      "mcap_b": 47.49,
+      "price": 866.45
+    },
+    "DBREALTY": {
+      "shares": 542406761,
+      "mcap_b": 47.4,
+      "price": 87.38
+    },
+    "CARERATING": {
+      "shares": 30148745,
+      "mcap_b": 47.29,
+      "price": 1568.4
+    },
+    "INDIGOPNTS": {
+      "shares": 47732637,
+      "mcap_b": 47.14,
+      "price": 987.65
+    },
+    "BOSCH-HCIL": {
+      "shares": 27190884,
+      "mcap_b": 47.09,
+      "price": 1731.8
+    },
+    "SURYAROSNI": {
+      "shares": 217635896,
+      "mcap_b": 46.84,
+      "price": 215.23
+    },
+    "MASTEK": {
+      "shares": 31010830,
+      "mcap_b": 46.26,
+      "price": 1491.8
+    },
+    "SHAKTIPUMP": {
+      "shares": 123397965,
+      "mcap_b": 46.22,
+      "price": 374.55
+    },
+    "HAPPSTMNDS": {
+      "shares": 150261936,
+      "mcap_b": 46.21,
+      "price": 307.55
+    },
+    "BANSALWIRE": {
+      "shares": 782779760,
+      "mcap_b": 45.97,
+      "price": 58.73
+    },
+    "AARTIDRUGS": {
+      "shares": 91270000,
+      "mcap_b": 45.89,
+      "price": 502.8
+    },
+    "ARVINDFASN": {
+      "shares": 133729489,
+      "mcap_b": 45.87,
+      "price": 343.0
+    },
+    "NORTHARC": {
+      "shares": 161799509,
+      "mcap_b": 45.76,
+      "price": 282.8
+    },
+    "CRAMC": {
+      "shares": 199417428,
+      "mcap_b": 45.73,
+      "price": 229.31
+    },
+    "SUNTECK": {
+      "shares": 146842025,
+      "mcap_b": 45.65,
+      "price": 310.9
+    },
+    "HCC": {
+      "shares": 2619468062,
+      "mcap_b": 45.6,
+      "price": 17.41
+    },
+    "FOSECOIND": {
+      "shares": 7574647,
+      "mcap_b": 45.59,
+      "price": 6018.5
+    },
+    "ABFRL": {
+      "shares": 1216777241,
+      "mcap_b": 45.5,
+      "price": 37.39
+    },
+    "GUJTHEM": {
+      "shares": 130151705,
+      "mcap_b": 45.42,
+      "price": 349.0
+    },
+    "GOLDIAM": {
+      "shares": 150557125,
+      "mcap_b": 45.18,
+      "price": 300.1
+    },
+    "IFBIND": {
+      "shares": 40518796,
+      "mcap_b": 45.09,
+      "price": 1112.8
+    },
+    "PRAJIND": {
+      "shares": 183813088,
+      "mcap_b": 45.01,
+      "price": 244.87
+    },
+    "TEXRAIL": {
+      "shares": 406864572,
+      "mcap_b": 45.0,
+      "price": 110.6
+    },
+    "WAKEFIT": {
+      "shares": 331645219,
+      "mcap_b": 44.98,
+      "price": 135.63
+    },
+    "JSFB": {
+      "shares": 105839965,
+      "mcap_b": 44.8,
+      "price": 423.25
+    },
+    "AGI": {
+      "shares": 64697381,
+      "mcap_b": 44.64,
+      "price": 690.0
+    },
+    "HAWKINCOOK": {
+      "shares": 5287815,
+      "mcap_b": 44.46,
+      "price": 8407.5
+    },
+    "63MOONS": {
+      "shares": 46078537,
+      "mcap_b": 44.18,
+      "price": 958.9
+    },
+    "GUFICBIO": {
+      "shares": 100282506,
+      "mcap_b": 44.11,
+      "price": 439.85
+    },
+    "JUNIPER": {
+      "shares": 222502384,
+      "mcap_b": 44.05,
+      "price": 197.96
+    },
+    "MOIL": {
+      "shares": 203485211,
+      "mcap_b": 43.51,
+      "price": 213.8
+    },
+    "DEEDEV": {
+      "shares": 75359262,
+      "mcap_b": 43.31,
+      "price": 574.65
+    },
+    "GUJALKALI": {
+      "shares": 73436928,
+      "mcap_b": 43.28,
+      "price": 589.4
+    },
+    "EVONILE": {
+      "shares": 29332255,
+      "mcap_b": 43.05,
+      "price": 1467.8
+    },
+    "ICRA": {
+      "shares": 9628799,
+      "mcap_b": 42.89,
+      "price": 4454.1
+    },
+    "LXCHEM": {
+      "shares": 277914693,
+      "mcap_b": 42.82,
+      "price": 154.07
+    },
+    "AVANTEL": {
+      "shares": 265775866,
+      "mcap_b": 42.74,
+      "price": 160.83
+    },
+    "CCAVENUE": {
+      "shares": 355601112,
+      "mcap_b": 42.58,
+      "price": 119.75
+    },
+    "FUSIONCX": {
+      "shares": 144360333,
+      "mcap_b": 42.56,
+      "price": 294.85
+    },
+    "BAJAJHIND": {
+      "shares": 2388886041,
+      "mcap_b": 42.5,
+      "price": 17.79
+    },
+    "GHCL": {
+      "shares": 92130655,
+      "mcap_b": 42.09,
+      "price": 456.8
+    },
+    "KPL": {
+      "shares": 10376198,
+      "mcap_b": 41.99,
+      "price": 4046.3
+    },
+    "DATAMATICS": {
+      "shares": 59106389,
+      "mcap_b": 41.92,
+      "price": 709.25
+    },
+    "DHANUKA": {
+      "shares": 44578324,
+      "mcap_b": 41.52,
+      "price": 931.5
+    },
+    "ELECTCAST": {
+      "shares": 618184591,
+      "mcap_b": 41.28,
+      "price": 66.77
+    },
+    "LATENTVIEW": {
+      "shares": 207083230,
+      "mcap_b": 41.26,
+      "price": 199.26
+    },
+    "EPIGRAL": {
+      "shares": 43141338,
+      "mcap_b": 40.88,
+      "price": 947.6
+    },
+    "ELLEN": {
+      "shares": 140935600,
+      "mcap_b": 40.86,
+      "price": 289.9
+    },
+    "NETWORK18": {
+      "shares": 1544487688,
+      "mcap_b": 40.47,
+      "price": 26.2
+    },
+    "HARSHA": {
+      "shares": 91044105,
+      "mcap_b": 40.42,
+      "price": 443.95
+    },
+    "SHAREINDIA": {
+      "shares": 223227530,
+      "mcap_b": 40.31,
+      "price": 180.58
+    },
+    "AGIIL": {
+      "shares": 124997388,
+      "mcap_b": 40.22,
+      "price": 321.75
+    },
+    "PTC": {
+      "shares": 296008321,
+      "mcap_b": 40.2,
+      "price": 135.81
+    },
+    "KOLTEPATIL": {
+      "shares": 88680094,
+      "mcap_b": 40.14,
+      "price": 452.6
+    },
+    "JINDWORLD": {
+      "shares": 1002602000,
+      "mcap_b": 40.08,
+      "price": 39.98
+    },
+    "CAPILLARY": {
+      "shares": 79683284,
+      "mcap_b": 40.05,
+      "price": 502.65
+    },
+    "SUBROS": {
+      "shares": 65235750,
+      "mcap_b": 39.99,
+      "price": 612.95
+    },
+    "CHEMPLASTS": {
+      "shares": 158109574,
+      "mcap_b": 39.89,
+      "price": 252.27
+    },
+    "ALOKINDS": {
+      "shares": 4965240401,
+      "mcap_b": 39.87,
+      "price": 8.03
+    },
+    "DEEPINDS": {
+      "shares": 64000000,
+      "mcap_b": 39.74,
+      "price": 621.0
+    },
+    "INDIQUBE": {
+      "shares": 211997635,
+      "mcap_b": 39.38,
+      "price": 185.75
+    },
+    "ASHAPURMIN": {
+      "shares": 95526098,
+      "mcap_b": 39.37,
+      "price": 412.15
+    },
+    "BOROLTD": {
+      "shares": 119587629,
+      "mcap_b": 39.37,
+      "price": 329.2
+    },
+    "BANARISUG": {
+      "shares": 12539700,
+      "mcap_b": 39.3,
+      "price": 3133.8
+    },
+    "DALMIASUG": {
+      "shares": 80939303,
+      "mcap_b": 39.09,
+      "price": 483.0
+    },
+    "SHILCTECH": {
+      "shares": 11440200,
+      "mcap_b": 38.94,
+      "price": 3404.0
+    },
+    "RENUKA": {
+      "shares": 2128489773,
+      "mcap_b": 38.76,
+      "price": 18.21
+    },
+    "AYE": {
+      "shares": 243273166,
+      "mcap_b": 38.75,
+      "price": 159.3
+    },
+    "GVPIL": {
+      "shares": 67227471,
+      "mcap_b": 38.37,
+      "price": 570.8
+    },
+    "IONEXCHANG": {
+      "shares": 122930450,
+      "mcap_b": 37.42,
+      "price": 304.4
+    },
+    "JSLL": {
+      "shares": 124324104,
+      "mcap_b": 37.29,
+      "price": 299.95
+    },
+    "KSL": {
+      "shares": 43653060,
+      "mcap_b": 37.22,
+      "price": 852.65
+    },
+    "RALLIS": {
+      "shares": 194468890,
+      "mcap_b": 37.19,
+      "price": 191.25
+    },
+    "RESPONIND": {
+      "shares": 266608544,
+      "mcap_b": 37.01,
+      "price": 138.81
+    },
+    "SWSOLAR": {
+      "shares": 233541391,
+      "mcap_b": 36.89,
+      "price": 157.96
+    },
+    "TARC": {
+      "shares": 295096335,
+      "mcap_b": 36.59,
+      "price": 124.01
+    },
+    "CMLL": {
+      "shares": 65375785,
+      "mcap_b": 36.59,
+      "price": 559.75
+    },
+    "LCCPROJECT": {
+      "shares": 289671232,
+      "mcap_b": 36.55,
+      "price": 126.17
+    },
+    "SAMHI": {
+      "shares": 222359672,
+      "mcap_b": 36.48,
+      "price": 164.05
+    },
+    "KSCL": {
+      "shares": 51040869,
+      "mcap_b": 36.42,
+      "price": 713.5
+    },
+    "AHLUCONT": {
+      "shares": 66987560,
+      "mcap_b": 36.42,
+      "price": 543.65
+    },
+    "AONESTEELS": {
+      "shares": 77235814,
+      "mcap_b": 36.26,
+      "price": 469.5
+    },
+    "RTNPOWER": {
+      "shares": 5370105860,
+      "mcap_b": 36.25,
+      "price": 6.75
+    },
+    "ANUP": {
+      "shares": 20031466,
+      "mcap_b": 36.02,
+      "price": 1798.4
+    },
+    "VIPIND": {
+      "shares": 142055391,
+      "mcap_b": 35.88,
+      "price": 252.55
+    },
+    "DECNGOLD": {
+      "shares": 201004715,
+      "mcap_b": 35.83,
+      "price": 178.26
+    },
+    "ASHIANA": {
+      "shares": 100524857,
+      "mcap_b": 35.67,
+      "price": 354.85
+    },
+    "HERITGFOOD": {
+      "shares": 92796000,
+      "mcap_b": 35.65,
+      "price": 384.15
+    },
+    "KIRLOSIND": {
+      "shares": 10514684,
+      "mcap_b": 35.5,
+      "price": 3376.5
+    },
+    "JASH": {
+      "shares": 63193720,
+      "mcap_b": 35.31,
+      "price": 558.7
+    },
+    "COCKERILL": {
+      "shares": 4937813,
+      "mcap_b": 35.05,
+      "price": 7099.0
+    },
+    "LUXIND": {
+      "shares": 30071681,
+      "mcap_b": 34.93,
+      "price": 1161.4
+    },
+    "IDEAFORGE": {
+      "shares": 49724799,
+      "mcap_b": 34.29,
+      "price": 689.6
+    },
+    "GRAUWEIL": {
+      "shares": 453411500,
+      "mcap_b": 34.19,
+      "price": 75.41
+    },
+    "RAYMONDLSL": {
+      "shares": 60905789,
+      "mcap_b": 33.87,
+      "price": 556.1
+    },
+    "JKIL": {
+      "shares": 75665506,
+      "mcap_b": 33.8,
+      "price": 446.75
+    },
+    "CMSINFO": {
+      "shares": 160063415,
+      "mcap_b": 33.69,
+      "price": 210.48
+    },
+    "GREENPLY": {
+      "shares": 124902545,
+      "mcap_b": 33.65,
+      "price": 269.45
+    },
+    "JTEKTINDIA": {
+      "shares": 277396890,
+      "mcap_b": 33.53,
+      "price": 120.86
+    },
+    "PNCINFRA": {
+      "shares": 256539165,
+      "mcap_b": 33.09,
+      "price": 128.99
+    },
+    "GOPAL": {
+      "shares": 124666819,
+      "mcap_b": 32.55,
+      "price": 261.11
+    },
+    "ARSSBL": {
+      "shares": 63110750,
+      "mcap_b": 32.43,
+      "price": 513.9
+    },
+    "INDRAMEDCO": {
+      "shares": 91673000,
+      "mcap_b": 32.37,
+      "price": 353.05
+    },
+    "BAJAJELEC": {
+      "shares": 115423636,
+      "mcap_b": 32.29,
+      "price": 279.75
+    },
+    "KIRIINDUS": {
+      "shares": 65168000,
+      "mcap_b": 32.16,
+      "price": 493.55
+    },
+    "NFL": {
+      "shares": 490578400,
+      "mcap_b": 31.74,
+      "price": 64.7
+    },
+    "KMCSHIL": {
+      "shares": 163085000,
+      "mcap_b": 31.72,
+      "price": 194.52
+    },
+    "HEMIPROP": {
+      "shares": 285124736,
+      "mcap_b": 31.69,
+      "price": 111.16
+    },
+    "AURIONPRO": {
+      "shares": 55261664,
+      "mcap_b": 31.12,
+      "price": 563.15
+    },
+    "INDOSTAR": {
+      "shares": 161670107,
+      "mcap_b": 30.9,
+      "price": 191.16
+    },
+    "ANTELOPUS": {
+      "shares": 35287820,
+      "mcap_b": 30.88,
+      "price": 875.05
+    },
+    "REFEX": {
+      "shares": 137228548,
+      "mcap_b": 30.77,
+      "price": 224.26
+    },
+    "ADVENZYMES": {
+      "shares": 107851920,
+      "mcap_b": 30.54,
+      "price": 283.15
+    },
+    "HIRECT": {
+      "shares": 35458605,
+      "mcap_b": 30.35,
+      "price": 855.8
+    },
+    "ASHOKA": {
+      "shares": 280723217,
+      "mcap_b": 30.34,
+      "price": 108.09
+    },
+    "GSPLTRANS": {
+      "shares": 312743617,
+      "mcap_b": 30.31,
+      "price": 96.93
+    },
+    "KNRCON": {
+      "shares": 281234600,
+      "mcap_b": 30.06,
+      "price": 106.87
+    },
+    "ELPROINTL": {
+      "shares": 169479130,
+      "mcap_b": 29.84,
+      "price": 176.06
+    },
+    "KERNEX": {
+      "shares": 16803622,
+      "mcap_b": 29.78,
+      "price": 1772.5
+    },
+    "BBL": {
+      "shares": 11303120,
+      "mcap_b": 29.71,
+      "price": 2628.6
+    },
+    "HLEGLAS": {
+      "shares": 69454739,
+      "mcap_b": 29.65,
+      "price": 426.95
+    },
+    "EMUDHRA": {
+      "shares": 82150856,
+      "mcap_b": 29.55,
+      "price": 359.7
+    },
+    "EIEL": {
+      "shares": 175530000,
+      "mcap_b": 29.53,
+      "price": 168.23
+    },
+    "JTLIND": {
+      "shares": 393081630,
+      "mcap_b": 29.46,
+      "price": 74.94
+    },
+    "HINDOILEXP": {
+      "shares": 132243289,
+      "mcap_b": 29.4,
+      "price": 222.29
+    },
+    "INDSWFTLAB": {
+      "shares": 88361558,
+      "mcap_b": 29.33,
+      "price": 331.9
+    },
+    "ALEMBICLTD": {
+      "shares": 256781828,
+      "mcap_b": 29.23,
+      "price": 113.83
+    },
+    "WEBELSOLAR": {
+      "shares": 434163470,
+      "mcap_b": 29.17,
+      "price": 67.19
+    },
+    "JINDALPOLY": {
+      "shares": 43786413,
+      "mcap_b": 28.9,
+      "price": 660.0
+    },
+    "BALMLAWRIE": {
+      "shares": 171003846,
+      "mcap_b": 28.75,
+      "price": 168.11
+    },
+    "LASERPOWER": {
+      "shares": 140368342,
+      "mcap_b": 28.74,
+      "price": 204.77
+    },
+    "ARVSMART": {
+      "shares": 45916979,
+      "mcap_b": 28.48,
+      "price": 620.25
+    },
+    "DRAGARWQ": {
+      "shares": 4832827,
+      "mcap_b": 28.19,
+      "price": 5834.0
+    },
+    "JAYKAY": {
+      "shares": 150858708,
+      "mcap_b": 27.99,
+      "price": 185.53
+    },
+    "JUBLCPL": {
+      "shares": 15152493,
+      "mcap_b": 27.92,
+      "price": 1842.7
+    },
+    "BEPL": {
+      "shares": 248858460,
+      "mcap_b": 27.79,
+      "price": 111.65
+    },
+    "VAIBHAVGBL": {
+      "shares": 167742098,
+      "mcap_b": 27.78,
+      "price": 165.64
+    },
+    "INTERARCH": {
+      "shares": 16817032,
+      "mcap_b": 27.59,
+      "price": 1640.4
+    },
+    "DBCORP": {
+      "shares": 178271182,
+      "mcap_b": 27.45,
+      "price": 153.96
+    },
+    "CARYSIL": {
+      "shares": 28442606,
+      "mcap_b": 27.37,
+      "price": 962.2
+    },
+    "KITEX": {
+      "shares": 199500000,
+      "mcap_b": 27.36,
+      "price": 137.14
+    },
+    "ROUTE": {
+      "shares": 63003082,
+      "mcap_b": 27.33,
+      "price": 433.75
+    },
+    "HEIDELBERG": {
+      "shares": 226631309,
+      "mcap_b": 27.15,
+      "price": 119.81
+    },
+    "AUTOAXLES": {
+      "shares": 15111975,
+      "mcap_b": 27.07,
+      "price": 1791.0
+    },
+    "INDOTECH": {
+      "shares": 10620000,
+      "mcap_b": 27.0,
+      "price": 2542.7
+    },
+    "BLSE": {
+      "shares": 181510562,
+      "mcap_b": 26.9,
+      "price": 148.18
+    },
+    "HIKAL": {
+      "shares": 123300748,
+      "mcap_b": 26.87,
+      "price": 217.94
+    },
+    "FREDUN": {
+      "shares": 17082069,
+      "mcap_b": 26.85,
+      "price": 1572.0
+    },
+    "CARRARO": {
+      "shares": 56851538,
+      "mcap_b": 26.84,
+      "price": 472.05
+    },
+    "AJMERA": {
+      "shares": 196795650,
+      "mcap_b": 26.7,
+      "price": 135.69
+    },
+    "FUSION": {
+      "shares": 160716337,
+      "mcap_b": 26.69,
+      "price": 166.04
+    },
+    "INDNIPPON": {
+      "shares": 22621424,
+      "mcap_b": 26.65,
+      "price": 1178.2
+    },
+    "CRIZAC": {
+      "shares": 174982500,
+      "mcap_b": 26.53,
+      "price": 151.63
+    },
+    "HGINFRA": {
+      "shares": 65171111,
+      "mcap_b": 26.5,
+      "price": 406.65
+    },
+    "ADFFOODS": {
+      "shares": 109863595,
+      "mcap_b": 26.42,
+      "price": 240.45
+    },
+    "DOLPHIN": {
+      "shares": 40004580,
+      "mcap_b": 26.36,
+      "price": 658.85
+    },
+    "ASHIKAG": {
+      "shares": 73925567,
+      "mcap_b": 26.25,
+      "price": 355.1
+    },
+    "KKCL": {
+      "shares": 61625185,
+      "mcap_b": 26.0,
+      "price": 421.85
+    },
+    "GANDHAR": {
+      "shares": 97888820,
+      "mcap_b": 25.94,
+      "price": 264.98
+    },
+    "DDEVPLSTIK": {
+      "shares": 103476664,
+      "mcap_b": 25.69,
+      "price": 248.25
+    },
+    "OSWALPUMPS": {
+      "shares": 114004897,
+      "mcap_b": 25.61,
+      "price": 224.64
+    },
+    "FLAIR": {
+      "shares": 105395378,
+      "mcap_b": 25.37,
+      "price": 240.74
+    },
+    "DIVGIITTS": {
+      "shares": 30582927,
+      "mcap_b": 25.32,
+      "price": 828.0
+    },
+    "APCOTEXIND": {
+      "shares": 51844960,
+      "mcap_b": 25.13,
+      "price": 484.8
+    },
+    "KNACK": {
+      "shares": 122365164,
+      "mcap_b": 25.09,
+      "price": 205.01
+    },
+    "DIAMONDYD": {
+      "shares": 23932292,
+      "mcap_b": 24.74,
+      "price": 1033.8
+    },
+    "AEROPLANE": {
+      "shares": 103551556,
+      "mcap_b": 24.7,
+      "price": 238.55
+    },
+    "GNA": {
+      "shares": 42930800,
+      "mcap_b": 24.7,
+      "price": 575.3
+    },
+    "ADOR": {
+      "shares": 17402815,
+      "mcap_b": 24.67,
+      "price": 1417.8
+    },
+    "ESAFSFB": {
+      "shares": 516162511,
+      "mcap_b": 24.49,
+      "price": 47.44
+    },
+    "ALGOQUANT": {
+      "shares": 281096028,
+      "mcap_b": 24.46,
+      "price": 87.03
+    },
+    "FMGOETZE": {
+      "shares": 55632130,
+      "mcap_b": 24.24,
+      "price": 435.65
+    },
+    "GIPCL": {
+      "shares": 155215944,
+      "mcap_b": 24.12,
+      "price": 155.41
+    },
+    "EFCIL": {
+      "shares": 147946162,
+      "mcap_b": 24.05,
+      "price": 162.54
+    },
+    "GLASSWALL": {
+      "shares": 87935253,
+      "mcap_b": 24.0,
+      "price": 272.94
+    },
+    "HUBTOWN": {
+      "shares": 142100657,
+      "mcap_b": 23.98,
+      "price": 168.76
+    },
+    "EASEMYTRIP": {
+      "shares": 3984651865,
+      "mcap_b": 23.71,
+      "price": 5.95
+    },
+    "BHAGCHEM": {
+      "shares": 129669080,
+      "mcap_b": 23.69,
+      "price": 182.67
+    },
+    "GATEWAY": {
+      "shares": 499643836,
+      "mcap_b": 23.68,
+      "price": 47.4
+    },
+    "IMAGICAA": {
+      "shares": 589343947,
+      "mcap_b": 23.56,
+      "price": 39.98
+    },
+    "EVEREADY": {
+      "shares": 72687260,
+      "mcap_b": 23.41,
+      "price": 322.1
+    },
+    "DREDGECORP": {
+      "shares": 28000000,
+      "mcap_b": 23.27,
+      "price": 831.25
+    },
+    "BUILDPRO": {
+      "shares": 121246630,
+      "mcap_b": 23.24,
+      "price": 191.68
+    },
+    "GANECOS": {
+      "shares": 26737394,
+      "mcap_b": 23.23,
+      "price": 868.75
+    },
+    "BLUSPRING": {
+      "shares": 149540822,
+      "mcap_b": 22.99,
+      "price": 153.77
+    },
+    "DELTACORP": {
+      "shares": 267771097,
+      "mcap_b": 22.76,
+      "price": 84.98
+    },
+    "GLOBUSSPR": {
+      "shares": 31461293,
+      "mcap_b": 22.76,
+      "price": 723.45
+    },
+    "MACPOWER": {
+      "shares": 10004160,
+      "mcap_b": 22.43,
+      "price": 2242.2
+    },
+    "JGCHEM": {
+      "shares": 39186063,
+      "mcap_b": 22.25,
+      "price": 567.85
+    },
+    "CANTABIL": {
+      "shares": 83638040,
+      "mcap_b": 21.96,
+      "price": 262.6
+    },
+    "COSMOFIRST": {
+      "shares": 25958155,
+      "mcap_b": 21.95,
+      "price": 845.6
+    },
+    "APOLLOPIPE": {
+      "shares": 43919356,
+      "mcap_b": 21.75,
+      "price": 495.15
+    },
+    "CONFIPET": {
+      "shares": 332241043,
+      "mcap_b": 21.65,
+      "price": 65.15
+    },
+    "ZAGGLE": {
+      "shares": 134717159,
+      "mcap_b": 21.37,
+      "price": 158.66
+    },
+    "BOMDYEING": {
+      "shares": 206534900,
+      "mcap_b": 21.37,
+      "price": 103.48
+    },
+    "EPACKPEB": {
+      "shares": 100631006,
+      "mcap_b": 21.15,
+      "price": 210.13
+    },
+    "CNL": {
+      "shares": 15016675,
+      "mcap_b": 20.94,
+      "price": 1394.3
+    },
+    "AURUM": {
+      "shares": 96558503,
+      "mcap_b": 20.87,
+      "price": 216.1
+    },
+    "BRIGHOTEL": {
+      "shares": 379842565,
+      "mcap_b": 20.86,
+      "price": 54.91
+    },
+    "INDOCO": {
+      "shares": 92188555,
+      "mcap_b": 20.74,
+      "price": 224.98
+    },
+    "GCSL": {
+      "shares": 25005379,
+      "mcap_b": 20.73,
+      "price": 829.2
+    },
+    "ARKADE": {
+      "shares": 185663617,
+      "mcap_b": 20.72,
+      "price": 111.62
+    },
+    "GEOJITFSL": {
+      "shares": 279122119,
+      "mcap_b": 20.68,
+      "price": 74.08
+    },
+    "AWFIS": {
+      "shares": 71563186,
+      "mcap_b": 20.52,
+      "price": 286.72
+    },
+    "DEEPA": {
+      "shares": 96124293,
+      "mcap_b": 20.52,
+      "price": 213.51
+    },
+    "DCAL": {
+      "shares": 156783095,
+      "mcap_b": 20.44,
+      "price": 130.34
+    },
+    "ADVAIT": {
+      "shares": 10936777,
+      "mcap_b": 20.09,
+      "price": 1836.8
+    },
+    "INDORAMA": {
+      "shares": 261113151,
+      "mcap_b": 20.04,
+      "price": 76.74
+    },
+    "JNKINDIA": {
+      "shares": 55953915,
+      "mcap_b": 19.96,
+      "price": 356.65
+    },
+    "GSPCROP": {
+      "shares": 46518750,
+      "mcap_b": 19.85,
+      "price": 426.65
+    },
+    "GKENERGY": {
+      "shares": 202817266,
+      "mcap_b": 19.79,
+      "price": 97.59
+    },
+    "HESTERBIO": {
+      "shares": 8506865,
+      "mcap_b": 19.78,
+      "price": 2324.6
+    },
+    "GMBREW": {
+      "shares": 22846923,
+      "mcap_b": 19.62,
+      "price": 858.9
+    },
+    "EUROPRATIK": {
+      "shares": 102200000,
+      "mcap_b": 19.5,
+      "price": 190.82
+    },
+    "JISLJALEQS": {
+      "shares": 733510251,
+      "mcap_b": 19.34,
+      "price": 26.36
+    },
+    "KRISHNADEF": {
+      "shares": 14933388,
+      "mcap_b": 19.32,
+      "price": 1293.7
+    },
+    "HONDAPOWER": {
+      "shares": 10143071,
+      "mcap_b": 19.22,
+      "price": 1894.6
+    },
+    "KCP": {
+      "shares": 128921160,
+      "mcap_b": 18.98,
+      "price": 147.2
+    },
+    "ASIANENE": {
+      "shares": 48662651,
+      "mcap_b": 18.9,
+      "price": 388.3
+    },
+    "LANDMARK": {
+      "shares": 41464910,
+      "mcap_b": 18.76,
+      "price": 452.4
+    },
+    "EXICOM": {
+      "shares": 139166582,
+      "mcap_b": 18.51,
+      "price": 133.03
+    },
+    "INDIAGLYCO": {
+      "shares": 67026765,
+      "mcap_b": 18.44,
+      "price": 275.05
+    },
+    "GREENPANEL": {
+      "shares": 122627395,
+      "mcap_b": 18.39,
+      "price": 149.94
+    },
+    "BFINVEST": {
+      "shares": 37667628,
+      "mcap_b": 18.38,
+      "price": 488.0
+    },
+    "KROSS": {
+      "shares": 66009422,
+      "mcap_b": 18.29,
+      "price": 277.15
+    },
+    "BAJEL": {
+      "shares": 115696935,
+      "mcap_b": 18.26,
+      "price": 157.83
+    },
+    "BETA": {
+      "shares": 10136890,
+      "mcap_b": 18.17,
+      "price": 1792.5
+    },
+    "GRMOVER": {
+      "shares": 207523860,
+      "mcap_b": 18.16,
+      "price": 87.51
+    },
+    "BFUTILITIE": {
+      "shares": 37667628,
+      "mcap_b": 18.13,
+      "price": 481.4
+    },
+    "BCG": {
+      "shares": 2018521873,
+      "mcap_b": 18.09,
+      "price": 8.96
+    },
+    "GNRL": {
+      "shares": 1534026320,
+      "mcap_b": 17.67,
+      "price": 11.52
+    },
+    "KRSNAA": {
+      "shares": 34059672,
+      "mcap_b": 17.67,
+      "price": 518.7
+    },
+    "EIHAHOTELS": {
+      "shares": 60936294,
+      "mcap_b": 17.59,
+      "price": 288.7
+    },
+    "DYCL": {
+      "shares": 48458638,
+      "mcap_b": 17.51,
+      "price": 361.4
+    },
+    "LAOPALA": {
+      "shares": 111000000,
+      "mcap_b": 17.5,
+      "price": 157.69
+    },
+    "GYFTR": {
+      "shares": 76808250,
+      "mcap_b": 17.49,
+      "price": 227.73
+    },
+    "DCXINDIA": {
+      "shares": 111386427,
+      "mcap_b": 17.14,
+      "price": 153.89
+    },
+    "5PAISA": {
+      "shares": 48929845,
+      "mcap_b": 17.13,
+      "price": 350.05
+    },
+    "BLSPOLY": {
+      "shares": 62031834,
+      "mcap_b": 17.09,
+      "price": 275.5
+    },
+    "INDOKEM": {
+      "shares": 27888255,
+      "mcap_b": 17.06,
+      "price": 611.6
+    },
+    "DHANBANK": {
+      "shares": 394698851,
+      "mcap_b": 17.04,
+      "price": 43.17
+    },
+    "GOCLCORP": {
+      "shares": 49572490,
+      "mcap_b": 17.02,
+      "price": 343.4
+    },
+    "FRONTSP": {
+      "shares": 11815533,
+      "mcap_b": 16.91,
+      "price": 1431.5
+    },
+    "ARMANFIN": {
+      "shares": 10547592,
+      "mcap_b": 16.9,
+      "price": 1602.1
+    },
+    "AVADHSUGAR": {
+      "shares": 20018420,
+      "mcap_b": 16.89,
+      "price": 843.75
+    },
+    "HUHTAMAKI": {
+      "shares": 75521934,
+      "mcap_b": 16.87,
+      "price": 223.38
+    },
+    "EMSLIMITED": {
+      "shares": 55530807,
+      "mcap_b": 16.71,
+      "price": 300.95
+    },
+    "IGPL": {
+      "shares": 30794850,
+      "mcap_b": 16.68,
+      "price": 541.8
+    },
+    "ALICON": {
+      "shares": 16336840,
+      "mcap_b": 16.43,
+      "price": 1005.5
+    },
+    "KAPSTON": {
+      "shares": 30432184,
+      "mcap_b": 16.43,
+      "price": 539.8
+    },
+    "FISCHER": {
+      "shares": 698685470,
+      "mcap_b": 16.36,
+      "price": 23.41
+    },
+    "HPL": {
+      "shares": 64300486,
+      "mcap_b": 16.35,
+      "price": 254.2
+    },
+    "HATHWAY": {
+      "shares": 1770104500,
+      "mcap_b": 16.32,
+      "price": 9.22
+    },
+    "DIFFNKG": {
+      "shares": 37126259,
+      "mcap_b": 16.11,
+      "price": 433.9
+    },
+    "AYMSYNTEX": {
+      "shares": 58787883,
+      "mcap_b": 16.07,
+      "price": 273.37
+    },
+    "BHARATRAS": {
+      "shares": 16621072,
+      "mcap_b": 16.02,
+      "price": 963.9
+    },
+    "GALAPREC": {
+      "shares": 12816200,
+      "mcap_b": 15.93,
+      "price": 1243.2
+    },
+    "BHAGERIA": {
+      "shares": 43644180,
+      "mcap_b": 15.92,
+      "price": 364.8
+    },
+    "GOODYEAR": {
+      "shares": 23066507,
+      "mcap_b": 15.91,
+      "price": 689.9
+    },
+    "BNAGROCHEM": {
+      "shares": 977729410,
+      "mcap_b": 15.87,
+      "price": 16.23
+    },
+    "INSECTICID": {
+      "shares": 29097837,
+      "mcap_b": 15.87,
+      "price": 545.5
+    },
+    "JAICORPLTD": {
+      "shares": 175504995,
+      "mcap_b": 15.85,
+      "price": 90.29
+    },
+    "ARFIN": {
+      "shares": 168722482,
+      "mcap_b": 15.76,
+      "price": 93.4
+    },
+    "HGS": {
+      "shares": 46520285,
+      "mcap_b": 15.71,
+      "price": 337.65
+    },
+    "GRANDOAK": {
+      "shares": 518883550,
+      "mcap_b": 15.65,
+      "price": 30.16
+    },
+    "JYOTISTRUC": {
+      "shares": 1193659937,
+      "mcap_b": 15.63,
+      "price": 13.09
+    },
+    "IKIO": {
+      "shares": 77280701,
+      "mcap_b": 15.58,
+      "price": 201.62
+    },
+    "HITECH": {
+      "shares": 202710234,
+      "mcap_b": 15.53,
+      "price": 76.62
+    },
+    "INFOBEAN": {
+      "shares": 96974840,
+      "mcap_b": 15.43,
+      "price": 159.14
+    },
+    "AVTNPL": {
+      "shares": 152284000,
+      "mcap_b": 15.41,
+      "price": 101.22
+    },
+    "INA": {
+      "shares": 220451875,
+      "mcap_b": 15.38,
+      "price": 69.77
+    },
+    "BLUECLOUDS": {
+      "shares": 923081600,
+      "mcap_b": 15.3,
+      "price": 16.57
+    },
+    "INDIANHUME": {
+      "shares": 52681770,
+      "mcap_b": 15.29,
+      "price": 290.3
+    },
+    "BPLPHARMA": {
+      "shares": 6891963,
+      "mcap_b": 15.22,
+      "price": 2208.0
+    },
+    "AEROENTER": {
+      "shares": 113164200,
+      "mcap_b": 15.09,
+      "price": 133.31
+    },
+    "GPTINFRA": {
+      "shares": 126364600,
+      "mcap_b": 14.95,
+      "price": 118.32
+    },
+    "EIMCOELECO": {
+      "shares": 5768385,
+      "mcap_b": 14.93,
+      "price": 2588.0
+    },
+    "CAPACITE": {
+      "shares": 84604043,
+      "mcap_b": 14.84,
+      "price": 175.4
+    },
+    "AGL": {
+      "shares": 982782096,
+      "mcap_b": 14.7,
+      "price": 14.96
+    },
+    "AMRUTANJAN": {
+      "shares": 28900081,
+      "mcap_b": 14.69,
+      "price": 508.3
+    },
+    "GOCOLORS": {
+      "shares": 52595984,
+      "mcap_b": 14.68,
+      "price": 279.04
+    },
+    "JINDRILL": {
+      "shares": 28981104,
+      "mcap_b": 14.68,
+      "price": 506.6
+    },
+    "ACCELYA": {
+      "shares": 14926261,
+      "mcap_b": 14.61,
+      "price": 978.6
+    },
+    "ALLCARGO": {
+      "shares": 1497778469,
+      "mcap_b": 14.59,
+      "price": 9.74
+    },
+    "BLIL": {
+      "shares": 221972690,
+      "mcap_b": 14.59,
+      "price": 65.72
+    },
+    "DOLLAR": {
+      "shares": 56716120,
+      "mcap_b": 14.51,
+      "price": 255.79
+    },
+    "DLINKINDIA": {
+      "shares": 35504850,
+      "mcap_b": 14.48,
+      "price": 407.95
+    },
+    "EPACK": {
+      "shares": 96276695,
+      "mcap_b": 14.47,
+      "price": 150.25
+    },
+    "CAMLINFINE": {
+      "shares": 192096613,
+      "mcap_b": 14.27,
+      "price": 74.28
+    },
+    "DSSL": {
+      "shares": 12737080,
+      "mcap_b": 14.21,
+      "price": 1115.4
+    },
+    "CLSEL": {
+      "shares": 49725620,
+      "mcap_b": 14.11,
+      "price": 283.7
+    },
+    "GARUDA": {
+      "shares": 93041742,
+      "mcap_b": 14.1,
+      "price": 151.56
+    },
+    "HINDWAREAP": {
+      "shares": 83646357,
+      "mcap_b": 14.07,
+      "price": 168.19
+    },
+    "JAGSNPHARM": {
+      "shares": 66059245,
+      "mcap_b": 14.02,
+      "price": 212.16
+    },
+    "JAGRAN": {
+      "shares": 217654272,
+      "mcap_b": 13.92,
+      "price": 63.96
+    },
+    "DCW": {
+      "shares": 294719219,
+      "mcap_b": 13.89,
+      "price": 47.12
+    },
+    "FAZE3Q": {
+      "shares": 24270922,
+      "mcap_b": 13.89,
+      "price": 572.1
+    },
+    "JISLDVREQS": {
+      "shares": 733510251,
+      "mcap_b": 13.83,
+      "price": 18.86
+    },
+    "CEINSYS": {
+      "shares": 20937661,
+      "mcap_b": 13.74,
+      "price": 656.1
+    },
+    "AHCL": {
+      "shares": 531515000,
+      "mcap_b": 13.59,
+      "price": 25.56
+    },
+    "INVPRECQ": {
+      "shares": 10000000,
+      "mcap_b": 13.57,
+      "price": 1357.4
+    },
+    "HMAAGRO": {
+      "shares": 500769770,
+      "mcap_b": 13.46,
+      "price": 26.87
+    },
+    "GTLINFRA": {
+      "shares": 12809111895,
+      "mcap_b": 13.45,
+      "price": 1.05
+    },
+    "IPL": {
+      "shares": 115163508,
+      "mcap_b": 13.39,
+      "price": 116.27
+    },
+    "JAYBARMARU": {
+      "shares": 108250000,
+      "mcap_b": 13.38,
+      "price": 123.61
+    },
+    "FERMENTA": {
+      "shares": 28727351,
+      "mcap_b": 13.37,
+      "price": 465.5
+    },
+    "ALLTIME": {
+      "shares": 65507778,
+      "mcap_b": 13.36,
+      "price": 203.91
+    },
+    "BENARAS": {
+      "shares": 1300000,
+      "mcap_b": 13.28,
+      "price": 10213.0
+    },
+    "ASIANHOTNR": {
+      "shares": 42633229,
+      "mcap_b": 13.25,
+      "price": 310.9
+    },
+    "KOTIC": {
+      "shares": 108021773,
+      "mcap_b": 13.22,
+      "price": 122.39
+    },
+    "AKCAPIT": {
+      "shares": 6600000,
+      "mcap_b": 13.21,
+      "price": 2001.1
+    },
+    "KOPRAN": {
+      "shares": 48326105,
+      "mcap_b": 13.18,
+      "price": 272.66
+    },
+    "BHARATSE": {
+      "shares": 62800000,
+      "mcap_b": 13.17,
+      "price": 209.79
+    },
+    "BIL": {
+      "shares": 13410411,
+      "mcap_b": 13.17,
+      "price": 981.9
+    },
+    "KALAMANDIR": {
+      "shares": 147349967,
+      "mcap_b": 13.17,
+      "price": 89.41
+    },
+    "CAPITALSFB": {
+      "shares": 45491070,
+      "mcap_b": 13.12,
+      "price": 288.35
+    },
+    "ARDEE": {
+      "shares": 315200950,
+      "mcap_b": 13.09,
+      "price": 41.54
+    },
+    "ASIANTILES": {
+      "shares": 296475285,
+      "mcap_b": 13.02,
+      "price": 43.92
+    },
+    "GHCLTEXTIL": {
+      "shares": 95585786,
+      "mcap_b": 13.02,
+      "price": 136.22
+    },
+    "IVALUE": {
+      "shares": 54753660,
+      "mcap_b": 12.98,
+      "price": 237.07
+    },
+    "IFGLEXPOR": {
+      "shares": 72078624,
+      "mcap_b": 12.97,
+      "price": 179.96
+    },
+    "ALLDIGI": {
+      "shares": 15238326,
+      "mcap_b": 12.7,
+      "price": 833.3
+    },
+    "IMPAL": {
+      "shares": 12480000,
+      "mcap_b": 12.7,
+      "price": 1017.6
+    },
+    "GKSL": {
+      "shares": 78843250,
+      "mcap_b": 12.61,
+      "price": 159.9
+    },
+    "ANDHRAPAP": {
+      "shares": 198850195,
+      "mcap_b": 12.5,
+      "price": 62.87
+    },
+    "EXCELINDUS": {
+      "shares": 12570692,
+      "mcap_b": 12.41,
+      "price": 987.35
+    },
+    "ASTEC": {
+      "shares": 22282238,
+      "mcap_b": 12.4,
+      "price": 556.3
+    },
+    "ARIS": {
+      "shares": 81793846,
+      "mcap_b": 12.31,
+      "price": 150.47
+    },
+    "EXPLEOSOL": {
+      "shares": 15519739,
+      "mcap_b": 12.14,
+      "price": 782.05
+    },
+    "DEN": {
+      "shares": 476765914,
+      "mcap_b": 12.12,
+      "price": 25.42
+    },
+    "INDOBORAX": {
+      "shares": 32090000,
+      "mcap_b": 12.06,
+      "price": 375.75
+    },
+    "IZMO": {
+      "shares": 14980321,
+      "mcap_b": 11.99,
+      "price": 800.6
+    },
+    "KPEL": {
+      "shares": 67798099,
+      "mcap_b": 11.9,
+      "price": 175.48
+    },
+    "GENESYS": {
+      "shares": 66864603,
+      "mcap_b": 11.8,
+      "price": 176.43
+    },
+    "BLKASHYAP": {
+      "shares": 225482408,
+      "mcap_b": 11.74,
+      "price": 52.05
+    },
+    "FEDDERSHOL": {
+      "shares": 201415970,
+      "mcap_b": 11.58,
+      "price": 57.49
+    },
+    "3BBLACKBIO": {
+      "shares": 8582670,
+      "mcap_b": 11.57,
+      "price": 1348.2
+    },
+    "JINDALPHOT": {
+      "shares": 10297466,
+      "mcap_b": 11.54,
+      "price": 1120.6
+    },
+    "JYOTIRES": {
+      "shares": 12007144,
+      "mcap_b": 11.46,
+      "price": 954.65
+    },
+    "EKC": {
+      "shares": 112207682,
+      "mcap_b": 11.44,
+      "price": 101.98
+    },
+    "IGARASHI": {
+      "shares": 31475048,
+      "mcap_b": 11.44,
+      "price": 363.5
+    },
+    "ANDREWYU": {
+      "shares": 488950978,
+      "mcap_b": 11.4,
+      "price": 23.32
+    },
+    "ASALCBR": {
+      "shares": 20079200,
+      "mcap_b": 11.38,
+      "price": 566.95
+    },
+    "ACEVECTOR": {
+      "shares": 544186770,
+      "mcap_b": 11.35,
+      "price": 20.85
+    },
+    "GPTHEALTH": {
+      "shares": 82054823,
+      "mcap_b": 11.35,
+      "price": 138.36
+    },
+    "BELDING": {
+      "shares": 14478849,
+      "mcap_b": 11.29,
+      "price": 779.65
+    },
+    "BALAJITELE": {
+      "shares": 121902291,
+      "mcap_b": 11.21,
+      "price": 91.95
+    },
+    "DVL": {
+      "shares": 35024754,
+      "mcap_b": 11.18,
+      "price": 319.2
+    },
+    "DOLATALGO": {
+      "shares": 176000000,
+      "mcap_b": 11.08,
+      "price": 62.96
+    },
+    "HARIOMPIPE": {
+      "shares": 30967289,
+      "mcap_b": 11.08,
+      "price": 357.65
+    },
+    "LAXMIDENTL": {
+      "shares": 55029420,
+      "mcap_b": 11.01,
+      "price": 200.0
+    },
+    "ATULAUTO": {
+      "shares": 27751280,
+      "mcap_b": 10.97,
+      "price": 395.3
+    },
+    "ACGL": {
+      "shares": 6088622,
+      "mcap_b": 10.9,
+      "price": 1790.4
+    },
+    "COMSYN": {
+      "shares": 41952200,
+      "mcap_b": 10.9,
+      "price": 259.9
+    },
+    "BAJAJHCARE": {
+      "shares": 33665161,
+      "mcap_b": 10.83,
+      "price": 321.65
+    },
+    "DHAMPURSUG": {
+      "shares": 64306509,
+      "mcap_b": 10.73,
+      "price": 166.8
+    },
+    "GREENPOWER": {
+      "shares": 1173031669,
+      "mcap_b": 10.7,
+      "price": 9.12
+    },
+    "ICEMAKE": {
+      "shares": 15779736,
+      "mcap_b": 10.64,
+      "price": 674.35
+    },
+    "IRISDOREME": {
+      "shares": 190331470,
+      "mcap_b": 10.59,
+      "price": 55.62
+    },
+    "KAMDHENU": {
+      "shares": 281883000,
+      "mcap_b": 10.56,
+      "price": 37.47
+    },
+    "ANDHRSUGAR": {
+      "shares": 135535390,
+      "mcap_b": 10.54,
+      "price": 77.77
+    },
+    "DAMCAPITAL": {
+      "shares": 70686000,
+      "mcap_b": 10.5,
+      "price": 148.6
+    },
+    "BUTTERFLY": {
+      "shares": 17879551,
+      "mcap_b": 10.45,
+      "price": 584.5
+    },
+    "ARYAMAN": {
+      "shares": 12247000,
+      "mcap_b": 10.44,
+      "price": 852.45
+    },
+    "ARIHANTCAP": {
+      "shares": 109612800,
+      "mcap_b": 10.43,
+      "price": 95.17
+    },
+    "LINCOLN": {
+      "shares": 20029728,
+      "mcap_b": 10.43,
+      "price": 520.5
+    },
+    "INDPRUD": {
+      "shares": 1675840,
+      "mcap_b": 10.42,
+      "price": 6218.5
+    },
+    "GODAVARIB": {
+      "shares": 51175977,
+      "mcap_b": 10.39,
+      "price": 202.97
+    },
+    "IRMENERGY": {
+      "shares": 41059677,
+      "mcap_b": 10.39,
+      "price": 253.03
+    },
+    "ARROWGREEN": {
+      "shares": 15087938,
+      "mcap_b": 10.37,
+      "price": 687.4
+    },
+    "CONSOFINVT": {
+      "shares": 32326366,
+      "mcap_b": 10.35,
+      "price": 320.3
+    },
+    "FINOPB": {
+      "shares": 83218402,
+      "mcap_b": 10.31,
+      "price": 123.89
+    },
+    "AFSL": {
+      "shares": 51215124,
+      "mcap_b": 10.29,
+      "price": 201.0
+    },
+    "CREST": {
+      "shares": 28271775,
+      "mcap_b": 10.27,
+      "price": 363.4
+    },
+    "ASTAR": {
+      "shares": 16006800,
+      "mcap_b": 10.25,
+      "price": 640.1
+    },
+    "GRPLTD": {
+      "shares": 5333332,
+      "mcap_b": 10.22,
+      "price": 1915.4
+    },
+    "GULPOLY": {
+      "shares": 62183424,
+      "mcap_b": 10.18,
+      "price": 163.74
+    },
+    "BHARATWIRE": {
+      "shares": 68782985,
+      "mcap_b": 10.14,
+      "price": 147.43
+    },
+    "BOROSCI": {
+      "shares": 88947050,
+      "mcap_b": 10.13,
+      "price": 113.9
+    },
+    "CENTENKA": {
+      "shares": 21850589,
+      "mcap_b": 10.12,
+      "price": 463.0
+    },
+    "GANDHITUBE": {
+      "shares": 11283900,
+      "mcap_b": 10.12,
+      "price": 897.0
+    },
+    "GKWLIMITED": {
+      "shares": 5966500,
+      "mcap_b": 10.08,
+      "price": 1688.7
+    },
+    "CENTRUM": {
+      "shares": 486568164,
+      "mcap_b": 9.9,
+      "price": 20.35
+    },
+    "JPOLYINVST": {
+      "shares": 10511929,
+      "mcap_b": 9.64,
+      "price": 916.9
+    },
+    "MADRASFERT": {
+      "shares": 161101300,
+      "mcap_b": 9.64,
+      "price": 59.82
+    },
+    "ARIHANT": {
+      "shares": 10862497,
+      "mcap_b": 9.56,
+      "price": 879.95
+    },
+    "APEX": {
+      "shares": 31250000,
+      "mcap_b": 9.52,
+      "price": 304.75
+    },
+    "FINKURVE": {
+      "shares": 140143988,
+      "mcap_b": 9.5,
+      "price": 67.77
+    },
+    "ARMEE": {
+      "shares": 31731386,
+      "mcap_b": 9.35,
+      "price": 294.6
+    },
+    "CONTROLPR": {
+      "shares": 15931116,
+      "mcap_b": 9.33,
+      "price": 585.4
+    },
+    "BIRLANU": {
+      "shares": 7540899,
+      "mcap_b": 9.27,
+      "price": 1229.8
+    },
+    "AMANTA": {
+      "shares": 38829351,
+      "mcap_b": 9.11,
+      "price": 234.51
+    },
+    "AWHCL": {
+      "shares": 28371681,
+      "mcap_b": 9.1,
+      "price": 320.6
+    },
+    "ARIHANTSUP": {
+      "shares": 43249991,
+      "mcap_b": 9.06,
+      "price": 209.39
+    },
+    "ESTER": {
+      "shares": 104295042,
+      "mcap_b": 9.06,
+      "price": 86.91
+    },
+    "KRISHIVAL": {
+      "shares": 25628301,
+      "mcap_b": 9.06,
+      "price": 353.65
+    },
+    "BSHSL": {
+      "shares": 104937280,
+      "mcap_b": 9.04,
+      "price": 86.19
+    },
+    "ADROITIND": {
+      "shares": 44808340,
+      "mcap_b": 8.99,
+      "price": 200.69
+    },
+    "DIGITIDE": {
+      "shares": 149460919,
+      "mcap_b": 8.98,
+      "price": 60.1
+    },
+    "BIRLACABLE": {
+      "shares": 30000000,
+      "mcap_b": 8.83,
+      "price": 294.3
+    },
+    "IFBAGRO": {
+      "shares": 9367111,
+      "mcap_b": 8.82,
+      "price": 941.95
+    },
+    "DBOL": {
+      "shares": 65613207,
+      "mcap_b": 8.78,
+      "price": 133.83
+    },
+    "HEALTHX": {
+      "shares": 31810500,
+      "mcap_b": 8.69,
+      "price": 273.2
+    },
+    "EXCELSOFT": {
+      "shares": 115084164,
+      "mcap_b": 8.67,
+      "price": 75.35
+    },
+    "AMBIKCO": {
+      "shares": 5725000,
+      "mcap_b": 8.63,
+      "price": 1507.8
+    },
+    "JARO": {
+      "shares": 22277360,
+      "mcap_b": 8.6,
+      "price": 385.95
+    },
+    "HEXATRADEX": {
+      "shares": 55244704,
+      "mcap_b": 8.56,
+      "price": 154.99
+    },
+    "KILITCH": {
+      "shares": 34961564,
+      "mcap_b": 8.54,
+      "price": 244.16
+    },
+    "BCLIND": {
+      "shares": 295163340,
+      "mcap_b": 8.48,
+      "price": 28.73
+    },
+    "DHARMAJ": {
+      "shares": 33797296,
+      "mcap_b": 8.44,
+      "price": 249.8
+    },
+    "FAIRCHEMOR": {
+      "shares": 12595902,
+      "mcap_b": 8.38,
+      "price": 665.4
+    },
+    "AMNPLST": {
+      "shares": 55020000,
+      "mcap_b": 8.37,
+      "price": 152.13
+    },
+    "GAYAPROJ": {
+      "shares": 464299000,
+      "mcap_b": 8.36,
+      "price": 18.01
+    },
+    "BAHETI": {
+      "shares": 10446905,
+      "mcap_b": 8.3,
+      "price": 794.55
+    },
+    "GERMAN": {
+      "shares": 75349197,
+      "mcap_b": 8.27,
+      "price": 109.72
+    },
+    "INDOAMIN": {
+      "shares": 72587560,
+      "mcap_b": 8.27,
+      "price": 113.97
+    },
+    "KRYSTAL": {
+      "shares": 13971952,
+      "mcap_b": 8.18,
+      "price": 585.75
+    },
+    "DWARKESH": {
+      "shares": 185301470,
+      "mcap_b": 8.17,
+      "price": 44.11
+    },
+    "ELECTHERM": {
+      "shares": 12742814,
+      "mcap_b": 8.17,
+      "price": 640.95
+    },
+    "ECORECO": {
+      "shares": 19296750,
+      "mcap_b": 8.11,
+      "price": 420.5
+    },
+    "ANUHPHR": {
+      "shares": 100224000,
+      "mcap_b": 8.1,
+      "price": 80.77
+    },
+    "HEXAGON": {
+      "shares": 122918109,
+      "mcap_b": 7.89,
+      "price": 64.17
+    },
+    "ELDEHSG": {
+      "shares": 9833000,
+      "mcap_b": 7.86,
+      "price": 798.85
+    },
+    "LIKHITHA": {
+      "shares": 39472710,
+      "mcap_b": 7.86,
+      "price": 199.11
+    },
+    "ATL": {
+      "shares": 291859323,
+      "mcap_b": 7.82,
+      "price": 26.78
+    },
+    "MAFATIND": {
+      "shares": 72178930,
+      "mcap_b": 7.81,
+      "price": 108.2
+    },
+    "ECOSMOBLTY": {
+      "shares": 60000000,
+      "mcap_b": 7.79,
+      "price": 129.78
+    },
+    "MAGADSUGAR": {
+      "shares": 14091630,
+      "mcap_b": 7.71,
+      "price": 547.45
+    },
+    "LOKESHMACH": {
+      "shares": 21796770,
+      "mcap_b": 7.64,
+      "price": 350.65
+    },
+    "ELITECON": {
+      "shares": 1598500000,
+      "mcap_b": 7.59,
+      "price": 4.75
+    },
+    "ADVANCE": {
+      "shares": 64285720,
+      "mcap_b": 7.58,
+      "price": 117.89
+    },
+    "GEECEE": {
+      "shares": 20911729,
+      "mcap_b": 7.58,
+      "price": 362.25
+    },
+    "KECL": {
+      "shares": 69882078,
+      "mcap_b": 7.53,
+      "price": 107.76
+    },
+    "HIMATSEIDE": {
+      "shares": 125742289,
+      "mcap_b": 7.46,
+      "price": 59.31
+    },
+    "CIFL": {
+      "shares": 391056300,
+      "mcap_b": 7.45,
+      "price": 19.06
+    },
+    "GAUDIUMIVF": {
+      "shares": 72786884,
+      "mcap_b": 7.43,
+      "price": 102.11
+    },
+    "GEMAROMA": {
+      "shares": 52237138,
+      "mcap_b": 7.41,
+      "price": 141.87
+    },
+    "GANESHCP": {
+      "shares": 40412946,
+      "mcap_b": 7.26,
+      "price": 179.68
+    },
+    "KOKUYOCMLN": {
+      "shares": 100303806,
+      "mcap_b": 7.23,
+      "price": 72.08
+    },
+    "CHEMCON": {
+      "shares": 36630701,
+      "mcap_b": 7.19,
+      "price": 196.22
+    },
+    "ENKEIWHEL": {
+      "shares": 17974895,
+      "mcap_b": 7.19,
+      "price": 400.0
+    },
+    "GICHSGFIN": {
+      "shares": 53851066,
+      "mcap_b": 7.17,
+      "price": 133.19
+    },
+    "JAYAGROGN": {
+      "shares": 30000000,
+      "mcap_b": 7.14,
+      "price": 238.03
+    },
+    "HTEL": {
+      "shares": 94852594,
+      "mcap_b": 7.13,
+      "price": 75.14
+    },
+    "ASAL": {
+      "shares": 15864397,
+      "mcap_b": 7.12,
+      "price": 448.85
+    },
+    "HALDYNGL": {
+      "shares": 53751700,
+      "mcap_b": 7.11,
+      "price": 132.36
+    },
+    "ISTLTD": {
+      "shares": 11664112,
+      "mcap_b": 7.09,
+      "price": 607.65
+    },
+    "KOTHARIPET": {
+      "shares": 58846400,
+      "mcap_b": 7.03,
+      "price": 119.44
+    },
+    "EMKAY": {
+      "shares": 27925580,
+      "mcap_b": 6.99,
+      "price": 250.4
+    },
+    "BLAL": {
+      "shares": 41644500,
+      "mcap_b": 6.96,
+      "price": 167.15
+    },
+    "DECCANCE": {
+      "shares": 14007500,
+      "mcap_b": 6.89,
+      "price": 491.85
+    },
+    "HMVL": {
+      "shares": 73514821,
+      "mcap_b": 6.89,
+      "price": 93.79
+    },
+    "EMAMIPAP": {
+      "shares": 60499050,
+      "mcap_b": 6.87,
+      "price": 113.56
+    },
+    "BORANA": {
+      "shares": 26645295,
+      "mcap_b": 6.77,
+      "price": 253.9
+    },
+    "EVERESTIND": {
+      "shares": 15855754,
+      "mcap_b": 6.75,
+      "price": 425.7
+    },
+    "LOTUSCHO": {
+      "shares": 12841049,
+      "mcap_b": 6.68,
+      "price": 520.4
+    },
+    "KAMATHOTEL": {
+      "shares": 29480072,
+      "mcap_b": 6.59,
+      "price": 223.54
+    },
+    "BIRLAMONEY": {
+      "shares": 56509201,
+      "mcap_b": 6.56,
+      "price": 116.16
+    },
+    "JITFINFRA": {
+      "shares": 25703706,
+      "mcap_b": 6.54,
+      "price": 254.25
+    },
+    "CHEVIOT": {
+      "shares": 5841875,
+      "mcap_b": 6.48,
+      "price": 1109.0
+    },
+    "20MICRONS": {
+      "shares": 35286502,
+      "mcap_b": 6.42,
+      "price": 181.96
+    },
+    "AGARIND": {
+      "shares": 14957789,
+      "mcap_b": 6.41,
+      "price": 428.6
+    },
+    "GANESHBE": {
+      "shares": 71989421,
+      "mcap_b": 6.4,
+      "price": 88.97
+    },
+    "ADVENTHTL": {
+      "shares": 53942887,
+      "mcap_b": 6.39,
+      "price": 118.49
+    },
+    "BAJAJINDEF": {
+      "shares": 32000000,
+      "mcap_b": 6.31,
+      "price": 197.14
+    },
+    "KANPRPLA": {
+      "shares": 24478958,
+      "mcap_b": 6.29,
+      "price": 256.97
+    },
+    "EMPIND": {
+      "shares": 5999998,
+      "mcap_b": 6.27,
+      "price": 1044.75
+    },
+    "BAJAJST": {
+      "shares": 20800000,
+      "mcap_b": 6.25,
+      "price": 300.65
+    },
+    "CHEMBONDCH": {
+      "shares": 26896576,
+      "mcap_b": 6.2,
+      "price": 230.55
+    },
+    "COFFEEDAY": {
+      "shares": 211251719,
+      "mcap_b": 6.17,
+      "price": 29.23
+    },
+    "FABTECH": {
+      "shares": 44450794,
+      "mcap_b": 6.15,
+      "price": 138.32
+    },
+    "INNOVISION": {
+      "shares": 23813294,
+      "mcap_b": 6.14,
+      "price": 257.93
+    },
+    "HARDWYN": {
+      "shares": 683795494,
+      "mcap_b": 6.13,
+      "price": 8.96
+    },
+    "KELLTONTEC": {
+      "shares": 531404670,
+      "mcap_b": 6.12,
+      "price": 11.51
+    },
+    "GLOSTERLTD": {
+      "shares": 10943260,
+      "mcap_b": 6.11,
+      "price": 558.6
+    },
+    "DMCC": {
+      "shares": 24939933,
+      "mcap_b": 6.04,
+      "price": 242.3
+    },
+    "GTPL": {
+      "shares": 112463038,
+      "mcap_b": 6.02,
+      "price": 53.52
+    },
+    "DENTA": {
+      "shares": 26700000,
+      "mcap_b": 6.01,
+      "price": 224.99
+    },
+    "HERANBA": {
+      "shares": 40013467,
+      "mcap_b": 6.0,
+      "price": 149.91
+    },
+    "MAANALU": {
+      "shares": 59984864,
+      "mcap_b": 6.0,
+      "price": 99.98
+    },
+    "DHUNINV": {
+      "shares": 6097178,
+      "mcap_b": 5.97,
+      "price": 979.2
+    },
+    "INNOVANA": {
+      "shares": 20660000,
+      "mcap_b": 5.86,
+      "price": 283.7
+    },
+    "EIFFL": {
+      "shares": 24800000,
+      "mcap_b": 5.84,
+      "price": 235.67
+    },
+    "AXTEL": {
+      "shares": 16154800,
+      "mcap_b": 5.82,
+      "price": 360.45
+    },
+    "ADSL": {
+      "shares": 56650603,
+      "mcap_b": 5.8,
+      "price": 102.38
+    },
+    "KUANTUM": {
+      "shares": 87263630,
+      "mcap_b": 5.71,
+      "price": 65.41
+    },
+    "BMWVENTLTD": {
+      "shares": 86715000,
+      "mcap_b": 5.61,
+      "price": 64.7
+    },
+    "HTMEDIA": {
+      "shares": 231320042,
+      "mcap_b": 5.5,
+      "price": 23.78
+    },
+    "INDOFARM": {
+      "shares": 48051600,
+      "mcap_b": 5.47,
+      "price": 113.93
+    },
+    "KSE": {
+      "shares": 32000000,
+      "mcap_b": 5.47,
+      "price": 170.94
+    },
+    "HINDCOMPOS": {
+      "shares": 14769000,
+      "mcap_b": 5.46,
+      "price": 369.75
+    },
+    "BLACKROSE": {
+      "shares": 51000000,
+      "mcap_b": 5.44,
+      "price": 106.74
+    },
+    "DCI": {
+      "shares": 16400000,
+      "mcap_b": 5.43,
+      "price": 331.1
+    },
+    "CSLFINANCE": {
+      "shares": 22487484,
+      "mcap_b": 5.38,
+      "price": 239.32
+    },
+    "LAXMIINDIA": {
+      "shares": 52393078,
+      "mcap_b": 5.28,
+      "price": 100.77
+    },
+    "LINC": {
+      "shares": 59505603,
+      "mcap_b": 5.22,
+      "price": 87.71
+    },
+    "KNAGRI": {
+      "shares": 24998910,
+      "mcap_b": 5.21,
+      "price": 208.52
+    },
+    "BESTAGRO": {
+      "shares": 354671100,
+      "mcap_b": 5.2,
+      "price": 14.65
+    },
+    "DCMSIL": {
+      "shares": 86992185,
+      "mcap_b": 5.05,
+      "price": 58.06
+    },
+    "GLOTTIS": {
+      "shares": 92403000,
+      "mcap_b": 5.05,
+      "price": 54.62
+    },
+    "KSOLVES": {
+      "shares": 23720400,
+      "mcap_b": 5.0,
+      "price": 210.65
+    },
+    "BIGBLOC": {
+      "shares": 141575750,
+      "mcap_b": 4.99,
+      "price": 35.25
+    },
+    "HALEOSLABS": {
+      "shares": 3023287,
+      "mcap_b": 4.95,
+      "price": 1636.8
+    },
+    "APTECHT": {
+      "shares": 58002817,
+      "mcap_b": 4.89,
+      "price": 84.39
+    },
+    "CCCL": {
+      "shares": 446759451,
+      "mcap_b": 4.88,
+      "price": 10.92
+    },
+    "DONEAR": {
+      "shares": 52000000,
+      "mcap_b": 4.81,
+      "price": 92.46
+    },
+    "INTLCONV": {
+      "shares": 63781000,
+      "mcap_b": 4.8,
+      "price": 75.19
+    },
+    "KHAICHEM": {
+      "shares": 96989200,
+      "mcap_b": 4.8,
+      "price": 49.46
+    },
+    "AARTISURF": {
+      "shares": 8470905,
+      "mcap_b": 4.76,
+      "price": 561.7
+    },
+    "ASAHISONG": {
+      "shares": 11787262,
+      "mcap_b": 4.57,
+      "price": 387.95
+    },
+    "KDGREEN": {
+      "shares": 101510500,
+      "mcap_b": 4.55,
+      "price": 44.78
+    },
+    "CEWATER": {
+      "shares": 20696233,
+      "mcap_b": 4.53,
+      "price": 218.92
+    },
+    "CHEMFAB": {
+      "shares": 14373702,
+      "mcap_b": 4.47,
+      "price": 310.65
+    },
+    "DICIND": {
+      "shares": 9178977,
+      "mcap_b": 4.42,
+      "price": 481.15
+    },
+    "BBTCL": {
+      "shares": 20511240,
+      "mcap_b": 4.4,
+      "price": 214.36
+    },
+    "ALBERTDAVD": {
+      "shares": 5707162,
+      "mcap_b": 4.39,
+      "price": 768.7
+    },
+    "DEVX": {
+      "shares": 97965285,
+      "mcap_b": 4.39,
+      "price": 44.85
+    },
+    "KESORAMIND": {
+      "shares": 310663663,
+      "mcap_b": 4.38,
+      "price": 14.11
+    },
+    "JKIPL": {
+      "shares": 38386000,
+      "mcap_b": 4.37,
+      "price": 113.76
+    },
+    "GUJAPOLLO": {
+      "shares": 12970000,
+      "mcap_b": 4.34,
+      "price": 334.65
+    },
+    "IRIS": {
+      "shares": 20620247,
+      "mcap_b": 4.3,
+      "price": 208.37
+    },
+    "LANCER": {
+      "shares": 371782236,
+      "mcap_b": 4.23,
+      "price": 11.37
+    },
+    "ADVANIHOTR": {
+      "shares": 92438500,
+      "mcap_b": 4.17,
+      "price": 45.15
+    },
+    "BATLIBOI": {
+      "shares": 47226840,
+      "mcap_b": 4.17,
+      "price": 88.29
+    },
+    "HLVLTD": {
+      "shares": 659259899,
+      "mcap_b": 4.17,
+      "price": 6.33
+    },
+    "KOTYARK": {
+      "shares": 113070276,
+      "mcap_b": 4.16,
+      "price": 36.83
+    },
+    "AZADIND": {
+      "shares": 272215770,
+      "mcap_b": 4.13,
+      "price": 15.19
+    },
+    "CSM": {
+      "shares": 51603472,
+      "mcap_b": 4.1,
+      "price": 79.43
+    },
+    "JENBURPH": {
+      "shares": 4413300,
+      "mcap_b": 4.08,
+      "price": 923.45
+    },
+    "INDOTHAI": {
+      "shares": 132838190,
+      "mcap_b": 4.04,
+      "price": 30.43
+    },
+    "3IINFOLTD": {
+      "shares": 207502004,
+      "mcap_b": 4.01,
+      "price": 19.34
+    },
+    "DIGISPICE": {
+      "shares": 234671106,
+      "mcap_b": 3.94,
+      "price": 16.78
+    },
+    "LORDSCHLO": {
+      "shares": 28653861,
+      "mcap_b": 3.9,
+      "price": 136.27
+    },
+    "ENIL": {
+      "shares": 47670415,
+      "mcap_b": 3.89,
+      "price": 81.67
+    },
+    "HALDER": {
+      "shares": 12438135,
+      "mcap_b": 3.88,
+      "price": 311.95
+    },
+    "ELIN": {
+      "shares": 49709220,
+      "mcap_b": 3.85,
+      "price": 77.55
+    },
+    "CYBERTECH": {
+      "shares": 30380593,
+      "mcap_b": 3.81,
+      "price": 125.47
+    },
+    "HAZOOR": {
+      "shares": 288136160,
+      "mcap_b": 3.8,
+      "price": 13.18
+    },
+    "CINELINE": {
+      "shares": 38112587,
+      "mcap_b": 3.73,
+      "price": 97.86
+    },
+    "DISHTV": {
+      "shares": 1841256154,
+      "mcap_b": 3.72,
+      "price": 2.02
+    },
+    "KOTHARIPRO": {
+      "shares": 59687730,
+      "mcap_b": 3.71,
+      "price": 62.24
+    },
+    "ABCIND": {
+      "shares": 21963620,
+      "mcap_b": 3.67,
+      "price": 167.23
+    },
+    "AEPL": {
+      "shares": 251036900,
+      "mcap_b": 3.66,
+      "price": 14.58
+    },
+    "FOCUS": {
+      "shares": 67229575,
+      "mcap_b": 3.64,
+      "price": 54.08
+    },
+    "ACL": {
+      "shares": 92172140,
+      "mcap_b": 3.61,
+      "price": 39.15
+    },
+    "AUTOIND": {
+      "shares": 45375401,
+      "mcap_b": 3.6,
+      "price": 79.34
+    },
+    "DENORA": {
+      "shares": 5308634,
+      "mcap_b": 3.58,
+      "price": 674.9
+    },
+    "IGCL": {
+      "shares": 63223997,
+      "mcap_b": 3.57,
+      "price": 56.53
+    },
+    "LIBERTSHOE": {
+      "shares": 17040000,
+      "mcap_b": 3.55,
+      "price": 208.15
+    },
+    "EMAMIREAL": {
+      "shares": 52033889,
+      "mcap_b": 3.54,
+      "price": 67.94
+    },
+    "INSPIRISYS": {
+      "shares": 39616873,
+      "mcap_b": 3.54,
+      "price": 89.47
+    },
+    "GINNIFILA": {
+      "shares": 85650065,
+      "mcap_b": 3.5,
+      "price": 40.82
+    },
+    "GOKUL": {
+      "shares": 98995000,
+      "mcap_b": 3.49,
+      "price": 35.24
+    },
+    "GOACARBON": {
+      "shares": 9151052,
+      "mcap_b": 3.47,
+      "price": 378.85
+    },
+    "AAREYDRUGS": {
+      "shares": 31874303,
+      "mcap_b": 3.44,
+      "price": 108.01
+    },
+    "CPEDU": {
+      "shares": 18192939,
+      "mcap_b": 3.43,
+      "price": 188.64
+    },
+    "BEDMUTHA": {
+      "shares": 32263884,
+      "mcap_b": 3.42,
+      "price": 105.99
+    },
+    "BANSWRAS": {
+      "shares": 34232084,
+      "mcap_b": 3.4,
+      "price": 99.35
+    },
+    "ESSARSHPNG": {
+      "shares": 207884526,
+      "mcap_b": 3.38,
+      "price": 16.28
+    },
+    "AFIL": {
+      "shares": 447950000,
+      "mcap_b": 3.31,
+      "price": 7.38
+    },
+    "AVONMORE": {
+      "shares": 282184741,
+      "mcap_b": 3.26,
+      "price": 11.55
+    },
+    "FOODSIN": {
+      "shares": 73531558,
+      "mcap_b": 3.26,
+      "price": 44.28
+    },
+    "DREAMFOLKS": {
+      "shares": 53269862,
+      "mcap_b": 3.24,
+      "price": 60.88
+    },
+    "ABMKNO": {
+      "shares": 20002200,
+      "mcap_b": 3.2,
+      "price": 160.19
+    },
+    "EUROBOND": {
+      "shares": 24500000,
+      "mcap_b": 3.19,
+      "price": 130.14
+    },
+    "HCL-INSYS": {
+      "shares": 329209928,
+      "mcap_b": 3.15,
+      "price": 9.57
+    },
+    "KMSUGAR": {
+      "shares": 92000170,
+      "mcap_b": 3.14,
+      "price": 34.09
+    },
+    "KRITINUT": {
+      "shares": 50103520,
+      "mcap_b": 3.12,
+      "price": 62.29
+    },
+    "KCPSUGIND": {
+      "shares": 114282557,
+      "mcap_b": 3.11,
+      "price": 27.17
+    },
+    "AVG": {
+      "shares": 18708076,
+      "mcap_b": 3.05,
+      "price": 162.88
+    },
+    "EBIX": {
+      "shares": 214294160,
+      "mcap_b": 3.03,
+      "price": 14.14
+    },
+    "ESFL": {
+      "shares": 24839040,
+      "mcap_b": 2.94,
+      "price": 118.25
+    },
+    "HPAL": {
+      "shares": 91874735,
+      "mcap_b": 2.93,
+      "price": 31.88
+    },
+    "DBEIL": {
+      "shares": 465808600,
+      "mcap_b": 2.9,
+      "price": 6.23
+    },
+    "CLEDUCATE": {
+      "shares": 54292947,
+      "mcap_b": 2.88,
+      "price": 53.03
+    },
+    "APOLSINHOT": {
+      "shares": 2600400,
+      "mcap_b": 2.87,
+      "price": 1101.9
+    },
+    "DYNPRO": {
+      "shares": 12428387,
+      "mcap_b": 2.87,
+      "price": 230.67
+    },
+    "DAVANGERE": {
+      "shares": 1429990798,
+      "mcap_b": 2.86,
+      "price": 2.0
+    },
+    "HARRMALAYA": {
+      "shares": 18455405,
+      "mcap_b": 2.84,
+      "price": 153.91
+    },
+    "AARON": {
+      "shares": 20946478,
+      "mcap_b": 2.81,
+      "price": 133.99
+    },
+    "AERONEU": {
+      "shares": 30596000,
+      "mcap_b": 2.81,
+      "price": 91.73
+    },
+    "MAHEPC": {
+      "shares": 28077040,
+      "mcap_b": 2.8,
+      "price": 99.56
+    },
+    "AQYLON": {
+      "shares": 253730560,
+      "mcap_b": 2.78,
+      "price": 10.97
+    },
+    "EXXARO": {
+      "shares": 447410700,
+      "mcap_b": 2.78,
+      "price": 6.22
+    },
+    "AXITA": {
+      "shares": 382673533,
+      "mcap_b": 2.74,
+      "price": 7.17
+    },
+    "DPWIRES": {
+      "shares": 15500444,
+      "mcap_b": 2.74,
+      "price": 176.84
+    },
+    "ASHIMASYN": {
+      "shares": 191660078,
+      "mcap_b": 2.7,
+      "price": 14.08
+    },
+    "CHEMBOND": {
+      "shares": 13448288,
+      "mcap_b": 2.7,
+      "price": 200.89
+    },
+    "BELLACASA": {
+      "shares": 13387500,
+      "mcap_b": 2.68,
+      "price": 199.93
+    },
+    "KRITI": {
+      "shares": 52696000,
+      "mcap_b": 2.68,
+      "price": 50.84
+    },
+    "GEEKAYWIRE": {
+      "shares": 104520000,
+      "mcap_b": 2.65,
+      "price": 25.31
+    },
+    "ANNAPURNA": {
+      "shares": 21820000,
+      "mcap_b": 2.63,
+      "price": 120.4
+    },
+    "ANNU": {
+      "shares": 65492670,
+      "mcap_b": 2.62,
+      "price": 39.98
+    },
+    "APCL": {
+      "shares": 29374764,
+      "mcap_b": 2.62,
+      "price": 89.11
+    },
+    "ELGIRUBCO": {
+      "shares": 50050000,
+      "mcap_b": 2.62,
+      "price": 52.25
+    },
+    "GENUSPAPER": {
+      "shares": 257125940,
+      "mcap_b": 2.57,
+      "price": 10.01
+    },
+    "IVC": {
+      "shares": 314032740,
+      "mcap_b": 2.5,
+      "price": 7.95
+    },
+    "DJML": {
+      "shares": 35929249,
+      "mcap_b": 2.47,
+      "price": 68.73
+    },
+    "JMA": {
+      "shares": 22841054,
+      "mcap_b": 2.45,
+      "price": 107.23
+    },
+    "ALANKIT": {
+      "shares": 304158100,
+      "mcap_b": 2.43,
+      "price": 7.99
+    },
+    "BIMETAL": {
+      "shares": 3825000,
+      "mcap_b": 2.4,
+      "price": 627.6
+    },
+    "FCSSOFT": {
+      "shares": 1709553100,
+      "mcap_b": 2.39,
+      "price": 1.4
+    },
+    "JAYSREETEA": {
+      "shares": 28877488,
+      "mcap_b": 2.38,
+      "price": 82.54
+    },
+    "DIAMINESQ": {
+      "shares": 10055519,
+      "mcap_b": 2.29,
+      "price": 227.9
+    },
+    "AHLEAST": {
+      "shares": 17291696,
+      "mcap_b": 2.28,
+      "price": 132.0
+    },
+    "GLOBECIVIL": {
+      "shares": 59718999,
+      "mcap_b": 2.28,
+      "price": 38.23
+    },
+    "IITL": {
+      "shares": 20924728,
+      "mcap_b": 2.24,
+      "price": 106.9
+    },
+    "LOTUSEYE": {
+      "shares": 21257465,
+      "mcap_b": 2.23,
+      "price": 104.96
+    },
+    "DSFCL": {
+      "shares": 86992185,
+      "mcap_b": 2.22,
+      "price": 25.55
+    },
+    "A2ZINFRA": {
+      "shares": 177522358,
+      "mcap_b": 2.21,
+      "price": 12.44
+    },
+    "COASTCORP": {
+      "shares": 66977230,
+      "mcap_b": 2.21,
+      "price": 33.07
+    },
+    "GOLDTECH": {
+      "shares": 52373239,
+      "mcap_b": 2.2,
+      "price": 42.0
+    },
+    "COMPEAU": {
+      "shares": 6146000,
+      "mcap_b": 2.17,
+      "price": 353.65
+    },
+    "IWP": {
+      "shares": 63972720,
+      "mcap_b": 2.17,
+      "price": 33.99
+    },
+    "KHADIM": {
+      "shares": 18378382,
+      "mcap_b": 2.16,
+      "price": 117.36
+    },
+    "ALFREDHE": {
+      "shares": 771429,
+      "mcap_b": 2.14,
+      "price": 2769.0
+    },
+    "AASTHA": {
+      "shares": 88284380,
+      "mcap_b": 2.12,
+      "price": 24.03
+    },
+    "CCHHL": {
+      "shares": 163464735,
+      "mcap_b": 2.11,
+      "price": 12.88
+    },
+    "GILLANDERS": {
+      "shares": 21342346,
+      "mcap_b": 2.09,
+      "price": 98.0
+    },
+    "BPL": {
+      "shares": 48975751,
+      "mcap_b": 2.05,
+      "price": 41.95
+    },
+    "BTTL": {
+      "shares": 58373305,
+      "mcap_b": 2.04,
+      "price": 34.96
+    },
+    "MAHESHWARI": {
+      "shares": 29043987,
+      "mcap_b": 2.01,
+      "price": 69.04
+    },
+    "BROOKS": {
+      "shares": 29457248,
+      "mcap_b": 2.0,
+      "price": 67.8
+    },
+    "EKI": {
+      "shares": 27686750,
+      "mcap_b": 1.99,
+      "price": 71.72
+    },
+    "ABANSENT": {
+      "shares": 69748880,
+      "mcap_b": 1.89,
+      "price": 27.07
+    },
+    "AARVI": {
+      "shares": 14844100,
+      "mcap_b": 1.89,
+      "price": 127.47
+    },
+    "DELPHIFX": {
+      "shares": 245267775,
+      "mcap_b": 1.89,
+      "price": 7.69
+    },
+    "AIRAN": {
+      "shares": 125020000,
+      "mcap_b": 1.85,
+      "price": 14.77
+    },
+    "INTENTECH": {
+      "shares": 23356353,
+      "mcap_b": 1.84,
+      "price": 78.67
+    },
+    "BASML": {
+      "shares": 79921375,
+      "mcap_b": 1.83,
+      "price": 22.85
+    },
+    "MADHAVIPL": {
+      "shares": 269581560,
+      "mcap_b": 1.83,
+      "price": 6.8
+    },
+    "ASPINWALL": {
+      "shares": 7818288,
+      "mcap_b": 1.81,
+      "price": 231.43
+    },
+    "AUSOMENT": {
+      "shares": 13623552,
+      "mcap_b": 1.81,
+      "price": 132.57
+    },
+    "ARCL": {
+      "shares": 8000000,
+      "mcap_b": 1.8,
+      "price": 224.72
+    },
+    "BALAJEE": {
+      "shares": 81570852,
+      "mcap_b": 1.78,
+      "price": 21.8
+    },
+    "GLOBALVECT": {
+      "shares": 14000000,
+      "mcap_b": 1.77,
+      "price": 126.38
+    },
+    "ATALREAL": {
+      "shares": 123896250,
+      "mcap_b": 1.75,
+      "price": 14.14
+    },
+    "IVP": {
+      "shares": 10326263,
+      "mcap_b": 1.75,
+      "price": 169.29
+    },
+    "IPRINGLTD": {
+      "shares": 12675865,
+      "mcap_b": 1.74,
+      "price": 137.56
+    },
+    "ARCHIDPLY": {
+      "shares": 20002967,
+      "mcap_b": 1.72,
+      "price": 86.23
+    },
+    "BCONCEPTS": {
+      "shares": 12481877,
+      "mcap_b": 1.65,
+      "price": 132.01
+    },
+    "DTIL": {
+      "shares": 10507427,
+      "mcap_b": 1.65,
+      "price": 156.69
+    },
+    "ASMS": {
+      "shares": 304576740,
+      "mcap_b": 1.64,
+      "price": 5.4
+    },
+    "BAIDFIN": {
+      "shares": 162092206,
+      "mcap_b": 1.63,
+      "price": 10.04
+    },
+    "ALPINETEX": {
+      "shares": 38247000,
+      "mcap_b": 1.61,
+      "price": 42.16
+    },
+    "ESSENTIA": {
+      "shares": 1755283254,
+      "mcap_b": 1.61,
+      "price": 0.92
+    },
+    "DRCSYSTEMS": {
+      "shares": 144081330,
+      "mcap_b": 1.6,
+      "price": 11.11
+    },
+    "HINDADH": {
+      "shares": 5116300,
+      "mcap_b": 1.56,
+      "price": 304.05
+    },
+    "BHARATGEAR": {
+      "shares": 15355058,
+      "mcap_b": 1.53,
+      "price": 99.82
+    },
+    "BYKE": {
+      "shares": 52279300,
+      "mcap_b": 1.51,
+      "price": 28.89
+    },
+    "GENCON": {
+      "shares": 56986219,
+      "mcap_b": 1.51,
+      "price": 26.46
+    },
+    "DOLLEX": {
+      "shares": 39948800,
+      "mcap_b": 1.49,
+      "price": 37.2
+    },
+    "EMMBI": {
+      "shares": 19240250,
+      "mcap_b": 1.49,
+      "price": 77.42
+    },
+    "LAGNAM": {
+      "shares": 17669000,
+      "mcap_b": 1.49,
+      "price": 84.3
+    },
+    "KAMOPAINTS": {
+      "shares": 344000000,
+      "mcap_b": 1.47,
+      "price": 4.28
+    },
+    "AARTECH": {
+      "shares": 31770375,
+      "mcap_b": 1.46,
+      "price": 45.9
+    },
+    "BALAXI": {
+      "shares": 55207500,
+      "mcap_b": 1.46,
+      "price": 26.47
+    },
+    "INDTERRAIN": {
+      "shares": 50667367,
+      "mcap_b": 1.46,
+      "price": 28.85
+    },
+    "KANCHI": {
+      "shares": 4343891,
+      "mcap_b": 1.45,
+      "price": 333.6
+    },
+    "INDOWIND": {
+      "shares": 161002170,
+      "mcap_b": 1.44,
+      "price": 8.95
+    },
+    "AIROLAM": {
+      "shares": 15002000,
+      "mcap_b": 1.43,
+      "price": 95.05
+    },
+    "FILATFASH": {
+      "shares": 8334072725,
+      "mcap_b": 1.42,
+      "price": 0.17
+    },
+    "INCREDIBLE": {
+      "shares": 46763750,
+      "mcap_b": 1.42,
+      "price": 30.35
+    },
+    "AMJLAND": {
+      "shares": 41000000,
+      "mcap_b": 1.41,
+      "price": 34.35
+    },
+    "AVANCE": {
+      "shares": 1981917430,
+      "mcap_b": 1.37,
+      "price": 0.69
+    },
+    "LAMBODHARA": {
+      "shares": 10377600,
+      "mcap_b": 1.36,
+      "price": 131.43
+    },
+    "CENTEXT": {
+      "shares": 80000000,
+      "mcap_b": 1.34,
+      "price": 16.73
+    },
+    "INDOUS": {
+      "shares": 20052000,
+      "mcap_b": 1.34,
+      "price": 66.69
+    },
+    "MAHAPEXLTD": {
+      "shares": 28183792,
+      "mcap_b": 1.34,
+      "price": 47.39
+    },
+    "DCM": {
+      "shares": 18677749,
+      "mcap_b": 1.33,
+      "price": 71.01
+    },
+    "KRITIKA": {
+      "shares": 266280000,
+      "mcap_b": 1.33,
+      "price": 5.01
+    },
+    "BNALTD": {
+      "shares": 3100000,
+      "mcap_b": 1.31,
+      "price": 424.0
+    },
+    "BSL": {
+      "shares": 10292168,
+      "mcap_b": 1.31,
+      "price": 126.83
+    },
+    "MAGNUM": {
+      "shares": 68411317,
+      "mcap_b": 1.31,
+      "price": 19.12
+    },
+    "HPIL": {
+      "shares": 11424110,
+      "mcap_b": 1.3,
+      "price": 113.42
+    },
+    "EMPOWER": {
+      "shares": 1163798560,
+      "mcap_b": 1.29,
+      "price": 1.11
+    },
+    "GVPTECH": {
+      "shares": 184033597,
+      "mcap_b": 1.29,
+      "price": 6.99
+    },
+    "LAHOTIOV": {
+      "shares": 29171500,
+      "mcap_b": 1.27,
+      "price": 43.4
+    },
+    "BRNL": {
+      "shares": 83950000,
+      "mcap_b": 1.26,
+      "price": 15.05
+    },
+    "ASSAMENT": {
+      "shares": 1439790,
+      "mcap_b": 1.24,
+      "price": 859.3
+    },
+    "KREBSBIO": {
+      "shares": 21560586,
+      "mcap_b": 1.24,
+      "price": 57.49
+    },
+    "BRIGHTBR": {
+      "shares": 5680235,
+      "mcap_b": 1.22,
+      "price": 214.86
+    },
+    "DGCONTENT": {
+      "shares": 58083771,
+      "mcap_b": 1.22,
+      "price": 20.99
+    },
+    "CORALFINAC": {
+      "shares": 40302225,
+      "mcap_b": 1.2,
+      "price": 29.68
+    },
+    "LKPSEC": {
+      "shares": 82738029,
+      "mcap_b": 1.2,
+      "price": 14.5
+    },
+    "CHEMCRUX": {
+      "shares": 14808840,
+      "mcap_b": 1.19,
+      "price": 80.56
+    },
+    "KEYFINSERV": {
+      "shares": 5566637,
+      "mcap_b": 1.18,
+      "price": 211.79
+    },
+    "INDBANK": {
+      "shares": 44378200,
+      "mcap_b": 1.17,
+      "price": 26.39
+    },
+    "INDIANCARD": {
+      "shares": 5941120,
+      "mcap_b": 1.16,
+      "price": 194.97
+    },
+    "JOCIL": {
+      "shares": 8881150,
+      "mcap_b": 1.15,
+      "price": 130.05
+    },
+    "AAATECH": {
+      "shares": 12826800,
+      "mcap_b": 1.13,
+      "price": 88.36
+    },
+    "ANIKINDS": {
+      "shares": 27753486,
+      "mcap_b": 1.12,
+      "price": 40.21
+    },
+    "BEARDSELL": {
+      "shares": 39437000,
+      "mcap_b": 1.12,
+      "price": 28.42
+    },
+    "LOYALTEX": {
+      "shares": 4816446,
+      "mcap_b": 1.12,
+      "price": 232.06
+    },
+    "DBSTOCKBRO": {
+      "shares": 35000000,
+      "mcap_b": 1.1,
+      "price": 31.46
+    },
+    "DEVIT": {
+      "shares": 56987658,
+      "mcap_b": 1.1,
+      "price": 19.37
+    },
+    "GANGESSECU": {
+      "shares": 10003687,
+      "mcap_b": 1.1,
+      "price": 110.06
+    },
+    "GTL": {
+      "shares": 157296781,
+      "mcap_b": 1.1,
+      "price": 6.97
+    },
+    "HECPROJECT": {
+      "shares": 10838160,
+      "mcap_b": 1.1,
+      "price": 101.29
+    },
+    "ISHANCH": {
+      "shares": 27327529,
+      "mcap_b": 1.1,
+      "price": 40.37
+    },
+    "ALPA": {
+      "shares": 21040600,
+      "mcap_b": 1.09,
+      "price": 51.95
+    },
+    "BCPL": {
+      "shares": 16723638,
+      "mcap_b": 1.09,
+      "price": 65.04
+    },
+    "BTML": {
+      "shares": 181697777,
+      "mcap_b": 1.09,
+      "price": 5.99
+    },
+    "CROWN": {
+      "shares": 11590000,
+      "mcap_b": 1.09,
+      "price": 94.19
+    },
+    "GROBTEA": {
+      "shares": 1162330,
+      "mcap_b": 1.07,
+      "price": 917.0
+    },
+    "AMARJOTHI": {
+      "shares": 6750000,
+      "mcap_b": 1.03,
+      "price": 152.87
+    },
+    "KOHINOOR": {
+      "shares": 37071530,
+      "mcap_b": 1.02,
+      "price": 27.48
+    },
+    "LOVABLE": {
+      "shares": 14800000,
+      "mcap_b": 1.02,
+      "price": 68.86
+    },
+    "COMPUSOFT": {
+      "shares": 79125188,
+      "mcap_b": 1.0,
+      "price": 12.59
+    },
+    "LATTEYS": {
+      "shares": 57495825,
+      "mcap_b": 1.0,
+      "price": 17.43
+    },
+    "INVENTURE": {
+      "shares": 1050000000,
+      "mcap_b": 0.98,
+      "price": 0.93
+    },
+    "GATECH": {
+      "shares": 1787408130,
+      "mcap_b": 0.93,
+      "price": 0.52
+    },
+    "GLOBE": {
+      "shares": 450418788,
+      "mcap_b": 0.92,
+      "price": 2.04
+    },
+    "BHANDARI": {
+      "shares": 332956433,
+      "mcap_b": 0.91,
+      "price": 2.72
+    },
+    "JETFREIGHT": {
+      "shares": 50923447,
+      "mcap_b": 0.9,
+      "price": 17.59
+    },
+    "ARTNIRMAN": {
+      "shares": 24956000,
+      "mcap_b": 0.89,
+      "price": 35.77
+    },
+    "BAGFILMS": {
+      "shares": 217918090,
+      "mcap_b": 0.87,
+      "price": 4.0
+    },
+    "CRAVATEX": {
+      "shares": 2584160,
+      "mcap_b": 0.87,
+      "price": 337.5
+    },
+    "CINEVISTA": {
+      "shares": 57436475,
+      "mcap_b": 0.85,
+      "price": 14.72
+    },
+    "GOYALALUM": {
+      "shares": 142732780,
+      "mcap_b": 0.83,
+      "price": 5.84
+    },
+    "HISARMETAL": {
+      "shares": 5400000,
+      "mcap_b": 0.81,
+      "price": 149.99
+    },
+    "HILTON": {
+      "shares": 51466551,
+      "mcap_b": 0.8,
+      "price": 15.57
+    },
+    "BVCL": {
+      "shares": 22160000,
+      "mcap_b": 0.79,
+      "price": 35.82
+    },
+    "LPDC": {
+      "shares": 134143160,
+      "mcap_b": 0.79,
+      "price": 5.89
+    },
+    "FIBERWEB": {
+      "shares": 28791710,
+      "mcap_b": 0.78,
+      "price": 27.0
+    },
+    "AAKASH": {
+      "shares": 101250000,
+      "mcap_b": 0.77,
+      "price": 7.58
+    },
+    "BLBLIMITED": {
+      "shares": 52865258,
+      "mcap_b": 0.77,
+      "price": 14.58
+    },
+    "DUCON": {
+      "shares": 574868346,
+      "mcap_b": 0.77,
+      "price": 1.34
+    },
+    "KAKATCEM": {
+      "shares": 7773858,
+      "mcap_b": 0.77,
+      "price": 99.62
+    },
+    "ADDIND": {
+      "shares": 10796574,
+      "mcap_b": 0.76,
+      "price": 70.3
+    },
+    "CGVAK": {
+      "shares": 5050200,
+      "mcap_b": 0.75,
+      "price": 148.72
+    },
+    "KHAITANLTD": {
+      "shares": 5020918,
+      "mcap_b": 0.71,
+      "price": 141.55
+    },
+    "AVROIND": {
+      "shares": 134171400,
+      "mcap_b": 0.7,
+      "price": 5.22
+    },
+    "ENERGYDEV": {
+      "shares": 47500000,
+      "mcap_b": 0.7,
+      "price": 14.76
+    },
+    "BANARBEADS": {
+      "shares": 6597522,
+      "mcap_b": 0.68,
+      "price": 103.19
+    },
+    "DAMODARIND": {
+      "shares": 23300000,
+      "mcap_b": 0.67,
+      "price": 28.76
+    },
+    "LCCINFOTEC": {
+      "shares": 168593350,
+      "mcap_b": 0.67,
+      "price": 3.96
+    },
+    "DIGIDRIVE": {
+      "shares": 38469018,
+      "mcap_b": 0.66,
+      "price": 17.23
+    },
+    "HBPOR": {
+      "shares": 10764230,
+      "mcap_b": 0.64,
+      "price": 59.43
+    },
+    "CURAA": {
+      "shares": 9900000,
+      "mcap_b": 0.62,
+      "price": 62.5
+    },
+    "ACCURACY": {
+      "shares": 150560000,
+      "mcap_b": 0.61,
+      "price": 4.03
+    },
+    "ATAM": {
+      "shares": 11463000,
+      "mcap_b": 0.58,
+      "price": 50.82
+    },
+    "ATLASCYCLE": {
+      "shares": 6503838,
+      "mcap_b": 0.58,
+      "price": 88.62
+    },
+    "BONLON": {
+      "shares": 16383358,
+      "mcap_b": 0.58,
+      "price": 35.26
+    },
+    "DELTAMAGNT": {
+      "shares": 10851120,
+      "mcap_b": 0.58,
+      "price": 53.56
+    },
+    "3PLAND": {
+      "shares": 18000000,
+      "mcap_b": 0.57,
+      "price": 31.7
+    },
+    "GATECHDVR": {
+      "shares": 1292408130,
+      "mcap_b": 0.57,
+      "price": 0.44
+    },
+    "HINDALUMI": {
+      "shares": 6300200,
+      "mcap_b": 0.57,
+      "price": 90.3
+    },
+    "ANSALBU": {
+      "shares": 7383843,
+      "mcap_b": 0.56,
+      "price": 76.2
+    },
+    "HRYNSHP": {
+      "shares": 6166667,
+      "mcap_b": 0.56,
+      "price": 90.78
+    },
+    "JAIPURKURT": {
+      "shares": 19090714,
+      "mcap_b": 0.54,
+      "price": 28.14
+    },
+    "ADVIKCA": {
+      "shares": 608520425,
+      "mcap_b": 0.52,
+      "price": 0.86
+    },
+    "AJOONI": {
+      "shares": 172243598,
+      "mcap_b": 0.52,
+      "price": 3.03
+    },
+    "APOORVA": {
+      "shares": 19974900,
+      "mcap_b": 0.52,
+      "price": 25.89
+    },
+    "BIOFILCHEM": {
+      "shares": 16273800,
+      "mcap_b": 0.51,
+      "price": 31.21
+    },
+    "AGRITECH": {
+      "shares": 5940000,
+      "mcap_b": 0.5,
+      "price": 83.85
+    },
+    "AUSTENG": {
+      "shares": 3477800,
+      "mcap_b": 0.5,
+      "price": 143.98
+    },
+    "BALKRISHNA": {
+      "shares": 32219532,
+      "mcap_b": 0.49,
+      "price": 15.29
+    },
+    "HGM": {
+      "shares": 12594972,
+      "mcap_b": 0.49,
+      "price": 39.14
+    },
+    "AHLADA": {
+      "shares": 12921000,
+      "mcap_b": 0.48,
+      "price": 37.17
+    },
+    "COUNCODOS": {
+      "shares": 77597300,
+      "mcap_b": 0.47,
+      "price": 6.1
+    },
+    "FMNL": {
+      "shares": 66762955,
+      "mcap_b": 0.47,
+      "price": 7.03
+    },
+    "AGROPHOS": {
+      "shares": 20274115,
+      "mcap_b": 0.46,
+      "price": 22.69
+    },
+    "DANGEE": {
+      "shares": 153975000,
+      "mcap_b": 0.45,
+      "price": 2.95
+    },
+    "GAYAHWS": {
+      "shares": 239651900,
+      "mcap_b": 0.44,
+      "price": 1.85
+    },
+    "BLUECOAST": {
+      "shares": 19679557,
+      "mcap_b": 0.42,
+      "price": 21.15
+    },
+    "DHATRE": {
+      "shares": 108954500,
+      "mcap_b": 0.42,
+      "price": 3.81
+    },
+    "HYBRIDFIN": {
+      "shares": 29436275,
+      "mcap_b": 0.41,
+      "price": 14.05
+    },
+    "ADL": {
+      "shares": 5566250,
+      "mcap_b": 0.4,
+      "price": 71.0
+    },
+    "AKASH": {
+      "shares": 16862534,
+      "mcap_b": 0.4,
+      "price": 23.87
+    },
+    "CELEBRITY": {
+      "shares": 64548346,
+      "mcap_b": 0.4,
+      "price": 6.18
+    },
+    "HAVISHA": {
+      "shares": 303341789,
+      "mcap_b": 0.4,
+      "price": 1.32
+    },
+    "KARMAENG": {
+      "shares": 11569918,
+      "mcap_b": 0.4,
+      "price": 34.96
+    },
+    "LEENEE": {
+      "shares": 55774000,
+      "mcap_b": 0.4,
+      "price": 7.15
+    },
+    "AMBICAAGAR": {
+      "shares": 17177400,
+      "mcap_b": 0.39,
+      "price": 22.6
+    },
+    "BANG": {
+      "shares": 13560000,
+      "mcap_b": 0.39,
+      "price": 28.45
+    },
+    "GANGAFORGE": {
+      "shares": 337005575,
+      "mcap_b": 0.39,
+      "price": 1.16
+    },
+    "ARCHIES": {
+      "shares": 33780000,
+      "mcap_b": 0.36,
+      "price": 10.75
+    },
+    "DHRUV": {
+      "shares": 18966569,
+      "mcap_b": 0.36,
+      "price": 18.89
+    },
+    "HBSL": {
+      "shares": 7137665,
+      "mcap_b": 0.36,
+      "price": 50.23
+    },
+    "LFIC": {
+      "shares": 3000000,
+      "mcap_b": 0.36,
+      "price": 118.87
+    },
+    "AKSHAR": {
+      "shares": 787468500,
+      "mcap_b": 0.35,
+      "price": 0.45
+    },
+    "AROGRANITE": {
+      "shares": 15300000,
+      "mcap_b": 0.35,
+      "price": 23.15
+    },
+    "ASHOKAMET": {
+      "shares": 24996000,
+      "mcap_b": 0.35,
+      "price": 14.03
+    },
+    "KANCOTEA": {
+      "shares": 5122827,
+      "mcap_b": 0.35,
+      "price": 69.07
+    },
+    "KJMCFIN": {
+      "shares": 4785740,
+      "mcap_b": 0.34,
+      "price": 70.42
+    },
+    "GKB": {
+      "shares": 5040580,
+      "mcap_b": 0.31,
+      "price": 60.64
+    },
+    "MADHUCON": {
+      "shares": 73794940,
+      "mcap_b": 0.31,
+      "price": 4.16
+    },
+    "EASTWEST": {
+      "shares": 127575000,
+      "mcap_b": 0.3,
+      "price": 2.32
+    },
+    "KANANIIND": {
+      "shares": 197868000,
+      "mcap_b": 0.3,
+      "price": 1.52
+    },
+    "LIBAS": {
+      "shares": 26344580,
+      "mcap_b": 0.3,
+      "price": 11.22
+    },
+    "MADHAV": {
+      "shares": 8947000,
+      "mcap_b": 0.3,
+      "price": 33.0
+    },
+    "AKG": {
+      "shares": 31776576,
+      "mcap_b": 0.29,
+      "price": 9.08
+    },
+    "KAUSHALYA": {
+      "shares": 346306,
+      "mcap_b": 0.29,
+      "price": 828.95
+    },
+    "BOHRAIND": {
+      "shares": 21172152,
+      "mcap_b": 0.27,
+      "price": 12.84
+    },
+    "DNAMEDIA": {
+      "shares": 117708018,
+      "mcap_b": 0.27,
+      "price": 2.33
+    },
+    "INFOMEDIA": {
+      "shares": 50194172,
+      "mcap_b": 0.27,
+      "price": 5.4
+    },
+    "GSS": {
+      "shares": 25806843,
+      "mcap_b": 0.26,
+      "price": 9.99
+    },
+    "KAMANWALA": {
+      "shares": 14093160,
+      "mcap_b": 0.25,
+      "price": 17.55
+    },
+    "KHANDSE": {
+      "shares": 15253805,
+      "mcap_b": 0.25,
+      "price": 16.68
+    },
+    "CRESTO": {
+      "shares": 13835837,
+      "mcap_b": 0.24,
+      "price": 17.33
+    },
+    "KEEPLEARN": {
+      "shares": 155712083,
+      "mcap_b": 0.24,
+      "price": 1.51
+    },
+    "KRIDHANINF": {
+      "shares": 111579205,
+      "mcap_b": 0.23,
+      "price": 2.06
+    },
+    "LEXUS": {
+      "shares": 20190724,
+      "mcap_b": 0.23,
+      "price": 11.63
+    },
+    "ASIANTNE": {
+      "shares": 24941800,
+      "mcap_b": 0.22,
+      "price": 8.8
+    },
+    "LAXMICOT": {
+      "shares": 17147670,
+      "mcap_b": 0.21,
+      "price": 11.99
+    },
+    "ACEINTEG": {
+      "shares": 10200000,
+      "mcap_b": 0.17,
+      "price": 16.96
+    },
+    "FLEXITUFF": {
+      "shares": 32822806,
+      "mcap_b": 0.17,
+      "price": 5.11
+    },
+    "AURUS": {
+      "shares": 29484000,
+      "mcap_b": 0.14,
+      "price": 4.69
+    },
+    "GLFL": {
+      "shares": 27125767,
+      "mcap_b": 0.14,
+      "price": 5.29
+    },
+    "CREATIVEYE": {
+      "shares": 20058250,
+      "mcap_b": 0.12,
+      "price": 5.91
+    },
+    "HEADSUP": {
+      "shares": 22082609,
+      "mcap_b": 0.12,
+      "price": 5.39
+    },
+    "ANTGRAPHIC": {
+      "shares": 155009600,
+      "mcap_b": 0.11,
+      "price": 0.74
+    },
+    "DCMFINSERV": {
+      "shares": 22125054,
+      "mcap_b": 0.11,
+      "price": 4.97
+    },
+    "GLOBALE": {
+      "shares": 10620275,
+      "mcap_b": 0.11,
+      "price": 10.43
+    },
+    "BHARATCOAL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 30.91
+    },
+    "CMRGREEN": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 212.43
+    },
+    "CMPDI": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 186.45
+    },
+    "AMAL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 628.35
+    },
+    "ARCIL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 131.5
+    },
+    "ARTEMISMED": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 348.75
+    },
+    "ARHAM": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 210.28
+    },
+    "AUGMONT": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 947.65
+    },
+    "BEEKAY": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 398.05
+    },
+    "BLEL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 419.0
+    },
+    "BONDADA": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 269.1
+    },
+    "BRIGHTOUTD": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 373.7
+    },
+    "BRAHMINFRA": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 168.27
+    },
+    "CPL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 60.69
+    },
+    "CORONA": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 2275.6
+    },
+    "DISAQ": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 10950.0
+    },
+    "GAJA": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 130.74
+    },
+    "HBESD": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 83.94
+    },
+    "IIRM": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 109.19
+    },
+    "INDTONER": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 44.78
+    },
+    "ITL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 375.2
+    },
+    "KARAMTARA": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 365.45
+    },
+    "KHAZANCHI": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 710.7
+    },
+    "KLBRENG-B": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 394.2
+    },
+    "KIRANVYPAR": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 195.51
+    },
+    "KUSUMGAR": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 536.45
+    },
+    "LAKSHMIMIL": {
+      "shares": null,
+      "mcap_b": 0.0,
+      "price": 9064.0
+    }
+  }
+}

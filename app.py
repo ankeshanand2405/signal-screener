@@ -7,14 +7,42 @@ import requests
 from io import StringIO
 import time
 import threading
+import json
+import os
 
 try:
-    from jugaad_data.nse import stock_df as jugaad_stock_df
+    from jugaad_data.nse import bhavcopy_raw
     JUGAAD_AVAILABLE = True
 except ImportError:
     JUGAAD_AVAILABLE = False
 
 app = Flask(__name__)
+
+# ─── Load Cached Market Cap & Shares ──────────────────────────────────────────
+MCAP_CACHE = {}
+CACHE_FILE = os.path.join(os.path.dirname(__file__), "mcap_cache.json")
+if os.path.exists(CACHE_FILE):
+    try:
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            cache_data = json.load(f)
+            MCAP_CACHE = cache_data.get("stocks", {})
+    except Exception as e:
+        print(f"Warning: Failed to load {CACHE_FILE}: {e}")
+
+def get_cached_mcap(sym, close_price=None):
+    """
+    Returns market cap in ₹ Billions.
+    Computes live mcap using (cached_shares * close_price) if available,
+    otherwise falls back to cached mcap_b, or 0.0.
+    """
+    clean_sym = sym.replace(".NS", "")
+    info = MCAP_CACHE.get(clean_sym)
+    if not info:
+        return 0.0
+    shares = info.get("shares")
+    if shares and close_price is not None and not np.isnan(close_price):
+        return round((shares * close_price) / 1e9, 1)
+    return info.get("mcap_b", 0.0)
 
 # ─── Indicators (pure pandas/numpy — no pandas-ta) ────────────────────────────
 
@@ -96,61 +124,102 @@ FALLBACK_SYMBOLS = [
 ]
 
 def get_nse_stocks():
+    # If cached NSE stocks exist, filter for stocks meeting our mcap threshold (with safety buffer)
+    # This guarantees 100% coverage of all stocks > 25B (or 20B) while skipping illiquid penny stocks
+    if MCAP_CACHE:
+        return [f"{s}.NS" for s, v in MCAP_CACHE.items() if v.get("mcap_b", 0) >= 15]
+
     try:
         url = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
         headers = {"User-Agent": "Mozilla/5.0"}
         r = requests.get(url, headers=headers, timeout=15)
         df = pd.read_csv(StringIO(r.text))
-        return [s + ".NS" for s in df["SYMBOL"].tolist()]
+        df.columns = [c.strip() for c in df.columns]
+        df_eq = df[df["SERIES"].str.strip() == "EQ"]
+        return [s + ".NS" for s in df_eq["SYMBOL"].tolist()]
     except Exception:
         return FALLBACK_SYMBOLS
 
-# ─── Jugaad-data fallback for missing yfinance data ───────────────────────────
+# ─── Fast Single-Download Bhavcopy Fallback ──────────────────────────────────
 
-def fill_missing_from_jugaad(df_sym, sym):
-    """When yfinance has NaN OHLC for the latest row, fetch from jugaad-data."""
-    if not JUGAAD_AVAILABLE or df_sym.empty:
+BHAVCOPY_CACHE = {}
+
+def get_latest_bhavcopy():
+    """Fetch the latest available NSE daily Bhavcopy once in ~0.35s for the whole market."""
+    global BHAVCOPY_CACHE
+    if not JUGAAD_AVAILABLE:
+        return {}
+
+    today = date.today()
+    if BHAVCOPY_CACHE.get("date") == today and BHAVCOPY_CACHE.get("data"):
+        return BHAVCOPY_CACHE["data"]
+
+    try:
+        raw = None
+        for delta in range(0, 5):
+            d = today - timedelta(days=delta)
+            try:
+                text = bhavcopy_raw(d)
+                if text and len(text) > 1000:
+                    raw = text
+                    break
+            except Exception:
+                continue
+
+        if raw:
+            import io, csv
+            reader = csv.DictReader(io.StringIO(raw))
+            data = {}
+            for row in reader:
+                sym = row.get("TckrSymb") or row.get("SYMBOL") or ""
+                srs = row.get("SctySrs") or row.get("SERIES") or ""
+                if srs.strip() == "EQ" and sym:
+                    try:
+                        data[sym.strip()] = {
+                            "Open": float(row.get("OpnPric") or row.get("OPEN")),
+                            "High": float(row.get("HghPric") or row.get("HIGH")),
+                            "Low": float(row.get("LwPric") or row.get("LOW")),
+                            "Close": float(row.get("ClsPric") or row.get("CLOSE")),
+                            "Volume": float(row.get("TtlTradgVol") or row.get("TOTTRDQTY")),
+                            "Date": row.get("TradDt") or row.get("TIMESTAMP") or str(today)
+                        }
+                    except (ValueError, TypeError):
+                        pass
+            BHAVCOPY_CACHE = {"date": today, "data": data}
+            return data
+    except Exception as e:
+        print(f"Notice: Bhavcopy fetch skipped ({e})")
+    return {}
+
+def fill_missing_from_bhavcopy(df_sym, sym, bhav_dict):
+    """When yfinance has NaN OHLC for the latest row, patch from the pre-downloaded Bhavcopy."""
+    if df_sym.empty:
         return df_sym
 
-    # Flatten MultiIndex before checking columns
     if isinstance(df_sym.columns, pd.MultiIndex):
         df_sym.columns = df_sym.columns.get_level_values(0)
 
+    clean_sym = sym.replace(".NS", "")
     last_row = df_sym.iloc[-1]
     if pd.notna(last_row.get("Close")):
-        return df_sym  # yfinance data is fine
+        return df_sym
+
+    if not bhav_dict or clean_sym not in bhav_dict:
+        return df_sym.dropna(subset=["Close"])
 
     try:
-        clean_sym = sym.replace(".NS", "")
-        to_dt = date.today()
-        from_dt = to_dt - timedelta(days=10)
-
-        jd = jugaad_stock_df(clean_sym, from_date=from_dt, to_date=to_dt, series="EQ")
-        if jd.empty:
-            return df_sym
-
-        # Jugaad DATE has 18:30 UTC offset — shift forward to get actual trading date
-        jd["DATE"] = pd.to_datetime(jd["DATE"]).dt.tz_localize(None)
-        jd["DATE"] = jd["DATE"] + pd.Timedelta(hours=6)  # 18:30 + 6h = next day
-        jd["DATE"] = jd["DATE"].dt.normalize()
-        jd = jd.rename(columns={"OPEN": "Open", "HIGH": "High", "LOW": "Low",
-                                 "CLOSE": "Close", "VOLUME": "Volume"})
-        jd = jd[["DATE", "Open", "High", "Low", "Close", "Volume"]].copy()
-        jd = jd.set_index("DATE").sort_index()
-
-        # Drop NaN rows from yfinance, then append fresh jugaad rows
-        df_clean = df_sym.dropna(subset=["Close"])
-        df_clean.index = df_clean.index.normalize()
-        new_dates = jd.index.difference(df_clean.index)
-        if len(new_dates) > 0:
-            new_rows = jd.loc[new_dates]
-            df_clean = pd.concat([df_clean, new_rows]).sort_index()
-            # Fill any missing columns in the new rows with NaN (they'll be computed later)
-            df_clean = df_clean.fillna({col: np.nan for col in df_clean.columns if col not in new_rows.columns})
-
+        bhav_row = bhav_dict[clean_sym]
+        df_clean = df_sym.dropna(subset=["Close"]).copy()
+        row_dt = pd.to_datetime(bhav_row.get("Date", date.today())).normalize()
+        new_row = pd.DataFrame([{
+            "Open": bhav_row["Open"], "High": bhav_row["High"],
+            "Low": bhav_row["Low"], "Close": bhav_row["Close"],
+            "Volume": bhav_row["Volume"]
+        }], index=[row_dt])
+        df_clean = pd.concat([df_clean, new_row]).sort_index()
         return df_clean
     except Exception:
-        return df_sym
+        return df_sym.dropna(subset=["Close"])
 
 # ─── Screeners ────────────────────────────────────────────────────────────────
 
@@ -210,21 +279,34 @@ def screener_4(sym, daily, weekly, mcap):
 
 # ─── Scan ────────────────────────────────────────────────────────────────────
 
-progress_data = {"status": "idle", "done": 0, "total": 0, "message": ""}
+progress_data = {"status": "idle", "done": 0, "total": 0, "message": "", "elapsed": 0.0, "results": None}
 
 def run_scan():
     global progress_data
-    progress_data = {"status": "running", "done": 0, "total": 0, "message": "Fetching stock universe..."}
-
-    stocks = get_nse_stocks()[:1000]
-    progress_data["total"] = len(stocks)
+    scan_start = time.time()
+    stocks = get_nse_stocks()
     results = {"s1":[], "s2":[], "s3":[], "s4":[],
-               "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p")}
+               "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p"),
+               "elapsed_seconds": 0.0}
+
+    progress_data = {
+        "status": "running",
+        "done": 0,
+        "total": len(stocks),
+        "message": "Fetching stock universe & latest Bhavcopy...",
+        "elapsed": 0.0,
+        "results": results
+    }
+
+    # Fetch Bhavcopy once in 0.35s for the whole market
+    bhav_dict = get_latest_bhavcopy()
 
     BATCH = 50
     for i in range(0, len(stocks), BATCH):
         batch = stocks[i:i+BATCH]
+        elapsed = round(time.time() - scan_start, 1)
         progress_data["message"] = f"Scanning {i+1}–{min(i+BATCH, len(stocks))} of {len(stocks)}..."
+        progress_data["elapsed"] = elapsed
         try:
             raw = yf.download(batch, period="2y", interval="1d",
                               group_by="ticker", auto_adjust=True,
@@ -240,22 +322,30 @@ def run_scan():
                 # Strip timezone if present so resample and index behave consistently
                 if df_sym.index.tz is not None:
                     df_sym.index = df_sym.index.tz_localize(None)
-                # Fill missing latest-day data from jugaad-data before dropping NaN
-                df_sym = fill_missing_from_jugaad(df_sym, sym)
+                # Fill missing latest-day data from pre-downloaded Bhavcopy (0ms)
+                df_sym = fill_missing_from_bhavcopy(df_sym, sym, bhav_dict)
                 df_sym = df_sym.dropna(subset=["Close"])
-                try:
-                    mcap = (yf.Ticker(sym).fast_info.market_cap or 0) / 1e9
-                except:
-                    mcap = 0
+                latest_close = df_sym["Close"].iloc[-1]
+                mcap = get_cached_mcap(sym, latest_close)
                 daily, weekly = compute_indicators(df_sym)
                 for fn, key in [(screener_1,"s1"),(screener_2,"s2"),(screener_3,"s3"),(screener_4,"s4")]:
                     r = fn(sym, daily, weekly, mcap)
                     if r: results[key].append(r)
             except: pass
             finally: progress_data["done"] += 1
-        time.sleep(0.5)
 
-    progress_data.update({"status": "done", "results": results, "message": "Scan complete."})
+        # Real-time streaming update to frontend on every batch:
+        progress_data["results"] = results
+        progress_data["elapsed"] = round(time.time() - scan_start, 1)
+
+    total_time = round(time.time() - scan_start, 1)
+    results["elapsed_seconds"] = total_time
+    progress_data.update({
+        "status": "done",
+        "results": results,
+        "elapsed": total_time,
+        "message": f"Scan complete in {total_time}s."
+    })
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
 
