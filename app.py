@@ -70,12 +70,27 @@ def sma(series, n):
 def ema(series, n):
     return series.ewm(span=n, adjust=False).mean()
 
+# def rsi(series, n=14):
+#     delta = series.diff()
+#     gain = delta.clip(lower=0)
+#     loss = -delta.clip(upper=0)
+#     avg_gain = gain.ewm(alpha=1.0/n, adjust=False).mean()
+#     avg_loss = loss.ewm(alpha=1.0/n, adjust=False).mean()
+#     rs = avg_gain / avg_loss.replace(0, np.nan)
+#     return (100.0 - (100.0 / (1.0 + rs))).fillna(100.0)
+
+# More accurate Wilder's RSI initialization
 def rsi(series, n=14):
     delta = series.diff()
     gain = delta.clip(lower=0)
     loss = -delta.clip(upper=0)
-    avg_gain = gain.ewm(alpha=1.0/n, adjust=False).mean()
-    avg_loss = loss.ewm(alpha=1.0/n, adjust=False).mean()
+    avg_gain = gain.copy().astype(float) * 0
+    avg_loss = loss.copy().astype(float) * 0
+    avg_gain.iloc[n] = gain.iloc[1:n+1].mean()
+    avg_loss.iloc[n] = loss.iloc[1:n+1].mean()
+    for i in range(n+1, len(series)):
+        avg_gain.iloc[i] = (avg_gain.iloc[i-1] * (n-1) + gain.iloc[i]) / n
+        avg_loss.iloc[i] = (avg_loss.iloc[i-1] * (n-1) + loss.iloc[i]) / n
     rs = avg_gain / avg_loss.replace(0, np.nan)
     return (100.0 - (100.0 / (1.0 + rs))).fillna(100.0)
 
@@ -93,15 +108,18 @@ def compute_indicators(df_daily):
     df["EMA10"]     = ema(c, 10)
     df["EMA20"]     = ema(c, 20)
     df["RSI14"]     = rsi(c, 14)
-    df["52W_High"]  = h.rolling(252, min_periods=1).max()
-    df["Avg_Vol10"] = v.rolling(10, min_periods=1).mean()
+    # df["52W_High"]  = h.rolling(252, min_periods=1).max()
+    df["52W_High"] = h.rolling("365D").max()
+    # df["Avg_Vol10"] = v.rolling(10, min_periods=1).mean()
+    # df["Rel_Vol"]   = v / df["Avg_Vol10"]
+    df["Avg_Vol10"] = v.rolling(10, min_periods=1).mean().shift(1)
     df["Rel_Vol"]   = v / df["Avg_Vol10"]
     df["Vol_Chg"]   = v.pct_change() * 100
     df["Chg_Open"]  = ((c - df["Open"]) / df["Open"]) * 100
     df["Chg_Pct"]   = c.pct_change() * 100
 
     # Weekly
-    weekly = df[["Open","High","Low","Close","Volume"]].resample("W").agg(
+    weekly = df[["Open","High","Low","Close","Volume"]].resample("W-FRI").agg(
         {"Open":"first","High":"max","Low":"min","Close":"last","Volume":"sum"}
     ).dropna()
     wc = weekly["Close"]
@@ -436,9 +454,21 @@ def get_stock_chart_payload(clean_sym, timeframe="D"):
         target_df["SMA20"] = target_df["Close"].rolling(20, min_periods=1).mean()
         target_df["SMA50"] = target_df["Close"].rolling(50, min_periods=1).mean()
         delta = target_df["Close"].diff()
-        gain = delta.clip(lower=0).ewm(alpha=1/14, adjust=False).mean()
-        loss = (-delta.clip(upper=0)).ewm(alpha=1/14, adjust=False).mean()
-        target_df["RSI14"] = (100 - (100 / (1 + gain / loss.replace(0, float("nan"))))).fillna(100.0)
+        # gain = delta.clip(lower=0).ewm(alpha=1/14, adjust=False).mean()
+        # loss = (-delta.clip(upper=0)).ewm(alpha=1/14, adjust=False).mean()
+        # target_df["RSI14"] = (100 - (100 / (1 + gain / loss.replace(0, float("nan"))))).fillna(100.0)
+        delta = target_df["Close"].diff()
+        gain = delta.clip(lower=0)
+        loss = -delta.clip(upper=0)
+        avg_gain = gain.copy().astype(float) * 0
+        avg_loss = loss.copy().astype(float) * 0
+        if len(gain) > 14:
+            avg_gain.iloc[14] = gain.iloc[1:15].mean()
+            avg_loss.iloc[14] = loss.iloc[1:15].mean()
+            for i in range(15, len(gain)):
+                avg_gain.iloc[i] = (avg_gain.iloc[i-1] * 13 + gain.iloc[i]) / 14
+                avg_loss.iloc[i] = (avg_loss.iloc[i-1] * 13 + loss.iloc[i]) / 14
+        target_df["RSI14"] = (100 - (100 / (1 + avg_gain / avg_loss.replace(0, float("nan"))))).fillna(100.0)
         s10_col, s20_col, s50_col, rsi_col = "SMA10", "SMA20", "SMA50", "RSI14"
     else:
         target_df = daily
