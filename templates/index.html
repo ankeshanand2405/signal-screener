@@ -289,7 +289,7 @@
   }
 
   /* ── Progress Box ── */
-  #progress-wrap {
+  #progress-wrap, #ipo-progress-wrap {
     display: none;
     margin-bottom: 28px;
     background: var(--surface);
@@ -351,7 +351,7 @@
     margin-bottom: 24px;
   }
 
-  #scan-timestamp {
+  #scan-timestamp, #ipo-scan-timestamp {
     font-size: 12px;
     color: var(--sub);
     font-family: var(--mono);
@@ -457,7 +457,7 @@
   }
 
   /* ── Interactive Sector Momentum Bar ── */
-  #sector-momentum-wrap {
+  #sector-momentum-wrap, #ipo-sector-momentum-wrap {
     margin-bottom: 24px;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1273,10 +1273,125 @@
     z-index: 1000;
   }
 
+  /* Workspace Switcher Pills (Core vs IPO) */
+  .workspace-switch {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .ws-btn {
+    background: transparent;
+    border: none;
+    color: var(--sub);
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .ws-btn:hover {
+    color: var(--text);
+  }
+
+  .ws-btn.active {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .ws-btn-ipo.active {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(59, 130, 246, 0.22));
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+  }
+
+  .ws-count {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background: rgba(148, 163, 184, 0.15);
+    color: var(--sub);
+  }
+
+  .ws-btn.active .ws-count {
+    background: rgba(168, 85, 247, 0.25);
+    color: inherit;
+  }
+
+  .workspace-view { display: none; }
+  .workspace-view.active { display: block; }
+
+  .hero-tag-ipo {
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.14);
+    border-color: rgba(168, 85, 247, 0.35);
+  }
+
+  .btn-scan-ipo {
+    background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+    box-shadow: 0 4px 14px rgba(147, 51, 234, 0.3);
+  }
+
+  .btn-scan-ipo:hover {
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.45);
+  }
+
+  .btn-back-core {
+    background: var(--surface);
+    color: var(--sub);
+    border: 1px solid var(--border);
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-back-core:hover {
+    color: var(--text);
+    border-color: var(--border-focus);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .series-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  .series-eq { background: rgba(59, 130, 246, 0.14); color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.3); }
+  .series-sme { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
+  .series-other { background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-border); }
+
   /* Responsive */
   @media (max-width: 768px) {
     main { padding: 20px 14px; }
-    header { padding: 0 16px; }
+    header { padding: 10px 16px; height: auto; flex-wrap: wrap; gap: 10px; }
     .hero { flex-direction: column; align-items: flex-start; }
     .hero-left h1 { font-size: 22px; }
     .btn-scan { width: 100%; justify-content: center; }
@@ -1294,6 +1409,14 @@
     </div>
     <span class="logo-badge">GOLDEN MODEL · TV ALIGNED</span>
   </div>
+  <div class="workspace-switch" role="tablist" aria-label="Screener Workspace">
+    <button class="ws-btn active" id="nav-btn-core" onclick="switchWorkspace('core')">
+      📊 Core Screeners <span class="ws-count" id="nav-count-core">4</span>
+    </button>
+    <button class="ws-btn ws-btn-ipo" id="nav-btn-ipo" onclick="switchWorkspace('ipo')">
+      🚀 IPO Radar <span class="ws-count" id="nav-count-ipo">3</span>
+    </button>
+  </div>
   <div class="header-right">
     <div class="market-status-badge" title="Data pipeline connected to NSE master universe & official Bhavcopy EOD">
       <span class="pulse-dot"></span>
@@ -1306,6 +1429,7 @@
 </header>
 
 <main>
+<section id="view-core" class="workspace-view active">
 
   <!-- Hero Section -->
   <div class="hero">
@@ -1528,6 +1652,199 @@
     </div>
     <div id="table-s4"><div class="empty-state"><div class="empty-icon">🏦</div><h3>No scan run yet</h3><p>Hit Run Screeners to find medium-term trend setups.</p></div></div>
   </div>
+</section>
+
+<!-- Dedicated IPO Radar Workspace -->
+<section id="view-ipo" class="workspace-view">
+  <div class="hero">
+    <div class="hero-left">
+      <h1>
+        IPO Momentum Radar
+        <span class="hero-tag hero-tag-ipo">3 LAUNCH STRATEGIES · 12M NSE</span>
+      </h1>
+      <p>Scans all NSE Mainboard &amp; SME IPOs listed within the last 12 months (≥10 trading days, all market caps) for O'Neil IPO Bases, Minervini VCP contractions, and Blue-Sky ATH reclaims.</p>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-back-core" onclick="switchWorkspace('core')" title="Return to the 4 Core Screeners">
+        ← Back to Core
+      </button>
+      <button class="btn-scan btn-scan-ipo" id="ipoScanBtn" onclick="startIpoScan()">
+        <span class="btn-icon">🚀</span>
+        Run IPO Scan
+      </button>
+    </div>
+  </div>
+
+  <!-- Live IPO Progress Box -->
+  <div id="ipo-progress-wrap">
+    <div class="progress-top">
+      <span class="progress-label" id="ipo-progress-label">Discovering recent IPOs...</span>
+      <div class="progress-meta">
+        <span class="progress-timer" id="ipo-progress-timer">⏱️ 0.0s</span>
+        <span class="progress-pct" id="ipo-progress-pct">0%</span>
+      </div>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="ipo-progress-bar"></div>
+    </div>
+    <div class="progress-msg" id="ipo-progress-msg">Fetching 12-month NSE Mainboard + SME listings...</div>
+  </div>
+
+  <!-- IPO Meta Row -->
+  <div class="meta-row">
+    <div id="ipo-scan-timestamp"></div>
+    <div class="source-badge" title="Mainboard from NSE EQUITY_L.csv + Yahoo Finance; SME from NSE CM Security Master + NSE History; >= 10 trading days.">
+      <span class="source-dot">●</span> 12M Mainboard + SME &nbsp;·&nbsp; All Market Caps &nbsp;·&nbsp; &ge;10 Trading Days
+    </div>
+  </div>
+
+  <!-- IPO Summary Statistics Bar -->
+  <div class="stats-bar" id="ipo-stats-bar" style="display:none">
+    <div class="stat-card stat-card-hc" onclick="selectIpoTab('ipo-hc')">
+      <div class="stat-header">
+        <span class="stat-label">IPO Confluence</span>
+        <span class="stat-icon">🔥</span>
+      </div>
+      <div class="stat-value" id="ipo-stat-hc" style="color:var(--gold);">0</div>
+      <div class="stat-sub">Hit &ge; 2 of 3 IPO strategies</div>
+    </div>
+    <div class="stat-card" onclick="selectIpoTab('ipo1')">
+      <div class="stat-header">
+        <span class="stat-label">O'Neil IPO Base</span>
+        <span class="stat-icon">📐</span>
+      </div>
+      <div class="stat-value" id="ipo-stat-ipo1">0</div>
+      <div class="stat-sub">Depth &le;35%, clearing peak, RelVol &ge;1.4x</div>
+    </div>
+    <div class="stat-card" onclick="selectIpoTab('ipo2')">
+      <div class="stat-header">
+        <span class="stat-label">Minervini IPO VCP</span>
+        <span class="stat-icon">🎯</span>
+      </div>
+      <div class="stat-value" id="ipo-stat-ipo2">0</div>
+      <div class="stat-sub">EMA aligned, tight range &le;12%, Vol up</div>
+    </div>
+    <div class="stat-card" onclick="selectIpoTab('ipo3')">
+      <div class="stat-header">
+        <span class="stat-label">Blue-Sky ATH Reclaim</span>
+        <span class="stat-icon">🚀</span>
+      </div>
+      <div class="stat-value" id="ipo-stat-ipo3">0</div>
+      <div class="stat-sub">New closing ATH &gt; Wk1 high, RelVol &ge;1.3x</div>
+    </div>
+  </div>
+
+  <!-- IPO Interactive Sector Momentum Bar -->
+  <div id="ipo-sector-momentum-wrap">
+    <div class="sector-header">
+      <span class="sector-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        IPO Sector Distribution
+      </span>
+      <span id="ipo-sector-filter-status">Click any sector to filter table</span>
+    </div>
+    <div class="sector-pills" id="ipo-sector-pills-container"></div>
+  </div>
+
+  <!-- IPO Segmented Tabs -->
+  <div class="tabs" id="ipo-tabs">
+    <div class="tab tab-hc active" id="tab-btn-ipo-hc" onclick="selectIpoTab('ipo-hc')">
+      🔥 IPO High Conviction <span class="tab-badge" id="badge-ipo-hc">0</span>
+    </div>
+    <div class="tab" id="tab-btn-ipo1" onclick="selectIpoTab('ipo1')">
+      📐 O'Neil IPO Base <span class="tab-badge" id="badge-ipo1">0</span>
+    </div>
+    <div class="tab" id="tab-btn-ipo2" onclick="selectIpoTab('ipo2')">
+      🎯 Minervini IPO VCP <span class="tab-badge" id="badge-ipo2">0</span>
+    </div>
+    <div class="tab" id="tab-btn-ipo3" onclick="selectIpoTab('ipo3')">
+      🚀 Blue-Sky ATH Reclaim <span class="tab-badge" id="badge-ipo3">0</span>
+    </div>
+  </div>
+
+  <!-- IPO Panel: High Conviction -->
+  <div class="panel active" id="panel-ipo-hc">
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill" style="border-color:var(--gold-border); color:var(--gold);">⚡ IPO Confluence &ge; 2 Hits</span>
+        <span class="pill">Sorted by Match Count (3/3 &rarr; 2/3)</span>
+        <span class="pill">Last 12 Months Listings</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportIpoCSV('all')" title="Export all 3 IPO strategies into one consolidated CSV">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Consolidated IPO CSV
+        </button>
+      </div>
+    </div>
+    <div id="table-ipo-hc">
+      <div class="empty-state">
+        <div class="empty-icon">🚀</div>
+        <h3>No IPO scan run yet</h3>
+        <p>Hit "Run IPO Scan" to detect breakouts across the last 12 months of NSE Mainboard &amp; SME IPOs (~15–30s).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- IPO Panel 1: William O'Neil IPO Base -->
+  <div class="panel" id="panel-ipo1">
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Listed &le; 12M (&ge;10 bars)</span>
+        <span class="pill">Base &ge; 5 days after peak</span>
+        <span class="pill">Base Depth &le; 35%</span>
+        <span class="pill">Close &ge; 99% Prior Peak</span>
+        <span class="pill">Rel Vol &ge; 1.4x</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportIpoCSV('ipo1')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export O'Neil IPO Base
+        </button>
+      </div>
+    </div>
+    <div id="table-ipo1"><div class="empty-state"><div class="empty-icon">📐</div><h3>No IPO scan run yet</h3><p>Hit Run IPO Scan to find classic O'Neil IPO Base breakouts.</p></div></div>
+  </div>
+
+  <!-- IPO Panel 2: Mark Minervini IPO VCP -->
+  <div class="panel" id="panel-ipo2">
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">Close &gt; EMA 10 &ge; EMA 20</span>
+        <span class="pill">Within 15% of IPO High</span>
+        <span class="pill">5D Range &le; 12% (Contracting)</span>
+        <span class="pill">Rel Vol &ge; 1.2x or Vol Up</span>
+        <span class="pill">&ge; 15 Trading Days</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportIpoCSV('ipo2')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Minervini IPO VCP
+        </button>
+      </div>
+    </div>
+    <div id="table-ipo2"><div class="empty-state"><div class="empty-icon">🎯</div><h3>No IPO scan run yet</h3><p>Hit Run IPO Scan to find tight Volatility Contraction IPO setups.</p></div></div>
+  </div>
+
+  <!-- IPO Panel 3: Blue-Sky Listing-High Reclaim -->
+  <div class="panel" id="panel-ipo3">
+    <div class="panel-toolbar">
+      <div class="filter-pills">
+        <span class="pill">New Closing All-Time High</span>
+        <span class="pill">Above Week-1 Listing High</span>
+        <span class="pill">Rel Vol &ge; 1.3x</span>
+        <span class="pill">RSI 14 &gt; 55</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-export" onclick="exportIpoCSV('ipo3')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Blue-Sky Reclaim
+        </button>
+      </div>
+    </div>
+    <div id="table-ipo3"><div class="empty-state"><div class="empty-icon">🚀</div><h3>No IPO scan run yet</h3><p>Hit Run IPO Scan to find fresh post-IPO all-time high breakouts.</p></div></div>
+  </div>
+</section>
 
 </main>
 
@@ -1538,6 +1855,7 @@
 </div>
 
 <script>
+let activeWorkspace = 'core';
 let currentResults = null;
 let currentConfluence = {};
 let activeTabId = 'high-conviction';
@@ -1545,6 +1863,23 @@ let activeSectorFilter = null;
 let pollTimer = null;
 let timerTicker = null;
 let scanStartTime = null;
+
+let currentIpoResults = null;
+let ipoConfluence = {};
+let activeIpoTabId = 'ipo-hc';
+let activeIpoSectorFilter = null;
+let ipoPollTimer = null;
+let ipoTimerTicker = null;
+let ipoScanStartTime = null;
+
+function switchWorkspace(mode) {
+  activeWorkspace = mode === 'ipo' ? 'ipo' : 'core';
+  document.getElementById('view-core').classList.toggle('active', activeWorkspace === 'core');
+  document.getElementById('view-ipo').classList.toggle('active', activeWorkspace === 'ipo');
+  document.getElementById('nav-btn-core').classList.toggle('active', activeWorkspace === 'core');
+  document.getElementById('nav-btn-ipo').classList.toggle('active', activeWorkspace === 'ipo');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // ─── Theme Management ──────────────────────────────────────────────────────────
 function initTheme() {
@@ -1605,13 +1940,17 @@ function tvLink(symbol) {
   return `https://in.tradingview.com/chart/?symbol=NSE%3A${encodeURIComponent(symbol)}`;
 }
 
-function symCell(symbol) {
-  const conf = currentConfluence[symbol];
+function symCell(symbol, mode = 'core') {
+  const isIpo = mode === 'ipo';
+  const confMap = isIpo ? ipoConfluence : currentConfluence;
+  const maxHits = isIpo ? 3 : 4;
+  const targetTabFn = isIpo ? "selectIpoTab('ipo-hc')" : "selectTab('high-conviction')";
+  const conf = confMap[symbol];
   let badgeHtml = '';
   if (conf && conf.count >= 2) {
-    const cls = conf.count === 4 ? 'conf-4' : (conf.count === 3 ? 'conf-3' : 'conf-2');
-    const icon = conf.count === 4 ? '⚡' : (conf.count === 3 ? '🔥' : '✨');
-    badgeHtml = `<span class="mini-conf-tag ${cls}" title="Matched ${conf.count}/4 screeners: ${conf.names.join(', ')}" onclick="selectTab('high-conviction')">${icon} ${conf.count}/4</span>`;
+    const cls = conf.count >= 3 ? (isIpo ? 'conf-4' : 'conf-3') : 'conf-2';
+    const icon = conf.count >= 3 ? (isIpo ? '⚡' : '🔥') : '✨';
+    badgeHtml = `<span class="mini-conf-tag ${cls}" title="Matched ${conf.count}/${maxHits} screeners: ${conf.names.join(', ')}" onclick="${targetTabFn}">${icon} ${conf.count}/${maxHits}</span>`;
   }
 
   return `<div class="sym-cell-wrap">
@@ -1631,6 +1970,19 @@ function symCell(symbol) {
     </button>
     ${badgeHtml}
   </div>`;
+}
+
+function seriesCell(series) {
+  const s = (series || 'EQ').toUpperCase();
+  const isSme = s === 'SM' || s === 'ST';
+  const cls = isSme ? 'series-sme' : (s === 'EQ' ? 'series-eq' : 'series-other');
+  const label = isSme ? 'SME' : s;
+  return `<span class="series-badge ${cls}">${label}</span>`;
+}
+
+function mcapCell(val) {
+  if (val === undefined || val === null || isNaN(val) || val <= 0) return '<span class="header-meta">—</span>';
+  return `₹${val}B`;
 }
 
 function sectorCell(sector) {
@@ -1727,6 +2079,59 @@ const COLUMNS_DEF = {
     { label: 'Weekly Chg',    key: 'chg_open_w', render: r => chgCell(r.chg_open_w) },
     { label: '52W High',      key: 'high_52w',   render: r => `₹${r.high_52w.toLocaleString('en-IN')}` },
     { label: 'Mkt Cap (₹B)',  key: 'mkt_cap',    render: r => `₹${r.mkt_cap}B` },
+  ],
+  'ipo-hc': [
+    { label: 'Symbol',          key: 'symbol',     render: r => symCell(r.symbol, 'ipo') },
+    { label: 'Type',            key: 'series',     render: r => seriesCell(r.series) },
+    { label: 'Confluence Hits', key: 'conf_count', render: r => {
+      const cls = r.conf_count >= 3 ? 'conf-4' : 'conf-2';
+      const icon = r.conf_count >= 3 ? '⚡' : '✨';
+      return `<div style="display:flex; flex-direction:column; gap:4px;">
+        <span class="mini-conf-tag ${cls}" style="font-size:11px; padding:2px 8px; width:fit-content;">${icon} ${r.conf_count}/3 Hits</span>
+        <div class="conf-screeners-wrap">${r.conf_names.map(n => `<span class="conf-screener-chip">${n}</span>`).join('')}</div>
+      </div>`;
+    }},
+    { label: 'Listed',          key: 'list_date',  render: r => `<span class="header-meta">${r.list_date || '—'}</span>` },
+    { label: 'Sector',          key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Price (₹)',       key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'Rel Vol',         key: 'rel_vol',    render: r => relVolCell(r.rel_vol) },
+    { label: 'Day Chg',         key: 'chg',        render: r => chgCell(r.chg) },
+    { label: 'Mkt Cap (₹B)',    key: 'mkt_cap',    render: r => mcapCell(r.mkt_cap) },
+  ],
+  ipo1: [
+    { label: 'Symbol',       key: 'symbol',     render: r => symCell(r.symbol, 'ipo') },
+    { label: 'Type',         key: 'series',     render: r => seriesCell(r.series) },
+    { label: 'Listed',       key: 'list_date',  render: r => `<span class="header-meta">${r.list_date || '—'}</span>` },
+    { label: 'Sector',       key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Price (₹)',    key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'IPO High',     key: 'ipo_high',   render: r => `₹${r.ipo_high.toLocaleString('en-IN')}` },
+    { label: 'Base Depth',   key: 'base_depth', render: r => `<span class="chip-rsi-neutral">${r.base_depth}%</span>` },
+    { label: 'Rel Vol',      key: 'rel_vol',    render: r => relVolCell(r.rel_vol) },
+    { label: 'Day Chg',      key: 'chg_open',   render: r => chgCell(r.chg_open) },
+    { label: 'Mkt Cap (₹B)', key: 'mkt_cap',    render: r => mcapCell(r.mkt_cap) },
+  ],
+  ipo2: [
+    { label: 'Symbol',       key: 'symbol',     render: r => symCell(r.symbol, 'ipo') },
+    { label: 'Type',         key: 'series',     render: r => seriesCell(r.series) },
+    { label: 'Listed',       key: 'list_date',  render: r => `<span class="header-meta">${r.list_date || '—'}</span>` },
+    { label: 'Sector',       key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Price (₹)',    key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: '5D Range',     key: 'range_5d',   render: r => `<span class="chip-rsi-zone">${r.range_5d}%</span>` },
+    { label: 'IPO High',     key: 'ipo_high',   render: r => `₹${r.ipo_high.toLocaleString('en-IN')}` },
+    { label: 'Rel Vol',      key: 'rel_vol',    render: r => relVolCell(r.rel_vol) },
+    { label: 'Day Chg',      key: 'chg_open',   render: r => chgCell(r.chg_open) },
+    { label: 'Mkt Cap (₹B)', key: 'mkt_cap',    render: r => mcapCell(r.mkt_cap) },
+  ],
+  ipo3: [
+    { label: 'Symbol',       key: 'symbol',     render: r => symCell(r.symbol, 'ipo') },
+    { label: 'Type',         key: 'series',     render: r => seriesCell(r.series) },
+    { label: 'Listed',       key: 'list_date',  render: r => `<span class="header-meta">${r.list_date || '—'}</span>` },
+    { label: 'Sector',       key: 'sector',     render: r => sectorCell(r.sector) },
+    { label: 'Price (₹)',    key: 'price',      render: r => `<span class="price-val">₹${r.price.toLocaleString('en-IN')}</span>` },
+    { label: 'RSI 14',       key: 'rsi',        render: r => rsiCell(r.rsi) },
+    { label: 'Rel Vol',      key: 'rel_vol',    render: r => relVolCell(r.rel_vol) },
+    { label: 'Day Chg',      key: 'chg_open',   render: r => chgCell(r.chg_open) },
+    { label: 'Mkt Cap (₹B)', key: 'mkt_cap',    render: r => mcapCell(r.mkt_cap) },
   ]
 };
 
@@ -1735,7 +2140,11 @@ const sortState = {
   s1: { key: 'mkt_cap', dir: 'desc' },
   s2: { key: 'mkt_cap', dir: 'desc' },
   s3: { key: 'mkt_cap', dir: 'desc' },
-  s4: { key: 'mkt_cap', dir: 'desc' }
+  s4: { key: 'mkt_cap', dir: 'desc' },
+  'ipo-hc': { key: 'conf_count', dir: 'desc' },
+  ipo1: { key: 'rel_vol', dir: 'desc' },
+  ipo2: { key: 'range_5d', dir: 'asc' },
+  ipo3: { key: 'rel_vol', dir: 'desc' }
 };
 
 function handleSort(panelId, colKey) {
@@ -1744,7 +2153,7 @@ function handleSort(panelId, colKey) {
     sort.dir = sort.dir === 'asc' ? 'desc' : 'asc';
   } else {
     sort.key = colKey;
-    sort.dir = (colKey === 'symbol' || colKey === 'sector' || colKey === 'date') ? 'asc' : 'desc';
+    sort.dir = (colKey === 'symbol' || colKey === 'sector' || colKey === 'date' || colKey === 'list_date' || colKey === 'series') ? 'asc' : 'desc';
   }
 
   const rows = getPanelRows(panelId);
@@ -1752,6 +2161,13 @@ function handleSort(panelId, colKey) {
 }
 
 function getPanelRows(panelId) {
+  if (panelId.startsWith('ipo')) {
+    if (!currentIpoResults) return [];
+    if (panelId === 'ipo-hc') {
+      return computeIpoHighConvictionList();
+    }
+    return currentIpoResults[panelId] || [];
+  }
   if (!currentResults) return [];
   if (panelId === 'high-conviction') {
     return computeHighConvictionList();
@@ -1760,24 +2176,20 @@ function getPanelRows(panelId) {
 }
 
 // ─── Confluence Engine ─────────────────────────────────────────────────────────
-function computeConfluence() {
-  currentConfluence = {};
-  if (!currentResults) return;
+function buildConfluenceMap(resultsObj, names) {
+  const map = {};
+  if (!resultsObj) return map;
 
-  const names = {
-    s1: 'Breakout Daily',
-    s2: 'Breakout Weekly',
-    s3: 'Trading Scanner',
-    s4: 'MT Investing'
-  };
-
-  ['s1', 's2', 's3', 's4'].forEach(id => {
-    const list = currentResults[id] || [];
+  Object.keys(names).forEach(id => {
+    const list = resultsObj[id] || [];
     list.forEach(item => {
       const sym = item.symbol;
-      if (!currentConfluence[sym]) {
-        currentConfluence[sym] = {
+      if (!map[sym]) {
+        map[sym] = {
           symbol: sym,
+          series: item.series || 'EQ',
+          list_date: item.list_date || '',
+          rel_vol: item.rel_vol !== undefined ? item.rel_vol : 0,
           count: 0,
           ids: [],
           names: [],
@@ -1788,11 +2200,29 @@ function computeConfluence() {
           chg: item.chg_open !== undefined ? item.chg_open : (item.chg_open_w !== undefined ? item.chg_open_w : null)
         };
       }
-      currentConfluence[sym].count += 1;
-      currentConfluence[sym].ids.push(id);
-      currentConfluence[sym].names.push(names[id]);
-      if (item.sector) currentConfluence[sym].sector = item.sector;
+      map[sym].count += 1;
+      map[sym].ids.push(id);
+      map[sym].names.push(names[id]);
+      if (item.sector) map[sym].sector = item.sector;
     });
+  });
+  return map;
+}
+
+function computeConfluence() {
+  currentConfluence = buildConfluenceMap(currentResults, {
+    s1: 'Breakout Daily',
+    s2: 'Breakout Weekly',
+    s3: 'Trading Scanner',
+    s4: 'MT Investing'
+  });
+}
+
+function computeIpoConfluence() {
+  ipoConfluence = buildConfluenceMap(currentIpoResults, {
+    ipo1: "O'Neil IPO Base",
+    ipo2: 'Minervini IPO VCP',
+    ipo3: 'Blue-Sky ATH'
   });
 }
 
@@ -1816,28 +2246,55 @@ function computeHighConvictionList() {
   return list;
 }
 
+function computeIpoHighConvictionList() {
+  const list = [];
+  for (const sym in ipoConfluence) {
+    const item = ipoConfluence[sym];
+    if (item.count >= 2) {
+      list.push({
+        symbol: item.symbol,
+        series: item.series,
+        list_date: item.list_date,
+        rel_vol: item.rel_vol,
+        conf_count: item.count,
+        conf_names: item.names,
+        sector: item.sector,
+        price: item.price,
+        rsi: item.rsi,
+        chg: item.chg,
+        mkt_cap: item.mkt_cap
+      });
+    }
+  }
+  return list;
+}
+
 // ─── Table Rendering ───────────────────────────────────────────────────────────
 function renderTable(panelId, rows, columns, isScanning) {
   const el = document.getElementById(`table-${panelId}`);
   if (!el) return;
 
+  const isIpo = panelId.startsWith('ipo');
+  const sectorFilter = isIpo ? activeIpoSectorFilter : activeSectorFilter;
+
   // Filter by active sector if set
   let displayRows = rows || [];
-  if (activeSectorFilter && activeSectorFilter !== 'ALL') {
-    displayRows = displayRows.filter(r => (r.sector || 'Diversified & Conglomerates') === activeSectorFilter);
+  if (sectorFilter && sectorFilter !== 'ALL') {
+    displayRows = displayRows.filter(r => (r.sector || 'Diversified & Conglomerates') === sectorFilter);
   }
 
   if (displayRows.length === 0) {
     if (isScanning) {
       el.innerHTML = `<div class="empty-state">
         <div class="empty-icon">⏳</div>
-        <h3>Live Market Scan in Progress...</h3>
-        <p>Evaluating 1,600+ NSE stocks against models. Setups stream in live.</p>
+        <h3>${isIpo ? 'IPO Scan in Progress...' : 'Live Market Scan in Progress...'}</h3>
+        <p>${isIpo ? 'Evaluating last 12 months of NSE Mainboard & SME IPOs...' : 'Evaluating 1,600+ NSE stocks against models. Setups stream in live.'}</p>
       </div>`;
     } else {
-      const msg = activeSectorFilter && activeSectorFilter !== 'ALL'
-        ? `No stocks in "${activeSectorFilter}" matched this screener.`
-        : (panelId === 'high-conviction' ? 'No stocks currently match 2 or more screeners simultaneously.' : 'No stocks matched this screener today.');
+      const isHc = panelId === 'high-conviction' || panelId === 'ipo-hc';
+      const msg = sectorFilter && sectorFilter !== 'ALL'
+        ? `No stocks in "${sectorFilter}" matched this screener.`
+        : (isHc ? 'No stocks currently match 2 or more screeners simultaneously.' : 'No stocks matched this screener today.');
       el.innerHTML = `<div class="empty-state">
         <div class="empty-icon">🔍</div>
         <h3>No setups found</h3>
@@ -1876,15 +2333,22 @@ function renderTable(panelId, rows, columns, isScanning) {
 }
 
 // ─── Sector Momentum Bar ───────────────────────────────────────────────────────
-function updateSectorBar() {
-  const wrap = document.getElementById('sector-momentum-wrap');
-  const container = document.getElementById('sector-pills-container');
-  if (!currentResults) {
+function renderSectorBarFor(mode) {
+  const isIpo = mode === 'ipo';
+  const wrap = document.getElementById(isIpo ? 'ipo-sector-momentum-wrap' : 'sector-momentum-wrap');
+  const container = document.getElementById(isIpo ? 'ipo-sector-pills-container' : 'sector-pills-container');
+  const statusEl = document.getElementById(isIpo ? 'ipo-sector-filter-status' : 'sector-filter-status');
+  const results = isIpo ? currentIpoResults : currentResults;
+  const tabId = isIpo ? activeIpoTabId : activeTabId;
+  const sectorFilter = isIpo ? activeIpoSectorFilter : activeSectorFilter;
+  const filterFn = isIpo ? 'filterIpoSector' : 'filterSector';
+
+  if (!results) {
     wrap.style.display = 'none';
     return;
   }
 
-  const rows = getPanelRows(activeTabId);
+  const rows = getPanelRows(tabId);
   if (!rows || rows.length === 0) {
     wrap.style.display = 'none';
     return;
@@ -1892,7 +2356,6 @@ function updateSectorBar() {
 
   wrap.style.display = 'block';
 
-  // Count sectors for active panel
   const counts = {};
   rows.forEach(r => {
     const sec = r.sector || 'Diversified & Conglomerates';
@@ -1902,26 +2365,33 @@ function updateSectorBar() {
   const total = rows.length;
   const sortedSectors = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
-  let html = `<div class="sector-pill ${(!activeSectorFilter || activeSectorFilter === 'ALL') ? 'active' : ''}" onclick="filterSector('ALL')">
+  let html = `<div class="sector-pill ${(!sectorFilter || sectorFilter === 'ALL') ? 'active' : ''}" onclick="${filterFn}('ALL')">
     All Sectors <span class="sector-count">${total}</span>
   </div>`;
 
   sortedSectors.forEach(([sec, cnt]) => {
     const pct = Math.round((cnt / total) * 100);
-    const isActive = activeSectorFilter === sec ? 'active' : '';
-    html += `<div class="sector-pill ${isActive}" onclick="filterSector('${sec}')" title="${sec} (${cnt} stocks, ${pct}%)">
+    const isActive = sectorFilter === sec ? 'active' : '';
+    html += `<div class="sector-pill ${isActive}" onclick="${filterFn}('${sec}')" title="${sec} (${cnt} stocks, ${pct}%)">
       ${sec} <span class="sector-count">${cnt} · ${pct}%</span>
     </div>`;
   });
 
   container.innerHTML = html;
 
-  const statusEl = document.getElementById('sector-filter-status');
-  if (activeSectorFilter && activeSectorFilter !== 'ALL') {
-    statusEl.innerHTML = `Filtering: <strong>${activeSectorFilter}</strong> (<a href="javascript:void(0)" onclick="filterSector('ALL')" style="color:var(--accent);">Reset</a>)`;
+  if (sectorFilter && sectorFilter !== 'ALL') {
+    statusEl.innerHTML = `Filtering: <strong>${sectorFilter}</strong> (<a href="javascript:void(0)" onclick="${filterFn}('ALL')" style="color:var(--accent);">Reset</a>)`;
   } else {
     statusEl.textContent = 'Click any sector to filter table';
   }
+}
+
+function updateSectorBar() {
+  renderSectorBarFor('core');
+}
+
+function updateIpoSectorBar() {
+  renderSectorBarFor('ipo');
 }
 
 function filterSector(sec) {
@@ -1929,6 +2399,13 @@ function filterSector(sec) {
   updateSectorBar();
   const rows = getPanelRows(activeTabId);
   renderTable(activeTabId, rows, COLUMNS_DEF[activeTabId], false);
+}
+
+function filterIpoSector(sec) {
+  activeIpoSectorFilter = (sec === 'ALL' || activeIpoSectorFilter === sec) ? null : sec;
+  updateIpoSectorBar();
+  const rows = getPanelRows(activeIpoTabId);
+  renderTable(activeIpoTabId, rows, COLUMNS_DEF[activeIpoTabId], false);
 }
 
 // ─── Render All Results ────────────────────────────────────────────────────────
@@ -1939,7 +2416,6 @@ function renderAllResults(data, isScanning = false) {
   computeConfluence();
   const hcList = computeHighConvictionList();
 
-  // Badges & stat cards
   document.getElementById('badge-hc').textContent = hcList.length;
   document.getElementById('stat-hc').textContent = hcList.length;
 
@@ -1951,7 +2427,6 @@ function renderAllResults(data, isScanning = false) {
 
   document.getElementById('stats-bar').style.display = 'grid';
 
-  // Render High Conviction and all screeners
   renderTable('high-conviction', hcList, COLUMNS_DEF['high-conviction'], isScanning);
   ['s1', 's2', 's3', 's4'].forEach(id => {
     renderTable(id, data[id] || [], COLUMNS_DEF[id], isScanning);
@@ -1966,14 +2441,52 @@ function renderAllResults(data, isScanning = false) {
   }
 }
 
+function renderAllIpoResults(data, isScanning = false) {
+  if (!data) return;
+  currentIpoResults = data;
+
+  computeIpoConfluence();
+  const hcList = computeIpoHighConvictionList();
+
+  document.getElementById('badge-ipo-hc').textContent = hcList.length;
+  document.getElementById('ipo-stat-hc').textContent = hcList.length;
+
+  let totalHits = 0;
+  ['ipo1', 'ipo2', 'ipo3'].forEach(id => {
+    const count = (data[id] || []).length;
+    totalHits += count;
+    document.getElementById(`badge-${id}`).textContent = count;
+    document.getElementById(`ipo-stat-${id}`).textContent = count;
+  });
+
+  const navBadge = document.getElementById('nav-count-ipo');
+  if (navBadge) navBadge.textContent = totalHits > 0 ? `${Object.keys(ipoConfluence).length}` : '3';
+
+  document.getElementById('ipo-stats-bar').style.display = 'grid';
+
+  renderTable('ipo-hc', hcList, COLUMNS_DEF['ipo-hc'], isScanning);
+  ['ipo1', 'ipo2', 'ipo3'].forEach(id => {
+    renderTable(id, data[id] || [], COLUMNS_DEF[id], isScanning);
+  });
+
+  updateIpoSectorBar();
+
+  if (data.timestamp) {
+    document.getElementById('ipo-scan-timestamp').style.display = 'block';
+    const uniText = data.universe_count ? ` across ${data.universe_count} listings` : '';
+    const runtimeHtml = data.elapsed_seconds ? `<span class="runtime-pill">🚀 Completed${uniText} in ${data.elapsed_seconds}s</span>` : '';
+    document.getElementById('ipo-scan-timestamp').innerHTML = `Last IPO scan: ${data.timestamp} ${runtimeHtml}`;
+  }
+}
+
 // ─── Tab Switching ─────────────────────────────────────────────────────────────
 function selectTab(panelId) {
   activeTabId = panelId;
-  activeSectorFilter = null; // Reset sector filter on tab switch
+  activeSectorFilter = null;
 
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-card'));
+  document.querySelectorAll('#view-core .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#view-core .panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#view-core .stat-card').forEach(c => c.classList.remove('active-card'));
 
   const btn = document.getElementById(`tab-btn-${panelId === 'high-conviction' ? 'hc' : panelId}`);
   if (btn) btn.classList.add('active');
@@ -1982,6 +2495,25 @@ function selectTab(panelId) {
   if (panel) panel.classList.add('active');
 
   updateSectorBar();
+  const rows = getPanelRows(panelId);
+  renderTable(panelId, rows, COLUMNS_DEF[panelId], false);
+}
+
+function selectIpoTab(panelId) {
+  activeIpoTabId = panelId;
+  activeIpoSectorFilter = null;
+
+  document.querySelectorAll('#view-ipo .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#view-ipo .panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#view-ipo .stat-card').forEach(c => c.classList.remove('active-card'));
+
+  const btn = document.getElementById(`tab-btn-${panelId}`);
+  if (btn) btn.classList.add('active');
+
+  const panel = document.getElementById(`panel-${panelId}`);
+  if (panel) panel.classList.add('active');
+
+  updateIpoSectorBar();
   const rows = getPanelRows(panelId);
   renderTable(panelId, rows, COLUMNS_DEF[panelId], false);
 }
@@ -2041,6 +2573,67 @@ function pollProgress() {
 
           if (data.results) {
             renderAllResults(data.results, false);
+          }
+        }
+      });
+  }, 1000);
+}
+
+function startIpoScan() {
+  fetch('/start-ipo-scan', { method: 'POST' })
+    .then(r => r.json())
+    .then(data => {
+      if (data.error) { alert(data.error); return; }
+      const btn = document.getElementById('ipoScanBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-icon">⏳</span> Scanning IPOs...';
+      document.getElementById('ipo-progress-wrap').style.display = 'block';
+
+      ipoScanStartTime = Date.now();
+      if (ipoTimerTicker) clearInterval(ipoTimerTicker);
+      ipoTimerTicker = setInterval(() => {
+        const sec = ((Date.now() - ipoScanStartTime) / 1000).toFixed(1);
+        document.getElementById('ipo-progress-timer').textContent = `⏱️ ${sec}s`;
+      }, 100);
+
+      pollIpoProgress();
+    });
+}
+
+function pollIpoProgress() {
+  if (ipoPollTimer) clearInterval(ipoPollTimer);
+  ipoPollTimer = setInterval(() => {
+    fetch('/ipo-progress')
+      .then(r => r.json())
+      .then(data => {
+        const pct = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
+        document.getElementById('ipo-progress-bar').style.width = pct + '%';
+        document.getElementById('ipo-progress-pct').textContent = pct + '%';
+        document.getElementById('ipo-progress-msg').textContent = data.message || '';
+        document.getElementById('ipo-progress-label').textContent =
+          data.total > 1 ? `${data.done} / ${data.total} NSE IPOs` : 'Discovering IPOs...';
+
+        if (data.results) {
+          renderAllIpoResults(data.results, data.status === 'running');
+        }
+
+        if (data.status === 'done') {
+          clearInterval(ipoPollTimer);
+          if (ipoTimerTicker) clearInterval(ipoTimerTicker);
+
+          document.getElementById('ipo-progress-wrap').style.display = 'none';
+          const btn = document.getElementById('ipoScanBtn');
+          btn.disabled = false;
+          btn.innerHTML = '<span class="btn-icon">🚀</span> Run IPO Again';
+
+          const finalSec = data.elapsed || ((Date.now() - ipoScanStartTime) / 1000).toFixed(1);
+          const uniText = data.results && data.results.universe_count ? ` across ${data.results.universe_count} listings` : '';
+          const timeMsg = `Last IPO scan: ${data.results ? data.results.timestamp : 'Just now'} <span class="runtime-pill">🚀 Completed${uniText} in ${finalSec}s</span>`;
+          document.getElementById('ipo-scan-timestamp').innerHTML = timeMsg;
+          document.getElementById('ipo-scan-timestamp').style.display = 'block';
+
+          if (data.results) {
+            renderAllIpoResults(data.results, false);
           }
         }
       });
@@ -2118,6 +2711,57 @@ function exportCSV(screenerId = 'all') {
   URL.revokeObjectURL(url);
 }
 
+function exportIpoCSV(screenerId = 'all') {
+  if (!currentIpoResults) {
+    alert("No IPO scan results available to export yet. Please run an IPO scan first.");
+    return;
+  }
+
+  const strategies = [
+    { id: 'ipo1', name: "O'Neil IPO Base" },
+    { id: 'ipo2', name: 'Minervini IPO VCP' },
+    { id: 'ipo3', name: 'Blue-Sky ATH Reclaim' }
+  ];
+
+  const targets = screenerId === 'all' ? strategies : strategies.filter(s => s.id === screenerId);
+  let totalMatches = 0;
+  targets.forEach(s => { totalMatches += (currentIpoResults[s.id] || []).length; });
+  if (totalMatches === 0) {
+    alert("No matched IPO stocks found to export.");
+    return;
+  }
+
+  const dateStr = formatDateForFile();
+  const filename = screenerId === 'all'
+    ? `PINAKA_IPO_All_3_Strategies_${dateStr}.csv`
+    : `PINAKA_IPO_${targets[0].name.replace(/[^a-zA-Z0-9]+/g, '_')}_${dateStr}.csv`;
+
+  let csv = 'Strategy,Confluence Hits,Matching Strategies,Symbol,Series,Listed Date,Sector,Price (INR),IPO High (INR),Base Depth (%),5D Range (%),Rel Vol,RSI 14,Day Chg (%),Market Cap (B INR),TradingView Link\n';
+
+  targets.forEach(s => {
+    const rows = currentIpoResults[s.id] || [];
+    rows.forEach(r => {
+      const conf = ipoConfluence[r.symbol];
+      const confCount = conf ? `${conf.count}/3` : '1/3';
+      const confNames = conf ? conf.names.join(' | ') : s.name;
+      const rsi = r.rsi !== null && r.rsi !== undefined ? r.rsi : '';
+      const chg = r.chg_open !== undefined ? `${r.chg_open > 0 ? '+' : ''}${r.chg_open}%` : '';
+      const tvUrl = `https://in.tradingview.com/chart/?symbol=NSE:${r.symbol}`;
+      csv += `"${s.name}","${confCount}","${confNames}","${r.symbol}","${r.series}","${r.list_date}","${r.sector}",${r.price},${r.ipo_high},${r.base_depth},${r.range_5d},${r.rel_vol}x,${rsi},"${chg}",${r.mkt_cap},"${tvUrl}"\n`;
+    });
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 // ─── In-App TradingView Lightweight Charts Controller ─────────────────────────
 let currentModalSymbol = null;
 let currentChartInterval = 'D';
@@ -2132,17 +2776,26 @@ let sma50Series = null;
 let rsiSeries = null;
 
 function findStockSector(symbol) {
-  if (!currentResults) return '';
-  for (const key of ['s1', 's2', 's3', 's4']) {
-    const list = currentResults[key] || [];
-    const item = list.find(r => r.symbol === symbol);
-    if (item && item.sector) return item.sector;
+  if (currentResults) {
+    for (const key of ['s1', 's2', 's3', 's4']) {
+      const list = currentResults[key] || [];
+      const item = list.find(r => r.symbol === symbol);
+      if (item && item.sector) return item.sector;
+    }
+  }
+  if (currentIpoResults) {
+    for (const key of ['ipo1', 'ipo2', 'ipo3']) {
+      const list = currentIpoResults[key] || [];
+      const item = list.find(r => r.symbol === symbol);
+      if (item && item.sector) return item.sector;
+    }
   }
   return '';
 }
 
 function getActiveStockSymbols() {
-  const buttons = document.querySelectorAll('.panel.active .sym-btn-open');
+  const root = activeWorkspace === 'ipo' ? '#view-ipo' : '#view-core';
+  const buttons = document.querySelectorAll(`${root} .panel.active .sym-btn-open`);
   if (buttons.length > 0) {
     return Array.from(buttons).map(b => b.textContent.trim());
   }

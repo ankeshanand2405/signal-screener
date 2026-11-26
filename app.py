@@ -4,14 +4,16 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, date, timedelta
 import requests
-from io import StringIO
+from io import StringIO, BytesIO
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import gzip
 import time
 import threading
 import json
 import os
 
 try:
-    from jugaad_data.nse import bhavcopy_raw
+    from jugaad_data.nse import bhavcopy_raw, NSEDailyReports, stock_df
     JUGAAD_AVAILABLE = True
 except ImportError:
     JUGAAD_AVAILABLE = False
@@ -81,6 +83,8 @@ def ema(series, n):
 
 # More accurate Wilder's RSI initialization
 def rsi(series, n=14):
+    if len(series) <= n:
+        return pd.Series(np.nan, index=series.index)
     delta = series.diff()
     gain = delta.clip(lower=0)
     loss = -delta.clip(upper=0)
@@ -330,13 +334,210 @@ def screener_4(sym, daily, weekly, mcap):
                     "sector": get_sector(sym), "date": date_str}
     except: pass
 
+# ─── IPO Screener Engine (Last 12 Months, Mainboard + SME) ─────────────────────
+
+IPO_SYMBOL_SERIES = {}
+
+def get_ipo_universe(lookback_days=365):
+    """
+    Collect NSE stocks (Mainboard + SME) listed within the last `lookback_days`.
+    Returns list of dicts: {symbol, yf_sym, series, list_date, list_dt, source}.
+    """
+    cutoff = pd.Timestamp.today().normalize() - pd.Timedelta(days=lookback_days)
+    universe = {}
+
+    # 1. Mainboard NSE master list (EQ / BE / BZ) with original DATE OF LISTING
+    try:
+        r = requests.get(
+            "https://archives.nseindia.com/content/equities/EQUITY_L.csv",
+            headers={"User-Agent": "Mozilla/5.0"},
+            timeout=15
+        )
+        eq = pd.read_csv(StringIO(r.text))
+        eq.columns = [c.strip() for c in eq.columns]
+        eq["SYMBOL"] = eq["SYMBOL"].astype(str).str.strip()
+        eq["SERIES"] = eq["SERIES"].astype(str).str.strip()
+        eq["LIST_DT"] = pd.to_datetime(eq["DATE OF LISTING"].astype(str).str.strip(), format="%d-%b-%Y", errors="coerce")
+        recent_eq = eq[
+            eq["LIST_DT"].notna()
+            & (eq["LIST_DT"] >= cutoff)
+            & (~eq["SYMBOL"].str.contains("-RE", na=False))
+            & eq["SERIES"].isin(["EQ", "BE", "BZ"])
+        ]
+        for _, row in recent_eq.iterrows():
+            sym = row["SYMBOL"]
+            dt = row["LIST_DT"]
+            universe[sym] = {
+                "symbol": sym,
+                "yf_sym": f"{sym}.NS",
+                "series": row["SERIES"],
+                "list_date": dt.strftime("%d %b %Y"),
+                "list_dt": dt.date(),
+                "source": "mainboard"
+            }
+            IPO_SYMBOL_SERIES[sym] = row["SERIES"]
+    except Exception as e:
+        print(f"Notice: EQUITY_L IPO discovery error ({e})")
+
+    # 2. NSE SME securities (SM / ST) from NSE CM Security Master (1980-01-01 epoch)
+    if JUGAAD_AVAILABLE:
+        try:
+            sec_bytes = NSEDailyReports().download_file("NSE-CM-SECURITY-CSV")
+            sec = pd.read_csv(BytesIO(gzip.decompress(sec_bytes)), low_memory=False)
+            sec = sec[sec["SctySrs"].isin(["SM", "ST"])].copy()
+            sec["TckrSymb"] = sec["TckrSymb"].astype(str).str.strip()
+            sec["SctySrs"] = sec["SctySrs"].astype(str).str.strip()
+            sec["LD"] = pd.Timestamp("1980-01-01") + pd.to_timedelta(
+                pd.to_numeric(sec["ListgDt"], errors="coerce"), unit="s"
+            )
+            recent_sm = sec[
+                sec["LD"].notna()
+                & (sec["LD"] >= cutoff)
+                & (~sec["TckrSymb"].str.contains("-RE", na=False))
+            ].sort_values("SctySrs")  # SM before ST when deduplicating
+            for _, row in recent_sm.iterrows():
+                sym = row["TckrSymb"]
+                if sym in universe:
+                    continue
+                dt = row["LD"]
+                universe[sym] = {
+                    "symbol": sym,
+                    "yf_sym": f"{sym}-SM.NS",
+                    "series": row["SctySrs"],
+                    "list_date": dt.strftime("%d %b %Y"),
+                    "list_dt": dt.date(),
+                    "source": "sme"
+                }
+                IPO_SYMBOL_SERIES[sym] = row["SctySrs"]
+        except Exception as e:
+            print(f"Notice: SME IPO discovery error ({e})")
+
+    return sorted(universe.values(), key=lambda x: x["list_dt"], reverse=True)
+
+def fetch_sme_history(sym, from_date, series="SM"):
+    """Fetch normalized daily OHLCV DataFrame for an NSE SME ticker via jugaad_data."""
+    if not JUGAAD_AVAILABLE:
+        return pd.DataFrame()
+    for srs in ([series] + (["ST"] if series == "SM" else ["SM"])):
+        try:
+            raw = stock_df(sym, from_date=from_date, to_date=date.today(), series=srs)
+            if raw is None or raw.empty:
+                continue
+            df = raw[["DATE", "OPEN", "HIGH", "LOW", "CLOSE", "VOLUME"]].copy()
+            # NSE JSON timestamps are UTC representing IST midnight (18:30 UTC -> next IST date)
+            dt_idx = (pd.to_datetime(df["DATE"]) + pd.Timedelta(hours=5, minutes=30)).dt.normalize()
+            df.index = dt_idx
+            df = df[["OPEN", "HIGH", "LOW", "CLOSE", "VOLUME"]].rename(columns={
+                "OPEN": "Open", "HIGH": "High", "LOW": "Low", "CLOSE": "Close", "VOLUME": "Volume"
+            })
+            df = df[~df.index.duplicated(keep="last")].sort_index()
+            for col in ["Open", "High", "Low", "Close", "Volume"]:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
+            return df.dropna(subset=["Close"])
+        except Exception:
+            continue
+    return pd.DataFrame()
+
+def evaluate_ipo_screeners(meta, df_sym, bhav_dict, mcap):
+    """
+    Evaluate the 3 famous IPO technical strategies on a recent listing (>= 10 bars):
+      - ipo1: William O'Neil IPO Base Breakout (shallow base <= 35%, clearing peak, RelVol >= 1.4x)
+      - ipo2: Mark Minervini IPO VCP / Tight Base (EMA alignment, near high >= 85%, tight contraction, vol surge)
+      - ipo3: Listing-High Reclaim / Blue-Sky ATH (closing strictly above prior post-IPO ATH, RelVol >= 1.3x)
+    """
+    sym = meta["symbol"]
+    if len(df_sym) < 10:
+        return {}
+
+    daily, _ = compute_indicators(df_sym)
+    d = daily.iloc[-1]
+    prior = daily.iloc[:-1]
+    if prior.empty or pd.isna(d["Close"]) or d["Close"] <= 0:
+        return {}
+
+    date_str = d.name.strftime("%d %b") if hasattr(d.name, "strftime") else ""
+    prior_high = float(prior["High"].max())
+    if prior_high <= 0:
+        return {}
+
+    high_pos = int(np.argmax(prior["High"].values))
+    post_peak = prior.iloc[high_pos:]
+    base_low = float(post_peak["Low"].min())
+    base_len = len(post_peak)
+    base_depth = ((prior_high - base_low) / prior_high) * 100.0
+    ipo_high = max(prior_high, float(d["High"]))
+
+    close = float(d["Close"])
+    chg_val = d["Chg_Pct"] if pd.notna(d.get("Chg_Pct")) else d.get("Chg_Open", 0.0)
+    chg_val = float(chg_val) if pd.notna(chg_val) else 0.0
+    price_up = (d.get("Chg_Pct", 0) > 0) or (d.get("Chg_Open", 0) > 0)
+
+    rel_vol = float(d["Rel_Vol"]) if pd.notna(d.get("Rel_Vol")) and np.isfinite(d["Rel_Vol"]) else 0.0
+    vol_chg = float(d["Vol_Chg"]) if pd.notna(d.get("Vol_Chg")) and np.isfinite(d["Vol_Chg"]) else 0.0
+    rsi_val = round(float(d["RSI14"]), 1) if pd.notna(d.get("RSI14")) and np.isfinite(d["RSI14"]) else None
+
+    # 5-day tightness metrics for Minervini VCP
+    win5 = daily.iloc[-5:]
+    range_5d_pct = ((float(win5["High"].max()) - float(win5["Low"].min())) / close) * 100.0
+    range_10d_pct = range_5d_pct
+    if len(daily) >= 15:
+        prev10 = daily.iloc[-15:-5]
+        p10_close = float(prev10["Close"].mean()) or close
+        range_10d_pct = ((float(prev10["High"].max()) - float(prev10["Low"].min())) / p10_close) * 100.0
+
+    # First-week listing high (first 5 sessions)
+    first_week_high = float(daily.iloc[:min(5, len(daily) - 1)]["High"].max())
+
+    base_row = {
+        "symbol": sym,
+        "series": meta["series"],
+        "list_date": meta["list_date"],
+        "bars": len(daily),
+        "price": round(close, 2),
+        "chg_open": round(chg_val, 2),
+        "rel_vol": round(rel_vol, 2),
+        "rsi": rsi_val,
+        "ipo_high": round(ipo_high, 2),
+        "base_depth": round(base_depth, 1),
+        "range_5d": round(range_5d_pct, 1),
+        "mkt_cap": round(mcap, 1),
+        "sector": get_sector(sym),
+        "date": date_str
+    }
+
+    hits = {}
+
+    # 1. William O'Neil IPO Base Breakout
+    if (price_up and base_len >= 5 and base_depth <= 35.0 and
+        close >= prior_high * 0.99 and rel_vol >= 1.4):
+        hits["ipo1"] = dict(base_row)
+
+    # 2. Mark Minervini IPO VCP / Tight Base (>= 15 bars for contraction comparison)
+    above_sma50 = True if len(daily) < 50 else (close > float(d["SMA50"]))
+    if (len(daily) >= 15 and price_up and above_sma50 and
+        close > float(d["EMA10"]) and float(d["EMA10"]) >= float(d["EMA20"]) and
+        close >= ipo_high * 0.85 and range_5d_pct <= 12.0 and
+        (range_5d_pct <= range_10d_pct * 0.95 or range_5d_pct <= 8.0) and
+        (rel_vol >= 1.2 or vol_chg > 0)):
+        hits["ipo2"] = dict(base_row)
+
+    # 3. Listing-High Reclaim / Blue-Sky ATH Breakout
+    mom_ok = (rsi_val > 55.0) if rsi_val is not None else (close > float(daily["Close"].iloc[0]))
+    if (price_up and close > prior_high and close > first_week_high and
+        rel_vol >= 1.3 and mom_ok):
+        hits["ipo3"] = dict(base_row)
+
+    return hits
+
 # ─── Scan ────────────────────────────────────────────────────────────────────
 
 progress_data = {"status": "idle", "done": 0, "total": 0, "message": "", "elapsed": 0.0, "results": None}
+ipo_progress_data = {"status": "idle", "done": 0, "total": 0, "message": "", "elapsed": 0.0, "results": None}
 
 def run_scan():
     global progress_data
     scan_start = time.time()
+    CHART_DATA_CACHE.clear()
     stocks = get_nse_stocks()
     results = {"s1":[], "s2":[], "s3":[], "s4":[],
                "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p"),
@@ -401,6 +602,112 @@ def run_scan():
         "message": f"Scan complete in {total_time}s."
     })
 
+def run_ipo_scan():
+    """Scan all NSE stocks (Mainboard + SME) listed in the last 12 months."""
+    global ipo_progress_data
+    scan_start = time.time()
+    CHART_DATA_CACHE.clear()
+    results = {"ipo1": [], "ipo2": [], "ipo3": [],
+               "universe_count": 0,
+               "timestamp": datetime.now().strftime("%d %b %Y, %I:%M %p"),
+               "elapsed_seconds": 0.0}
+
+    ipo_progress_data = {
+        "status": "running",
+        "done": 0,
+        "total": 1,
+        "message": "Discovering NSE Mainboard + SME IPOs (last 12 months)...",
+        "elapsed": 0.0,
+        "results": results
+    }
+
+    universe = get_ipo_universe(lookback_days=365)
+    results["universe_count"] = len(universe)
+    ipo_progress_data["total"] = max(len(universe), 1)
+    bhav_dict = get_latest_bhavcopy()
+
+    mainboard = [u for u in universe if u["source"] == "mainboard"]
+    sme_list = [u for u in universe if u["source"] == "sme"]
+
+    # 1. Mainboard IPOs via fast batched yfinance download
+    BATCH = 50
+    for i in range(0, len(mainboard), BATCH):
+        batch = mainboard[i:i+BATCH]
+        tickers = [u["yf_sym"] for u in batch]
+        ipo_progress_data["message"] = f"Scanning Mainboard IPOs {i+1}–{min(i+BATCH, len(mainboard))} of {len(mainboard)}..."
+        ipo_progress_data["elapsed"] = round(time.time() - scan_start, 1)
+        try:
+            raw = yf.download(tickers, period="2y", interval="1d",
+                              group_by="ticker", auto_adjust=True,
+                              progress=False, threads=True)
+        except Exception:
+            ipo_progress_data["done"] += len(batch)
+            continue
+
+        for u in batch:
+            sym = u["symbol"]
+            yf_sym = u["yf_sym"]
+            try:
+                df_sym = raw[yf_sym].copy() if len(batch) > 1 else raw.copy()
+                if isinstance(df_sym.columns, pd.MultiIndex):
+                    df_sym.columns = df_sym.columns.get_level_values(0)
+                if df_sym.index.tz is not None:
+                    df_sym.index = df_sym.index.tz_localize(None)
+                df_sym = fill_missing_from_bhavcopy(df_sym, yf_sym, bhav_dict).dropna(subset=["Close"])
+                if not df_sym.empty and len(df_sym) >= 10:
+                    RAW_STOCK_DATA[sym] = df_sym
+                    mcap = get_cached_mcap(sym, float(df_sym["Close"].iloc[-1]))
+                    hits = evaluate_ipo_screeners(u, df_sym, bhav_dict, mcap)
+                    for key, row in hits.items():
+                        results[key].append(row)
+            except Exception:
+                pass
+            finally:
+                ipo_progress_data["done"] += 1
+
+        ipo_progress_data["results"] = results
+        ipo_progress_data["elapsed"] = round(time.time() - scan_start, 1)
+
+    # 2. SME IPOs via official NSE SME historical feed (jugaad_data stock_df)
+    if sme_list:
+        ipo_progress_data["message"] = f"Scanning {len(sme_list)} NSE SME IPOs..."
+        ipo_progress_data["elapsed"] = round(time.time() - scan_start, 1)
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            future_map = {
+                executor.submit(fetch_sme_history, u["symbol"], u["list_dt"], u["series"]): u
+                for u in sme_list
+            }
+            for fut in as_completed(future_map):
+                u = future_map[fut]
+                sym = u["symbol"]
+                try:
+                    df_sym = fut.result()
+                    if not df_sym.empty and len(df_sym) >= 10:
+                        df_sym = fill_missing_from_bhavcopy(df_sym, sym, bhav_dict).dropna(subset=["Close"])
+                        if len(df_sym) >= 10:
+                            RAW_STOCK_DATA[sym] = df_sym
+                            mcap = get_cached_mcap(sym, float(df_sym["Close"].iloc[-1]))
+                            hits = evaluate_ipo_screeners(u, df_sym, bhav_dict, mcap)
+                            for key, row in hits.items():
+                                results[key].append(row)
+                except Exception:
+                    pass
+                finally:
+                    ipo_progress_data["done"] += 1
+
+                if ipo_progress_data["done"] % 10 == 0:
+                    ipo_progress_data["results"] = results
+                    ipo_progress_data["elapsed"] = round(time.time() - scan_start, 1)
+
+    total_time = round(time.time() - scan_start, 1)
+    results["elapsed_seconds"] = total_time
+    ipo_progress_data.update({
+        "status": "done",
+        "results": results,
+        "elapsed": total_time,
+        "message": f"IPO Scan complete across {len(universe)} listings in {total_time}s."
+    })
+
 # ─── Routes ───────────────────────────────────────────────────────────────────
 
 @app.route("/")
@@ -418,6 +725,17 @@ def start_scan():
 def progress():
     return jsonify(progress_data)
 
+@app.route("/start-ipo-scan", methods=["POST"])
+def start_ipo_scan():
+    if ipo_progress_data.get("status") == "running":
+        return jsonify({"error": "IPO scan already running"}), 400
+    threading.Thread(target=run_ipo_scan, daemon=True).start()
+    return jsonify({"ok": True})
+
+@app.route("/ipo-progress")
+def ipo_progress():
+    return jsonify(ipo_progress_data)
+
 def get_stock_chart_payload(clean_sym, timeframe="D"):
     clean_sym = clean_sym.replace(".NS", "").strip().upper()
     timeframe = timeframe.upper()
@@ -427,16 +745,20 @@ def get_stock_chart_payload(clean_sym, timeframe="D"):
 
     df_sym = RAW_STOCK_DATA.get(clean_sym)
     if df_sym is None or df_sym.empty:
-        yf_sym = f"{clean_sym}.NS"
-        raw = yf.download(yf_sym, period="2y", interval="1d", auto_adjust=True, progress=False)
-        if raw.empty:
-            return None
-        if isinstance(raw.columns, pd.MultiIndex):
-            raw.columns = raw.columns.get_level_values(0)
-        if raw.index.tz is not None:
-            raw.index = raw.index.tz_localize(None)
-        bhav = get_latest_bhavcopy()
-        df_sym = fill_missing_from_bhavcopy(raw, yf_sym, bhav).dropna(subset=["Close"])
+        srs = IPO_SYMBOL_SERIES.get(clean_sym)
+        if srs in ("SM", "ST"):
+            df_sym = fetch_sme_history(clean_sym, date.today() - timedelta(days=365), srs)
+        if df_sym is None or df_sym.empty:
+            yf_sym = f"{clean_sym}.NS"
+            raw = yf.download(yf_sym, period="2y", interval="1d", auto_adjust=True, progress=False)
+            if raw.empty:
+                return None
+            if isinstance(raw.columns, pd.MultiIndex):
+                raw.columns = raw.columns.get_level_values(0)
+            if raw.index.tz is not None:
+                raw.index = raw.index.tz_localize(None)
+            bhav = get_latest_bhavcopy()
+            df_sym = fill_missing_from_bhavcopy(raw, yf_sym, bhav).dropna(subset=["Close"])
         if df_sym.empty:
             return None
         RAW_STOCK_DATA[clean_sym] = df_sym
