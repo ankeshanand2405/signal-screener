@@ -1660,9 +1660,9 @@
     <div class="hero-left">
       <h1>
         IPO Momentum Radar
-        <span class="hero-tag hero-tag-ipo">3 LAUNCH STRATEGIES · 12M NSE</span>
+        <span class="hero-tag hero-tag-ipo">3 LAUNCH STRATEGIES · 2Y NSE</span>
       </h1>
-      <p>Scans all NSE Mainboard &amp; SME IPOs listed within the last 12 months (≥10 trading days, all market caps) for O'Neil IPO Bases, Minervini VCP contractions, and Blue-Sky ATH reclaims.</p>
+      <p>Scans all NSE Mainboard &amp; SME IPOs listed within the last 2 years (≥10 trading days, all market caps) for O'Neil IPO Bases, Minervini VCP contractions, and Blue-Sky ATH reclaims.</p>
     </div>
     <div class="hero-actions">
       <button class="btn-back-core" onclick="switchWorkspace('core')" title="Return to the 4 Core Screeners">
@@ -1687,14 +1687,14 @@
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="ipo-progress-bar"></div>
     </div>
-    <div class="progress-msg" id="ipo-progress-msg">Fetching 12-month NSE Mainboard + SME listings...</div>
+    <div class="progress-msg" id="ipo-progress-msg">Fetching 2-year NSE Mainboard + SME listings...</div>
   </div>
 
   <!-- IPO Meta Row -->
   <div class="meta-row">
     <div id="ipo-scan-timestamp"></div>
     <div class="source-badge" title="Mainboard from NSE EQUITY_L.csv + Yahoo Finance; SME from NSE CM Security Master + NSE History; >= 10 trading days.">
-      <span class="source-dot">●</span> 12M Mainboard + SME &nbsp;·&nbsp; All Market Caps &nbsp;·&nbsp; &ge;10 Trading Days
+      <span class="source-dot">●</span> 2Y Mainboard + SME &nbsp;·&nbsp; All Market Caps &nbsp;·&nbsp; &ge;10 Trading Days
     </div>
   </div>
 
@@ -1768,7 +1768,7 @@
       <div class="filter-pills">
         <span class="pill" style="border-color:var(--gold-border); color:var(--gold);">⚡ IPO Confluence &ge; 2 Hits</span>
         <span class="pill">Sorted by Match Count (3/3 &rarr; 2/3)</span>
-        <span class="pill">Last 12 Months Listings</span>
+        <span class="pill">Last 2 Years Listings</span>
       </div>
       <div class="toolbar-actions">
         <button class="btn-export" onclick="exportIpoCSV('all')" title="Export all 3 IPO strategies into one consolidated CSV">
@@ -1781,7 +1781,7 @@
       <div class="empty-state">
         <div class="empty-icon">🚀</div>
         <h3>No IPO scan run yet</h3>
-        <p>Hit "Run IPO Scan" to detect breakouts across the last 12 months of NSE Mainboard &amp; SME IPOs (~15–30s).</p>
+        <p>Hit "Run IPO Scan" to detect breakouts across the last 2 years of NSE Mainboard &amp; SME IPOs.</p>
       </div>
     </div>
   </div>
@@ -1790,7 +1790,7 @@
   <div class="panel" id="panel-ipo1">
     <div class="panel-toolbar">
       <div class="filter-pills">
-        <span class="pill">Listed &le; 12M (&ge;10 bars)</span>
+        <span class="pill">Listed &le; 2Y (&ge;10 bars)</span>
         <span class="pill">Base &ge; 5 days after peak</span>
         <span class="pill">Base Depth &le; 35%</span>
         <span class="pill">Close &ge; 99% Prior Peak</span>
@@ -2288,7 +2288,7 @@ function renderTable(panelId, rows, columns, isScanning) {
       el.innerHTML = `<div class="empty-state">
         <div class="empty-icon">⏳</div>
         <h3>${isIpo ? 'IPO Scan in Progress...' : 'Live Market Scan in Progress...'}</h3>
-        <p>${isIpo ? 'Evaluating last 12 months of NSE Mainboard & SME IPOs...' : 'Evaluating 1,600+ NSE stocks against models. Setups stream in live.'}</p>
+        <p>${isIpo ? 'Evaluating last 2 years of NSE Mainboard & SME IPOs...' : 'Evaluating 1,600+ NSE stocks against models. Setups stream in live.'}</p>
       </div>`;
     } else {
       const isHc = panelId === 'high-conviction' || panelId === 'ipo-hc';

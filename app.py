@@ -334,11 +334,11 @@ def screener_4(sym, daily, weekly, mcap):
                     "sector": get_sector(sym), "date": date_str}
     except: pass
 
-# ─── IPO Screener Engine (Last 12 Months, Mainboard + SME) ─────────────────────
+# ─── IPO Screener Engine (Last 2 Years, Mainboard + SME) ───────────────────────
 
 IPO_SYMBOL_SERIES = {}
 
-def get_ipo_universe(lookback_days=365):
+def get_ipo_universe(lookback_days=730):
     """
     Collect NSE stocks (Mainboard + SME) listed within the last `lookback_days`.
     Returns list of dicts: {symbol, yf_sym, series, list_date, list_dt, source}.
@@ -603,7 +603,7 @@ def run_scan():
     })
 
 def run_ipo_scan():
-    """Scan all NSE stocks (Mainboard + SME) listed in the last 12 months."""
+    """Scan all NSE stocks (Mainboard + SME) listed in the last 2 years."""
     global ipo_progress_data
     scan_start = time.time()
     CHART_DATA_CACHE.clear()
@@ -616,12 +616,12 @@ def run_ipo_scan():
         "status": "running",
         "done": 0,
         "total": 1,
-        "message": "Discovering NSE Mainboard + SME IPOs (last 12 months)...",
+        "message": "Discovering NSE Mainboard + SME IPOs (last 2 years)...",
         "elapsed": 0.0,
         "results": results
     }
 
-    universe = get_ipo_universe(lookback_days=365)
+    universe = get_ipo_universe(lookback_days=730)
     results["universe_count"] = len(universe)
     ipo_progress_data["total"] = max(len(universe), 1)
     bhav_dict = get_latest_bhavcopy()
@@ -747,7 +747,7 @@ def get_stock_chart_payload(clean_sym, timeframe="D"):
     if df_sym is None or df_sym.empty:
         srs = IPO_SYMBOL_SERIES.get(clean_sym)
         if srs in ("SM", "ST"):
-            df_sym = fetch_sme_history(clean_sym, date.today() - timedelta(days=365), srs)
+            df_sym = fetch_sme_history(clean_sym, date.today() - timedelta(days=730), srs)
         if df_sym is None or df_sym.empty:
             yf_sym = f"{clean_sym}.NS"
             raw = yf.download(yf_sym, period="2y", interval="1d", auto_adjust=True, progress=False)
