@@ -60,7 +60,7 @@ Open `http://localhost:5000` in your browser.
 - Scans top liquid NSE stocks ranked by market capitalization.
 - Market cap is computed in real-time (`cached_shares * today_close`) using the pre-computed `mcap_cache.json`.
 - Runs on EOD data — best used after 4:00 PM IST.
-- To refresh the NSE market cap cache once every few months:
+- To refresh the NSE market cap cache once every few months (fetches the latest official NSE Market Cap report into `mcap_cache.json`):
   ```bash
-  python build_cache.py
+  python build_cache.py --refresh
   ```
